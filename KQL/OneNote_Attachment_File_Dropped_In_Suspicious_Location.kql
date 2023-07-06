@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023/01/22
+// Level: medium
+// Description: Detects creation of files with the ".one"/".onepkg" extension in suspicious or uncommon locations. This could be a sign of attackers abusing OneNote attachments
+// Tags: attack.defense_evasion
+DeviceFileEvents
+| where (FolderPath contains "\\AppData\\Local\\Temp\\" or FolderPath contains "\\Users\\Public\\" or FolderPath contains "\\Windows\\Temp\\" or FolderPath contains "C:\\Temp\\") and (FolderPath endswith ".one" or FolderPath endswith ".onepkg")

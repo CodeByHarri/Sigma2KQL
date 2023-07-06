@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/01/22
+// Level: low
+// Description: Detects the use of the redirection character ">" to redicrect information in commandline
+// Tags: attack.discovery, attack.t1082
+DeviceProcessEvents
+| where (ProcessCommandLine contains ">" and (ProcessVersionInfoOriginalFileName =~ "Cmd.Exe" or FolderPath endswith "\\cmd.exe")) and (not((ProcessCommandLine contains "C:\\Program Files (x86)\\Internet Download Manager\\IDMMsgHost.exe" or ProcessCommandLine contains "chrome-extension://" or ProcessCommandLine contains "\\.\\pipe\\chrome.nativeMessaging")))

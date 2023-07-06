@@ -1,0 +1,7 @@
+// Author: Tim Rauch
+// Date: 2022/09/27
+// Level: medium
+// Description: Detects the desktopimgdownldr utility being used to download a remote file. An adversary may use desktopimgdownldr to download arbitrary files as an alternative to certutil.
+// Tags: attack.command_and_control, attack.t1105
+DeviceProcessEvents
+| where ProcessCommandLine contains "/lockscreenurl:http" and FolderPath endswith "\\desktopimgdownldr.exe" and InitiatingProcessFolderPath endswith "\\desktopimgdownldr.exe"

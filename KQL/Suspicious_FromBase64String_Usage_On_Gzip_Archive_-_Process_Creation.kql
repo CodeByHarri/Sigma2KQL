@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/12/23
+// Level: medium
+// Description: Detects attempts of decoding a base64 Gzip archive via PowerShell. This technique is often used as a method to load malicious content into memory afterward.
+// Tags: 
+DeviceProcessEvents
+| where ProcessCommandLine contains "FromBase64String" and ProcessCommandLine contains "MemoryStream" and ProcessCommandLine contains "H4sI"

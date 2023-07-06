@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2019/08/24
+// Level: medium
+// Description: Detects a suspicious execution of csc.exe, which uses a source in a suspicious folder (e.g. AppData)
+// Tags: attack.defense_evasion, attack.t1027.004
+DeviceProcessEvents
+| where ((ProcessCommandLine contains "\\AppData\\" or ProcessCommandLine contains "\\Windows\\Temp\\") and FolderPath endswith "\\csc.exe") and (not((InitiatingProcessFolderPath startswith "C:\\Program Files" or (InitiatingProcessFolderPath endswith "\\sdiagnhost.exe" or InitiatingProcessFolderPath endswith "\\w3wp.exe" or InitiatingProcessFolderPath endswith "\\choco.exe") or InitiatingProcessCommandLine contains "\\ProgramData\\Microsoft\\Windows Defender Advanced Threat Protection")))

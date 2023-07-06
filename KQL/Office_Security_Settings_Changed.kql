@@ -1,0 +1,7 @@
+// Author: Trent Liffick (@tliffick)
+// Date: 2020/05/22
+// Level: high
+// Description: Detects registry changes to Office macro settings. The TrustRecords contain information on executed macro-enabled documents. (see references)
+// Tags: attack.defense_evasion, attack.t1112
+DeviceRegistryEvents
+| where ActionType =~ "Setvalue" and (RegistryKey endswith "\\Security\\Trusted Documents\\TrustRecords" or RegistryKey endswith "\\Security\\AccessVBOM" or RegistryKey endswith "\\Security\\VBAWarnings")

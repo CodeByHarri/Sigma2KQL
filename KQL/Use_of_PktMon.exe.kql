@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/03/17
+// Level: medium
+// Description: Tools to capture network packets on Windows 10 with October 2018 update or later.
+// Tags: attack.credential_access, attack.t1040
+DeviceProcessEvents
+| where FolderPath endswith "\\pktmon.exe" or ProcessVersionInfoOriginalFileName =~ "PktMon.exe"

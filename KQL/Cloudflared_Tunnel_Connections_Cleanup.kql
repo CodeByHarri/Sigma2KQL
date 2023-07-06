@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023/05/17
+// Level: medium
+// Description: Detects execution of the "cloudflared" tool with the tunnel "cleanup" flag in order to cleanup tunnel connections.
+// Tags: attack.command_and_control, attack.t1102, attack.t1090, attack.t1572
+DeviceProcessEvents
+| where (ProcessCommandLine contains " --config " or ProcessCommandLine contains " --connector-id ") and (ProcessCommandLine contains " tunnel " and ProcessCommandLine contains "cleanup ")

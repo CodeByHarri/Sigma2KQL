@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2021/12/11
+// Level: informational
+// Description: Adversaries may attempt to get information about running processes on a system. Information obtained could be used to gain an understanding of common software/applications running on systems within the network
+// Tags: attack.discovery, attack.t1057
+DeviceProcessEvents
+| where ProcessCommandLine contains "tasklist" or FolderPath endswith "\\tasklist.exe" or ProcessVersionInfoOriginalFileName =~ "tasklist.exe"

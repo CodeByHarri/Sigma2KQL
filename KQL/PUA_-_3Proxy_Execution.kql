@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022/09/13
+// Level: high
+// Description: Detects the use of 3proxy, a tiny free proxy server
+// Tags: attack.command_and_control, attack.t1572
+DeviceProcessEvents
+| where FolderPath endswith "\\3proxy.exe" or ProcessCommandLine contains ".exe -i127.0.0.1 -p" or ProcessVersionInfoFileDescription =~ "3proxy - tiny proxy server"

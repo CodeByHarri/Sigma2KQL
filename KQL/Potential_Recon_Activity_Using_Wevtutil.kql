@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/09/09
+// Level: medium
+// Description: Detects usage of the wevtutil utility to perform reconnaissance
+// Tags: attack.discovery
+DeviceProcessEvents
+| where ((ProcessCommandLine contains " qe " or ProcessCommandLine contains " query-events ") and FolderPath endswith "\\wevtutil.exe") and (ProcessCommandLine contains "Microsoft-Windows-TerminalServices-LocalSessionManager/Operational" or ProcessCommandLine contains "Microsoft-Windows-Terminal-Services-RemoteConnectionManager/Operational" or ProcessCommandLine contains "Security")

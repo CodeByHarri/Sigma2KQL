@@ -1,0 +1,7 @@
+// Author: Max Altgelt (Nextron Systems)
+// Date: 2022/06/02
+// Level: high
+// Description: Detects process creation with a renamed BrowserCore.exe (used to extract Azure tokens)
+// Tags: attack.t1528, attack.t1036.003
+DeviceProcessEvents
+| where ProcessVersionInfoOriginalFileName =~ "BrowserCore.exe" and (not(FolderPath endswith "\\BrowserCore.exe"))

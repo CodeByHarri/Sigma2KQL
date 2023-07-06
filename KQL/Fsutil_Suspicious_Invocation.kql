@@ -1,0 +1,9 @@
+// Author: Ecco, E.M. Anhaus, oscd.community
+// Date: 2019/09/26
+// Level: high
+// Description: Detects suspicious parameters of fsutil (deleting USN journal, configuring it with small size, etc).
+Might be used by ransomwares during the attack (seen by NotPetya and others).
+
+// Tags: attack.defense_evasion, attack.t1070
+DeviceProcessEvents
+| where (ProcessCommandLine contains "deletejournal" or ProcessCommandLine contains "createjournal") and (FolderPath endswith "\\fsutil.exe" or ProcessVersionInfoOriginalFileName =~ "fsutil.exe")

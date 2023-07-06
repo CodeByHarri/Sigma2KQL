@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2021/12/26
+// Level: low
+// Description: Adversaries may stop services or processes in order to conduct Data Destruction or Data Encrypted for Impact on the data stores of services like Exchange and SQL Server.
+// Tags: attack.impact, attack.t1489
+DeviceProcessEvents
+| where (ProcessCommandLine contains " /f" and ProcessCommandLine contains " /im ") and (FolderPath endswith "\\taskkill.exe" or ProcessVersionInfoOriginalFileName =~ "taskkill.exe")

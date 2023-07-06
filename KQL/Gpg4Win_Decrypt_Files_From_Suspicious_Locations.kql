@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems), X__Junior (Nextron Systems)
+// Date: 2022/11/30
+// Level: medium
+// Description: Detects usage of the Gpg4win to decrypt files located in suspicious locations from CLI
+// Tags: attack.command_and_control, attack.t1219
+DeviceProcessEvents
+| where ProcessCommandLine contains "-passphrase" and (FolderPath endswith "\\gpg2.exe" or ProcessVersionInfoProductName =~ "GNU Privacy Guard (GnuPG)" or ProcessVersionInfoCompanyName =~ "g10 Code GmbH") and (ProcessCommandLine contains "\\AppData\\Roaming\\" or ProcessCommandLine contains "C:\\Perflogs\\" or ProcessCommandLine contains "C:\\Windows\\Temp\\" or ProcessCommandLine contains "C:\\temp")

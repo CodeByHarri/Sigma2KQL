@@ -1,0 +1,7 @@
+// Author: Omkar Gudhate
+// Date: 2020/09/27
+// Level: high
+// Description: Detects changes to 'HKCU\Software\Classes\Folder\shell\open\command\DelegateExecute'
+// Tags: attack.privilege_escalation, attack.t1546, attack.t1548
+DeviceRegistryEvents
+| where ActionType =~ "Setvalue" and RegistryKey =~ "HKCU\\Software\\Classes\\Folder\\shell\\open\\command\\DelegateExecute"

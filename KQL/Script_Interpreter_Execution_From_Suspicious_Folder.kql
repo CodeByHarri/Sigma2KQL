@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022/02/08
+// Level: high
+// Description: Detects a suspicious script executions in temporary folders or folders accessible by environment variables
+// Tags: attack.execution, attack.t1059
+DeviceProcessEvents
+| where ((ProcessCommandLine contains " -w hidden " or ProcessCommandLine contains " -ep bypass " or ProcessCommandLine contains "/e:vbscript " or ProcessCommandLine contains "/e:javascript ") or (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\cmd.exe") or (ProcessVersionInfoOriginalFileName in~ ("powershell.exe", "pwsh.dll", "mshta.exe", "wscript.exe", "cscript.exe", "cmd.exe"))) and (FolderPath contains "\\Windows\\Temp" or FolderPath contains "\\Temporary Internet" or FolderPath contains "\\AppData\\Local\\Temp" or FolderPath contains "\\AppData\\Roaming\\Temp" or FolderPath contains "C:\\Users\\Public\\" or FolderPath contains "C:\\Perflogs\\")

@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/06/08
+// Level: medium
+// Description: Detects the creation of diagcab file, which could be caused by some legitimate installer or is a sign of exploitation (review the filename and its location)
+// Tags: attack.resource_development
+DeviceFileEvents
+| where FolderPath endswith ".diagcab"

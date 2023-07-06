@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022/08/04
+// Level: high
+// Description: Execution of plink to perform data exfiltration and tunneling
+// Tags: attack.command_and_control, attack.t1572
+DeviceProcessEvents
+| where (ProcessCommandLine contains ":127.0.0.1:3389" and FolderPath endswith "\\plink.exe") or ((ProcessCommandLine contains ":3389" and FolderPath endswith "\\plink.exe") and (ProcessCommandLine contains " -P 443" or ProcessCommandLine contains " -P 22"))

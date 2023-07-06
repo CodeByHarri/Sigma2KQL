@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/02/04
+// Level: low
+// Description: Detects the execution of "attrib" with the "+s" flag to mark files as system files
+// Tags: attack.defense_evasion, attack.t1564.001
+DeviceProcessEvents
+| where ProcessCommandLine contains " +s " and (FolderPath endswith "\\attrib.exe" or ProcessVersionInfoOriginalFileName =~ "ATTRIB.EXE")

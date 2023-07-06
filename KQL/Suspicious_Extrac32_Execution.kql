@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2021/11/26
+// Level: medium
+// Description: Download or Copy file with Extrac32
+// Tags: attack.command_and_control, attack.t1105
+DeviceProcessEvents
+| where ProcessCommandLine contains ".cab" and (ProcessCommandLine contains "extrac32.exe" or FolderPath endswith "\\extrac32.exe" or ProcessVersionInfoOriginalFileName =~ "extrac32.exe") and (ProcessCommandLine contains "/C" or ProcessCommandLine contains "/Y" or ProcessCommandLine contains " \\\\")

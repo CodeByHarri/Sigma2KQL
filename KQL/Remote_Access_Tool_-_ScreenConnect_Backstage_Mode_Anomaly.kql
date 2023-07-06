@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022/02/25
+// Level: high
+// Description: Detects suspicious sub processes started by the ScreenConnect client service, which indicates the use of the so-called Backstage mode
+// Tags: attack.command_and_control, attack.t1219
+DeviceProcessEvents
+| where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") and InitiatingProcessFolderPath endswith "ScreenConnect.ClientService.exe"

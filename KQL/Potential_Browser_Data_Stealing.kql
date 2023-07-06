@@ -1,0 +1,10 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/12/23
+// Level: medium
+// Description: Adversaries may acquire credentials from web browsers by reading files specific to the target browser.
+Web browsers commonly save credentials such as website usernames and passwords so that they do not need to be entered manually in the future.
+Web browsers typically store the credentials in an encrypted format within a credential store.
+
+// Tags: attack.credential_access, attack.t1555.003
+DeviceProcessEvents
+| where ((ProcessCommandLine contains "copy-item" or ProcessCommandLine contains "copy " or ProcessCommandLine contains "cpi " or ProcessCommandLine contains " cp " or ProcessCommandLine contains "move " or ProcessCommandLine contains "move-item" or ProcessCommandLine contains " mi " or ProcessCommandLine contains " mv ") or (FolderPath endswith "\\xcopy.exe" or FolderPath endswith "\\robocopy.exe") or (ProcessVersionInfoOriginalFileName in~ ("XCOPY.EXE", "robocopy.exe"))) and (ProcessCommandLine contains "\\Opera Software\\Opera Stable\\" or ProcessCommandLine contains "\\Mozilla\\Firefox\\Profiles" or ProcessCommandLine contains "\\Microsoft\\Edge\\User Data\\" or ProcessCommandLine contains "\\Google\\Chrome\\User Data\\")

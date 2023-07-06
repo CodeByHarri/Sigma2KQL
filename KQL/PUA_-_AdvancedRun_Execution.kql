@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022/01/20
+// Level: medium
+// Description: Detects the execution of AdvancedRun utility
+// Tags: 
+DeviceProcessEvents
+| where ProcessVersionInfoOriginalFileName =~ "AdvancedRun.exe" or (ProcessCommandLine contains " /EXEFilename " and ProcessCommandLine contains " /Run") or (ProcessCommandLine contains " /WindowState 0" and ProcessCommandLine contains " /RunAs " and ProcessCommandLine contains " /CommandLine ")

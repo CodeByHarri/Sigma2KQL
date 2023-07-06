@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/06/05
+// Level: medium
+// Description: Detects the creation of an file in user Word Startup
+// Tags: attack.resource_development, attack.t1587.001
+DeviceFileEvents
+| where FolderPath contains "\\AppData\\Roaming\\Microsoft\\Word\\STARTUP\\" and (not((FolderPath endswith ".docx" or FolderPath endswith ".docm" or FolderPath endswith ".dotx" or FolderPath endswith ".dotm" or FolderPath endswith ".docb" or FolderPath endswith ".pdf" or FolderPath endswith ".wll" or FolderPath endswith ".wwl")))

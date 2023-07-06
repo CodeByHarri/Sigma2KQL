@@ -1,0 +1,7 @@
+// Author: Markus Neis
+// Date: 2018/01/07
+// Level: high
+// Description: Detects Loading of samlib.dll, WinSCard.dll from untypical process e.g. through process hollowing by Mimikatz
+// Tags: attack.defense_evasion, attack.t1574.002
+DeviceImageLoadEvents
+| where (FolderPath endswith "\\samlib.dll" or FolderPath endswith "\\WinSCard.dll") and InitiatingProcessFolderPath endswith "\\notepad.exe"

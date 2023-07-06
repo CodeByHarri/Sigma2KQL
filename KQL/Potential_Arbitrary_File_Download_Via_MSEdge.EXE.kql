@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/01/11
+// Level: medium
+// Description: Detects usage of the "msedge.exe" binary as a LOLBIN to download arbitrary file via the CLI
+// Tags: attack.command_and_control, attack.t1105
+DeviceProcessEvents
+| where (ProcessCommandLine contains ".exe http" or ProcessCommandLine contains "msedge http") and (FolderPath endswith "\\msedge.exe" or ProcessVersionInfoOriginalFileName =~ "msedge.exe")

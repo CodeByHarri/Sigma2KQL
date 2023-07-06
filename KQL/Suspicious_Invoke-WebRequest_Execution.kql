@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/08/02
+// Level: high
+// Description: Detects a suspicious call to Invoke-WebRequest cmdlet where the and output is located in a suspicious location
+// Tags: attack.command_and_control, attack.t1105
+DeviceProcessEvents
+| where (ProcessCommandLine contains "curl " or ProcessCommandLine contains "Invoke-WebRequest" or ProcessCommandLine contains "iwr " or ProcessCommandLine contains "wget ") and (ProcessCommandLine contains " -ur" or ProcessCommandLine contains " -o") and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll"))) and (ProcessCommandLine contains "\\AppData\\" or ProcessCommandLine contains "\\Desktop\\" or ProcessCommandLine contains "\\Temp\\" or ProcessCommandLine contains "\\Users\\Public\\" or ProcessCommandLine contains "%AppData%" or ProcessCommandLine contains "%Public%" or ProcessCommandLine contains "%Temp%" or ProcessCommandLine contains "%tmp%" or ProcessCommandLine contains "C:\\Windows\\")

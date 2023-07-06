@@ -1,0 +1,7 @@
+// Author: Teymur Kheirkhabarov, oscd.community
+// Date: 2019/10/22
+// Level: high
+// Description: LSASS memory dump creation using operating systems utilities. Procdump will use process name in output file if no name is specified
+// Tags: attack.credential_access, attack.t1003.001
+DeviceFileEvents
+| where FolderPath contains "lsass" and FolderPath endswith "dmp"

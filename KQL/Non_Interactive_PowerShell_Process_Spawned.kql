@@ -1,0 +1,7 @@
+// Author: Roberto Rodriguez @Cyb3rWard0g (rule), oscd.community (improvements)
+// Date: 2019/09/12
+// Level: low
+// Description: Detects non-interactive PowerShell activity by looking at the "powershell" process with a non-user GUI process such as "explorer.exe" as a parent.
+// Tags: attack.execution, attack.t1059.001
+DeviceProcessEvents
+| where ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll"))) and (not(((InitiatingProcessFolderPath endswith "C:\\Windows\\explorer.exe" or InitiatingProcessFolderPath endswith "C:\\Windows\\System32\\CompatTelRunner.exe" or InitiatingProcessFolderPath endswith "C:\\Windows\\SysWOW64\\explorer.exe") or InitiatingProcessFolderPath =~ "C:\\$WINDOWS.~BT\\Sources\\SetupHost.exe"))) and (not((InitiatingProcessCommandLine contains " --ms-enable-electron-run-as-node " and InitiatingProcessFolderPath endswith "\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe" and InitiatingProcessFolderPath startswith "C:\\Users\\")))

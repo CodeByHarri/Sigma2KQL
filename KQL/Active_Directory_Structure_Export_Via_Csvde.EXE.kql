@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023/03/14
+// Level: medium
+// Description: Detects the execution of "csvde.exe" in order to export organizational Active Directory structure.
+// Tags: attack.exfiltration
+DeviceProcessEvents
+| where ((FolderPath endswith "\\csvde.exe" or ProcessVersionInfoOriginalFileName =~ "csvde.exe") and ProcessCommandLine contains " -f") and (not(ProcessCommandLine contains " -i"))

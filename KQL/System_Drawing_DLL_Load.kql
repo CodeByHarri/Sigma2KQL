@@ -1,0 +1,7 @@
+// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+// Date: 2020/05/02
+// Level: low
+// Description: Detects processes loading "System.Drawing.ni.dll". This could be an indicator of potential Screen Capture.
+// Tags: attack.collection, attack.t1113
+DeviceImageLoadEvents
+| where FolderPath endswith "\\System.Drawing.ni.dll"

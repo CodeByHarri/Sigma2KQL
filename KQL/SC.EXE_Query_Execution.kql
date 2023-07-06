@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2021/12/06
+// Level: low
+// Description: Detects execution of "sc.exe" to query information about registered services on the system
+// Tags: attack.discovery, attack.t1007
+DeviceProcessEvents
+| where ProcessCommandLine contains " query" and (FolderPath endswith "\\sc.exe" and ProcessVersionInfoOriginalFileName endswith "sc.exe")

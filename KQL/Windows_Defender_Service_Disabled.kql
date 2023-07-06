@@ -1,0 +1,7 @@
+// Author: Ján Trenčanský, frack113, AlertIQ, Nasreddine Bencherchali
+// Date: 2022/08/01
+// Level: high
+// Description: Detects when an attacker or tool disables the  Windows Defender service (WinDefend) via the registry
+// Tags: attack.defense_evasion, attack.t1562.001
+DeviceRegistryEvents
+| where RegistryValueData =~ "DWORD (0x00000004)" and ActionType =~ "RegistryValueSet" and RegistryKey =~ "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services\\WinDefend\\Start"

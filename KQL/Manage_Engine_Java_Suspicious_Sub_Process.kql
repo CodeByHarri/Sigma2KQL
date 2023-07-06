@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2023/01/18
+// Level: high
+// Description: Detects suspicious sub processes started by the Manage Engine ServiceDesk Plus Java web service process
+// Tags: 
+DeviceProcessEvents
+| where ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\sh.exe" or FolderPath endswith "\\bash.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\schtasks.exe" or FolderPath endswith "\\certutil.exe" or FolderPath endswith "\\whoami.exe" or FolderPath endswith "\\bitsadmin.exe" or FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\scrcons.exe" or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\forfiles.exe" or FolderPath endswith "\\mftrace.exe" or FolderPath endswith "\\AppVLP.exe" or FolderPath endswith "\\curl.exe" or FolderPath endswith "\\notepad.exe" or FolderPath endswith "\\systeminfo.exe" or FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe" or FolderPath endswith "\\reg.exe" or FolderPath endswith "\\query.exe") and (InitiatingProcessFolderPath contains "\\ManageEngine\\ServiceDesk\\" and InitiatingProcessFolderPath contains "\\java.exe")) and (not((ProcessCommandLine contains " stop" and (FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe"))))

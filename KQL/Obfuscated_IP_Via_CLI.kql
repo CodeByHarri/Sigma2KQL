@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/08/03
+// Level: medium
+// Description: Detects usage of an encoded/obfuscated version of an IP address (hex, octal...) via commandline
+// Tags: attack.discovery
+DeviceProcessEvents
+| where (FolderPath endswith "\\ping.exe" or FolderPath endswith "\\arp.exe") and (ProcessCommandLine contains " 0x" or ProcessCommandLine matches regex " [0-9]{7,13}")

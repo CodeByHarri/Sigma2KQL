@@ -1,0 +1,7 @@
+// Author: Christian Burkard (Nextron Systems)
+// Date: 2021/11/24
+// Level: high
+// Description: Detects a suspicious certreq execution taken from the LOLBAS examples, which can be abused to download (small) files
+// Tags: attack.command_and_control, attack.t1105
+DeviceProcessEvents
+| where (ProcessCommandLine contains " -Post " and ProcessCommandLine contains " -config " and ProcessCommandLine contains " http" and ProcessCommandLine contains " C:\\windows\\win.ini ") and (FolderPath endswith "\\certreq.exe" or ProcessVersionInfoOriginalFileName =~ "CertReq.exe")

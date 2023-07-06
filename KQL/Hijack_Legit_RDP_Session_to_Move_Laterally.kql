@@ -1,0 +1,7 @@
+// Author: Samir Bousseaden
+// Date: 2019/02/21
+// Level: high
+// Description: Detects the usage of tsclient share to place a backdoor on the RDP source machine's startup folder
+// Tags: attack.command_and_control, attack.t1219
+DeviceFileEvents
+| where InitiatingProcessFolderPath endswith "\\mstsc.exe" and FolderPath contains "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\"

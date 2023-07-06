@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems), Tim Shelton
+// Date: 2017/03/19
+// Level: high
+// Description: Detects programs with network connections running in suspicious files system locations
+// Tags: attack.command_and_control, attack.t1105
+DeviceNetworkEvents
+| where ((InitiatingProcessFolderPath contains "\\Users\\All Users\\" or InitiatingProcessFolderPath contains "\\Users\\Default\\" or InitiatingProcessFolderPath contains "\\Users\\Public\\" or InitiatingProcessFolderPath contains "\\Users\\Contacts\\" or InitiatingProcessFolderPath contains "\\Users\\Searches\\" or InitiatingProcessFolderPath contains "\\config\\systemprofile\\" or InitiatingProcessFolderPath contains "\\Windows\\Fonts\\" or InitiatingProcessFolderPath contains "\\Windows\\IME\\" or InitiatingProcessFolderPath contains "\\Windows\\addins\\") or InitiatingProcessFolderPath endswith "\\$Recycle.bin" or InitiatingProcessFolderPath startswith "C:\\Perflogs\\") and (not(InitiatingProcessFolderPath startswith "C:\\Users\\Public\\IBM\\ClientSolutions\\Start_Programs\\"))

@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2021/11/24
+// Level: medium
+// Description: Execute C# code with the Build Provider and proper folder structure in place.
+// Tags: attack.defense_evasion, attack.t1127
+DeviceProcessEvents
+| where FolderPath contains "C:\\Windows\\Microsoft.NET\\Framework" and FolderPath contains "aspnet_compiler.exe"

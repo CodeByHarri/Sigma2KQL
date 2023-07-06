@@ -1,0 +1,7 @@
+// Author: Matthew Green - @mgreen27, Florian Roth (Nextron Systems), frack113
+// Date: 2019/06/15
+// Level: high
+// Description: Detects the execution of a renamed binary often used by attackers or malware leveraging new Sysmon OriginalFileName datapoint.
+// Tags: attack.defense_evasion, attack.t1036.003, car.2013-05-009
+DeviceProcessEvents
+| where (ProcessVersionInfoFileDescription =~ "Execute processes remotely" or ProcessVersionInfoProductName =~ "Sysinternals PsExec" or (ProcessVersionInfoFileDescription startswith "Windows PowerShell" or ProcessVersionInfoFileDescription startswith "pwsh") or (ProcessVersionInfoOriginalFileName in~ ("powershell.exe", "pwsh.dll", "powershell_ise.exe", "psexec.exe", "psexec.c", "psexesvc.exe", "cscript.exe", "wscript.exe", "mshta.exe", "regsvr32.exe", "wmic.exe", "certutil.exe", "rundll32.exe", "cmstp.exe", "msiexec.exe", "reg.exe"))) and (not((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\powershell_ise.exe" or FolderPath endswith "\\psexec.exe" or FolderPath endswith "\\psexec64.exe" or FolderPath endswith "\\PSEXESVC.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\certutil.exe" or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\cmstp.exe" or FolderPath endswith "\\msiexec.exe" or FolderPath endswith "\\reg.exe")))

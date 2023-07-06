@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/12/20
+// Level: high
+// Description: Detects the execution of a renamed office binary
+// Tags: attack.defense_evasion
+DeviceProcessEvents
+| where ((ProcessVersionInfoOriginalFileName in~ ("Excel.exe", "MSACCESS.EXE", "OneNote.exe", "POWERPNT.EXE", "WinWord.exe")) or (ProcessVersionInfoFileDescription in~ ("Microsoft Access", "Microsoft Excel", "Microsoft OneNote", "Microsoft PowerPoint", "Microsoft Word"))) and (not((FolderPath endswith "\\EXCEL.exe" or FolderPath endswith "\\MSACCESS.exe" or FolderPath endswith "\\ONENOTE.EXE" or FolderPath endswith "\\POWERPNT.EXE" or FolderPath endswith "\\WINWORD.exe")))

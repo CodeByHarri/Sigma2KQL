@@ -1,0 +1,10 @@
+// Author: frack113
+// Date: 2021/12/13
+// Level: high
+// Description: Deletes the Windows systemstatebackup using wbadmin.exe.
+This technique is used by numerous ransomware families.
+This may only be successful on server platforms that have Windows Backup enabled.
+
+// Tags: attack.impact, attack.t1490
+DeviceProcessEvents
+| where (ProcessCommandLine contains "delete " and ProcessCommandLine contains "systemstatebackup " and ProcessCommandLine contains "-keepVersions:0") and (FolderPath endswith "\\wbadmin.exe" or ProcessVersionInfoOriginalFileName =~ "WBADMIN.EXE")

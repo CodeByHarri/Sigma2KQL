@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023/04/18
+// Level: high
+// Description: Detects potential RDP connection via Mstsc using a local ".rdp" file located in suspicious locations.
+// Tags: attack.command_and_control, attack.t1219
+DeviceProcessEvents
+| where (ProcessCommandLine endswith ".rdp" or ProcessCommandLine endswith ".rdp\"") and (FolderPath endswith "\\mstsc.exe" or ProcessVersionInfoOriginalFileName =~ "mstsc.exe") and (ProcessCommandLine contains ":\\Users\\Public\\" or ProcessCommandLine contains ":\\Windows\\System32\\spool\\drivers\\color" or ProcessCommandLine contains ":\\Windows\\System32\\Tasks_Migrated " or ProcessCommandLine contains ":\\Windows\\Tasks\\" or ProcessCommandLine contains ":\\Windows\\Temp\\" or ProcessCommandLine contains ":\\Windows\\Tracing\\" or ProcessCommandLine contains "\\AppData\\Local\\Temp\\" or ProcessCommandLine contains "\\Downloads\\")

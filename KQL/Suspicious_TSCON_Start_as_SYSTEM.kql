@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2018/03/17
+// Level: high
+// Description: Detects a tscon.exe start as LOCAL SYSTEM
+// Tags: attack.command_and_control, attack.t1219
+DeviceProcessEvents
+| where FolderPath endswith "\\tscon.exe" and (AccountName contains "AUTHORI" or AccountName contains "AUTORI")

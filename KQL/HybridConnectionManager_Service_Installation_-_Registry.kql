@@ -1,0 +1,7 @@
+// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+// Date: 2021/04/12
+// Level: high
+// Description: Detects the installation of the Azure Hybrid Connection Manager service to allow remote code execution from Azure function.
+// Tags: attack.resource_development, attack.t1608
+DeviceRegistryEvents
+| where RegistryKey contains "\\Services\\HybridConnectionManager" or (RegistryValueData contains "Microsoft.HybridConnectionManager.Listener.exe" and ActionType =~ "RegistryValueSet")

@@ -1,0 +1,7 @@
+// Author: Beyu Denis, oscd.community
+// Date: 2020/10/18
+// Level: medium
+// Description: dotnet.exe will execute any DLL and execute unsigned code
+// Tags: attack.execution, attack.t1218
+DeviceProcessEvents
+| where (ProcessCommandLine endswith ".dll" or ProcessCommandLine endswith ".csproj") and (FolderPath endswith "\\dotnet.exe" or ProcessVersionInfoOriginalFileName =~ ".NET Host")

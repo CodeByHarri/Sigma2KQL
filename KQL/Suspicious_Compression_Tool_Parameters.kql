@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems), Samir Bousseaden
+// Date: 2019/10/15
+// Level: high
+// Description: Detects suspicious command line arguments of common data compression tools
+// Tags: attack.collection, attack.t1560.001
+DeviceProcessEvents
+| where ((ProcessCommandLine contains " -p" or ProcessCommandLine contains " -ta" or ProcessCommandLine contains " -tb" or ProcessCommandLine contains " -sdel" or ProcessCommandLine contains " -dw" or ProcessCommandLine contains " -hp") and (match or ProcessVersionInfoOriginalFileName endswith "rar.exe" or match)) and (not(InitiatingProcessFolderPath startswith "C:\\Program"))

@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems), Microsoft (idea)
+// Date: 2022/08/04
+// Level: high
+// Description: Detects a suspicious IIS module registration as described in Microsoft threat report on IIS backdoors
+// Tags: 
+DeviceProcessEvents
+| where InitiatingProcessFolderPath endswith "\\w3wp.exe" and (ProcessCommandLine contains "appcmd.exe add module" or (ProcessCommandLine contains " system.enterpriseservices.internal.publish" and FolderPath endswith "\\powershell.exe") or (ProcessCommandLine contains "gacutil" and ProcessCommandLine contains " /I"))

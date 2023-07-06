@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/05/16
+// Level: high
+// Description: Detects execution of the IEExec utility to download payloads
+// Tags: 
+DeviceProcessEvents
+| where (FolderPath endswith "\\IEExec.exe" or ProcessVersionInfoOriginalFileName =~ "IEExec.exe") and (ProcessCommandLine contains "https://" or ProcessCommandLine contains "http://")

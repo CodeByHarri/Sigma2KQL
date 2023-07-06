@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2021/11/01
+// Level: medium
+// Description: Detects use of executionpolicy option to set insecure policies
+// Tags: attack.execution, attack.t1059.001
+DeviceProcessEvents
+| where ((ProcessCommandLine contains "Unrestricted" or ProcessCommandLine contains "bypass" or ProcessCommandLine contains "RemoteSigned") and (ProcessCommandLine contains " -executionpolicy " or ProcessCommandLine contains " -ep " or ProcessCommandLine contains " -exec ")) and (not((ProcessCommandLine contains "C:\\Program Files" or ProcessCommandLine contains "C:\\ProgramData" or ProcessCommandLine contains "\\AppData\\Roaming\\Code\\")))

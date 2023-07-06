@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/01/28
+// Level: medium
+// Description: TeamViewer_Desktop.exe is create during install
+// Tags: attack.command_and_control, attack.t1219
+DeviceFileEvents
+| where FolderPath endswith "\\TeamViewer_Desktop.exe"

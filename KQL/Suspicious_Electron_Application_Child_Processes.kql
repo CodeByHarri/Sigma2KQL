@@ -1,0 +1,9 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/10/21
+// Level: medium
+// Description: Detects suspicious child processes of electron apps (teams, discord, slack...).
+This could be a potential sign of ".asar" file tampering (See reference section for more information)
+
+// Tags: attack.execution
+DeviceProcessEvents
+| where ((FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\mshta.exe") and (InitiatingProcessFolderPath endswith "\\Teams.exe" or InitiatingProcessFolderPath endswith "\\slack.exe" or InitiatingProcessFolderPath endswith "\\discord.exe")) and (not((ProcessCommandLine contains "\\NVSMI\\nvidia-smi.exe" and InitiatingProcessFolderPath endswith "\\Discord.exe")))

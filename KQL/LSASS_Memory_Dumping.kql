@@ -1,0 +1,9 @@
+// Author: E.M. Anhaus (originally from Atomic Blue Detections, Tony Lambert), oscd.community
+// Date: 2019/10/24
+// Level: high
+// Description: Detect creation of dump files containing the memory space of lsass.exe, which contains sensitive credentials.
+Identifies usage of Sysinternals procdump.exe to export the memory space of lsass.exe which contains sensitive credentials.
+
+// Tags: attack.credential_access, attack.t1003.001
+DeviceProcessEvents
+| where (ProcessCommandLine contains "lsass" and ProcessCommandLine contains ".dmp") and (not(FolderPath endswith "\\werfault.exe"))

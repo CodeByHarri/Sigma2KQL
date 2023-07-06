@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/10/24
+// Level: critical
+// Description: Detects the presence and execution of Inveigh via dropped artefacts
+// Tags: attack.command_and_control, attack.t1219
+DeviceFileEvents
+| where FolderPath endswith "\\Inveigh-Log.txt" or FolderPath endswith "\\Inveigh-Cleartext.txt" or FolderPath endswith "\\Inveigh-NTLMv1Users.txt" or FolderPath endswith "\\Inveigh-NTLMv2Users.txt" or FolderPath endswith "\\Inveigh-NTLMv1.txt" or FolderPath endswith "\\Inveigh-NTLMv2.txt" or FolderPath endswith "\\Inveigh-FormInput.txt" or FolderPath endswith "\\Inveigh.dll" or FolderPath endswith "\\Inveigh.exe" or FolderPath endswith "\\Inveigh.ps1" or FolderPath endswith "\\Inveigh-Relay.ps1"

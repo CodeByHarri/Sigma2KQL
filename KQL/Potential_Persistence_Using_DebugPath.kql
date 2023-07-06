@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/07/27
+// Level: medium
+// Description: Detects potential persistence using Appx DebugPath
+// Tags: attack.persistence, attack.t1546.015
+DeviceRegistryEvents
+| where (ActionType =~ "RegistryValueSet" and RegistryKey contains "Classes\\ActivatableClasses\\Package\\Microsoft." and RegistryKey endswith "\\DebugPath") or (ActionType =~ "RegistryValueSet" and RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\PackagedAppXDebug\\Microsoft." and RegistryKey endswith "\\(Default)")

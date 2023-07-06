@@ -1,0 +1,7 @@
+// Author: Markus Neis
+// Date: 2017/08/28
+// Level: low
+// Description: Detects the execution of a Sysinternals Tool via the creation of the "accepteula" registry key
+// Tags: attack.resource_development, attack.t1588.002
+DeviceRegistryEvents
+| where ActionType =~ "RegistryKeyCreated" and RegistryKey endswith "\\EulaAccepted"

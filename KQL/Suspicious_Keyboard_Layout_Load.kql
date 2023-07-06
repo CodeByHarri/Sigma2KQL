@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2019/10/12
+// Level: medium
+// Description: Detects the keyboard preload installation with a suspicious keyboard layout, e.g. Chinese, Iranian or Vietnamese layout load in user session on systems maintained by US staff only
+// Tags: attack.resource_development, attack.t1588.002
+DeviceRegistryEvents
+| where (RegistryValueData contains "00000429" or RegistryValueData contains "00050429" or RegistryValueData contains "0000042a") and ActionType =~ "RegistryValueSet" and (RegistryKey contains "\\Keyboard Layout\\Preload" or RegistryKey contains "\\Keyboard Layout\\Substitutes")

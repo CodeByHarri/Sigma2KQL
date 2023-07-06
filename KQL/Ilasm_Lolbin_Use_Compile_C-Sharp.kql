@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/05/07
+// Level: medium
+// Description: Detect use of Ilasm.exe to compile c# code into dll or exe.
+// Tags: attack.defense_evasion, attack.t1127
+DeviceProcessEvents
+| where FolderPath endswith "\\ilasm.exe" or ProcessVersionInfoOriginalFileName =~ "ilasm.exe"

@@ -1,0 +1,7 @@
+// Author: frack113, Zaw Min Htun (ZETA)
+// Date: 2021/12/04
+// Level: medium
+// Description: Detects suspicious process related to rundll32 based on arguments
+// Tags: attack.defense_evasion, attack.t1218.011
+DeviceProcessEvents
+| where ProcessCommandLine contains "rundll32" and (ProcessCommandLine contains "mshtml,RunHTMLApplication" or ProcessCommandLine contains "mshtml,#135") and (ProcessCommandLine contains "javascript:" or ProcessCommandLine contains "vbscript:")

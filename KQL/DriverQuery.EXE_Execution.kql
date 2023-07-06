@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023/01/19
+// Level: medium
+// Description: Detect usage of the "driverquery" utility. Which can be used to perform reconnaissance on installed drivers
+// Tags: attack.discovery
+DeviceProcessEvents
+| where FolderPath endswith "driverquery.exe" or ProcessVersionInfoOriginalFileName =~ "drvqry.exe"

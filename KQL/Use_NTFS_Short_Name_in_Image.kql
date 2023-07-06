@@ -1,0 +1,7 @@
+// Author: frack113, Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/08/06
+// Level: high
+// Description: Detect use of the Windows 8.3 short name. Which could be used as a method to avoid Image based detection
+// Tags: attack.defense_evasion, attack.t1564.004
+DeviceProcessEvents
+| where (FolderPath contains "~1.exe" or FolderPath contains "~1.bat" or FolderPath contains "~1.msi" or FolderPath contains "~1.vbe" or FolderPath contains "~1.vbs" or FolderPath contains "~1.dll" or FolderPath contains "~1.ps1" or FolderPath contains "~1.js" or FolderPath contains "~1.hta" or FolderPath contains "~2.exe" or FolderPath contains "~2.bat" or FolderPath contains "~2.msi" or FolderPath contains "~2.vbe" or FolderPath contains "~2.vbs" or FolderPath contains "~2.dll" or FolderPath contains "~2.ps1" or FolderPath contains "~2.js" or FolderPath contains "~2.hta") and (not(((InitiatingProcessFolderPath endswith "\\WebEx\\WebexHost.exe" or InitiatingProcessFolderPath endswith "\\thor\\thor64.exe" or InitiatingProcessFolderPath endswith "-installer.exe") or FolderPath contains "\\vcredi" or InitiatingProcessFolderPath =~ "C:\\Windows\\explorer.exe")))

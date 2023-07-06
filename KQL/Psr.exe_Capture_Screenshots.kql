@@ -1,0 +1,7 @@
+// Author: Beyu Denis, oscd.community
+// Date: 2019/10/12
+// Level: medium
+// Description: The psr.exe captures desktop screenshots and saves them on the local machine
+// Tags: attack.collection, attack.t1113
+DeviceProcessEvents
+| where ProcessCommandLine contains "/start" and FolderPath endswith "\\Psr.exe"

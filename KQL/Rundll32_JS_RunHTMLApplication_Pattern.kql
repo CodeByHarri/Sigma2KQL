@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022/01/14
+// Level: high
+// Description: Detects suspicious command line patterns used when rundll32 is used to run JavaScript code
+// Tags: attack.defense_evasion
+DeviceProcessEvents
+| where (ProcessCommandLine contains "rundll32" and ProcessCommandLine contains "javascript" and ProcessCommandLine contains "..\\..\\mshtml,RunHTMLApplication") or ProcessCommandLine contains ";document.write();GetObject(\"script"

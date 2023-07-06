@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/09/05
+// Level: high
+// Description: Detects usage of the Sharp Chisel via the commandline arguments
+// Tags: attack.command_and_control, attack.t1090.001
+DeviceProcessEvents
+| where FolderPath endswith "\\SharpChisel.exe" or ProcessVersionInfoProductName =~ "SharpChisel"

@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022/02/23
+// Level: medium
+// Description: Detects suspicious scheduled task creations from a parent stored in a temporary folder
+// Tags: attack.execution, attack.t1053.005
+DeviceProcessEvents
+| where (ProcessCommandLine contains "/Create " and FolderPath endswith "\\schtasks.exe" and (InitiatingProcessFolderPath contains "\\AppData\\Local\\" or InitiatingProcessFolderPath contains "\\AppData\\Roaming\\" or InitiatingProcessFolderPath contains "\\Temporary Internet" or InitiatingProcessFolderPath contains "\\Users\\Public\\")) and (not((ProcessCommandLine contains "update_task.xml" or ProcessCommandLine contains "unattended.ini")))

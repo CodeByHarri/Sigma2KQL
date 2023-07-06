@@ -1,0 +1,7 @@
+// Author: Max Altgelt (Nextron Systems)
+// Date: 2022/06/02
+// Level: high
+// Description: Detects creation of template files for Microsoft Office from outside Office
+// Tags: attack.persistence, attack.t1137
+DeviceFileEvents
+| where ((FolderPath contains "\\Microsoft\\Excel\\Startup" and (FolderPath endswith ".xlt" or FolderPath endswith ".xltm" or FolderPath endswith ".xls" or FolderPath endswith ".xlsm" or FolderPath endswith ".xlsx")) or (FolderPath contains "\\Microsoft\\Word\\Startup" and (FolderPath endswith ".dot" or FolderPath endswith ".dotm" or FolderPath endswith ".doc" or FolderPath endswith ".docm" or FolderPath endswith ".docx" or FolderPath endswith ".rtf"))) and (not((InitiatingProcessFolderPath endswith "\\WINWORD.exe" or InitiatingProcessFolderPath endswith "\\EXCEL.exe")))

@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/04/02
+// Level: medium
+// Description: Detects modifications to the hidden files keys in registry. This technique is abused by several malware families to hide their files from normal users.
+// Tags: attack.defense_evasion, attack.t1564.001
+DeviceRegistryEvents
+| where RegistryValueData =~ "DWORD (0x00000000)" and ActionType =~ "Setvalue" and (RegistryKey in~ ("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowSuperHidden", "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Hidden"))

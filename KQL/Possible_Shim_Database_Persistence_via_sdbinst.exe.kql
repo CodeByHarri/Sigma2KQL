@@ -1,0 +1,7 @@
+// Author: Markus Neis
+// Date: 2019/01/16
+// Level: high
+// Description: Detects installation of a new shim using sdbinst.exe. A shim can be used to load malicious DLLs into applications.
+// Tags: attack.persistence, attack.privilege_escalation, attack.t1546.011
+DeviceProcessEvents
+| where (ProcessCommandLine contains ".sdb" and FolderPath endswith "\\sdbinst.exe") and (not(ProcessCommandLine contains "iisexpressshim.sdb"))

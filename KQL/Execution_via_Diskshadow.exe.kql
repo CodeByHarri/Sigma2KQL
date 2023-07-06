@@ -1,0 +1,7 @@
+// Author: Ivan Dyachkov, oscd.community
+// Date: 2020/10/07
+// Level: high
+// Description: Detects using Diskshadow.exe to execute arbitrary code in text file
+// Tags: attack.execution, attack.t1218
+DeviceProcessEvents
+| where (ProcessCommandLine contains "/s" or ProcessCommandLine contains "-s") and FolderPath endswith "\\diskshadow.exe"

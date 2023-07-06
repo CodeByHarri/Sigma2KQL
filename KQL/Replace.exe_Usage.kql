@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/03/06
+// Level: medium
+// Description: Detects the use of Replace.exe which can be used to replace file with another file
+// Tags: attack.command_and_control, attack.t1105
+DeviceProcessEvents
+| where FolderPath endswith "\\replace.exe" and (ProcessCommandLine contains "/a" or ProcessCommandLine contains "-a")

@@ -1,0 +1,7 @@
+// Author: Florian Roth (Nextron Systems)
+// Date: 2018/03/13
+// Level: low
+// Description: Detects the creation of a process from Windows task manager
+// Tags: attack.defense_evasion, attack.t1036
+DeviceProcessEvents
+| where InitiatingProcessFolderPath endswith "\\taskmgr.exe" and (not((FolderPath endswith "\\resmon.exe" or FolderPath endswith "\\mmc.exe" or FolderPath endswith "\\taskmgr.exe")))

@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023/05/09
+// Level: medium
+// Description: Detects the creation of a new PowerShell module ".psm1", ".psd1", ".dll", ".ps1", etc. by a non-PowerShell process
+// Tags: attack.persistence
+DeviceFileEvents
+| where (FolderPath contains "\\WindowsPowerShell\\Modules\\" or FolderPath contains "\\PowerShell\\7\\Modules\\") and (not((InitiatingProcessFolderPath endswith "\\powerShell_ise.exe" or InitiatingProcessFolderPath endswith "\\powershell.exe" or InitiatingProcessFolderPath endswith "\\pwsh.exe")))

@@ -1,0 +1,7 @@
+// Author: pH-T (Nextron Systems), @Kostastsale, @TheDFIRReport
+// Date: 2022/02/12
+// Level: high
+// Description: Detects the creation of a schtask that executes a base64 encoded payload stored in the Windows Registry using PowerShell.
+// Tags: attack.execution, attack.persistence, attack.t1053.005, attack.t1059.001
+DeviceProcessEvents
+| where ((ProcessCommandLine contains "HKCU:" or ProcessCommandLine contains "HKLM:" or ProcessCommandLine contains "registry::" or ProcessCommandLine contains "HKEY_") and (ProcessCommandLine contains "/Create" and ProcessCommandLine contains "FromBase64String" and ProcessCommandLine contains "Get-ItemProperty")) and (FolderPath endswith "\\schtasks.exe" or ProcessVersionInfoOriginalFileName =~ "schtasks.exe")
