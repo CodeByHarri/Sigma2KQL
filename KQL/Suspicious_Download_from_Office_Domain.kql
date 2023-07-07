@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-// Date: 2021/12/27
-// Level: high
-// Description: Detects suspicious ways to download files from Microsoft domains that are used to store attachments in Emails or OneNote documents
-// Tags: 
-DeviceProcessEvents
-| where (ProcessCommandLine contains "https://attachment.outlook.live.net/owa/" or ProcessCommandLine contains "https://onenoteonlinesync.onenote.com/onenoteonlinesync/") and ((FolderPath endswith "\\curl.exe" or FolderPath endswith "\\wget.exe") or (ProcessCommandLine contains "Invoke-WebRequest" or ProcessCommandLine contains "iwr " or ProcessCommandLine contains "curl " or ProcessCommandLine contains "wget " or ProcessCommandLine contains "Start-BitsTransfer" or ProcessCommandLine contains ".DownloadFile(" or ProcessCommandLine contains ".DownloadString("))

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/24
-// Level: medium
-// Description: Detects the execution of some potentially unwanted tools such as PsExec, Procdump, etc. (part of the Sysinternals suite) via the creation of the "accepteula" registry key.
-// Tags: attack.resource_development, attack.t1588.002
-DeviceRegistryEvents
-| where ActionType =~ "RegistryKeyCreated" and (RegistryKey contains "\\Active Directory Explorer" or RegistryKey contains "\\Handle" or RegistryKey contains "\\LiveKd" or RegistryKey contains "\\Process Explorer" or RegistryKey contains "\\ProcDump" or RegistryKey contains "\\PsExec" or RegistryKey contains "\\PsLoglist" or RegistryKey contains "\\PsPasswd" or RegistryKey contains "\\SDelete" or RegistryKey contains "\\Sysinternals") and RegistryKey endswith "\\EulaAccepted"

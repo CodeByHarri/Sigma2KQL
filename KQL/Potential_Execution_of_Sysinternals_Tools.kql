@@ -1,7 +1,0 @@
-// Author: Markus Neis
-// Date: 2017/08/28
-// Level: low
-// Description: Detects command lines that contain the 'accepteula' flag which could be a sign of execution of one of the Sysinternals tools
-// Tags: attack.resource_development, attack.t1588.002
-DeviceProcessEvents
-| where ProcessCommandLine contains " -accepteula" or ProcessCommandLine contains " /accepteula"

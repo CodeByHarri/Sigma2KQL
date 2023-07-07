@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/06/09
+// Level: medium
+// Description: The "AdPlus.exe" binary that is part of the Windows SDK can be used as a lolbin to dump process memory and execute arbitrary commands
+// Tags: attack.defense_evasion, attack.execution, attack.t1003.001
+DeviceProcessEvents
+| where (ProcessCommandLine contains " -hang " or ProcessCommandLine contains " -pn " or ProcessCommandLine contains " -pmn " or ProcessCommandLine contains " -p " or ProcessCommandLine contains " -po " or ProcessCommandLine contains " -c " or ProcessCommandLine contains " -sc ") and (FolderPath endswith "\\adplus.exe" or ProcessVersionInfoOriginalFileName =~ "Adplus.exe")

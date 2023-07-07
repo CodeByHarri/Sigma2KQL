@@ -1,0 +1,7 @@
+// Author: Nikita Nazarov, oscd.community
+// Date: 2020/10/09
+// Level: high
+// Description: Detects Obfuscated Powershell via use Clip.exe in Scripts
+// Tags: attack.defense_evasion, attack.t1027, attack.execution, attack.t1059.001
+DeviceProcessEvents
+| where (ProcessCommandLine contains "clipboard" or ProcessCommandLine contains "invoke" or ProcessCommandLine contains "i`" or ProcessCommandLine contains "n`" or ProcessCommandLine contains "v`" or ProcessCommandLine contains "o`" or ProcessCommandLine contains "k`" or ProcessCommandLine contains "e`") and (ProcessCommandLine contains "echo" and ProcessCommandLine contains "clip" and ProcessCommandLine contains "&&")

@@ -1,0 +1,7 @@
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022/07/01
+// Level: medium
+// Description: Detects usage of "PresentationHost" which is a utility that runs ".xbap" (Browser Applications) files. It can be abused to run malicious ".xbap" files any bypass AWL
+// Tags: attack.defense_evasion, attack.execution, attack.t1218
+DeviceProcessEvents
+| where (ProcessCommandLine contains ".xbap" and (FolderPath endswith "\\presentationhost.exe" or ProcessVersionInfoOriginalFileName =~ "PresentationHost.exe")) and (not((ProcessCommandLine contains "C:\\Windows\\" or ProcessCommandLine contains "C:\\Program Files")))

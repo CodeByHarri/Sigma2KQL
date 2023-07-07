@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/01/03
-// Level: medium
-// Description: Detects execution of "git" in order to clone a remote repository that contain suspicious keywords which might be suspicious
-// Tags: attack.reconnaissance, attack.t1593.003
-DeviceProcessEvents
-| where (ProcessCommandLine contains " clone " or ProcessCommandLine contains "git-remote-https ") and ((FolderPath endswith "\\git.exe" or FolderPath endswith "\\git-remote-https.exe") or ProcessVersionInfoOriginalFileName =~ "git.exe") and (ProcessCommandLine contains "exploit" or ProcessCommandLine contains "Vulns" or ProcessCommandLine contains "vulnerability" or ProcessCommandLine contains "RemoteCodeExecution" or ProcessCommandLine contains "Invoke-" or ProcessCommandLine contains "CVE-" or ProcessCommandLine contains "poc-" or ProcessCommandLine contains "ProofOfConcept" or ProcessCommandLine contains "proxyshell" or ProcessCommandLine contains "log4shell" or ProcessCommandLine contains "eternalblue" or ProcessCommandLine contains "eternal-blue" or ProcessCommandLine contains "MS17-")

@@ -1,0 +1,7 @@
+// Author: Jose Rodriguez (@Cyb3rPandaH), OTR (Open Threat Research)
+// Date: 2020/09/10
+// Level: high
+// Description: This rule detects cor_enable_profiling and cor_profiler environment variables being set and configured.
+// Tags: attack.persistence, attack.privilege_escalation, attack.defense_evasion, attack.t1574.012
+DeviceRegistryEvents
+| where ActionType =~ "Setvalue" and (RegistryKey endswith "\\COR_ENABLE_PROFILING" or RegistryKey endswith "\\COR_PROFILER")

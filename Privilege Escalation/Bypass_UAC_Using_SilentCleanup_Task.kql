@@ -1,0 +1,7 @@
+// Author: frack113
+// Date: 2022/01/06
+// Level: high
+// Description: There is an auto-elevated task called SilentCleanup located in %windir%\system32\cleanmgr.exe This can be abused to elevate any file with Administrator privileges without prompting UAC
+// Tags: attack.privilege_escalation, attack.defense_evasion, attack.t1548.002
+DeviceRegistryEvents
+| where RegistryValueData contains "&REM" and ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\Environment\\windir"

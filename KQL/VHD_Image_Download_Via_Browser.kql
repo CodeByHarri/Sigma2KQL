@@ -1,9 +1,0 @@
-// Author: frack113, Christopher Peacock '@securepeacock', SCYTHE '@scythe_io'
-// Date: 2021/10/25
-// Level: medium
-// Description: Detects creation of ".vhd"/".vhdx" files by browser processes.
-Malware can use mountable Virtual Hard Disk ".vhd" files to encapsulate payloads and evade security controls.
-
-// Tags: attack.resource_development, attack.t1587.001
-DeviceFileEvents
-| where (InitiatingProcessFolderPath endswith "\\brave.exe" or InitiatingProcessFolderPath endswith "\\chrome.exe" or InitiatingProcessFolderPath endswith "\\firefox.exe" or InitiatingProcessFolderPath endswith "\\iexplore.exe" or InitiatingProcessFolderPath endswith "\\maxthon.exe" or InitiatingProcessFolderPath endswith "\\MicrosoftEdge.exe" or InitiatingProcessFolderPath endswith "\\msedge.exe" or InitiatingProcessFolderPath endswith "\\msedgewebview2.exe" or InitiatingProcessFolderPath endswith "\\opera.exe" or InitiatingProcessFolderPath endswith "\\safari.exe" or InitiatingProcessFolderPath endswith "\\seamonkey.exe" or InitiatingProcessFolderPath endswith "\\vivaldi.exe" or InitiatingProcessFolderPath endswith "\\whale.exe") and FolderPath contains ".vhd"
