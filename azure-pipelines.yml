@@ -1,0 +1,53 @@
+trigger:
+
+- none
+
+pool:
+  vmImage: windows-latest
+
+
+steps:
+- checkout: self
+  persistCredentials: true
+- task: PowerShell@2
+  displayName: 'Install Sentinel Converter PS Module'
+  inputs:
+    targetType: 'inline'
+    script: 'Install-Module SentinelARConverter -Force'
+- task: PowerShell@2
+  displayName: 'Convert YAML Files to Sentinel JSON Format'
+  inputs:
+    targetType: 'inline'
+    script: |
+      $folderPath = ${System.DefaultWorkingDirectory}
+      $yamlFileNames = Get-ChildItem -Path $folderPath -Filter "*.yaml" -recurse | % { $_.FullName }
+      $yamlFileNames
+      foreach ($item in $yamlFileNames) {
+      Convert-SentinelARYamlToArm -Filename "$item" -UseOriginalFilename }
+
+
+
+- task: DownloadBuildArtifacts@1
+  inputs:
+    buildType: 'current'
+    downloadType: 'specific'
+    itemPattern: '**\*.json'
+    downloadPath: '$(System.DefaultWorkingDirectory)'
+    
+
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $repositoryPath = "$(Pipeline.Workspace)"
+      Write-Host "Repository Path: $repositoryPath"
+      Move-Item -Path $(System.DefaultWorkingDirectory)\*.json -Destination $repositoryPath
+      Get-ChildItem -Path $repositoryPath
+      cd "$repositoryPath\s"
+      git checkout -b modified-script
+      git config --global user.email "khalednaes3@gmail.com"
+      git config --global user.name "Khaled6120"
+      git add .
+      git commit -m "Add converted JSON files"
+      git push origin main        
