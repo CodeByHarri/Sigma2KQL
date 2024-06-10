@@ -19,7 +19,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $folderPath = ${System.DefaultWorkingDirectory}
+      $folderPath = "${System.DefaultWorkingDirectory}\KQL"
       $yamlFileNames = Get-ChildItem -Path $folderPath -Filter "*.yaml" -recurse | % { $_.FullName }
       $yamlFileNames
       foreach ($item in $yamlFileNames) {
@@ -50,4 +50,4 @@ steps:
       git config --global user.name "Khaled6120"
       git add .
       git commit -m "Add converted JSON files"
-      git push origin main        
+      git push origin modified-script        
