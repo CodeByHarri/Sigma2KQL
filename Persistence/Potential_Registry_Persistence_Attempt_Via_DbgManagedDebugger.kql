@@ -4,4 +4,4 @@
 // Description: Detects the addition of the "Debugger" value to the "DbgManagedDebugger" key in order to achieve persistence. Which will get invoked when an application crashes
 // Tags: attack.persistence, attack.t1574
 DeviceRegistryEvents
-| where (ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\Microsoft\\.NETFramework\\DbgManagedDebugger") and (not(RegistryValueData =~ "\"C:\\Windows\\system32\\vsjitdebugger.exe\" PID %d APPDOM %d EXTEXT \"%s\" EVTHDL %d"))
+| where RegistryKey endswith "\\Microsoft\\.NETFramework\\DbgManagedDebugger" and (not(RegistryValueData =~ "\"C:\\Windows\\system32\\vsjitdebugger.exe\" PID %d APPDOM %d EXTEXT \"%s\" EVTHDL %d"))

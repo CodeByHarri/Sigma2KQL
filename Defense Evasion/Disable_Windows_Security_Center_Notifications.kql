@@ -4,4 +4,4 @@
 // Description: Detect set UseActionCenterExperience to 0 to disable the Windows security center notification
 // Tags: attack.defense_evasion, attack.t1112
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and ActionType =~ "RegistryValueSet" and RegistryKey endswith "Windows\\CurrentVersion\\ImmersiveShell\\UseActionCenterExperience"
+| where RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey endswith "Windows\\CurrentVersion\\ImmersiveShell\\UseActionCenterExperience"

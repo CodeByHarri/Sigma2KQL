@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2020/07/03
-// Level: high
-// Description: Detects a suspicious Microsoft desktopimgdownldr execution with parameters used to download files from the Internet
-// Tags: attack.command_and_control, attack.t1105
-DeviceProcessEvents
-| where (ProcessCommandLine contains " /lockscreenurl:" and (not((ProcessCommandLine contains ".jpg" or ProcessCommandLine contains ".jpeg" or ProcessCommandLine contains ".png")))) or (ProcessCommandLine contains "reg delete" and ProcessCommandLine contains "\\PersonalizationCSP")

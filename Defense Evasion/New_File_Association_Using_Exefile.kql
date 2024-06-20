@@ -4,4 +4,4 @@
 // Description: Detects the abuse of the exefile handler in new file association. Used for bypass of security products.
 // Tags: attack.defense_evasion
 DeviceRegistryEvents
-| where RegistryValueData =~ "exefile" and ActionType =~ "RegistryValueSet" and RegistryKey contains "Classes\\."
+| where RegistryValueData =~ "exefile" and RegistryKey contains "Classes\\."

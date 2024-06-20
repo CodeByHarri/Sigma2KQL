@@ -4,4 +4,4 @@
 // Description: Detects when an internet hosted webdav share is mounted using the "net.exe" utility
 // Tags: attack.lateral_movement, attack.t1021.002
 DeviceProcessEvents
-| where (ProcessCommandLine contains " use " or ProcessCommandLine contains " http") and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~ ("net.exe", "net1.exe")))
+| where (ProcessCommandLine contains " use " and ProcessCommandLine contains " http") and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~ ("net.exe", "net1.exe")))

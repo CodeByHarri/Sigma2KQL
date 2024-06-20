@@ -1,7 +1,0 @@
-// Author: Sreeman, Florian Roth (Nextron Systems)
-// Date: 2022/01/04
-// Level: high
-// Description: Detects execution of chromium based browser in headless mode using the "dump-dom" command line to download files
-// Tags: attack.command_and_control, attack.t1105
-DeviceProcessEvents
-| where (ProcessCommandLine contains "--headless" and ProcessCommandLine contains "dump-dom" and ProcessCommandLine contains "http") and (FolderPath endswith "\\brave.exe" or FolderPath endswith "\\chrome.exe" or FolderPath endswith "\\msedge.exe" or FolderPath endswith "\\opera.exe" or FolderPath endswith "\\vivaldi.exe")

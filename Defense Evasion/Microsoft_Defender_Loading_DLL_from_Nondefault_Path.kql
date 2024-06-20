@@ -1,7 +1,0 @@
-// Author: Bhabesh Raj
-// Date: 2022/08/02
-// Level: high
-// Description: Detects loading of Microsoft Defender's DLLs by its processes (MpCmdRun and NisSrv) from the non-default directory which may be an attempt to sideload arbitrary DLL
-// Tags: attack.defense_evasion, attack.t1574.002
-DeviceImageLoadEvents
-| where (FolderPath endswith "\\mpclient.dll" and (InitiatingProcessFolderPath endswith "\\MpCmdRun.exe" or InitiatingProcessFolderPath endswith "\\NisSrv.exe")) and (not((FolderPath startswith "C:\\Program Files\\Windows Defender\\" or FolderPath startswith "C:\\Program Files (x86)\\Windows Defender\\" or FolderPath startswith "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\")))

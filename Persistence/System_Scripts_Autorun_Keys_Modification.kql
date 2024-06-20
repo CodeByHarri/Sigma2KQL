@@ -4,4 +4,4 @@
 // Description: Detects modification of autostart extensibility point (ASEP) in registry.
 // Tags: attack.persistence, attack.t1547.001
 DeviceRegistryEvents
-| where (ActionType =~ "RegistryValueSet" and RegistryKey contains "\\Software\\Policies\\Microsoft\\Windows\\System\\Scripts") and (RegistryKey contains "\\Startup" or RegistryKey contains "\\Shutdown" or RegistryKey contains "\\Logon" or RegistryKey contains "\\Logoff") and (not(RegistryValueData =~ "(Empty)"))
+| where RegistryKey contains "\\Software\\Policies\\Microsoft\\Windows\\System\\Scripts" and (RegistryKey contains "\\Startup" or RegistryKey contains "\\Shutdown" or RegistryKey contains "\\Logon" or RegistryKey contains "\\Logoff") and (not(RegistryValueData =~ "(Empty)"))

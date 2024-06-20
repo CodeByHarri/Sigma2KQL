@@ -4,4 +4,4 @@
 // Description: Detects changes to the "TracingDisabled" key in order to disable ETW logging for services.exe (SCM)
 // Tags: attack.defense_evasion, attack.t1112, attack.t1562
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000001)" and ActionType =~ "RegistryValueSet" and RegistryKey endswith "Software\\Microsoft\\Windows NT\\CurrentVersion\\Tracing\\SCM\\Regular\\TracingDisabled"
+| where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "Software\\Microsoft\\Windows NT\\CurrentVersion\\Tracing\\SCM\\Regular\\TracingDisabled"

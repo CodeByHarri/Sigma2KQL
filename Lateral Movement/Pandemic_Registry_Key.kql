@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2017/06/01
-// Level: critical
-// Description: Detects Pandemic Windows Implant
-// Tags: attack.lateral_movement, attack.t1105
-DeviceRegistryEvents
-| where RegistryKey contains "\\SYSTEM\\CurrentControlSet\\services\\null\\Instance"

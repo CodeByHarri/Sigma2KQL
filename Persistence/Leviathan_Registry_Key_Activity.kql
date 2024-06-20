@@ -4,4 +4,4 @@
 // Description: Detects registry key used by Leviathan APT in Malaysian focused campaign
 // Tags: attack.persistence, attack.t1547.001
 DeviceRegistryEvents
-| where RegistryKey =~ "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\ntkd"
+| where RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\ntkd"

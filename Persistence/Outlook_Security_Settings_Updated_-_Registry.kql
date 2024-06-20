@@ -4,4 +4,4 @@
 // Description: Detects changes to the registry values related to outlook security settings
 // Tags: attack.persistence, attack.t1137
 DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and (RegistryKey contains "\\SOFTWARE\\Microsoft\\Office" and RegistryKey contains "\\Outlook\\Security")
+| where RegistryKey contains "\\SOFTWARE\\Microsoft\\Office" and RegistryKey contains "\\Outlook\\Security"

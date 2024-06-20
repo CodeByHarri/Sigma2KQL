@@ -7,4 +7,4 @@ The debugger is installed alongside with Microsoft Visual Studio package.
 
 // Tags: attack.t1218, attack.defense_evasion
 DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\vsjitdebugger.exe" and (not((match or FolderPath endswith "\\devenv.exe")))
+| where InitiatingProcessFolderPath endswith "\\vsjitdebugger.exe" and (not(((FolderPath contains "\\vsimmersiveactivatehelper" and FolderPath contains ".exe") or FolderPath endswith "\\devenv.exe")))

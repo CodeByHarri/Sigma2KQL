@@ -4,4 +4,4 @@
 // Description: Detect modification of the startup key to a path where a payload could be stored to be launched during startup
 // Tags: attack.persistence, attack.privilege_escalation, attack.t1547.001
 DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and RegistryKey contains "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" and RegistryKey endswith "Startup"
+| where RegistryKey contains "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" and RegistryKey endswith "Startup"

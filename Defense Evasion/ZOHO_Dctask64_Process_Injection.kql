@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2020/01/28
-// Level: high
-// Description: Detects suspicious process injection using ZOHO's dctask64.exe
-// Tags: attack.defense_evasion, attack.t1055.001
-DeviceProcessEvents
-| where FolderPath endswith "\\dctask64.exe" and (not(ProcessCommandLine contains "DesktopCentral_Agent\\agent"))

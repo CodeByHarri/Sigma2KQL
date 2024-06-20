@@ -4,4 +4,4 @@
 // Description: Detects changes to the AppInstaller (winget) policy. Specifically the activation of the local manifest installation, which allows a user to install new packages via custom manifests.
 // Tags: attack.defense_evasion, attack.persistence
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000001)" and ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\AppInstaller\\EnableLocalManifestFiles"
+| where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "\\AppInstaller\\EnableLocalManifestFiles"

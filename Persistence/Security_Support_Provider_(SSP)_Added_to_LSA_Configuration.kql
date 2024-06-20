@@ -1,7 +1,8 @@
 // Author: iwillkeepwatch
 // Date: 2019/01/18
-// Level: critical
+// Level: high
 // Description: Detects the addition of a SSP to the registry. Upon a reboot or API call, SSP DLLs gain access to encrypted and plaintext passwords stored in Windows.
+
 // Tags: attack.persistence, attack.t1547.005
 DeviceRegistryEvents
-| where (RegistryKey in~ ("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Control\\Lsa\\Security Packages", "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Control\\Lsa\\OSConfig\\Security Packages")) and (not((InitiatingProcessFolderPath in~ ("C:\\Windows\\system32\\msiexec.exe", "C:\\Windows\\syswow64\\MsiExec.exe"))))
+| where (RegistryKey endswith "\\Control\\Lsa\\Security Packages" or RegistryKey endswith "\\Control\\Lsa\\OSConfig\\Security Packages") and (not((InitiatingProcessFolderPath in~ ("C:\\Windows\\system32\\msiexec.exe", "C:\\Windows\\syswow64\\MsiExec.exe"))))

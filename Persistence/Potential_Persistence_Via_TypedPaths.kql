@@ -4,4 +4,4 @@
 // Description: Detects modification addition to the 'TypedPaths' key in the user or admin registry from a non standard application. Which might indicate persistence attempt
 // Tags: attack.persistence
 DeviceRegistryEvents
-| where (ActionType =~ "RegistryValueSet" and RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\TypedPaths") and (not((InitiatingProcessFolderPath in~ ("C:\\Windows\\explorer.exe", "C:\\Windows\\SysWOW64\\explorer.exe"))))
+| where RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\TypedPaths" and (not((InitiatingProcessFolderPath in~ ("C:\\Windows\\explorer.exe", "C:\\Windows\\SysWOW64\\explorer.exe"))))

@@ -1,7 +1,0 @@
-// Author: EagleEye Team
-// Date: 2020/05/14
-// Level: high
-// Description: Detects suspicious network connection by Notepad
-// Tags: attack.command_and_control, attack.execution, attack.defense_evasion, attack.t1055
-DeviceNetworkEvents
-| where InitiatingProcessFolderPath endswith "\\notepad.exe" and (not(RemotePort == 9100))

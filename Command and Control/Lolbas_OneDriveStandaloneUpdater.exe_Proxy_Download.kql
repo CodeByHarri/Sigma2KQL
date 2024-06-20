@@ -1,9 +1,0 @@
-// Author: frack113
-// Date: 2022/05/28
-// Level: high
-// Description: Detects setting a custom URL for OneDriveStandaloneUpdater.exe to download a file from the Internet without executing any
-anomalous executables with suspicious arguments. The downloaded file will be in C:\Users\redacted\AppData\Local\Microsoft\OneDrive\StandaloneUpdaterreSignInSettingsConfig.json
-
-// Tags: attack.command_and_control, attack.t1105
-DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and RegistryKey contains "\\SOFTWARE\\Microsoft\\OneDrive\\UpdateOfficeConfig\\UpdateRingSettingURLFromOC"

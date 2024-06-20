@@ -4,4 +4,4 @@
 // Description: Detects changes to the PowerShell execution policy in order to bypass signing requirements for script execution
 // Tags: attack.defense_evasion
 DeviceRegistryEvents
-| where ((RegistryValueData contains "Bypass" or RegistryValueData contains "RemoteSigned" or RegistryValueData contains "Unrestricted") and ActionType =~ "RegistryValueSet" and (RegistryKey endswith "\\ShellIds\\Microsoft.PowerShell\\ExecutionPolicy" or RegistryKey endswith "\\Policies\\Microsoft\\Windows\\PowerShell\\ExecutionPolicy")) and (not((InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\SysWOW64\\")))
+| where ((RegistryValueData contains "Bypass" or RegistryValueData contains "Unrestricted") and (RegistryKey endswith "\\ShellIds\\Microsoft.PowerShell\\ExecutionPolicy" or RegistryKey endswith "\\Policies\\Microsoft\\Windows\\PowerShell\\ExecutionPolicy")) and (not((InitiatingProcessFolderPath contains ":\\Windows\\System32\\" or InitiatingProcessFolderPath contains ":\\Windows\\SysWOW64\\")))

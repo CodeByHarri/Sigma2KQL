@@ -4,4 +4,4 @@
 // Description: Detects processes leveraging the "ms-msdt" handler or the "msdt.exe" binary to execute arbitrary commands as seen in the follina (CVE-2022-30190) vulnerability
 // Tags: attack.defense_evasion, attack.t1202
 DeviceProcessEvents
-| where (FolderPath endswith "\\msdt.exe" or ProcessVersionInfoOriginalFileName =~ "msdt.exe") and (ProcessCommandLine contains "IT_BrowseForFile=" or (ProcessCommandLine contains " PCWDiagnostic" and (ProcessCommandLine contains " /af " or ProcessCommandLine contains " -af ")))
+| where (FolderPath endswith "\\msdt.exe" or ProcessVersionInfoOriginalFileName =~ "msdt.exe") and (ProcessCommandLine contains "IT_BrowseForFile=" or (ProcessCommandLine contains " PCWDiagnostic" and (ProcessCommandLine contains " -af " or ProcessCommandLine contains " /af ")))

@@ -4,4 +4,4 @@
 // Description: Detects disabling Windows Defender Tamper Protection
 // Tags: attack.defense_evasion, attack.t1562.001
 DeviceRegistryEvents
-| where (RegistryValueData =~ "DWORD (0x00000000)" and ActionType =~ "RegistryValueSet" and RegistryKey contains "\\Microsoft\\Windows Defender\\Features\\TamperProtection") and (not(((InitiatingProcessFolderPath endswith "\\MsMpEng.exe" and InitiatingProcessFolderPath startswith "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\") or InitiatingProcessFolderPath =~ "C:\\Program Files\\Windows Defender\\MsMpEng.exe")))
+| where (RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey contains "\\Microsoft\\Windows Defender\\Features\\TamperProtection") and (not(((InitiatingProcessFolderPath endswith "\\MsMpEng.exe" and InitiatingProcessFolderPath startswith "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\") or InitiatingProcessFolderPath =~ "C:\\Program Files\\Windows Defender\\MsMpEng.exe")))

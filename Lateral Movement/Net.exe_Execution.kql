@@ -1,7 +1,0 @@
-// Author: Michael Haag, Mark Woan (improvements), James Pemberton / @4A616D6573 / oscd.community (improvements)
-// Date: 2019/01/16
-// Level: low
-// Description: Detects execution of Net.exe, whether suspicious or benign.
-// Tags: attack.discovery, attack.t1007, attack.t1049, attack.t1018, attack.t1135, attack.t1201, attack.t1069.001, attack.t1069.002, attack.t1087.001, attack.t1087.002, attack.lateral_movement, attack.t1021.002, attack.s0039
-DeviceProcessEvents
-| where (ProcessCommandLine contains " group" or ProcessCommandLine contains " localgroup" or ProcessCommandLine contains " user" or ProcessCommandLine contains " view" or ProcessCommandLine contains " share" or ProcessCommandLine contains " accounts" or ProcessCommandLine contains " stop " or ProcessCommandLine contains " start") and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~ ("net.exe", "net1.exe")))

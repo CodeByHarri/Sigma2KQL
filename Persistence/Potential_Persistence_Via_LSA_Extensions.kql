@@ -6,4 +6,4 @@ The "Extensions" list contains filenames of DLLs being automatically loaded by l
 
 // Tags: attack.persistence
 DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and RegistryKey contains "\\SYSTEM\\CurrentControlSet\\Control\\LsaExtensionConfig\\LsaSrv\\Extensions"
+| where RegistryKey contains "\\SYSTEM\\CurrentControlSet\\Control\\LsaExtensionConfig\\LsaSrv\\Extensions"

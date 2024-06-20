@@ -4,4 +4,4 @@
 // Description: This rule detects that the path to the DLL written in the registry is different from the default one. Launched WAB.exe tries to load the DLL from Registry.
 // Tags: attack.defense_evasion, attack.t1218
 DeviceRegistryEvents
-| where (ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\Software\\Microsoft\\WAB\\DLLPath") and (not(RegistryValueData =~ "%CommonProgramFiles%\\System\\wab32.dll"))
+| where RegistryKey endswith "\\Software\\Microsoft\\WAB\\DLLPath" and (not(RegistryValueData =~ "%CommonProgramFiles%\\System\\wab32.dll"))

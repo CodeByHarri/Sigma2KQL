@@ -4,4 +4,4 @@
 // Description: Detects when the enablement of developer features such as "Developer Mode" or "Application Sideloading". Which allows the user to install untrusted packages.
 // Tags: attack.defense_evasion
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000001)" and ActionType =~ "RegistryValueSet" and (RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\AppModelUnlock" or RegistryKey contains "\\Policies\\Microsoft\\Windows\\Appx") and (RegistryKey endswith "\\AllowAllTrustedApps" or RegistryKey endswith "\\AllowDevelopmentWithoutDevLicense")
+| where RegistryValueData =~ "DWORD (0x00000001)" and (RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\AppModelUnlock" or RegistryKey contains "\\Policies\\Microsoft\\Windows\\Appx") and (RegistryKey endswith "\\AllowAllTrustedApps" or RegistryKey endswith "\\AllowDevelopmentWithoutDevLicense")

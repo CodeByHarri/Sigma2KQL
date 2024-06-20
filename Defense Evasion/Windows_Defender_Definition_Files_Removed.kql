@@ -1,6 +1,6 @@
 // Author: frack113
 // Date: 2021/07/07
-// Level: medium
+// Level: high
 // Description: Adversaries may disable security tools to avoid possible detection of their tools and activities by removing Windows Defender Definition Files
 // Tags: attack.defense_evasion, attack.t1562.001
 DeviceProcessEvents

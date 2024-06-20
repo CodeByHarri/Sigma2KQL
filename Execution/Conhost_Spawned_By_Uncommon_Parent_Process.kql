@@ -1,4 +1,4 @@
-// Author: Tim Rauch
+// Author: Tim Rauch, Elastic (idea)
 // Date: 2022/09/28
 // Level: medium
 // Description: Detects when the Console Window Host (conhost.exe) process is spawned by an uncommon parent process, which could be indicative of potential code injection activity.

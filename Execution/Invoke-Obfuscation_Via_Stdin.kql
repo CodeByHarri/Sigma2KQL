@@ -4,4 +4,4 @@
 // Description: Detects Obfuscated Powershell via Stdin in Scripts
 // Tags: attack.defense_evasion, attack.t1027, attack.execution, attack.t1059.001
 DeviceProcessEvents
-| where (ProcessCommandLine contains "environment" or ProcessCommandLine contains "invoke" or ProcessCommandLine contains "input") and (ProcessCommandLine contains "set" and ProcessCommandLine contains "&&")
+| where ProcessCommandLine matches regex "(?i)(set).*&&\\s?set.*(environment|invoke|\\$\\{?input).*&&.*""

@@ -1,7 +1,0 @@
-// Author: Bhabesh Raj
-// Date: 2021/07/30
-// Level: medium
-// Description: Adversaries can use the built-in expand utility to decompress cab files as seen in recent Iranian MeteorExpress attack
-// Tags: attack.execution, attack.t1218
-DeviceProcessEvents
-| where ((ProcessCommandLine contains ".cab" or ProcessCommandLine contains "/F:" or ProcessCommandLine contains "-F:" or ProcessCommandLine contains "C:\\ProgramData\\" or ProcessCommandLine contains "C:\\Public\\" or ProcessCommandLine contains "\\AppData\\Local\\Temp\\" or ProcessCommandLine contains "\\AppData\\Roaming\\Temp\\") and FolderPath endswith "\\expand.exe") and (not((ProcessCommandLine contains "C:\\ProgramData\\Dell\\UpdateService\\Temp\\" and InitiatingProcessFolderPath =~ "C:\\Program Files (x86)\\Dell\\UpdateService\\ServiceShell.exe")))

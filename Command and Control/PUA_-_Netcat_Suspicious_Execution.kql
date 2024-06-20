@@ -1,7 +1,0 @@
-// Author: frack113, Florian Roth (Nextron Systems)
-// Date: 2021/07/21
-// Level: high
-// Description: Detects execution of Netcat. Adversaries may use a non-application layer protocol for communication between host and C2 server or among infected hosts within a network
-// Tags: attack.command_and_control, attack.t1095
-DeviceProcessEvents
-| where (ProcessCommandLine contains " -lvp " or ProcessCommandLine contains " -lvnp" or ProcessCommandLine contains " -l -v -p " or ProcessCommandLine contains " -lv -p " or ProcessCommandLine contains " -l --proxy-type http " or ProcessCommandLine contains " -vnl --exec " or ProcessCommandLine contains " -vnl -e " or ProcessCommandLine contains " --lua-exec " or ProcessCommandLine contains " --sh-exec ") or (FolderPath endswith "\\nc.exe" or FolderPath endswith "\\ncat.exe" or FolderPath endswith "\\netcat.exe")

@@ -1,7 +1,0 @@
-// Author: Matthew Matchen
-// Date: 2020/09/04
-// Level: high
-// Description: Detect the use of Windows Defender to download payloads
-// Tags: attack.defense_evasion, attack.t1218, attack.command_and_control, attack.t1105
-DeviceProcessEvents
-| where (ProcessCommandLine contains "MpCmdRun.exe" or ProcessVersionInfoFileDescription =~ "Microsoft Malware Protection Command Line Utility") and (ProcessCommandLine contains "DownloadFile" and ProcessCommandLine contains "url")

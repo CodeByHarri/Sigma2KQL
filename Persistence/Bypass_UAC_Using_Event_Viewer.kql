@@ -4,4 +4,4 @@
 // Description: Bypasses User Account Control using Event Viewer and a relevant Windows Registry modification
 // Tags: attack.persistence, attack.t1547.010
 DeviceRegistryEvents
-| where (ActionType =~ "RegistryValueSet" and RegistryKey endswith "_Classes\\mscfile\\shell\\open\\command\\(Default)") and (not(RegistryValueData startswith "%SystemRoot%\\system32\\mmc.exe \"%1\" %"))
+| where RegistryKey endswith "_Classes\\mscfile\\shell\\open\\command\\(Default)" and (not(RegistryValueData startswith "%SystemRoot%\\system32\\mmc.exe \"%1\" %"))

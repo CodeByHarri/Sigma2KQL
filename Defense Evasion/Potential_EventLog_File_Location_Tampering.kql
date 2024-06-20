@@ -4,4 +4,4 @@
 // Description: Detects tampering with EventLog service "file" key. In order to change the default location of an Evtx file. This technique is used to tamper with log collection and alerting
 // Tags: attack.defense_evasion, attack.t1562.002
 DeviceRegistryEvents
-| where (ActionType =~ "RegistryValueSet" and RegistryKey contains "\\SYSTEM\\CurrentControlSet\\Services\\EventLog" and RegistryKey endswith "\\File") and (not(RegistryValueData contains "\\System32\\Winevt\\Logs\\"))
+| where (RegistryKey contains "\\SYSTEM\\CurrentControlSet\\Services\\EventLog" and RegistryKey endswith "\\File") and (not(RegistryValueData contains "\\System32\\Winevt\\Logs\\"))

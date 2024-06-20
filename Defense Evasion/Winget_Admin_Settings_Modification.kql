@@ -4,4 +4,4 @@
 // Description: Detects changes to the AppInstaller (winget) admin settings. Such as enabling local manifest installations or disabling installer hash checks
 // Tags: attack.defense_evasion, attack.persistence
 DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and InitiatingProcessFolderPath endswith "\\winget.exe" and RegistryKey endswith "\\LocalState\\admin_settings" and RegistryKey startswith "\\REGISTRY\\A"
+| where InitiatingProcessFolderPath endswith "\\winget.exe" and RegistryKey endswith "\\LocalState\\admin_settings" and RegistryKey startswith "\\REGISTRY\\A"

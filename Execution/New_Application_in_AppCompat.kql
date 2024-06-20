@@ -4,4 +4,4 @@
 // Description: A General detection for a new application in AppCompat. This indicates an application executing for the first time on an endpoint.
 // Tags: attack.execution, attack.t1204.002
 DeviceRegistryEvents
-| where ActionType =~ "Setvalue" and RegistryKey contains "\\AppCompatFlags\\Compatibility Assistant\\Store"
+| where RegistryKey contains "\\AppCompatFlags\\Compatibility Assistant\\Store"

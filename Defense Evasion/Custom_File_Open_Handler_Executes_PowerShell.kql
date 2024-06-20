@@ -4,4 +4,4 @@
 // Description: Detects the abuse of custom file open handler, executing powershell
 // Tags: attack.defense_evasion, attack.t1202
 DeviceRegistryEvents
-| where (RegistryValueData contains "powershell" and RegistryValueData contains "-command") and ActionType =~ "RegistryValueSet" and RegistryKey contains "shell\\open\\command"
+| where (RegistryValueData contains "powershell" and RegistryValueData contains "-command") and RegistryKey contains "shell\\open\\command"

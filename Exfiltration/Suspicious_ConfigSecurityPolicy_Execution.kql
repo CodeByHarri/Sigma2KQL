@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/11/26
-// Level: medium
-// Description: Upload file, credentials or data exfiltration with Binary part of Windows Defender
-// Tags: attack.exfiltration, attack.t1567
-DeviceProcessEvents
-| where (ProcessCommandLine contains "ConfigSecurityPolicy.exe" or FolderPath endswith "\\ConfigSecurityPolicy.exe" or ProcessVersionInfoOriginalFileName =~ "ConfigSecurityPolicy.exe") and (ProcessCommandLine contains "https://" or ProcessCommandLine contains "http://" or ProcessCommandLine contains "ftp://")

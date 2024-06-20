@@ -7,4 +7,4 @@ By simplify specifying an arbitrary value (e.g. fake output location or junk dat
 
 // Tags: attack.defense_evasion, attack.t1112
 DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and RegistryKey endswith "SOFTWARE\\Microsoft\\.NETFramework\\NGenAssemblyUsageLog"
+| where RegistryKey endswith "SOFTWARE\\Microsoft\\.NETFramework\\NGenAssemblyUsageLog"

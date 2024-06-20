@@ -4,4 +4,4 @@
 // Description: Detects registry key established after masqueraded .scr file execution using Rundll32 through desk.cpl
 // Tags: attack.defense_evasion, attack.t1218.011
 DeviceRegistryEvents
-| where (ActionType =~ "RegistryValueSet" and InitiatingProcessFolderPath endswith "\\rundll32.exe") and (RegistryValueData endswith ".scr" and RegistryKey contains "\\Control Panel\\Desktop\\SCRNSAVE.EXE") and (not((RegistryValueData contains "C:\\Windows\\System32\\" or RegistryValueData contains "C:\\Windows\\SysWOW64\\")))
+| where InitiatingProcessFolderPath endswith "\\rundll32.exe" and (RegistryValueData endswith ".scr" and RegistryKey contains "\\Control Panel\\Desktop\\SCRNSAVE.EXE") and (not((RegistryValueData contains "C:\\Windows\\System32\\" or RegistryValueData contains "C:\\Windows\\SysWOW64\\")))

@@ -4,4 +4,4 @@
 // Description: Detects the Setting of Windows Defender Exclusions
 // Tags: attack.defense_evasion, attack.t1562.001
 DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and RegistryKey contains "\\Microsoft\\Windows Defender\\Exclusions"
+| where RegistryKey contains "\\Microsoft\\Windows Defender\\Exclusions"

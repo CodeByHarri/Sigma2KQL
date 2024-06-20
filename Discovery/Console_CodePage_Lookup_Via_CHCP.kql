@@ -4,4 +4,4 @@
 // Description: Detects use of chcp to look up the system locale value as part of host discovery
 // Tags: attack.discovery, attack.t1614.001
 DeviceProcessEvents
-| where (ProcessCommandLine endswith "chcp" or ProcessCommandLine endswith "chcp " or ProcessCommandLine endswith "chcp  ") and FolderPath endswith "\\chcp.com" and (InitiatingProcessCommandLine contains " /c " or InitiatingProcessCommandLine contains " /r " or InitiatingProcessCommandLine contains " /k ") and InitiatingProcessFolderPath endswith "\\cmd.exe"
+| where (ProcessCommandLine endswith "chcp" or ProcessCommandLine endswith "chcp " or ProcessCommandLine endswith "chcp  ") and FolderPath endswith "\\chcp.com" and (InitiatingProcessCommandLine contains " -c " or InitiatingProcessCommandLine contains " /c " or InitiatingProcessCommandLine contains " -r " or InitiatingProcessCommandLine contains " /r " or InitiatingProcessCommandLine contains " -k " or InitiatingProcessCommandLine contains " /k ") and InitiatingProcessFolderPath endswith "\\cmd.exe"

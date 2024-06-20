@@ -4,4 +4,4 @@
 // Description: Detects usage of "findstr" with the argument "385201". Which could indicate potential discovery of an installed Sysinternals Sysmon service using the default driver altitude (even if the name is changed).
 // Tags: attack.discovery, attack.t1518.001
 DeviceProcessEvents
-| where ProcessCommandLine contains " 385201" and (FolderPath endswith "\\findstr.exe" or ProcessVersionInfoOriginalFileName =~ "FINDSTR.EXE")
+| where ProcessCommandLine contains " 385201" and ((FolderPath endswith "\\find.exe" or FolderPath endswith "\\findstr.exe") or (ProcessVersionInfoOriginalFileName in~ ("FIND.EXE", "FINDSTR.EXE")))

@@ -4,4 +4,4 @@
 // Description: Adversaries may disable or modify system firewalls in order to bypass controls limiting network usage
 // Tags: attack.defense_evasion, attack.t1562.004
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\EnableFirewall" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services\\SharedAccess\\Parameters\\FirewallPolicy"
+| where RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey contains "\\Services\\SharedAccess\\Parameters\\FirewallPolicy" and RegistryKey endswith "\\EnableFirewall"

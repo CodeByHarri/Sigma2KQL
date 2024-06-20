@@ -6,4 +6,4 @@ Which effectively hides it from any tooling such as "schtasks /query" (Read the 
 
 // Tags: attack.defense_evasion, attack.t1562
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and ActionType =~ "RegistryValueSet" and (RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tree" and RegistryKey contains "Index")
+| where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tree" and RegistryKey contains "Index")

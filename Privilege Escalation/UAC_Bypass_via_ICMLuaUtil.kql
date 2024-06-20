@@ -1,4 +1,4 @@
-// Author: Florian Roth (Nextron Systems)
+// Author: Florian Roth (Nextron Systems), Elastic (idea)
 // Date: 2022/09/13
 // Level: high
 // Description: Detects the pattern of UAC Bypass using ICMLuaUtil Elevated COM interface

@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/11/24
-// Level: medium
-// Description: Performs execution of specified file, can be used for defensive evasion.
-// Tags: attack.defense_evasion, attack.t1202
-DeviceProcessEvents
-| where (ProcessCommandLine contains "bash.exe" and ProcessCommandLine contains "-c ") and (not(((InitiatingProcessCommandLine contains "C:\\Program Files\\Git\\post-install.bat" or InitiatingProcessCommandLine contains "C:\\Program Files (x86)\\Git\\post-install.bat" or match) or match)))

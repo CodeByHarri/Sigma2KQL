@@ -1,7 +1,9 @@
 // Author: Sreeman
 // Date: 2021/06/11
 // Level: medium
-// Description: Looks for changes to registry to disable any write-protect property for storage devices. This could be a precursor to a ransomware attack and has been an observed technique used by cypherpunk group.
+// Description: Detects applications trying to modify the registry in order to disable any write-protect property for storage devices.
+This could be a precursor to a ransomware attack and has been an observed technique used by cypherpunk group.
+
 // Tags: attack.defense_evasion, attack.t1562
 DeviceProcessEvents
-| where (ProcessCommandLine contains "storage" or ProcessCommandLine contains "storagedevicepolicies") and (ProcessCommandLine contains "reg add" and ProcessCommandLine contains "\\system\\currentcontrolset\\control" and ProcessCommandLine contains "write protection" and ProcessCommandLine contains "0")
+| where ProcessCommandLine contains "\\System\\CurrentControlSet\\Control" and ProcessCommandLine contains "Write Protection" and ProcessCommandLine contains "0" and ProcessCommandLine contains "storage"

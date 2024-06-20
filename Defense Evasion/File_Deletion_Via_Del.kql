@@ -8,4 +8,4 @@ Removal of these files can occur during an intrusion, or as part of a post-intru
 
 // Tags: attack.defense_evasion, attack.t1070.004
 DeviceProcessEvents
-| where (ProcessCommandLine contains "del " or ProcessCommandLine contains "erase ") and (ProcessCommandLine contains " /f" or ProcessCommandLine contains " /s" or ProcessCommandLine contains " /q") and (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")
+| where (ProcessCommandLine contains "del " or ProcessCommandLine contains "erase ") and (ProcessCommandLine contains " -f" or ProcessCommandLine contains " /f" or ProcessCommandLine contains " -s" or ProcessCommandLine contains " /s" or ProcessCommandLine contains " -q" or ProcessCommandLine contains " /q") and (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")

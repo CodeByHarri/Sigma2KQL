@@ -1,9 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/10/12
-// Level: medium
-// Description: Detects the use of the Windows Update Client binary (wuauclt.exe) to proxy execute code and making a network connections.
-One could easily make the DLL spawn a new process and inject to it to proxy the network connection and bypass this rule.
-
-// Tags: attack.defense_evasion, attack.t1218
-DeviceNetworkEvents
-| where InitiatingProcessFolderPath contains "wuauclt" and (not((InitiatingProcessCommandLine contains "\\UpdateDeploy.dll /ClassId " or (RemoteIP startswith "20.184." or RemoteIP startswith "20.185." or RemoteIP startswith "20.186." or RemoteIP startswith "20.187." or RemoteIP startswith "20.188." or RemoteIP startswith "20.189." or RemoteIP startswith "20.190." or RemoteIP startswith "20.191." or RemoteIP startswith "23.79." or RemoteIP startswith "51.10." or RemoteIP startswith "51.103." or RemoteIP startswith "51.104." or RemoteIP startswith "51.105." or RemoteIP startswith "52.239."))))

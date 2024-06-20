@@ -4,4 +4,4 @@
 // Description: Detects execution of LiveKD with the "-m" flag to potentially dump the kernel memory
 // Tags: attack.defense_evasion
 DeviceProcessEvents
-| where (ProcessCommandLine contains " /m" and ProcessCommandLine contains " -m") and ((FolderPath endswith "\\livekd.exe" or FolderPath endswith "\\livekd64.exe") or ProcessVersionInfoOriginalFileName =~ "livekd.exe")
+| where (ProcessCommandLine contains " -m" or ProcessCommandLine contains " /m") and ((FolderPath endswith "\\livekd.exe" or FolderPath endswith "\\livekd64.exe") or ProcessVersionInfoOriginalFileName =~ "livekd.exe")

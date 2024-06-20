@@ -1,7 +1,0 @@
-// Author: oscd.community, Natalia Shornikova
-// Date: 2020/10/14
-// Level: high
-// Description: Detects Execution via SyncInvoke in CL_Invocation.ps1 module
-// Tags: attack.defense_evasion, attack.t1216
-DeviceProcessEvents
-| where ProcessCommandLine contains "CL_Invocation.ps1" and ProcessCommandLine contains "SyncInvoke"

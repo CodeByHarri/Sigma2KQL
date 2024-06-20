@@ -4,4 +4,4 @@
 // Description: Detects changes to 'HKCU\Software\Classes\Folder\shell\open\command\DelegateExecute'
 // Tags: attack.privilege_escalation, attack.t1546, attack.t1548
 DeviceRegistryEvents
-| where ActionType =~ "Setvalue" and RegistryKey =~ "HKCU\\Software\\Classes\\Folder\\shell\\open\\command\\DelegateExecute"
+| where RegistryKey contains "\\Software\\Classes\\Folder\\shell\\open\\command\\DelegateExecute"

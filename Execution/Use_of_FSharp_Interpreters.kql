@@ -1,7 +1,9 @@
 // Author: Christopher Peacock @SecurePeacock, SCYTHE @scythe_io
 // Date: 2022/06/02
 // Level: medium
-// Description: The FSharp Interpreters, FsiAnyCpu.exe and FSi.exe, can be used for AWL bypass and is listed in Microsoft recommended block rules.
+// Description: Detects the execution of FSharp Interpreters "FsiAnyCpu.exe" and "FSi.exe"
+Both can be used for AWL bypass and to execute F# code via scripts or inline.
+
 // Tags: attack.execution, attack.t1059
 DeviceProcessEvents
-| where FolderPath endswith "\\fsianycpu.exe" or ProcessVersionInfoOriginalFileName =~ "fsianycpu.exe" or FolderPath endswith "\\fsi.exe" or ProcessVersionInfoOriginalFileName =~ "fsi.exe"
+| where (FolderPath endswith "\\fsi.exe" or FolderPath endswith "\\fsianycpu.exe") or (ProcessVersionInfoOriginalFileName in~ ("fsi.exe", "fsianycpu.exe"))

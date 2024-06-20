@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), omkar72, oscd.community, Swachchhanda Shrawan Poudel
-// Date: 2019/01/29
-// Level: medium
-// Description: Detects the execution of netsh commands that configure a new port forwarding (PortProxy) rule
-// Tags: attack.lateral_movement, attack.defense_evasion, attack.command_and_control, attack.t1090
-DeviceProcessEvents
-| where (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName =~ "netsh.exe") and ((ProcessCommandLine contains "interface" and ProcessCommandLine contains "portproxy" and ProcessCommandLine contains "add" and ProcessCommandLine contains "v4tov4") or (ProcessCommandLine contains "i " and ProcessCommandLine contains "p " and ProcessCommandLine contains "a " and ProcessCommandLine contains "v ") or (ProcessCommandLine contains "connectp" and ProcessCommandLine contains "listena" and ProcessCommandLine contains "c="))

@@ -4,4 +4,4 @@
 // Description: Detects commands that temporarily turn off Volume Snapshots
 // Tags: attack.defense_evasion, attack.t1562.001
 DeviceProcessEvents
-| where ProcessCommandLine contains "reg" and ProcessCommandLine contains " add " and ProcessCommandLine contains "\\Services\\VSS\\Diag" and ProcessCommandLine contains "/d Disabled"
+| where ProcessCommandLine contains "\\Services\\VSS\\Diag" and ProcessCommandLine contains "/d Disabled"

@@ -4,4 +4,4 @@
 // Description: Detect use of icacls to deny access for everyone in Users folder sometimes used to hide malicious files
 // Tags: attack.defense_evasion, attack.t1564.001
 DeviceProcessEvents
-| where (ProcessCommandLine contains "C:\\Users\\" and ProcessCommandLine contains "/deny" and ProcessCommandLine contains "S-1-1-0:") and (ProcessVersionInfoOriginalFileName =~ "iCACLS.EXE" or FolderPath endswith "\\icacls.exe")
+| where (ProcessCommandLine contains "/deny" and ProcessCommandLine contains "S-1-1-0:") and (ProcessVersionInfoOriginalFileName =~ "iCACLS.EXE" or FolderPath endswith "\\icacls.exe")

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/01/30
-// Level: medium
-// Description: Detects the creation of log files during a TeamViewer remote session
-// Tags: attack.command_and_control, attack.t1219
-DeviceFileEvents
-| where (FolderPath endswith "\\TeamViewer\\RemotePrinting\\tvprint.db" or FolderPath endswith "\\TeamViewer\\TVNetwork.log") or (FolderPath contains "\\TeamViewer" and FolderPath contains "_Logfile.log")

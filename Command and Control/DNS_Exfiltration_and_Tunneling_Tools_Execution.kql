@@ -1,7 +1,0 @@
-// Author: Daniil Yugoslavskiy, oscd.community
-// Date: 2019/10/24
-// Level: high
-// Description: Well-known DNS Exfiltration tools execution
-// Tags: attack.exfiltration, attack.t1048.001, attack.command_and_control, attack.t1071.004, attack.t1132.001
-DeviceProcessEvents
-| where FolderPath endswith "\\iodine.exe" or FolderPath contains "\\dnscat2"

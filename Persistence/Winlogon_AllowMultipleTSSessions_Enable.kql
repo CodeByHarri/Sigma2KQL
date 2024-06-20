@@ -7,4 +7,4 @@ This is often used by attacker as a way to connect to an RDP session without dis
 
 // Tags: attack.persistence, attack.defense_evasion, attack.t1112
 DeviceRegistryEvents
-| where RegistryValueData endswith "DWORD (0x00000001)" and ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\AllowMultipleTSSessions"
+| where RegistryValueData endswith "DWORD (0x00000001)" and RegistryKey endswith "\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\AllowMultipleTSSessions"

@@ -4,4 +4,4 @@
 // Description: Detects when an attacker modifies the registry value of the "hhctrl" to point to a custom binary
 // Tags: attack.persistence
 DeviceRegistryEvents
-| where (ActionType =~ "RegistryValueSet" and RegistryKey contains "\\CLSID\\{52A2AAAE-085D-4187-97EA-8C30DB990436}\\InprocServer32\\(Default)") and (not(RegistryValueData =~ "C:\\Windows\\System32\\hhctrl.ocx"))
+| where RegistryKey contains "\\CLSID\\{52A2AAAE-085D-4187-97EA-8C30DB990436}\\InprocServer32\\(Default)" and (not(RegistryValueData =~ "C:\\Windows\\System32\\hhctrl.ocx"))

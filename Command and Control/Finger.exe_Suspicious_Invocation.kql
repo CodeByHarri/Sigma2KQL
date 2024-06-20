@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), omkar72, oscd.community
-// Date: 2021/02/24
-// Level: high
-// Description: Detects suspicious aged finger.exe tool execution often used in malware attacks nowadays
-// Tags: attack.command_and_control, attack.t1105
-DeviceProcessEvents
-| where ProcessVersionInfoOriginalFileName =~ "finger.exe" or FolderPath endswith "\\finger.exe"

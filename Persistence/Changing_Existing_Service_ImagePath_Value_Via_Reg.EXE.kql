@@ -7,4 +7,4 @@ Windows stores local service configuration information in the Registry under HKL
 
 // Tags: attack.persistence, attack.t1574.011
 DeviceProcessEvents
-| where ((ProcessCommandLine contains "add " and ProcessCommandLine contains "SYSTEM\\CurrentControlSet\\Services\\" and ProcessCommandLine contains " ImagePath ") and FolderPath endswith "\\reg.exe") and (ProcessCommandLine contains " /d " or ProcessCommandLine contains " -d ")
+| where ((ProcessCommandLine contains "add " and ProcessCommandLine contains "SYSTEM\\CurrentControlSet\\Services\\" and ProcessCommandLine contains " ImagePath ") and FolderPath endswith "\\reg.exe") and (ProcessCommandLine contains " -d " or ProcessCommandLine contains " /d ")

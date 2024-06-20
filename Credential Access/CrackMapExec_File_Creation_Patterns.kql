@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/03/12
-// Level: high
-// Description: Detects suspicious file creation patterns found in logs when CrackMapExec is used
-// Tags: attack.credential_access, attack.t1003.001
-DeviceFileEvents
-| where (InitiatingProcessFolderPath =~ "C:\\WINDOWS\\system32\\rundll32.exe" and (FolderPath endswith ".rtf" or FolderPath endswith ".otf" or FolderPath endswith ".odt" or FolderPath endswith ".txt" or FolderPath endswith ".doc" or FolderPath endswith ".pdf" or FolderPath endswith ".dll" or FolderPath endswith ".docx" or FolderPath endswith ".wpd" or FolderPath endswith ".icns" or FolderPath endswith ".db" or FolderPath endswith ".ini" or FolderPath endswith ".tex" or FolderPath endswith ".sys" or FolderPath endswith ".csv" or FolderPath endswith ".fon" or FolderPath endswith ".tar" or FolderPath endswith ".ttf" or FolderPath endswith ".xml" or FolderPath endswith ".cfg" or FolderPath endswith ".cpl" or FolderPath endswith ".jpg" or FolderPath endswith ".drv" or FolderPath endswith ".cur" or FolderPath endswith ".tmp") and FolderPath startswith "C:\\Windows\\Temp\\" and (RequestAccountName contains "AUTHORI" or RequestAccountName contains "AUTORI")) or (FolderPath =~ "C:\\Windows\\Temp\\procdump.exe" and (RequestAccountName contains "AUTHORI" or RequestAccountName contains "AUTORI"))

@@ -4,4 +4,4 @@
 // Description: Detects disabling Windows Defender PUA protection
 // Tags: attack.defense_evasion, attack.t1562.001
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and ActionType =~ "RegistryValueSet" and RegistryKey contains "\\Policies\\Microsoft\\Windows Defender\\PUAProtection"
+| where RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey contains "\\Policies\\Microsoft\\Windows Defender\\PUAProtection"

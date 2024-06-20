@@ -4,4 +4,4 @@
 // Description: Detects code execution via Pester.bat (Pester - Powershell Modulte for testing)
 // Tags: attack.execution, attack.t1059.001, attack.defense_evasion, attack.t1216
 DeviceProcessEvents
-| where ((ProcessCommandLine contains "Pester" and ProcessCommandLine contains "Get-Help") and (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe")) or (((ProcessCommandLine contains "pester" and ProcessCommandLine contains ";") and FolderPath endswith "\\cmd.exe") and (ProcessCommandLine contains "help" or match))
+| where ((ProcessCommandLine contains "Pester" and ProcessCommandLine contains "Get-Help") and (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe")) or (((ProcessCommandLine contains "pester" and ProcessCommandLine contains ";") and FolderPath endswith "\\cmd.exe") and (ProcessCommandLine contains "help" or ProcessCommandLine contains "?"))

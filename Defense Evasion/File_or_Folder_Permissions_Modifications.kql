@@ -1,7 +1,0 @@
-// Author: Jakob Weinzettl, oscd.community, Nasreddine Bencherchali
-// Date: 2019/10/23
-// Level: medium
-// Description: Detects a file or folder's permissions being modified or tampered with.
-// Tags: attack.defense_evasion, attack.t1222.001
-DeviceProcessEvents
-| where (((ProcessCommandLine contains "/grant" or ProcessCommandLine contains "/setowner" or ProcessCommandLine contains "/inheritance:r") and (FolderPath endswith "\\cacls.exe" or FolderPath endswith "\\icacls.exe" or FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe")) or (ProcessCommandLine contains "-r" and FolderPath endswith "\\attrib.exe") or FolderPath endswith "\\takeown.exe") and (not(((ProcessCommandLine contains "ICACLS C:\\ProgramData\\dynatrace\\gateway\\config\\config.properties /grant :r " and ProcessCommandLine contains "S-1-5-19:F") or (ProcessCommandLine contains "\\AppData\\Local\\Programs\\Microsoft VS Code" or InitiatingProcessFolderPath endswith "\\Microsoft VS Code\\Code.exe") or ProcessCommandLine endswith "ICACLS C:\\ProgramData\\dynatrace\\gateway\\config\\connectivity.history /reset")))

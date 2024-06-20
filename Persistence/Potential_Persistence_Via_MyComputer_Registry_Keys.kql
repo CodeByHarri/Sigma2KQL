@@ -4,4 +4,4 @@
 // Description: Detects modification to the "Default" value of the "MyComputer" key and subkeys to point to a custom binary that will be launched whenever the associated action is executed (see reference section for example)
 // Tags: attack.persistence
 DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer" and RegistryKey endswith "(Default)"
+| where RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer" and RegistryKey endswith "(Default)"

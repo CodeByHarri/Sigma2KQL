@@ -1,7 +1,0 @@
-// Author: FPT.EagleEye Team
-// Date: 2020/10/17
-// Level: high
-// Description: Detects code execution via the Windows Update client (wuauclt)
-// Tags: attack.command_and_control, attack.execution, attack.t1105, attack.t1218
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "/UpdateDeploymentProvider" and ProcessCommandLine contains "/RunHandlerComServer" and ProcessCommandLine contains ".dll") and (FolderPath endswith "\\wuauclt.exe" or ProcessVersionInfoOriginalFileName =~ "wuauclt.exe")) and (not((ProcessCommandLine contains " /ClassId " or ProcessCommandLine contains " wuaueng.dll ")))

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/01/16
-// Level: medium
-// Description: Detects a suspicious program execution in a web service root folder (filter out false positives)
-// Tags: attack.persistence, attack.t1505.003
-DeviceProcessEvents
-| where (FolderPath contains "\\wwwroot\\" or FolderPath contains "\\wmpub\\" or FolderPath contains "\\htdocs\\") and (not(((FolderPath contains "bin\\" or FolderPath contains "\\Tools\\" or FolderPath contains "\\SMSComponent\\") and InitiatingProcessFolderPath endswith "\\services.exe")))

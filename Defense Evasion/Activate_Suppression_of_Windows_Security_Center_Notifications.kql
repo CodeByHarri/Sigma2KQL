@@ -4,4 +4,4 @@
 // Description: Detect set Notification_Suppress to 1 to disable the Windows security center notification
 // Tags: attack.defense_evasion, attack.t1112
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000001)" and ActionType =~ "RegistryValueSet" and RegistryKey endswith "SOFTWARE\\Policies\\Microsoft\\Windows Defender\\UX Configuration\\Notification_Suppress"
+| where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "SOFTWARE\\Policies\\Microsoft\\Windows Defender\\UX Configuration\\Notification_Suppress"

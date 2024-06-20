@@ -5,4 +5,4 @@
 
 // Tags: attack.defense_evasion
 DeviceRegistryEvents
-| where ((RegistryValueData in~ ("DWORD (0x00000001)", "DWORD (0x00000002)")) and ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\Microsoft\\Internet Explorer\\Main\\DisableFirstRunCustomize") and (not((InitiatingProcessFolderPath in~ ("C:\\Windows\\explorer.exe", "C:\\Windows\\System32\\ie4uinit.exe"))))
+| where ((RegistryValueData in~ ("DWORD (0x00000001)", "DWORD (0x00000002)")) and RegistryKey endswith "\\Microsoft\\Internet Explorer\\Main\\DisableFirstRunCustomize") and (not((InitiatingProcessFolderPath in~ ("C:\\Windows\\explorer.exe", "C:\\Windows\\System32\\ie4uinit.exe"))))

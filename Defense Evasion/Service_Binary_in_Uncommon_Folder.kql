@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/05/02
-// Level: medium
-// Description: Detect the creation of a service with a service binary located in a uncommon directory
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where (((RegistryValueData in~ ("DWORD (0x00000000)", "DWORD (0x00000001)", "DWORD (0x00000002)")) and ActionType =~ "RegistryValueSet" and (InitiatingProcessFolderPath contains "\\AppData\\Local\\" or InitiatingProcessFolderPath contains "\\AppData\\Roaming\\") and RegistryKey endswith "\\Start" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services") or ((RegistryValueData contains "\\AppData\\Local\\" or RegistryValueData contains "\\AppData\\Roaming\\") and ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\ImagePath" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services")) and (not(((InitiatingProcessFolderPath contains "\\AppData\\Roaming\\Zoom" or InitiatingProcessFolderPath contains "\\AppData\\Local\\Zoom") or (RegistryValueData contains "\\AppData\\Roaming\\Zoom" or RegistryValueData contains "\\AppData\\Local\\Zoom"))))

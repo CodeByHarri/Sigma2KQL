@@ -1,7 +1,0 @@
-// Author: Aaron Herman
-// Date: 2022/10/01
-// Level: medium
-// Description: Detects Wscript or Cscript executing from a drive other than C. This has been observed with Qakbot executing from within a mounted ISO file.
-// Tags: attack.execution, attack.t1059
-DeviceProcessEvents
-| where (ProcessCommandLine contains ":\\" and (ProcessCommandLine contains ".js" or ProcessCommandLine contains ".vbs" or ProcessCommandLine contains ".vbe") and (FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\cscript.exe")) and (not(((ProcessCommandLine contains " C:\\" or ProcessCommandLine contains " 'C:\\" or ProcessCommandLine contains " \"C:\\") or ProcessCommandLine contains "%" or ProcessCommandLine contains " \\\\")))

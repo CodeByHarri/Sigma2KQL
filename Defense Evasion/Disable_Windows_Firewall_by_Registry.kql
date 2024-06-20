@@ -4,4 +4,4 @@
 // Description: Detect set EnableFirewall to 0 to disable the Windows firewall
 // Tags: attack.defense_evasion, attack.t1562.004
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and ActionType =~ "RegistryValueSet" and (RegistryKey endswith "\\SOFTWARE\\Policies\\Microsoft\\WindowsFirewall\\StandardProfile\\EnableFirewall" or RegistryKey endswith "\\SOFTWARE\\Policies\\Microsoft\\WindowsFirewall\\DomainProfile\\EnableFirewall")
+| where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey endswith "\\SOFTWARE\\Policies\\Microsoft\\WindowsFirewall\\StandardProfile\\EnableFirewall" or RegistryKey endswith "\\SOFTWARE\\Policies\\Microsoft\\WindowsFirewall\\DomainProfile\\EnableFirewall")

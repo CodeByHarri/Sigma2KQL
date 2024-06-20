@@ -1,7 +1,0 @@
-// Author: Bhabesh Raj
-// Date: 2022/08/01
-// Level: high
-// Description: Detects execution of Microsoft Defender's CLI process (MpCmdRun.exe) from the non-default directory which may be an attempt to sideload arbitrary DLL
-// Tags: attack.defense_evasion, attack.t1574.002
-DeviceProcessEvents
-| where FolderPath endswith "\\MpCmdRun.exe" and (not((FolderPath startswith "C:\\Program Files\\Windows Defender\\" or FolderPath startswith "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\" or FolderPath startswith "C:\\Windows\\winsxs\\" or FolderPath startswith "C:\\Program Files\\Microsoft Security Client\\MpCmdRun.exe")))

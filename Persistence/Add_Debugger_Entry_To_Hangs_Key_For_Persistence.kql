@@ -4,4 +4,4 @@
 // Description: Detects when an attacker adds a new "Debugger" value to the "Hangs" key in order to achieve persistence which will get invoked when an application crashes
 // Tags: attack.persistence
 DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\Hangs\\Debugger"
+| where RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\Hangs\\Debugger"

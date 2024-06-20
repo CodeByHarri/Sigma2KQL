@@ -2,7 +2,7 @@
 // Date: 2022/08/12
 // Level: high
 // Description: Detects creation of a malicious DLL file in the location where the OneDrive or Team applications
-Upon execution of the Teams or OneDrive application, the dropped malicious DLL file (“iphlpapi.dll”) is sideloaded
+Upon execution of the Teams or OneDrive application, the dropped malicious DLL file ("iphlpapi.dll") is sideloaded
 
 // Tags: attack.persistence, attack.privilege_escalation, attack.defense_evasion, attack.t1574.002
 DeviceFileEvents

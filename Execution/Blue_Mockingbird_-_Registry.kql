@@ -4,4 +4,4 @@
 // Description: Attempts to detect system changes made by Blue Mockingbird
 // Tags: attack.execution, attack.t1112, attack.t1047
 DeviceRegistryEvents
-| where ActionType =~ "Setvalue" and RegistryKey endswith "\\CurrentControlSet\\Services\\wercplsupport\\Parameters\\ServiceDll"
+| where RegistryKey endswith "\\CurrentControlSet\\Services\\wercplsupport\\Parameters\\ServiceDll"

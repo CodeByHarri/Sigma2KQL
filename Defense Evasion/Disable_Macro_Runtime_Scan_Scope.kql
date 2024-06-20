@@ -4,4 +4,4 @@
 // Description: Detects tampering with the MacroRuntimeScanScope registry key to disable runtime scanning of enabled macros
 // Tags: attack.defense_evasion
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and ActionType =~ "RegistryValueSet" and (RegistryKey contains "\\SOFTWARE" and RegistryKey contains "\\Microsoft\\Office" and RegistryKey contains "\\Common\\Security") and RegistryKey endswith "\\MacroRuntimeScanScope"
+| where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey contains "\\SOFTWARE" and RegistryKey contains "\\Microsoft\\Office" and RegistryKey contains "\\Common\\Security") and RegistryKey endswith "\\MacroRuntimeScanScope"

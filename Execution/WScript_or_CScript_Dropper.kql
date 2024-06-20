@@ -1,7 +1,0 @@
-// Author: Margaritis Dimitrios (idea), Florian Roth (Nextron Systems), oscd.community
-// Date: 2019/01/16
-// Level: high
-// Description: Detects wscript/cscript executions of scripts located in user directories
-// Tags: attack.execution, attack.t1059.005, attack.t1059.007
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "C:\\Users\\" or ProcessCommandLine contains "C:\\ProgramData\\") and (FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\cscript.exe")) and (ProcessCommandLine contains ".jse" or ProcessCommandLine contains ".vbe" or ProcessCommandLine contains ".js" or ProcessCommandLine contains ".vba" or ProcessCommandLine contains ".vbs") and (not(InitiatingProcessFolderPath contains "\\winzip"))

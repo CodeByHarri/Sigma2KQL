@@ -6,4 +6,4 @@ Winlogon.exe is a Windows component responsible for actions at logon/logoff as w
 
 // Tags: attack.persistence, attack.t1547.004
 DeviceRegistryEvents
-| where RegistryValueData endswith ".dll" and ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Notify\\logon"
+| where RegistryValueData endswith ".dll" and RegistryKey endswith "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Notify\\logon"

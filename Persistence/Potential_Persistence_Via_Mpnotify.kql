@@ -4,4 +4,4 @@
 // Description: Detects when an attacker register a new SIP provider for persistence and defense evasion
 // Tags: attack.persistence
 DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\mpnotify"
+| where RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\mpnotify"

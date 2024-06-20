@@ -4,4 +4,4 @@
 // Description: Detects modification of autostart extensibility point (ASEP) in registry.
 // Tags: attack.persistence, attack.t1547.001
 DeviceRegistryEvents
-| where (ActionType =~ "RegistryValueSet" and RegistryKey contains "\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion") and (RegistryKey contains "\\Windows\\Appinit_Dlls" or RegistryKey contains "\\Image File Execution Options" or RegistryKey contains "\\Drivers32") and (not((RegistryValueData in~ ("(Empty)", "\\REGISTRY\\MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options"))))
+| where RegistryKey contains "\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion" and (RegistryKey contains "\\Windows\\Appinit_Dlls" or RegistryKey contains "\\Image File Execution Options" or RegistryKey contains "\\Drivers32") and (not((RegistryValueData in~ ("(Empty)", "\\REGISTRY\\MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options"))))

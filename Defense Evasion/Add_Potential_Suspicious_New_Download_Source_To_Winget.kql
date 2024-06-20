@@ -1,6 +1,6 @@
 // Author: Nasreddine Bencherchali (Nextron Systems)
 // Date: 2023/04/17
-// Level: high
+// Level: medium
 // Description: Detects usage of winget to add new potentially suspicious download sources
 // Tags: attack.defense_evasion, attack.execution, attack.t1059
 DeviceProcessEvents

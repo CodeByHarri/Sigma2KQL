@@ -4,4 +4,4 @@
 // Description: Detect set DisallowRun to 1 to prevent user running specific computer program
 // Tags: attack.defense_evasion, attack.t1112
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000001)" and ActionType =~ "RegistryValueSet" and RegistryKey endswith "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\DisallowRun"
+| where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\DisallowRun"

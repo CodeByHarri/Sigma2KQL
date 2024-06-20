@@ -1,7 +1,7 @@
 // Author: Jakob Weinzettl, oscd.community, Nasreddine Bencherchali (Nextron Systems)
 // Date: 2023/03/05
 // Level: low
-// Description: Detects the stopping of a Windows service
+// Description: Detects the stopping of a Windows service via the "sc.exe" utility
 // Tags: attack.impact, attack.t1489
 DeviceProcessEvents
-| where (ProcessCommandLine contains " stop " and (ProcessVersionInfoOriginalFileName =~ "sc.exe" or FolderPath endswith "\\sc.exe")) and (not(((ProcessCommandLine in~ ("sc  stop KSCWebConsoleMessageQueue", "sc  stop LGHUBUpdaterService")) and (AccountName contains "AUTHORI" or AccountName contains "AUTORI"))))
+| where ProcessCommandLine contains " stop " and (ProcessVersionInfoOriginalFileName =~ "sc.exe" or FolderPath endswith "\\sc.exe")

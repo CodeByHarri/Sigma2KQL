@@ -1,6 +1,6 @@
 // Author: Nasreddine Bencherchali (Nextron Systems)
 // Date: 2022/06/20
-// Level: high
+// Level: medium
 // Description: Detects known WMI recon method to look for unquoted service paths using wmic. Often used by pentester and attacker enumeration scripts
 // Tags: attack.execution, attack.t1047
 DeviceProcessEvents

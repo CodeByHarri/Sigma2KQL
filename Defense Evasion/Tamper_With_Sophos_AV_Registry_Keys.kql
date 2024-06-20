@@ -4,4 +4,4 @@
 // Description: Detects tamper attempts to sophos av functionality via registry key modification
 // Tags: attack.defense_evasion, attack.t1562.001
 DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and ActionType =~ "RegistryValueSet" and (RegistryKey contains "\\Sophos Endpoint Defense\\TamperProtection\\Config\\SAVEnabled" or RegistryKey contains "\\Sophos Endpoint Defense\\TamperProtection\\Config\\SEDEnabled" or RegistryKey contains "\\Sophos\\SAVService\\TamperProtection\\Enabled")
+| where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey contains "\\Sophos Endpoint Defense\\TamperProtection\\Config\\SAVEnabled" or RegistryKey contains "\\Sophos Endpoint Defense\\TamperProtection\\Config\\SEDEnabled" or RegistryKey contains "\\Sophos\\SAVService\\TamperProtection\\Enabled")

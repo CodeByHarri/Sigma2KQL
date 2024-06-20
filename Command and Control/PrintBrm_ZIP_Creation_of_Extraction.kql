@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/05/02
-// Level: high
-// Description: Detects the execution of the LOLBIN PrintBrm.exe, which can be used to create or extract ZIP files. PrintBrm.exe should not be run on a normal workstation.
-// Tags: attack.command_and_control, attack.t1105, attack.defense_evasion, attack.t1564.004
-DeviceProcessEvents
-| where (ProcessCommandLine contains " -f" and ProcessCommandLine contains ".zip") and FolderPath endswith "\\PrintBrm.exe"

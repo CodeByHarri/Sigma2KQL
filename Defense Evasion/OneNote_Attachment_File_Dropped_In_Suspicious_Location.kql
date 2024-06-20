@@ -4,4 +4,4 @@
 // Description: Detects creation of files with the ".one"/".onepkg" extension in suspicious or uncommon locations. This could be a sign of attackers abusing OneNote attachments
 // Tags: attack.defense_evasion
 DeviceFileEvents
-| where (FolderPath contains "\\AppData\\Local\\Temp\\" or FolderPath contains "\\Users\\Public\\" or FolderPath contains "\\Windows\\Temp\\" or FolderPath contains "C:\\Temp\\") and (FolderPath endswith ".one" or FolderPath endswith ".onepkg")
+| where ((FolderPath contains "\\AppData\\Local\\Temp\\" or FolderPath contains "\\Users\\Public\\" or FolderPath contains "\\Windows\\Temp\\" or FolderPath contains ":\\Temp\\") and (FolderPath endswith ".one" or FolderPath endswith ".onepkg")) and (not((InitiatingProcessFolderPath contains ":\\Program Files\\Microsoft Office\\" and InitiatingProcessFolderPath endswith "\\ONENOTE.EXE")))

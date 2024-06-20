@@ -4,4 +4,4 @@
 // Description: Detects potential persistence activity via outlook home pages.
 // Tags: attack.persistence, attack.t1112
 DeviceRegistryEvents
-| where (ActionType =~ "RegistryValueSet" and (RegistryKey contains "\\Software\\Microsoft\\Office" or RegistryKey contains "\\Outlook\\WebView") and RegistryKey endswith "\\URL") and (RegistryKey contains "\\Calendar" or RegistryKey contains "\\Inbox")
+| where ((RegistryKey contains "\\Software\\Microsoft\\Office" or RegistryKey contains "\\Outlook\\WebView") and RegistryKey endswith "\\URL") and (RegistryKey contains "\\Calendar" or RegistryKey contains "\\Inbox")

@@ -6,4 +6,4 @@ The Microsoft Windows Application Compatibility Infrastructure/Framework (Applic
 
 // Tags: attack.persistence, attack.t1546.011
 DeviceRegistryEvents
-| where (ActionType =~ "RegistryValueSet" and (RegistryKey startswith "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\InstalledSDB" or RegistryKey startswith "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Custom")) and (not(RegistryValueData =~ ""))
+| where (RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\InstalledSDB" or RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Custom") and (not(RegistryValueData =~ ""))

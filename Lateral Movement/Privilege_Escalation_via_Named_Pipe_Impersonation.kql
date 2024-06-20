@@ -1,4 +1,4 @@
-// Author: Tim Rauch
+// Author: Tim Rauch, Elastic (idea)
 // Date: 2022/09/27
 // Level: high
 // Description: Detects a remote file copy attempt to a hidden network share. This may indicate lateral movement or data staging activity.

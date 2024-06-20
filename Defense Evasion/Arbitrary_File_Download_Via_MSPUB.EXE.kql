@@ -4,4 +4,4 @@
 // Description: Detects usage of "MSPUB" (Microsoft Publisher) to download arbitrary files
 // Tags: attack.defense_evasion, attack.execution, attack.t1218
 DeviceProcessEvents
-| where (ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://" or ProcessCommandLine contains "ftp://") and (FolderPath endswith "\\MSPUB.exe" or ProcessVersionInfoOriginalFileName =~ "MSPUB.exe")
+| where (ProcessCommandLine contains "ftp://" or ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://") and (FolderPath endswith "\\MSPUB.exe" or ProcessVersionInfoOriginalFileName =~ "MSPUB.exe")

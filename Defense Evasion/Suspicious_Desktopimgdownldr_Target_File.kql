@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2020/07/03
-// Level: high
-// Description: Detects a suspicious Microsoft desktopimgdownldr file creation that stores a file to a suspicious location or contains a file with a suspicious extension
-// Tags: attack.defense_evasion, attack.t1105
-DeviceFileEvents
-| where (InitiatingProcessFolderPath endswith "\\svchost.exe" and FolderPath contains "\\Personalization\\LockScreenImage\\") and (not(FolderPath contains "C:\\Windows\\")) and (not((FolderPath contains ".jpg" or FolderPath contains ".jpeg" or FolderPath contains ".png")))

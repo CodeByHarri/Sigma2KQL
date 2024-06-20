@@ -1,7 +1,10 @@
-// Author: frack113
+// Author: frack113, Nextron Systems
 // Date: 2022/01/06
 // Level: high
-// Description: There is an auto-elevated task called SilentCleanup located in %windir%\system32\cleanmgr.exe This can be abused to elevate any file with Administrator privileges without prompting UAC
+// Description: Detects the setting of the environement variable "windir" to a non default value.
+Attackers often abuse this variable in order to trigger a UAC bypass via the "SilentCleanup" task.
+The SilentCleanup task located in %windir%\system32\cleanmgr.exe is an auto-elevated task that can be abused to elevate any file with administrator privileges without prompting UAC.
+
 // Tags: attack.privilege_escalation, attack.defense_evasion, attack.t1548.002
 DeviceRegistryEvents
-| where RegistryValueData contains "&REM" and ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\Environment\\windir"
+| where RegistryKey endswith "\\Environment\\windir" and (not(RegistryValueData =~ "%SystemRoot%"))

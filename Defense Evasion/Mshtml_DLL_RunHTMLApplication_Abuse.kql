@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/14
-// Level: high
-// Description: Detects suspicious command line using the "mshtml.dll" RunHTMLApplication export to run arbitrary code via different protocol handlers (vbscript, javascript, file, htpp...)
-// Tags: attack.defense_evasion
-DeviceProcessEvents
-| where ProcessCommandLine contains "\\..\\" and ProcessCommandLine contains "mshtml" and ProcessCommandLine contains "RunHTMLApplication"

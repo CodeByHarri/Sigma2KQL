@@ -4,4 +4,4 @@
 // Description: Detects when an attacker modifies the registry key "HtmlHelp Author" to achieve persistence
 // Tags: attack.persistence
 DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and (RegistryKey contains "\\Software\\Microsoft\\HtmlHelp Author\\Location" or RegistryKey contains "\\Software\\WOW6432Node\\Microsoft\\HtmlHelp Author\\Location")
+| where RegistryKey contains "\\Software\\Microsoft\\HtmlHelp Author\\Location" or RegistryKey contains "\\Software\\WOW6432Node\\Microsoft\\HtmlHelp Author\\Location"

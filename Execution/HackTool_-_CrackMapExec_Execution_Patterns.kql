@@ -4,4 +4,4 @@
 // Description: Detects various execution patterns of the CrackMapExec pentesting framework
 // Tags: attack.execution, attack.t1047, attack.t1053, attack.t1059.003, attack.t1059.001, attack.s0106
 DeviceProcessEvents
-| where (ProcessCommandLine contains "powershell.exe -exec bypass -noni -nop -w 1 -C \"" or ProcessCommandLine contains "powershell.exe -noni -nop -w 1 -enc ") and (match or match or match)
+| where (ProcessCommandLine contains "cmd.exe /Q /c " and ProcessCommandLine contains " 1> \\" and ProcessCommandLine contains "\\" and ProcessCommandLine contains "\\" and ProcessCommandLine contains " 2>&1") or (ProcessCommandLine contains "cmd.exe /C " and ProcessCommandLine contains " > \\" and ProcessCommandLine contains "\\" and ProcessCommandLine contains "\\" and ProcessCommandLine contains " 2>&1") or (ProcessCommandLine contains "cmd.exe /C " and ProcessCommandLine contains " > " and ProcessCommandLine contains "\\Temp\\" and ProcessCommandLine contains " 2>&1") or ProcessCommandLine contains "powershell.exe -exec bypass -noni -nop -w 1 -C \"" or ProcessCommandLine contains "powershell.exe -noni -nop -w 1 -enc "

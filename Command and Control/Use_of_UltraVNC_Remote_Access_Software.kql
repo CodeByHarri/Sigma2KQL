@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/10/02
-// Level: medium
-// Description: An adversary may use legitimate desktop support and remote access software,to establish an interactive command and control channel to target systems within networks
-// Tags: attack.command_and_control, attack.t1219
-DeviceProcessEvents
-| where ProcessVersionInfoFileDescription =~ "VNCViewer" or ProcessVersionInfoProductName =~ "UltraVNC VNCViewer" or ProcessVersionInfoCompanyName =~ "UltraVNC" or ProcessVersionInfoOriginalFileName =~ "VNCViewer.exe"
