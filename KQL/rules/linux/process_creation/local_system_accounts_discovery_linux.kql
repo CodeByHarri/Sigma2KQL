@@ -2,7 +2,7 @@
 // Author: Alejandro Ortuno, oscd.community, CheraghiMilad
 // Date: 2020-10-08
 // Level: low
-// Description: Detects enumeration of local systeam accounts. This information can help adversaries determine which local accounts exist on a system to aid in follow-on behavior.
+// Description: Detects enumeration of local system accounts. This information can help adversaries determine which local accounts exist on a system to aid in follow-on behavior.
 // MITRE Tactic: Discovery
 // Tags: attack.discovery, attack.t1087.001
 // False Positives:
