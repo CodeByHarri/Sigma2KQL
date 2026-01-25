@@ -1,0 +1,13 @@
+// Title: Registry Modification for OCI DLL Redirection
+// Author: Swachchhanda Shrawan Poudel (Nextron Systems)
+// Date: 2026-01-24
+// Level: high
+// Description: Detects registry modifications related to 'OracleOciLib' and 'OracleOciLibPath' under 'MSDTC' settings.
+// Threat actors may modify these registry keys to redirect the loading of 'oci.dll' to a malicious DLL, facilitating phantom DLL hijacking via the MSDTC service.
+// MITRE Tactic: Persistence
+// Tags: attack.persistence, attack.privilege-escalation, attack.defense-evasion, attack.t1112, attack.t1574.001
+// False Positives:
+//   - Unlikely
+
+DeviceRegistryEvents
+| where (RegistryKey endswith "\\SOFTWARE\\Microsoft\\MSDTC\\MTxOCI\\OracleOciLib" and (not(RegistryValueData contains "oci.dll"))) or (RegistryKey endswith "\\SOFTWARE\\Microsoft\\MSDTC\\MTxOCI\\OracleOciLibPath" and (not(RegistryValueData contains "%SystemRoot%\\System32\\")))

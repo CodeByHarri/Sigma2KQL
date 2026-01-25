@@ -1,0 +1,15 @@
+// Title: Devcon Execution Disabling VMware VMCI Device
+// Author: Matt Anderson, Dray Agha, Anna Pham (Huntress)
+// Date: 2026-01-02
+// Level: high
+// Description: Detects execution of devcon.exe with commands that disable the VMware Virtual Machine Communication Interface (VMCI) device.
+// This can be legitimate during VMware Tools troubleshooting or driver conflicts, but may also indicate malware attempting to hijack communication with the hardware via the VMCI device.
+// This has been used to facilitate VMware ESXi vulnerability exploits to escape VMs and execute code on the ESXi host.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.persistence, attack.privilege-escalation, attack.t1543.003, attack.t1562.001
+// False Positives:
+//   - Legitimate VMware administration, Tools installation/uninstallation, or troubleshooting driver conflicts.
+//   - Automated scripts in virtualized environments for device cleanup.
+
+DeviceProcessEvents
+| where ProcessCommandLine contains " disable " and (FolderPath endswith "\\devcon.exe" or ProcessVersionInfoOriginalFileName =~ "DevCon.exe") and (ProcessCommandLine contains "15AD&DEV_0740" or ProcessCommandLine contains "VMWVMCIHOSTDEV")

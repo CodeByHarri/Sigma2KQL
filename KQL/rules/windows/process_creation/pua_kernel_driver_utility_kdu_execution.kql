@@ -1,0 +1,14 @@
+// Title: PUA - Kernel Driver Utility (KDU) Execution
+// Author: Matt Anderson, Dray Agha, Anna Pham (Huntress)
+// Date: 2026-01-02
+// Level: high
+// Description: Detects execution of the Kernel Driver Utility (KDU) tool.
+// KDU can be used to bypass driver signature enforcement and load unsigned or malicious drivers into the Windows kernel.
+// Potentially allowing for privilege escalation, persistence, or evasion of security controls.
+// MITRE Tactic: Persistence
+// Tags: attack.persistence, attack.privilege-escalation, attack.t1543.003
+// False Positives:
+//   - Legitimate driver development, testing, or administrative troubleshooting (e.g., enabling/disabling hardware)
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "-map " or ProcessCommandLine contains "-prv " or ProcessCommandLine contains "-dse " or ProcessCommandLine contains "-ps ") and ((FolderPath endswith "\\kdu.exe" or FolderPath endswith "\\hamakaze.exe") or ProcessVersionInfoOriginalFileName =~ "hamakaze.exe")

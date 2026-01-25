@@ -1,0 +1,11 @@
+// Title: Registry Modification of MS-settings Protocol Handler
+// Author: frack113, Swachchhanda Shrawan Poudel (Nextron Systems)
+// Date: 2021-12-20
+// Level: medium
+// Description: Detects registry modifications to the 'ms-settings' protocol handler, which is frequently targeted for UAC bypass or persistence.
+// Attackers can modify this registry to execute malicious code with elevated privileges by hijacking the command execution path.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.privilege-escalation, attack.persistence, attack.t1548.002, attack.t1546.001, attack.t1112
+
+DeviceProcessEvents
+| where ((ProcessCommandLine contains "add" and (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~ "reg.exe")) or ((ProcessCommandLine contains "New-ItemProperty" or ProcessCommandLine contains "Set-ItemProperty" or ProcessCommandLine contains "ni " or ProcessCommandLine contains "sp ") and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("powershell.exe", "pwsh.dll"))))) and ProcessCommandLine contains "\\ms-settings\\shell\\open\\command"
