@@ -1,0 +1,13 @@
+// Title: Windows MSIX Package Support Framework AI_STUBS Execution
+// Author: Michael Haag, Swachchhanda Shrawan Poudel (Nextron Systems)
+// Date: 2025-11-03
+// Level: low
+// Description: Detects execution of Advanced Installer MSIX Package Support Framework (PSF) components, specifically AI_STUBS executables with original filename 'popupwrapper.exe'.
+// This activity may indicate malicious MSIX packages build with Advanced Installer leveraging the Package Support Framework to bypass application control restrictions.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.execution, attack.t1218, attack.t1553.005, attack.t1204.002
+// False Positives:
+//   - Legitimate applications packaged with Advanced Installer using Package Support Framework
+
+DeviceProcessEvents
+| where (FolderPath endswith "\\AI_STUBS\\AiStubX64Elevated.exe" or FolderPath endswith "\\AI_STUBS\\AiStubX86Elevated.exe" or FolderPath endswith "\\AI_STUBS\\AiStubX64.exe" or FolderPath endswith "\\AI_STUBS\\AiStubX86.exe") and ProcessVersionInfoOriginalFileName =~ "popupwrapper.exe"

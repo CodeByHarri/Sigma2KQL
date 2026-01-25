@@ -7,4 +7,4 @@
 // Tags: attack.discovery, attack.t1083
 
 DeviceProcessEvents
-| where (ProcessCommandLine contains " -r " or ProcessCommandLine contains " /r " or ProcessCommandLine contains " –r " or ProcessCommandLine contains " —r " or ProcessCommandLine contains " ―r ") and FolderPath endswith "/getcap"
+| where ProcessCommandLine contains " -r " and FolderPath endswith "/getcap"

@@ -3,6 +3,7 @@
 // Date: 2020-10-17
 // Level: medium
 // Description: Detects threat actors proxy executing code and bypassing application controls by leveraging wmic and the `/FORMAT` argument switch to download and execute an XSL file (i.e js, vbs, etc).
+// It could be an indicator of SquiblyTwo technique, which uses Windows Management Instrumentation (WMI) to execute malicious code.
 // MITRE Tactic: Defense Evasion
 // Tags: attack.defense-evasion, attack.t1220
 // False Positives:
