@@ -4,7 +4,7 @@
 // Level: medium
 // Description: Detects usage of bitsadmin downloading a file
 // MITRE Tactic: Defense Evasion
-// Tags: attack.defense-evasion, attack.persistence, attack.t1197, attack.s0190, attack.t1036.003
+// Tags: attack.defense-evasion, attack.persistence, attack.t1197, attack.s0190, attack.t1036.003, attack.command-and-control, attack.t1105
 // False Positives:
 //   - Some legitimate apps use this, but limited.
 
