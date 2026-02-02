@@ -1,0 +1,12 @@
+// Title: Windows Hypervisor Enforced Code Integrity Disabled
+// Author: Nasreddine Bencherchali (Nextron Systems), Anish Bogati
+// Date: 2023-03-14
+// Level: high
+// Description: Detects changes to the HypervisorEnforcedCodeIntegrity registry key and the "Enabled" value being set to 0 in order to disable the Hypervisor Enforced Code Integrity feature. This allows an attacker to load unsigned and untrusted code to be run in the kernel
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1562.001
+// False Positives:
+//   - Legitimate system administration tasks that require disabling HVCI for troubleshooting purposes when certain drivers or applications are incompatible with it.
+
+DeviceRegistryEvents
+| where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey endswith "\\Control\\DeviceGuard\\HypervisorEnforcedCodeIntegrity" or RegistryKey endswith "\\Control\\DeviceGuard\\Scenarios\\HypervisorEnforcedCodeIntegrity\\Enabled" or RegistryKey endswith "\\Microsoft\\Windows\\DeviceGuard\\HypervisorEnforcedCodeIntegrity")

@@ -1,0 +1,14 @@
+// Title: User Shell Folders Registry Modification via CommandLine
+// Author: Swachchhanda Shrawan Poudel (Nextron Systems)
+// Date: 2026-01-05
+// Level: high
+// Description: Detects modifications to User Shell Folders registry values via reg.exe or PowerShell, which could indicate persistence attempts.
+// Attackers may modify User Shell Folders registry values to point to malicious executables or scripts that will be executed during startup.
+// This technique is often used to maintain persistence on a compromised system by ensuring that malicious payloads are executed automatically.
+// MITRE Tactic: Persistence
+// Tags: attack.persistence, attack.privilege-escalation, attack.t1547.001, attack.defense-evasion, attack.t1112
+// False Positives:
+//   - Usage of reg.exe or PowerShell to modify User Shell Folders for legitimate purposes; but rare.
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains " add " or ProcessCommandLine contains "New-ItemProperty" or ProcessCommandLine contains "Set-ItemProperty" or ProcessCommandLine contains "si ") and (ProcessCommandLine contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders" or ProcessCommandLine contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders") and ProcessCommandLine contains "Startup" and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\reg.exe") or (ProcessVersionInfoOriginalFileName in~ ("powershell.exe", "pwsh.dll", "reg.exe")))
