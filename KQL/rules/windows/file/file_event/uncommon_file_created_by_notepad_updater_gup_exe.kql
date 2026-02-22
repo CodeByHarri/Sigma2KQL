@@ -1,0 +1,14 @@
+// Title: Uncommon File Created by Notepad++ Updater Gup.EXE
+// Author: Swachchhanda Shrawan Poudel (Nextron Systems)
+// Date: 2026-02-03
+// Level: high
+// Description: Detects when the Notepad++ updater (gup.exe) creates files in suspicious or uncommon locations.
+// This could indicate potential exploitation of the updater component to deliver unwanted malware or unwarranted files.
+// MITRE Tactic: Collection
+// Tags: attack.collection, attack.credential-access, attack.t1195.002, attack.initial-access, attack.t1557
+// False Positives:
+//   - Custom or portable Notepad++ installations in non-standard directories.
+//   - Legitimate update processes creating temporary files in unexpected locations.
+
+DeviceFileEvents
+| where InitiatingProcessFolderPath endswith "\\gup.exe" and (not(((FolderPath startswith "C:\\Program Files\\Notepad++\\" or FolderPath startswith "C:\\Program Files (x86)\\Notepad++\\") or FolderPath startswith "C:\\$Recycle.Bin\\S-1-5-21" or ((FolderPath contains "\\AppData\\Local\\Temp\\" and FolderPath contains ".zip") and FolderPath startswith "C:\\Users\\") or ((FolderPath contains "\\AppData\\Local\\Temp\\" and FolderPath contains "npp." and FolderPath contains ".Installer." and FolderPath contains ".exe") and FolderPath startswith "C:\\Users\\"))))
