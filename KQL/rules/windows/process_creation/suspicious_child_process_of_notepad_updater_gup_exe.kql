@@ -1,0 +1,13 @@
+// Title: Suspicious Child Process of Notepad++ Updater - GUP.Exe
+// Author: Swachchhanda Shrawan Poudel (Nextron Systems)
+// Date: 2026-02-03
+// Level: high
+// Description: Detects suspicious child process creation by the Notepad++ updater process (gup.exe).
+// This could indicate potential exploitation of the updater component to deliver unwanted malware.
+// MITRE Tactic: Collection
+// Tags: attack.collection, attack.credential-access, attack.t1195.002, attack.initial-access, attack.t1557
+// False Positives:
+//   - Unlikely
+
+DeviceProcessEvents
+| where InitiatingProcessFolderPath endswith "\\gup.exe" and ((ProcessCommandLine contains "bitsadmin" or ProcessCommandLine contains "certutil" or ProcessCommandLine contains "curl" or ProcessCommandLine contains "finger" or ProcessCommandLine contains "forfiles" or ProcessCommandLine contains "regsvr32" or ProcessCommandLine contains "rundll32" or ProcessCommandLine contains "wget") or (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\mshta.exe"))
