@@ -1,10 +1,10 @@
 // Title: System Control Panel Item Loaded From Uncommon Location
 // Author: Anish Bogati
 // Date: 2024-01-09
-// Level: medium
-// Description: Detects image load events of system control panel items (.cpl) from uncommon or non-system locations which might be the result of sideloading.
+// Level: high
+// Description: Detects image load events of system control panel items (.cpl) from uncommon or non-system locations that may indicate DLL sideloading or other abuse techniques.
 // MITRE Tactic: Defense Evasion
-// Tags: attack.defense-evasion, attack.t1036
+// Tags: attack.defense-evasion, attack.persistence, attack.privilege-escalation, attack.t1574.001
 
 DeviceImageLoadEvents
-| where (FolderPath endswith "\\hdwwiz.cpl" or FolderPath endswith "\\appwiz.cpl") and (not((FolderPath contains ":\\Windows\\System32\\" or FolderPath contains ":\\Windows\\SysWOW64\\" or FolderPath contains ":\\Windows\\WinSxS\\")))
+| where (FolderPath endswith "\\appwiz.cpl" or FolderPath endswith "\\bthprops.cpl" or FolderPath endswith "\\hdwwiz.cpl") and (not((FolderPath startswith "C:\\Windows\\Prefetch\\" or FolderPath startswith "C:\\Windows\\System32\\" or FolderPath startswith "C:\\Windows\\SysWOW64\\" or FolderPath startswith "C:\\Windows\\WinSxS\\")))
