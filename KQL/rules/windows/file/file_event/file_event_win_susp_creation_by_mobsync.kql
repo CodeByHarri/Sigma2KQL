@@ -1,0 +1,11 @@
+// Title: Created Files by Microsoft Sync Center
+// Author: elhoim
+// Date: 2022-04-28
+// Level: medium
+// Description: This rule detects suspicious files created by Microsoft Sync Center (mobsync)
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.t1055, attack.t1218, attack.execution, attack.defense-evasion
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_susp_creation_by_mobsync.yml
+
+DeviceFileEvents
+| where InitiatingProcessFolderPath endswith "\\mobsync.exe" and (FolderPath endswith ".dll" or FolderPath endswith ".exe")

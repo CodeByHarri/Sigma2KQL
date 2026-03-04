@@ -1,0 +1,11 @@
+// Title: RDP to HTTP or HTTPS Target Ports
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022-04-29
+// Level: high
+// Description: Detects svchost hosting RDP termsvcs communicating to target systems on TCP port 80 or 443
+// MITRE Tactic: Command and Control
+// Tags: attack.command-and-control, attack.t1572, attack.lateral-movement, attack.t1021.001, car.2013-07-002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/network_connection/net_connection_win_rdp_to_http.yml
+
+DeviceNetworkEvents
+| where (RemotePort in~ ("80", "443")) and InitiatingProcessFolderPath endswith "\\svchost.exe" and LocalPort == 3389

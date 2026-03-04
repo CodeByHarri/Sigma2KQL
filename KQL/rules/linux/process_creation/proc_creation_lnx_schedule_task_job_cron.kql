@@ -1,0 +1,13 @@
+// Title: Scheduled Cron Task/Job - Linux
+// Author: Alejandro Ortuno, oscd.community
+// Date: 2020-10-06
+// Level: medium
+// Description: Detects abuse of the cron utility to perform task scheduling for initial or recurring execution of malicious code. Detection will focus on crontab jobs uploaded from the tmp folder.
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.persistence, attack.privilege-escalation, attack.t1053.003
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/linux/process_creation/proc_creation_lnx_schedule_task_job_cron.yml
+// False Positives:
+//   - Legitimate administration activities
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "/tmp/" and FolderPath endswith "crontab"

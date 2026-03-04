@@ -1,0 +1,11 @@
+// Title: Read Contents From Stdin Via Cmd.EXE
+// Author: frack113, Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023-03-07
+// Level: medium
+// Description: Detect the use of "<" to read and potentially execute a file via cmd.exe
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059.003
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_cmd_stdin_redirect.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "<" and (ProcessVersionInfoOriginalFileName =~ "Cmd.Exe" or FolderPath endswith "\\cmd.exe")

@@ -1,0 +1,14 @@
+// Title: Uncommon Child Process Spawned By Odbcconf.EXE
+// Author: Harjot Singh @cyb3rjy0t
+// Date: 2023-05-22
+// Level: medium
+// Description: Detects an uncommon child process of "odbcconf.exe" binary which normally shouldn't have any child processes.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1218.008
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_odbcconf_uncommon_child_process.yml
+// False Positives:
+//   - In rare occurrences where "odbcconf" crashes. It might spawn a "werfault" process
+//   - Other child processes will depend on the DLL being registered by actions like "regsvr". In case where the DLLs have external calls (which should be rare). Other child processes might spawn and additional filters need to be applied.
+
+DeviceProcessEvents
+| where InitiatingProcessFolderPath endswith "\\odbcconf.exe"

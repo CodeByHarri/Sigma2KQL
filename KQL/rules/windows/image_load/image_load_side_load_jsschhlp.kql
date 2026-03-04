@@ -1,0 +1,11 @@
+// Title: Potential DLL Sideloading Via JsSchHlp
+// Author: frack113
+// Date: 2022-12-14
+// Level: medium
+// Description: Detects potential DLL sideloading using JUSTSYSTEMS Japanese word processor
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.persistence, attack.privilege-escalation, attack.t1574.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/image_load/image_load_side_load_jsschhlp.yml
+
+DeviceImageLoadEvents
+| where FolderPath endswith "\\JSESPR.dll" and (not(FolderPath startswith "C:\\Program Files\\Common Files\\Justsystem\\JsSchHlp\\"))

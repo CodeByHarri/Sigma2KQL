@@ -1,0 +1,11 @@
+// Title: Potential Ransomware Activity Using LegalNotice Message
+// Author: frack113
+// Date: 2022-12-11
+// Level: high
+// Description: Detect changes to the "LegalNoticeCaption" or "LegalNoticeText" registry values where the message set contains keywords often used in ransomware ransom messages
+// MITRE Tactic: Impact
+// Tags: attack.impact, attack.t1491.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_set/registry_set_legalnotice_susp_message.yml
+
+DeviceRegistryEvents
+| where (RegistryValueData contains "encrypted" or RegistryValueData contains "Unlock-Password" or RegistryValueData contains "paying") and (RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\LegalNoticeCaption" or RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\LegalNoticeText")

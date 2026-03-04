@@ -1,0 +1,11 @@
+// Title: WFP Filter Added via Registry
+// Author: Frack113
+// Date: 2025-10-23
+// Level: medium
+// Description: Detects registry modifications that add Windows Filtering Platform (WFP) filters, which may be used to block security tools and EDR agents from reporting events.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.execution, attack.t1562, attack.t1569.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_set/registry_set_susp_wfp_filter_added.yml
+
+DeviceRegistryEvents
+| where RegistryKey endswith "\\BFE\\Parameters\\Policy\\Persistent\\Filter*" and (not((InitiatingProcessFolderPath in~ ("C:\\Windows\\System32\\svchost.exe", "C:\\Windows\\SysWOW64\\svchost.exe"))))

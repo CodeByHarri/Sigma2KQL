@@ -1,0 +1,11 @@
+// Title: Potentially Suspicious WebDAV LNK Execution
+// Author: Micah Babinski
+// Date: 2023-08-21
+// Level: medium
+// Description: Detects possible execution via LNK file accessed on a WebDAV server.
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059.001, attack.t1204
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_webdav_lnk_execution.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "\\DavWWWRoot\\" and (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\wscript.exe") and InitiatingProcessFolderPath endswith "\\explorer.exe"

@@ -1,0 +1,11 @@
+// Title: Potential AMSI Bypass Using NULL Bits
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023-01-04
+// Level: medium
+// Description: Detects usage of special strings/null bits in order to potentially bypass AMSI functionalities
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1562.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_powershell_amsi_null_bits_bypass.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "if(0){{{0}}}' -f $(0 -as [char]) +" or ProcessCommandLine contains "#<NULL>"

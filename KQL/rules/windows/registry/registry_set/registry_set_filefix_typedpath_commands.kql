@@ -1,0 +1,11 @@
+// Title: FileFix - Command Evidence in TypedPaths
+// Author: Alfie Champion (delivr.to), Swachchhanda Shrawan Poudel (Nextron Systems)
+// Date: 2025-07-05
+// Level: high
+// Description: Detects commonly-used chained commands and strings in the most recent 'url' value of the 'TypedPaths' key, which could be indicative of a user being targeted by the FileFix technique.
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1204.004
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_set/registry_set_filefix_typedpath_commands.yml
+
+DeviceRegistryEvents
+| where ((RegistryValueData contains "#" and RegistryValueData contains "http") and RegistryKey endswith "\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\TypedPaths\\url1") and ((RegistryValueData contains "account" or RegistryValueData contains "anti-bot" or RegistryValueData contains "botcheck" or RegistryValueData contains "captcha" or RegistryValueData contains "challenge" or RegistryValueData contains "confirmation" or RegistryValueData contains "fraud" or RegistryValueData contains "human" or RegistryValueData contains "identification" or RegistryValueData contains "identificator" or RegistryValueData contains "identity" or RegistryValueData contains "robot" or RegistryValueData contains "validation" or RegistryValueData contains "verification" or RegistryValueData contains "verify") or (RegistryValueData contains "%comspec%" or RegistryValueData contains "bitsadmin" or RegistryValueData contains "certutil" or RegistryValueData contains "cmd" or RegistryValueData contains "cscript" or RegistryValueData contains "curl" or RegistryValueData contains "finger" or RegistryValueData contains "mshta" or RegistryValueData contains "powershell" or RegistryValueData contains "pwsh" or RegistryValueData contains "regsvr32" or RegistryValueData contains "rundll32" or RegistryValueData contains "schtasks" or RegistryValueData contains "wget" or RegistryValueData contains "wscript"))

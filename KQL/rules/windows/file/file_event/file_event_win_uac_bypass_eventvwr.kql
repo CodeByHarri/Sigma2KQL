@@ -1,0 +1,11 @@
+// Title: UAC Bypass Using EventVwr
+// Author: Antonio Cocomazzi (idea), Florian Roth (Nextron Systems)
+// Date: 2022-04-27
+// Level: high
+// Description: Detects the pattern of a UAC bypass using Windows Event Viewer
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.privilege-escalation
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_uac_bypass_eventvwr.yml
+
+DeviceFileEvents
+| where (FolderPath endswith "\\Microsoft\\Event Viewer\\RecentViews" or FolderPath endswith "\\Microsoft\\EventV~1\\RecentViews") and (not((InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\SysWOW64\\")))

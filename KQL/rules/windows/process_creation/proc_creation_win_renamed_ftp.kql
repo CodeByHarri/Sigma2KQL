@@ -1,0 +1,11 @@
+// Title: Renamed FTP.EXE Execution
+// Author: Victor Sergeev, oscd.community
+// Date: 2020-10-09
+// Level: medium
+// Description: Detects the execution of a renamed "ftp.exe" binary based on the PE metadata fields
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059, attack.defense-evasion, attack.t1202
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_renamed_ftp.yml
+
+DeviceProcessEvents
+| where ProcessVersionInfoOriginalFileName =~ "ftp.exe" and (not(FolderPath endswith "\\ftp.exe"))

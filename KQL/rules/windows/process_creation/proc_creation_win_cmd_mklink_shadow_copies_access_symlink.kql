@@ -1,0 +1,13 @@
+// Title: VolumeShadowCopy Symlink Creation Via Mklink
+// Author: Teymur Kheirkhabarov, oscd.community
+// Date: 2019-10-22
+// Level: high
+// Description: Shadow Copies storage symbolic link creation using operating systems utilities
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1003.002, attack.t1003.003
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_cmd_mklink_shadow_copies_access_symlink.yml
+// False Positives:
+//   - Legitimate administrator working with shadow copies, access for backup purposes
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "mklink" and ProcessCommandLine contains "HarddiskVolumeShadowCopy"

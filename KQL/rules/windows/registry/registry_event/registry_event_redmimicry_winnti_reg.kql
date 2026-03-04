@@ -1,0 +1,11 @@
+// Title: RedMimicry Winnti Playbook Registry Manipulation
+// Author: Alexander Rausch
+// Date: 2020-06-24
+// Level: high
+// Description: Detects actions caused by the RedMimicry Winnti playbook
+// MITRE Tactic: Persistence
+// Tags: attack.persistence, attack.defense-evasion, attack.t1112
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_event/registry_event_redmimicry_winnti_reg.yml
+
+DeviceRegistryEvents
+| where RegistryKey contains "HKLM\\SOFTWARE\\Microsoft\\HTMLHelp\\data"

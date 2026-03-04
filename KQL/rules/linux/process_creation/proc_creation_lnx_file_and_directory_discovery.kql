@@ -1,0 +1,13 @@
+// Title: File and Directory Discovery - Linux
+// Author: Daniil Yugoslavskiy, oscd.community, CheraghiMilad
+// Date: 2020-10-19
+// Level: informational
+// Description: Detects usage of system utilities such as "find", "tree", "findmnt", etc, to discover files, directories and network shares.
+// MITRE Tactic: Discovery
+// Tags: attack.discovery, attack.t1083
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/linux/process_creation/proc_creation_lnx_file_and_directory_discovery.yml
+// False Positives:
+//   - Legitimate activities
+
+DeviceProcessEvents
+| where (ProcessCommandLine matches regex "(.){200,}" and FolderPath endswith "/file") or FolderPath endswith "/find" or FolderPath endswith "/findmnt" or FolderPath endswith "/mlocate" or (ProcessCommandLine contains "-R" and FolderPath endswith "/ls") or FolderPath endswith "/tree"

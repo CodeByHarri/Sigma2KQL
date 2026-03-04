@@ -1,0 +1,11 @@
+// Title: HackTool - Potential Remote Credential Dumping Activity Via CrackMapExec Or Impacket-Secretsdump
+// Author: SecurityAura
+// Date: 2022-11-16
+// Level: high
+// Description: Detects default filenames output from the execution of CrackMapExec and Impacket-secretsdump against an endpoint.
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1003
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_hktl_remote_cred_dump.yml
+
+DeviceFileEvents
+| where InitiatingProcessFolderPath endswith "\\svchost.exe" and FolderPath matches regex "\\\\Windows\\\\System32\\\\[a-zA-Z0-9]{8}\\.tmp$"

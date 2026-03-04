@@ -1,0 +1,11 @@
+// Title: Installation of TeamViewer Desktop
+// Author: frack113
+// Date: 2022-01-28
+// Level: medium
+// Description: TeamViewer_Desktop.exe is create during install
+// MITRE Tactic: Command and Control
+// Tags: attack.command-and-control, attack.t1219.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_install_teamviewer_desktop.yml
+
+DeviceFileEvents
+| where FolderPath endswith "\\TeamViewer_Desktop.exe"

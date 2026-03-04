@@ -1,0 +1,14 @@
+// Title: Potential Application Whitelisting Bypass via Dnx.EXE
+// Author: Beyu Denis, oscd.community
+// Date: 2019-10-26
+// Level: medium
+// Description: Detects the execution of Dnx.EXE. The Dnx utility allows for the execution of C# code.
+// Attackers might abuse this in order to bypass application whitelisting.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1218, attack.t1027.004
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_dnx_execute_csharp_code.yml
+// False Positives:
+//   - Legitimate use of dnx.exe by legitimate user
+
+DeviceProcessEvents
+| where FolderPath endswith "\\dnx.exe"

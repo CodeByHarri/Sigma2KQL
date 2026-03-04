@@ -1,0 +1,11 @@
+// Title: Root Account Enable Via Dsenableroot
+// Author: Sohan G (D4rkCiph3r)
+// Date: 2023-08-22
+// Level: medium
+// Description: Detects attempts to enable the root account via "dsenableroot"
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.defense-evasion, attack.t1078, attack.t1078.001, attack.t1078.003, attack.initial-access, attack.persistence
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/macos/process_creation/proc_creation_macos_dsenableroot_enable_root_account.yml
+
+DeviceProcessEvents
+| where FolderPath endswith "/dsenableroot" and (not(ProcessCommandLine contains " -d "))

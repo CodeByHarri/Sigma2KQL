@@ -1,0 +1,13 @@
+// Title: Esentutl Gather Credentials
+// Author: sam0x90
+// Date: 2021-08-06
+// Level: medium
+// Description: Conti recommendation to its affiliates to use esentutl to access NTDS dumped file. Trickbot also uses this utilities to get MSEdge info via its module pwgrab.
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1003, attack.t1003.003, attack.s0404
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_esentutl_params.yml
+// False Positives:
+//   - To be determined
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "esentutl" and ProcessCommandLine contains " /p"

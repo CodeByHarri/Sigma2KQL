@@ -1,0 +1,11 @@
+// Title: Suspicious Runscripthelper.exe
+// Author: Victor Sergeev, oscd.community
+// Date: 2020-10-09
+// Level: medium
+// Description: Detects execution of powershell scripts via Runscripthelper.exe
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059, attack.defense-evasion, attack.t1202
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_lolbin_runscripthelper.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "surfacecheck" and FolderPath endswith "\\Runscripthelper.exe"

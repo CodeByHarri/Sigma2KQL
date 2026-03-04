@@ -1,0 +1,13 @@
+// Title: Audio Capture via PowerShell
+// Author: E.M. Anhaus (originally from Atomic Blue Detections, Endgame), oscd.community, Nasreddine Bencherchali (Nextron Systems)
+// Date: 2019-10-24
+// Level: medium
+// Description: Detects audio capture via PowerShell Cmdlet.
+// MITRE Tactic: Collection
+// Tags: attack.collection, attack.t1123
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_powershell_audio_capture.yml
+// False Positives:
+//   - Legitimate audio capture by legitimate user.
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "WindowsAudioDevice-Powershell-Cmdlet" or ProcessCommandLine contains "Toggle-AudioDevice" or ProcessCommandLine contains "Get-AudioDevice " or ProcessCommandLine contains "Set-AudioDevice " or ProcessCommandLine contains "Write-AudioDevice "

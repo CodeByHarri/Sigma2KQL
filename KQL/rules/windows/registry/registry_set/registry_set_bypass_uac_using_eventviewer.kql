@@ -1,0 +1,11 @@
+// Title: Bypass UAC Using Event Viewer
+// Author: frack113
+// Date: 2022-01-05
+// Level: high
+// Description: Bypasses User Account Control using Event Viewer and a relevant Windows Registry modification
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.persistence, attack.t1547.010
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_set/registry_set_bypass_uac_using_eventviewer.yml
+
+DeviceRegistryEvents
+| where RegistryKey endswith "_Classes\\mscfile\\shell\\open\\command\\(Default)" and (not(RegistryValueData startswith "%SystemRoot%\\system32\\mmc.exe \"%1\" %"))

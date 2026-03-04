@@ -1,0 +1,11 @@
+// Title: Suspicious Files in Default GPO Folder
+// Author: elhoim
+// Date: 2022-04-28
+// Level: medium
+// Description: Detects the creation of copy of suspicious files (EXE/DLL) to the default GPO storage folder
+// MITRE Tactic: Defense Evasion
+// Tags: attack.t1036.005, attack.defense-evasion
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_susp_default_gpo_dir_write.yml
+
+DeviceFileEvents
+| where FolderPath contains "\\Policies\\{31B2F340-016D-11D2-945F-00C04FB984F9}\\" and (FolderPath endswith ".dll" or FolderPath endswith ".exe")

@@ -1,0 +1,13 @@
+// Title: Suspicious Scheduled Task Name As GUID
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022-10-31
+// Level: medium
+// Description: Detects creation of a scheduled task with a GUID like name
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.persistence, attack.execution, attack.t1053.005
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_schtasks_guid_task_name.yml
+// False Positives:
+//   - Legitimate software naming their tasks as GUIDs
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "}\"" or ProcessCommandLine contains "}'" or ProcessCommandLine contains "} ") and (ProcessCommandLine contains "/Create " and FolderPath endswith "\\schtasks.exe") and (ProcessCommandLine contains "/TN \"{" or ProcessCommandLine contains "/TN '{" or ProcessCommandLine contains "/TN {")

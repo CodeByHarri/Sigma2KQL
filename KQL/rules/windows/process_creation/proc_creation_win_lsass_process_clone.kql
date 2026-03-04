@@ -1,0 +1,11 @@
+// Title: Potential Credential Dumping Via LSASS Process Clone
+// Author: Florian Roth (Nextron Systems), Samir Bousseaden
+// Date: 2021-11-27
+// Level: critical
+// Description: Detects a suspicious LSASS process process clone that could be a sign of credential dumping activity
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1003, attack.t1003.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_lsass_process_clone.yml
+
+DeviceProcessEvents
+| where FolderPath endswith "\\Windows\\System32\\lsass.exe" and InitiatingProcessFolderPath endswith "\\Windows\\System32\\lsass.exe"

@@ -1,0 +1,11 @@
+// Title: Shell Execution Of Process Located In Tmp Directory
+// Author: Joseliyo Sanchez, @Joseliyo_Jstnk
+// Date: 2023-06-02
+// Level: high
+// Description: Detects execution of shells from a parent process located in a temporary (/tmp) directory
+// MITRE Tactic: Execution
+// Tags: attack.execution
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/linux/process_creation/proc_creation_lnx_susp_shell_child_process_from_parent_tmp_folder.yml
+
+DeviceProcessEvents
+| where (FolderPath endswith "/bash" or FolderPath endswith "/csh" or FolderPath endswith "/dash" or FolderPath endswith "/fish" or FolderPath endswith "/ksh" or FolderPath endswith "/sh" or FolderPath endswith "/zsh") and InitiatingProcessFolderPath startswith "/tmp/"

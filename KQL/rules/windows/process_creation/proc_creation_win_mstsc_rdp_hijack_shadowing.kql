@@ -1,0 +1,11 @@
+// Title: Potential MSTSC Shadowing Activity
+// Author: Florian Roth (Nextron Systems)
+// Date: 2020-01-24
+// Level: high
+// Description: Detects RDP session hijacking by using MSTSC shadowing
+// MITRE Tactic: Lateral Movement
+// Tags: attack.lateral-movement, attack.t1563.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_mstsc_rdp_hijack_shadowing.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "noconsentprompt" and ProcessCommandLine contains "shadow:"

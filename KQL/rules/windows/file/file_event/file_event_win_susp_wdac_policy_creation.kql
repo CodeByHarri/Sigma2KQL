@@ -1,0 +1,13 @@
+// Title: Potentially Suspicious WDAC Policy File Creation
+// Author: X__Junior
+// Date: 2025-02-07
+// Level: medium
+// Description: Detects suspicious Windows Defender Application Control (WDAC) policy file creation from abnormal processes that could be abused by attacker to block EDR/AV components while allowing their own malicious code to run on the system.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_susp_wdac_policy_creation.yml
+// False Positives:
+//   - Administrators and security vendors could leverage WDAC, apply additional filters as needed.
+
+DeviceFileEvents
+| where FolderPath contains "\\Windows\\System32\\CodeIntegrity\\" and (not((((InitiatingProcessCommandLine contains "ConvertFrom-CIPolicy -XmlFilePath" and InitiatingProcessCommandLine contains "-BinaryFilePath ") or InitiatingProcessCommandLine contains "CiTool --update-policy" or (InitiatingProcessCommandLine contains "Copy-Item -Path" and InitiatingProcessCommandLine contains "-Destination")) or (InitiatingProcessFolderPath endswith "\\Microsoft.ConfigurationManagement.exe" or InitiatingProcessFolderPath endswith "\\WDAC Wizard.exe" or InitiatingProcessFolderPath endswith "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe" or InitiatingProcessFolderPath endswith "C:\\Program Files\\PowerShell\\7\\pwsh.exe" or InitiatingProcessFolderPath endswith "C:\\Windows\\System32\\dllhost.exe" or InitiatingProcessFolderPath endswith "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell_ise.exe" or InitiatingProcessFolderPath endswith "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" or InitiatingProcessFolderPath endswith "C:\\Windows\\SysWOW64\\dllhost.exe" or InitiatingProcessFolderPath endswith "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell_ise.exe" or InitiatingProcessFolderPath endswith "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe") or InitiatingProcessFolderPath =~ "System" or (InitiatingProcessFolderPath in~ ("C:\\Windows\\System32\\wuauclt.exe", "C:\\Windows\\UUS\\arm64\\wuaucltcore.exe")))))

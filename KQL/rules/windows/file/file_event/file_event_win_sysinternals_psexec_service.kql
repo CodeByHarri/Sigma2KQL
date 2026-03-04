@@ -1,0 +1,11 @@
+// Title: PsExec Service File Creation
+// Author: Thomas Patzke
+// Date: 2017-06-12
+// Level: low
+// Description: Detects default PsExec service filename which indicates PsExec service installation and execution
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1569.002, attack.s0029
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_sysinternals_psexec_service.yml
+
+DeviceFileEvents
+| where FolderPath endswith "\\PSEXESVC.exe"

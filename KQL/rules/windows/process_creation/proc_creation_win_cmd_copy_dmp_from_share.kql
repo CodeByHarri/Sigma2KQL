@@ -1,0 +1,11 @@
+// Title: Copy .DMP/.DUMP Files From Remote Share Via Cmd.EXE
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022-09-27
+// Level: high
+// Description: Detects usage of the copy builtin cmd command to copy files with the ".dmp"/".dump" extension from a remote share
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_cmd_copy_dmp_from_share.yml
+
+DeviceProcessEvents
+| where ((ProcessCommandLine contains ".dmp" or ProcessCommandLine contains ".dump" or ProcessCommandLine contains ".hdmp") and (ProcessCommandLine contains "copy " and ProcessCommandLine contains " \\\\")) and (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")

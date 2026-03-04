@@ -1,0 +1,13 @@
+// Title: Share And Session Enumeration Using Net.EXE
+// Author: Endgame, JHasenbusch (ported for oscd.community)
+// Date: 2018-10-30
+// Level: low
+// Description: Detects attempts to enumerate file shares, printer shares and sessions using "net.exe" with the "view" flag.
+// MITRE Tactic: Discovery
+// Tags: attack.discovery, attack.t1018
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_net_view_share_and_sessions_enum.yml
+// False Positives:
+//   - Legitimate use of net.exe utility by legitimate user
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "view" and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~ ("net.exe", "net1.exe")))) and (not(ProcessCommandLine contains "\\\\"))

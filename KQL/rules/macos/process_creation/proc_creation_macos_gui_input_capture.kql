@@ -1,0 +1,13 @@
+// Title: GUI Input Capture - macOS
+// Author: remotephone, oscd.community
+// Date: 2020-10-13
+// Level: low
+// Description: Detects attempts to use system dialog prompts to capture user credentials
+// MITRE Tactic: Collection
+// Tags: attack.collection, attack.credential-access, attack.t1056.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/macos/process_creation/proc_creation_macos_gui_input_capture.yml
+// False Positives:
+//   - Legitimate administration tools and activities
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "-e" and ProcessCommandLine contains "display" and ProcessCommandLine contains "dialog" and ProcessCommandLine contains "answer") and (ProcessCommandLine contains "admin" or ProcessCommandLine contains "administrator" or ProcessCommandLine contains "authenticate" or ProcessCommandLine contains "authentication" or ProcessCommandLine contains "credentials" or ProcessCommandLine contains "pass" or ProcessCommandLine contains "password" or ProcessCommandLine contains "unlock") and FolderPath endswith "/osascript"

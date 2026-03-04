@@ -1,0 +1,13 @@
+// Title: Wget Creating Files in Tmp Directory
+// Author: Joseliyo Sanchez, @Joseliyo_Jstnk
+// Date: 2023-06-02
+// Level: medium
+// Description: Detects the use of wget to download content in a temporary directory such as "/tmp" or "/var/tmp"
+// MITRE Tactic: Command and Control
+// Tags: attack.command-and-control, attack.t1105
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/linux/file_event/file_event_lnx_wget_download_file_in_tmp_dir.yml
+// False Positives:
+//   - Legitimate downloads of files in the tmp folder.
+
+DeviceFileEvents
+| where InitiatingProcessFolderPath endswith "/wget" and (FolderPath startswith "/tmp/" or FolderPath startswith "/var/tmp/")

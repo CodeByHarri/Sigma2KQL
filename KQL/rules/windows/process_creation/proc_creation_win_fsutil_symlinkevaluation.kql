@@ -1,0 +1,13 @@
+// Title: Potentially Suspicious NTFS Symlink Behavior Modification
+// Author: frack113, The DFIR Report
+// Date: 2022-03-02
+// Level: medium
+// Description: Detects the modification of NTFS symbolic link behavior using fsutil, which could be used to enable remote to local or remote to remote symlinks for potential attacks.
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059, attack.defense-evasion, attack.t1222.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_fsutil_symlinkevaluation.yml
+// False Positives:
+//   - Legitimate usage, investigate the parent process and context to determine if benign.
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "fsutil" and ProcessCommandLine contains "behavior" and ProcessCommandLine contains "set" and ProcessCommandLine contains "SymlinkEvaluation") and ((FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("Cmd.Exe", "PowerShell.EXE", "pwsh.dll"))) and (ProcessCommandLine contains "R2L:1" or ProcessCommandLine contains "R2R:1" or ProcessCommandLine contains "L2L:1")

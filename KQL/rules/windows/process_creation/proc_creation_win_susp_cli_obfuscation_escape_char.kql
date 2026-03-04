@@ -1,0 +1,11 @@
+// Title: Potential Commandline Obfuscation Using Escape Characters
+// Author: juju4
+// Date: 2018-12-11
+// Level: medium
+// Description: Detects potential commandline obfuscation using known escape characters
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1140
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_susp_cli_obfuscation_escape_char.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "h^t^t^p" or ProcessCommandLine contains "h\"t\"t\"p"

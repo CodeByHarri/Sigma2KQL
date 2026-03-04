@@ -1,0 +1,13 @@
+// Title: PUA - AdFind Suspicious Execution
+// Author: Janantha Marasinghe (https://github.com/blueteam0ps), FPT.EagleEye Team, omkar72, oscd.community
+// Date: 2021-02-02
+// Level: high
+// Description: Detects AdFind execution with common flags seen used during attacks
+// MITRE Tactic: Discovery
+// Tags: attack.discovery, attack.t1018, attack.t1087.002, attack.t1482, attack.t1069.002, stp.1u
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_pua_adfind_susp_usage.yml
+// False Positives:
+//   - Legitimate admin activity
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "domainlist" or ProcessCommandLine contains "trustdmp" or ProcessCommandLine contains "dcmodes" or ProcessCommandLine contains "adinfo" or ProcessCommandLine contains "-sc dclist" or ProcessCommandLine contains "computer_pwdnotreqd" or ProcessCommandLine contains "objectcategory=" or ProcessCommandLine contains "-subnets -f" or ProcessCommandLine contains "name=\"Domain Admins\"" or ProcessCommandLine contains "-sc u:" or ProcessCommandLine contains "domainncs" or ProcessCommandLine contains "dompol" or ProcessCommandLine contains " oudmp " or ProcessCommandLine contains "subnetdmp" or ProcessCommandLine contains "gpodmp" or ProcessCommandLine contains "fspdmp" or ProcessCommandLine contains "users_noexpire" or ProcessCommandLine contains "computers_active" or ProcessCommandLine contains "computers_pwdnotreqd"

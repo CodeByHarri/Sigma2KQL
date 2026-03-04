@@ -1,0 +1,11 @@
+// Title: Potential DCOM InternetExplorer.Application DLL Hijack
+// Author: Roberto Rodriguez @Cyb3rWard0g, Open Threat Research (OTR), wagga
+// Date: 2020-10-12
+// Level: critical
+// Description: Detects potential DLL hijack of "iertutil.dll" found in the DCOM InternetExplorer.Application Class over the network
+// MITRE Tactic: Lateral Movement
+// Tags: attack.lateral-movement, attack.t1021.002, attack.t1021.003
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_dcom_iertutil_dll_hijack.yml
+
+DeviceFileEvents
+| where InitiatingProcessFolderPath =~ "System" and FolderPath endswith "\\Internet Explorer\\iertutil.dll"

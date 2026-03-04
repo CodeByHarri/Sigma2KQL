@@ -1,0 +1,11 @@
+// Title: Potential Unquoted Service Path Reconnaissance Via Wmic.EXE
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022-06-20
+// Level: medium
+// Description: Detects known WMI recon method to look for unquoted service paths using wmic. Often used by pentester and attacker enumeration scripts
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1047
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_wmic_recon_unquoted_service_search.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains " service get " and ProcessCommandLine contains "name,displayname,pathname,startmode") and (ProcessVersionInfoOriginalFileName =~ "wmic.exe" or FolderPath endswith "\\WMIC.exe")

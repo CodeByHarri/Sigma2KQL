@@ -1,0 +1,11 @@
+// Title: Renamed SysInternals DebugView Execution
+// Author: Florian Roth (Nextron Systems)
+// Date: 2020-05-28
+// Level: high
+// Description: Detects suspicious renamed SysInternals DebugView execution
+// MITRE Tactic: Resource Development
+// Tags: attack.resource-development, attack.t1588.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_renamed_sysinternals_debugview.yml
+
+DeviceProcessEvents
+| where ProcessVersionInfoProductName =~ "Sysinternals DebugView" and (not((FolderPath endswith "\\Dbgview.exe" and ProcessVersionInfoOriginalFileName =~ "Dbgview.exe")))

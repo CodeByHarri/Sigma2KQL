@@ -1,0 +1,11 @@
+// Title: Creation of WerFault.exe/Wer.dll in Unusual Folder
+// Author: frack113
+// Date: 2022-05-09
+// Level: medium
+// Description: Detects the creation of a file named "WerFault.exe" or "wer.dll" in an uncommon folder, which could be a sign of WerFault DLL hijacking.
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.persistence, attack.defense-evasion, attack.t1574.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_werfault_dll_hijacking.yml
+
+DeviceFileEvents
+| where (FolderPath endswith "\\WerFault.exe" or FolderPath endswith "\\wer.dll") and (not((FolderPath startswith "C:\\Windows\\SoftwareDistribution\\" or FolderPath startswith "C:\\Windows\\System32\\" or FolderPath startswith "C:\\Windows\\SysWOW64\\" or FolderPath startswith "C:\\Windows\\WinSxS\\" or FolderPath startswith "C:\\Windows\\UUS\\arm64\\")))

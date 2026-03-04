@@ -1,0 +1,11 @@
+// Title: WINEKEY Registry Modification
+// Author: omkar72
+// Date: 2020-10-30
+// Level: high
+// Description: Detects potential malicious modification of run keys by winekey or team9 backdoor
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.persistence, attack.t1547
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_event/registry_event_runkey_winekey.yml
+
+DeviceRegistryEvents
+| where RegistryKey endswith "Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Backup Mgr"

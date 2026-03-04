@@ -1,0 +1,13 @@
+// Title: DNS Exfiltration and Tunneling Tools Execution
+// Author: Daniil Yugoslavskiy, oscd.community
+// Date: 2019-10-24
+// Level: high
+// Description: Well-known DNS Exfiltration tools execution
+// MITRE Tactic: Exfiltration
+// Tags: attack.exfiltration, attack.t1048.001, attack.command-and-control, attack.t1071.004, attack.t1132.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_dns_exfiltration_tools_execution.yml
+// False Positives:
+//   - Unlikely
+
+DeviceProcessEvents
+| where FolderPath endswith "\\iodine.exe" or FolderPath contains "\\dnscat2"

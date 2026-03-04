@@ -1,0 +1,13 @@
+// Title: User Added to Remote Desktop Users Group
+// Author: Florian Roth (Nextron Systems)
+// Date: 2021-12-06
+// Level: high
+// Description: Detects addition of users to the local Remote Desktop Users group via "Net" or "Add-LocalGroupMember".
+// MITRE Tactic: Initial Access
+// Tags: attack.initial-access, attack.persistence, attack.lateral-movement, attack.t1133, attack.t1136.001, attack.t1021.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_susp_add_user_remote_desktop_group.yml
+// False Positives:
+//   - Administrative activity
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "Remote Desktop Users" or ProcessCommandLine contains "Utilisateurs du Bureau à distance" or ProcessCommandLine contains "Usuarios de escritorio remoto") and ((ProcessCommandLine contains "localgroup " and ProcessCommandLine contains " /add") or (ProcessCommandLine contains "Add-LocalGroupMember " and ProcessCommandLine contains " -Group "))

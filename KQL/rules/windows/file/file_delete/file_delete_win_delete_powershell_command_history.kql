@@ -1,0 +1,11 @@
+// Title: PowerShell Console History Logs Deleted
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023-02-15
+// Level: medium
+// Description: Detects the deletion of the PowerShell console History logs which may indicate an attempt to destroy forensic evidence
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1070
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_delete/file_delete_win_delete_powershell_command_history.yml
+
+DeviceFileEvents
+| where FolderPath endswith "\\PSReadLine\\ConsoleHost_history.txt"
