@@ -1,0 +1,13 @@
+// Title: Binary Proxy Execution Via Dotnet-Trace.EXE
+// Author: Jimmy Bayne (@bohops)
+// Date: 2024-01-02
+// Level: medium
+// Description: Detects commandline arguments for executing a child process via dotnet-trace.exe
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.defense-evasion, attack.t1218
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_dotnet_trace_lolbin_execution.yml
+// False Positives:
+//   - Legitimate usage of the utility in order to debug and trace a program.
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "-- " and ProcessCommandLine contains "collect") and (FolderPath endswith "\\dotnet-trace.exe" or ProcessVersionInfoOriginalFileName =~ "dotnet-trace.dll")

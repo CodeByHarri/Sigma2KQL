@@ -1,0 +1,13 @@
+// Title: System Network Discovery - macOS
+// Author: remotephone, oscd.community
+// Date: 2020-10-06
+// Level: informational
+// Description: Detects enumeration of local network configuration
+// MITRE Tactic: Discovery
+// Tags: attack.discovery, attack.t1016
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/macos/process_creation/proc_creation_macos_susp_system_network_discovery.yml
+// False Positives:
+//   - Legitimate administration activities
+
+DeviceProcessEvents
+| where ((FolderPath endswith "/arp" or FolderPath endswith "/ifconfig" or FolderPath endswith "/netstat" or FolderPath endswith "/networksetup" or FolderPath endswith "/socketfilterfw") or ((ProcessCommandLine contains "/Library/Preferences/com.apple.alf" and ProcessCommandLine contains "read") and FolderPath =~ "/usr/bin/defaults")) and (not(InitiatingProcessFolderPath endswith "/wifivelocityd"))

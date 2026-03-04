@@ -1,0 +1,13 @@
+// Title: LiveKD Driver Creation By Uncommon Process
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023-05-16
+// Level: high
+// Description: Detects the creation of the LiveKD driver by a process image other than "livekd.exe".
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.privilege-escalation
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_sysinternals_livekd_driver_susp_creation.yml
+// False Positives:
+//   - Administrators might rename LiveKD before its usage which could trigger this. Add additional names you use to the filter
+
+DeviceFileEvents
+| where FolderPath =~ "C:\\Windows\\System32\\drivers\\LiveKdD.SYS" and (not((InitiatingProcessFolderPath endswith "\\livekd.exe" or InitiatingProcessFolderPath endswith "\\livek64.exe")))

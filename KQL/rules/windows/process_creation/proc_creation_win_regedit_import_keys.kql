@@ -1,0 +1,14 @@
+// Title: Imports Registry Key From a File
+// Author: Oddvar Moe, Sander Wiebing, oscd.community
+// Date: 2020-10-07
+// Level: medium
+// Description: Detects the import of the specified file to the registry with regedit.exe.
+// MITRE Tactic: Persistence
+// Tags: attack.persistence, attack.t1112, attack.defense-evasion
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_regedit_import_keys.yml
+// False Positives:
+//   - Legitimate import of keys
+//   - Evernote
+
+DeviceProcessEvents
+| where ((ProcessCommandLine contains " /i " or ProcessCommandLine contains " /s " or ProcessCommandLine contains ".reg") and (FolderPath endswith "\\regedit.exe" or ProcessVersionInfoOriginalFileName =~ "REGEDIT.EXE")) and (not(((ProcessCommandLine contains " -e " or ProcessCommandLine contains " /e " or ProcessCommandLine contains " –e " or ProcessCommandLine contains " —e " or ProcessCommandLine contains " ―e " or ProcessCommandLine contains " -a " or ProcessCommandLine contains " /a " or ProcessCommandLine contains " –a " or ProcessCommandLine contains " —a " or ProcessCommandLine contains " ―a " or ProcessCommandLine contains " -c " or ProcessCommandLine contains " /c " or ProcessCommandLine contains " –c " or ProcessCommandLine contains " —c " or ProcessCommandLine contains " ―c ") and ProcessCommandLine matches regex ":[^ \\\\]")))

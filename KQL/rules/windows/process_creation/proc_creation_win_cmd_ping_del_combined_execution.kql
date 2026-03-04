@@ -1,0 +1,11 @@
+// Title: Suspicious Ping/Del Command Combination
+// Author: Ilya Krestinichev
+// Date: 2022-11-03
+// Level: high
+// Description: Detects a method often used by ransomware. Which combines the "ping" to wait a couple of seconds and then "del" to delete the file in question. Its used to hide the file responsible for the initial infection for example
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1070.004
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_cmd_ping_del_combined_execution.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "ping" and ProcessCommandLine contains "del ") and (ProcessCommandLine contains " -n " or ProcessCommandLine contains " /n " or ProcessCommandLine contains " –n " or ProcessCommandLine contains " —n " or ProcessCommandLine contains " ―n ") and (ProcessCommandLine contains " -f " or ProcessCommandLine contains " /f " or ProcessCommandLine contains " –f " or ProcessCommandLine contains " —f " or ProcessCommandLine contains " ―f " or ProcessCommandLine contains " -q " or ProcessCommandLine contains " /q " or ProcessCommandLine contains " –q " or ProcessCommandLine contains " —q " or ProcessCommandLine contains " ―q ") and ProcessCommandLine contains "Nul"

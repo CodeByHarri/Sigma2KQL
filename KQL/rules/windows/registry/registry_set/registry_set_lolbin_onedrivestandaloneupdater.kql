@@ -1,0 +1,12 @@
+// Title: Lolbas OneDriveStandaloneUpdater.exe Proxy Download
+// Author: frack113
+// Date: 2022-05-28
+// Level: high
+// Description: Detects setting a custom URL for OneDriveStandaloneUpdater.exe to download a file from the Internet without executing any
+// anomalous executables with suspicious arguments. The downloaded file will be in C:\Users\redacted\AppData\Local\Microsoft\OneDrive\StandaloneUpdaterreSignInSettingsConfig.json
+// MITRE Tactic: Command and Control
+// Tags: attack.command-and-control, attack.t1105
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_set/registry_set_lolbin_onedrivestandaloneupdater.yml
+
+DeviceRegistryEvents
+| where RegistryKey contains "\\SOFTWARE\\Microsoft\\OneDrive\\UpdateOfficeConfig\\UpdateRingSettingURLFromOC"

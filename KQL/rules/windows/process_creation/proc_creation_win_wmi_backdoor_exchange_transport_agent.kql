@@ -1,0 +1,11 @@
+// Title: WMI Backdoor Exchange Transport Agent
+// Author: Florian Roth (Nextron Systems)
+// Date: 2019-10-11
+// Level: critical
+// Description: Detects a WMI backdoor in Exchange Transport Agents via WMI event filters
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.persistence, attack.t1546.003
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_wmi_backdoor_exchange_transport_agent.yml
+
+DeviceProcessEvents
+| where InitiatingProcessFolderPath endswith "\\EdgeTransport.exe" and (not((FolderPath =~ "C:\\Windows\\System32\\conhost.exe" or (FolderPath endswith "\\Bin\\OleConverter.exe" and FolderPath startswith "C:\\Program Files\\Microsoft\\Exchange Server\\"))))

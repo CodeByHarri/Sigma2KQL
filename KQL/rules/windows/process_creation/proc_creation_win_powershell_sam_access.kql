@@ -1,0 +1,14 @@
+// Title: PowerShell SAM Copy
+// Author: Florian Roth (Nextron Systems)
+// Date: 2021-07-29
+// Level: high
+// Description: Detects suspicious PowerShell scripts accessing SAM hives
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1003.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_powershell_sam_access.yml
+// False Positives:
+//   - Some rare backup scenarios
+//   - PowerShell scripts fixing HiveNightmare / SeriousSAM ACLs
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "\\HarddiskVolumeShadowCopy" and ProcessCommandLine contains "System32\\config\\sam") and (ProcessCommandLine contains "Copy-Item" or ProcessCommandLine contains "cp $_." or ProcessCommandLine contains "cpi $_." or ProcessCommandLine contains "copy $_." or ProcessCommandLine contains ".File]::Copy(")

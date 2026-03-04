@@ -1,0 +1,13 @@
+// Title: Potential Regsvr32 Commandline Flag Anomaly
+// Author: Florian Roth (Nextron Systems)
+// Date: 2019-07-13
+// Level: medium
+// Description: Detects a potential command line flag anomaly related to "regsvr32" in which the "/i" flag is used without the "/n" which should be uncommon.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1218.010
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_regsvr32_flags_anomaly.yml
+// False Positives:
+//   - Administrator typo might cause some false positives
+
+DeviceProcessEvents
+| where ((ProcessCommandLine contains " -i:" or ProcessCommandLine contains " /i:" or ProcessCommandLine contains " –i:" or ProcessCommandLine contains " —i:" or ProcessCommandLine contains " ―i:") and FolderPath endswith "\\regsvr32.exe") and (not(ProcessCommandLine contains " -n " or ProcessCommandLine contains " /n " or ProcessCommandLine contains " –n " or ProcessCommandLine contains " —n " or ProcessCommandLine contains " ―n "))

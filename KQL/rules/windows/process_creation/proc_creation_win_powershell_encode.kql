@@ -1,0 +1,11 @@
+// Title: Suspicious Execution of Powershell with Base64
+// Author: frack113
+// Date: 2022-01-02
+// Level: medium
+// Description: Commandline to launch powershell with a base64 payload
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_powershell_encode.yml
+
+DeviceProcessEvents
+| where ((ProcessCommandLine contains " -e " or ProcessCommandLine contains " -en " or ProcessCommandLine contains " -enc " or ProcessCommandLine contains " -enco" or ProcessCommandLine contains " -ec ") and (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe")) and (not(((InitiatingProcessFolderPath contains "C:\\Packages\\Plugins\\Microsoft.GuestConfiguration.ConfigurationforWindows\\" or InitiatingProcessFolderPath contains "\\gc_worker.exe") or ProcessCommandLine contains " -Encoding ")))

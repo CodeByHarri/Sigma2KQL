@@ -1,0 +1,11 @@
+// Title: Suspicious File Creation Activity From Fake Recycle.Bin Folder
+// Author: X__Junior (Nextron Systems)
+// Date: 2023-07-12
+// Level: high
+// Description: Detects file write event from/to a fake recycle bin folder that is often used as a staging directory for malware
+// MITRE Tactic: Persistence
+// Tags: attack.persistence, attack.defense-evasion
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_susp_recycle_bin_fake_exec.yml
+
+DeviceFileEvents
+| where (InitiatingProcessFolderPath contains "RECYCLERS.BIN\\" or InitiatingProcessFolderPath contains "RECYCLER.BIN\\") or (FolderPath contains "RECYCLERS.BIN\\" or FolderPath contains "RECYCLER.BIN\\")

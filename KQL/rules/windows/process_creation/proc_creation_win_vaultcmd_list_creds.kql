@@ -1,0 +1,11 @@
+// Title: Windows Credential Manager Access via VaultCmd
+// Author: frack113
+// Date: 2022-04-08
+// Level: medium
+// Description: List credentials currently stored in Windows Credential Manager via the native Windows utility vaultcmd.exe
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1555.004
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_vaultcmd_list_creds.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "/listcreds:" and (FolderPath endswith "\\VaultCmd.exe" or ProcessVersionInfoOriginalFileName =~ "VAULTCMD.EXE")

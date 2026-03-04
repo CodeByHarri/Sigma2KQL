@@ -1,0 +1,13 @@
+// Title: Base64 MZ Header In CommandLine
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022-07-12
+// Level: high
+// Description: Detects encoded base64 MZ header in the commandline
+// MITRE Tactic: Execution
+// Tags: attack.execution
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_susp_inline_base64_mz_header.yml
+// False Positives:
+//   - Unlikely
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "TVqQAAMAAAAEAAAA" or ProcessCommandLine contains "TVpQAAIAAAAEAA8A" or ProcessCommandLine contains "TVqAAAEAAAAEABAA" or ProcessCommandLine contains "TVoAAAAAAAAAAAAA" or ProcessCommandLine contains "TVpTAQEAAAAEAAAA"

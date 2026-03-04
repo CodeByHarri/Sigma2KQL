@@ -1,0 +1,12 @@
+// Title: Uncommon Network Connection Initiated By Certutil.EXE
+// Author: frack113, Florian Roth (Nextron Systems)
+// Date: 2022-09-02
+// Level: high
+// Description: Detects a network connection initiated by the certutil.exe utility.
+// Attackers can abuse the utility in order to download malware or additional payloads.
+// MITRE Tactic: Command and Control
+// Tags: attack.command-and-control, attack.t1105
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/network_connection/net_connection_win_certutil_initiated_connection.yml
+
+DeviceNetworkEvents
+| where (RemotePort in~ ("80", "135", "443", "445")) and InitiatingProcessFolderPath endswith "\\certutil.exe"

@@ -1,0 +1,11 @@
+// Title: Octopus Scanner Malware
+// Author: NVISO
+// Date: 2020-06-09
+// Level: high
+// Description: Detects Octopus Scanner Malware.
+// MITRE Tactic: Initial Access
+// Tags: attack.initial-access, attack.t1195, attack.t1195.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_mal_octopus_scanner.yml
+
+DeviceFileEvents
+| where FolderPath endswith "\\AppData\\Local\\Microsoft\\Cache134.dat" or FolderPath endswith "\\AppData\\Local\\Microsoft\\ExplorerSync.db"

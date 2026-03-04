@@ -1,0 +1,11 @@
+// Title: Diagnostic Library Sdiageng.DLL Loaded By Msdt.EXE
+// Author: Greg (rule)
+// Date: 2022-06-17
+// Level: high
+// Description: Detects both of CVE-2022-30190 (Follina) and DogWalk vulnerabilities exploiting msdt.exe binary to load the "sdiageng.dll" library
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1202, cve.2022-30190
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/image_load/image_load_dll_sdiageng_load_by_msdt.yml
+
+DeviceImageLoadEvents
+| where FolderPath endswith "\\sdiageng.dll" and InitiatingProcessFolderPath endswith "\\msdt.exe"

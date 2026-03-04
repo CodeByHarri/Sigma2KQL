@@ -1,0 +1,11 @@
+// Title: MERCURY APT Activity
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022-08-26
+// Level: high
+// Description: Detects suspicious command line patterns seen being used by MERCURY APT
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059.001, attack.g0069, detection.emerging-threats
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules-emerging-threats/2022/TA/MERCURY/proc_creation_win_apt_mercury.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "-exec bypass -w 1 -enc" and ProcessCommandLine contains "UwB0AGEAcgB0AC0ASgBvAGIAIAAtAFMAYwByAGkAcAB0AEIAbABvAGMAawAgAHsAKABzAGEAcABzACAAKAAiAHAA"

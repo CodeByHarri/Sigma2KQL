@@ -1,0 +1,11 @@
+// Title: Bash Interactive Shell
+// Author: @d4ns4n_
+// Date: 2023-04-07
+// Level: low
+// Description: Detects execution of the bash shell with the interactive flag "-i".
+// MITRE Tactic: Execution
+// Tags: attack.execution
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/linux/process_creation/proc_creation_lnx_bash_interactive_shell.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains " -i " and FolderPath endswith "/bash"

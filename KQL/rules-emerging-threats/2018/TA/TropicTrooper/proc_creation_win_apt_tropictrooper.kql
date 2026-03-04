@@ -1,0 +1,11 @@
+// Title: TropicTrooper Campaign November 2018
+// Author: @41thexplorer, Microsoft Defender ATP
+// Date: 2019-11-12
+// Level: high
+// Description: Detects TropicTrooper activity, an actor who targeted high-profile organizations in the energy and food and beverage sectors in Asia
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059.001, detection.emerging-threats
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules-emerging-threats/2018/TA/TropicTrooper/proc_creation_win_apt_tropictrooper.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "abCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCc"

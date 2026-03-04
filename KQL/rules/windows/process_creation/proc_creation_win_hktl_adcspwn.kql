@@ -1,0 +1,13 @@
+// Title: HackTool - ADCSPwn Execution
+// Author: Florian Roth (Nextron Systems)
+// Date: 2021-07-31
+// Level: high
+// Description: Detects command line parameters used by ADCSPwn, a tool to escalate privileges in an active directory network by coercing authenticate from machine accounts and relaying to the certificate service
+// MITRE Tactic: Collection
+// Tags: attack.collection, attack.credential-access, attack.t1557.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_hktl_adcspwn.yml
+// False Positives:
+//   - Unlikely
+
+DeviceProcessEvents
+| where ProcessCommandLine contains " --adcs " and ProcessCommandLine contains " --port "

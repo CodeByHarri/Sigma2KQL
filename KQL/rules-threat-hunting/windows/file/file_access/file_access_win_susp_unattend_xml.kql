@@ -1,0 +1,12 @@
+// Title: Unattend.XML File Access Attempt
+// Author: frack113
+// Date: 2024-07-22
+// Level: low
+// Description: Detects attempts to access the "unattend.xml" file, where credentials might be stored.
+// This file is used during the unattended windows install process.
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1552.001, detection.threat-hunting
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules-threat-hunting/windows/file/file_access/file_access_win_susp_unattend_xml.yml
+
+DeviceFileEvents
+| where FileName endswith "\\Panther\\unattend.xml"

@@ -1,0 +1,11 @@
+// Title: Potential Tampering With RDP Related Registry Keys Via Reg.EXE
+// Author: pH-T (Nextron Systems), @Kostastsale, TheDFIRReport
+// Date: 2022-02-12
+// Level: high
+// Description: Detects the execution of "reg.exe" for enabling/disabling the RDP service on the host by tampering with the 'CurrentControlSet\Control\Terminal Server' values
+// MITRE Tactic: Persistence
+// Tags: attack.persistence, attack.defense-evasion, attack.lateral-movement, attack.t1021.001, attack.t1112
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_reg_rdp_keys_tamper.yml
+
+DeviceProcessEvents
+| where ((ProcessCommandLine contains " add " and ProcessCommandLine contains "\\CurrentControlSet\\Control\\Terminal Server" and ProcessCommandLine contains "REG_DWORD" and ProcessCommandLine contains " /f") and (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~ "reg.exe")) and ((ProcessCommandLine contains "Licensing Core" and ProcessCommandLine contains "EnableConcurrentSessions") or (ProcessCommandLine contains "AllowTSConnections" or ProcessCommandLine contains "fDenyTSConnections" or ProcessCommandLine contains "fEnableWinStation" or ProcessCommandLine contains "fSingleSessionPerUser" or ProcessCommandLine contains "IdleWinStationPoolCount" or ProcessCommandLine contains "MaxInstanceCount" or ProcessCommandLine contains "SecurityLayer" or ProcessCommandLine contains "TSAdvertise" or ProcessCommandLine contains "TSAppCompat" or ProcessCommandLine contains "TSEnabled" or ProcessCommandLine contains "TSUserEnabled" or ProcessCommandLine contains "WinStations\\RDP-Tcp")) and (not((ProcessCommandLine contains "SecurityLayer" and ProcessCommandLine contains "02")))

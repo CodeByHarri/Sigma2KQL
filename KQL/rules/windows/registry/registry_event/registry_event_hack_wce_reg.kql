@@ -1,0 +1,11 @@
+// Title: Windows Credential Editor Registry
+// Author: Florian Roth (Nextron Systems)
+// Date: 2019-12-31
+// Level: critical
+// Description: Detects the use of Windows Credential Editor (WCE)
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1003.001, attack.s0005
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_event/registry_event_hack_wce_reg.yml
+
+DeviceRegistryEvents
+| where RegistryKey contains "Services\\WCESERVICE\\Start"

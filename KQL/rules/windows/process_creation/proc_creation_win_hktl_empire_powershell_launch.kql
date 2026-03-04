@@ -1,0 +1,13 @@
+// Title: HackTool - Empire PowerShell Launch Parameters
+// Author: Florian Roth (Nextron Systems)
+// Date: 2019-04-20
+// Level: high
+// Description: Detects suspicious powershell command line parameters used in Empire
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_hktl_empire_powershell_launch.yml
+// False Positives:
+//   - Other tools that incidentally use the same command line parameters
+
+DeviceProcessEvents
+| where ProcessCommandLine contains " -NoP -sta -NonI -W Hidden -Enc " or ProcessCommandLine contains " -noP -sta -w 1 -enc " or ProcessCommandLine contains " -NoP -NonI -W Hidden -enc " or ProcessCommandLine contains " -noP -sta -w 1 -enc" or ProcessCommandLine contains " -enc  SQB" or ProcessCommandLine contains " -nop -exec bypass -EncodedCommand "

@@ -1,0 +1,15 @@
+// Title: Potential WMI Lateral Movement WmiPrvSE Spawned PowerShell
+// Author: Markus Neis @Karneades
+// Date: 2019-04-03
+// Level: medium
+// Description: Detects Powershell as a child of the WmiPrvSE process. Which could be a sign of lateral movement via WMI.
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1047, attack.t1059.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_wmiprvse_spawns_powershell.yml
+// False Positives:
+//   - AppvClient
+//   - CCM
+//   - WinRM
+
+DeviceProcessEvents
+| where ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll"))) and InitiatingProcessFolderPath endswith "\\WmiPrvSE.exe"

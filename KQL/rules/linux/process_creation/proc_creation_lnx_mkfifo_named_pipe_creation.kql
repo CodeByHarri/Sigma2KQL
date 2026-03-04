@@ -1,0 +1,11 @@
+// Title: Named Pipe Created Via Mkfifo
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023-06-16
+// Level: low
+// Description: Detects the creation of a new named pipe using the "mkfifo" utility
+// MITRE Tactic: Execution
+// Tags: attack.execution
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/linux/process_creation/proc_creation_lnx_mkfifo_named_pipe_creation.yml
+
+DeviceProcessEvents
+| where FolderPath endswith "/mkfifo"

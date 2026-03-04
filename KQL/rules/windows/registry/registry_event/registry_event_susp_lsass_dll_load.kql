@@ -1,0 +1,11 @@
+// Title: DLL Load via LSASS
+// Author: Florian Roth (Nextron Systems)
+// Date: 2019-10-16
+// Level: high
+// Description: Detects a method to load DLL via LSASS process using an undocumented Registry key
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.execution, attack.persistence, attack.t1547.008
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_event/registry_event_susp_lsass_dll_load.yml
+
+DeviceRegistryEvents
+| where (RegistryKey contains "\\CurrentControlSet\\Services\\NTDS\\DirectoryServiceExtPt" or RegistryKey contains "\\CurrentControlSet\\Services\\NTDS\\LsaDbExtPt") and (not(((RegistryValueData in~ ("%%systemroot%%\\system32\\ntdsa.dll", "%%systemroot%%\\system32\\lsadb.dll")) and InitiatingProcessFolderPath =~ "C:\\Windows\\system32\\lsass.exe")))

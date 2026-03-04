@@ -1,0 +1,11 @@
+// Title: Suspicious Execution of Systeminfo
+// Author: frack113
+// Date: 2022-01-01
+// Level: low
+// Description: Detects usage of the "systeminfo" command to retrieve information
+// MITRE Tactic: Discovery
+// Tags: attack.discovery, attack.t1082
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_systeminfo_execution.yml
+
+DeviceProcessEvents
+| where FolderPath endswith "\\systeminfo.exe" or ProcessVersionInfoOriginalFileName =~ "sysinfo.exe"

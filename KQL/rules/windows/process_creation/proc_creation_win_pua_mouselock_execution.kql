@@ -1,0 +1,13 @@
+// Title: PUA - Mouse Lock Execution
+// Author: Cian Heasley
+// Date: 2020-08-13
+// Level: medium
+// Description: In Kaspersky's 2020 Incident Response Analyst Report they listed legitimate tool "Mouse Lock" as being used for both credential access and collection in security incidents.
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.collection, attack.t1056.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_pua_mouselock_execution.yml
+// False Positives:
+//   - Legitimate uses of Mouse Lock software
+
+DeviceProcessEvents
+| where ProcessVersionInfoProductName contains "Mouse Lock" or ProcessVersionInfoCompanyName contains "Misc314" or ProcessCommandLine contains "Mouse Lock_"

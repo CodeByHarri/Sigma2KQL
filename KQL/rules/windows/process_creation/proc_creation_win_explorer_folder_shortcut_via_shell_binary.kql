@@ -1,0 +1,11 @@
+// Title: File Explorer Folder Opened Using Explorer Folder Shortcut Via Shell
+// Author: @Kostastsale
+// Date: 2022-12-22
+// Level: high
+// Description: Detects the initial execution of "cmd.exe" which spawns "explorer.exe" with the appropriate command line arguments for opening the "My Computer" folder.
+// MITRE Tactic: Discovery
+// Tags: attack.discovery, attack.t1135
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_explorer_folder_shortcut_via_shell_binary.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "shell:mycomputerfolder" and FolderPath endswith "\\explorer.exe" and (InitiatingProcessFolderPath endswith "\\cmd.exe" or InitiatingProcessFolderPath endswith "\\powershell.exe" or InitiatingProcessFolderPath endswith "\\pwsh.exe")

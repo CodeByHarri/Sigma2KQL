@@ -1,0 +1,11 @@
+// Title: Suspicious Network Connection Binary No CommandLine
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022-07-03
+// Level: high
+// Description: Detects suspicious network connections made by a well-known Windows binary run with no command line parameters
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/network_connection/net_connection_win_susp_binary_no_cmdline.yml
+
+DeviceNetworkEvents
+| where ((InitiatingProcessCommandLine endswith "\\regsvr32.exe" or InitiatingProcessCommandLine endswith "\\rundll32.exe" or InitiatingProcessCommandLine endswith "\\dllhost.exe") and (InitiatingProcessFolderPath endswith "\\regsvr32.exe" or InitiatingProcessFolderPath endswith "\\rundll32.exe" or InitiatingProcessFolderPath endswith "\\dllhost.exe")) and (not((InitiatingProcessCommandLine =~ "" or isnull(InitiatingProcessCommandLine))))

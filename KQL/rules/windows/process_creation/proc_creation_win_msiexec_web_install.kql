@@ -1,0 +1,13 @@
+// Title: MsiExec Web Install
+// Author: Florian Roth (Nextron Systems)
+// Date: 2018-02-09
+// Level: medium
+// Description: Detects suspicious msiexec process starts with web addresses as parameter
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1218.007, attack.command-and-control, attack.t1105
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_msiexec_web_install.yml
+// False Positives:
+//   - False positives depend on scripts and administrative tools used in the monitored environment
+
+DeviceProcessEvents
+| where ProcessCommandLine contains " msiexec" and ProcessCommandLine contains "://"

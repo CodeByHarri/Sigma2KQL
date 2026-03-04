@@ -1,0 +1,13 @@
+// Title: Old TLS1.0/TLS1.1 Protocol Version Enabled
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023-09-05
+// Level: medium
+// Description: Detects applications or users re-enabling old TLS versions by setting the "Enabled" value to "1" for the "Protocols" registry key.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_set/registry_set_tls_protocol_old_version_enabled.yml
+// False Positives:
+//   - Legitimate enabling of the old tls versions due to incompatibility
+
+DeviceRegistryEvents
+| where RegistryValueData =~ "DWORD (0x00000001)" and (RegistryKey endswith "\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0*" or RegistryKey endswith "\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.1*") and RegistryKey endswith "\\Enabled"

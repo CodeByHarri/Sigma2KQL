@@ -1,0 +1,15 @@
+// Title: Registry Tampering by Potentially Suspicious Processes
+// Author: Swachchhanda Shrawan Poudel (Nextron Systems)
+// Date: 2025-08-13
+// Level: medium
+// Description: Detects suspicious registry modifications made by suspicious processes such as script engine processes such as WScript, or CScript etc.
+// These processes are rarely used for legitimate registry modifications, and their activity may indicate an attempt to modify the registry
+// without using standard tools like regedit.exe or reg.exe, potentially for evasion and persistence.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.persistence, attack.execution, attack.t1112, attack.t1059.005
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_event/registry_event_susp_process_registry_modification.yml
+// False Positives:
+//   - Some legitimate admin or install scripts may use these processes for registry modifications.
+
+DeviceRegistryEvents
+| where InitiatingProcessFolderPath endswith "\\mshta.exe" or InitiatingProcessFolderPath endswith "\\wscript.exe" or InitiatingProcessFolderPath endswith "\\cscript.exe"

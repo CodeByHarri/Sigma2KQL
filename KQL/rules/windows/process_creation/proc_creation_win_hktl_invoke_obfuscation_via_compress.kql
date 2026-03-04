@@ -1,0 +1,11 @@
+// Title: Invoke-Obfuscation COMPRESS OBFUSCATION
+// Author: Timur Zinniatullin, oscd.community
+// Date: 2020-10-18
+// Level: medium
+// Description: Detects Obfuscated Powershell via COMPRESS OBFUSCATION
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1027, attack.execution, attack.t1059.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_hktl_invoke_obfuscation_via_compress.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "system.io.compression.deflatestream" or ProcessCommandLine contains "system.io.streamreader" or ProcessCommandLine contains "readtoend(") and (ProcessCommandLine contains "new-object" and ProcessCommandLine contains "text.encoding]::ascii")

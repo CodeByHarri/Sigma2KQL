@@ -1,0 +1,11 @@
+// Title: DumpStack.log Defender Evasion
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022-01-06
+// Level: critical
+// Description: Detects the use of the filename DumpStack.log to evade Microsoft Defender
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_susp_dumpstack_log_evasion.yml
+
+DeviceProcessEvents
+| where FolderPath endswith "\\DumpStack.log" or ProcessCommandLine contains " -o DumpStack.log"

@@ -1,0 +1,11 @@
+// Title: HackTool - Impacket File Indicators
+// Author: The DFIR Report, IrishDeath
+// Date: 2025-05-19
+// Level: high
+// Description: Detects file creation events with filename patterns used by Impacket.
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1003.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_impacket_file_indicators.yml
+
+DeviceFileEvents
+| where FolderPath matches regex "\\\\sessionresume_[a-zA-Z]{8}$"

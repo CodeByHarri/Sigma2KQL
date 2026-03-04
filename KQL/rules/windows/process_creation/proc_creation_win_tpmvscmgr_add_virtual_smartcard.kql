@@ -1,0 +1,13 @@
+// Title: New Virtual Smart Card Created Via TpmVscMgr.EXE
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023-06-15
+// Level: medium
+// Description: Detects execution of "Tpmvscmgr.exe" to create a new virtual smart card.
+// MITRE Tactic: Execution
+// Tags: attack.execution
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_tpmvscmgr_add_virtual_smartcard.yml
+// False Positives:
+//   - Legitimate usage by an administrator
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "create" and (FolderPath endswith "\\tpmvscmgr.exe" and ProcessVersionInfoOriginalFileName =~ "TpmVscMgr.exe")

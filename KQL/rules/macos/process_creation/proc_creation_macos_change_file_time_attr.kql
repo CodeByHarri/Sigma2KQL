@@ -1,0 +1,11 @@
+// Title: File Time Attribute Change
+// Author: Igor Fits, Mikhail Larin, oscd.community
+// Date: 2020-10-19
+// Level: medium
+// Description: Detect file time attribute change to hide new or changes to existing files
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1070.006
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/macos/process_creation/proc_creation_macos_change_file_time_attr.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "-t" or ProcessCommandLine contains "-acmr" or ProcessCommandLine contains "-d" or ProcessCommandLine contains "-r") and FolderPath endswith "/touch"

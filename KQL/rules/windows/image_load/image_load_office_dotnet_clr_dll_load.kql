@@ -1,0 +1,11 @@
+// Title: CLR DLL Loaded Via Office Applications
+// Author: Antonlovesdnb
+// Date: 2020-02-19
+// Level: medium
+// Description: Detects CLR DLL being loaded by an Office Product
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1204.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/image_load/image_load_office_dotnet_clr_dll_load.yml
+
+DeviceImageLoadEvents
+| where FolderPath contains "\\clr.dll" and (InitiatingProcessFolderPath endswith "\\excel.exe" or InitiatingProcessFolderPath endswith "\\mspub.exe" or InitiatingProcessFolderPath endswith "\\outlook.exe" or InitiatingProcessFolderPath endswith "\\onenote.exe" or InitiatingProcessFolderPath endswith "\\onenoteim.exe" or InitiatingProcessFolderPath endswith "\\powerpnt.exe" or InitiatingProcessFolderPath endswith "\\winword.exe")

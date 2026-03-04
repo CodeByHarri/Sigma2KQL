@@ -1,0 +1,11 @@
+// Title: WinSxS Executable File Creation By Non-System Process
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023-05-11
+// Level: medium
+// Description: Detects the creation of binaries in the WinSxS folder by non-system processes
+// MITRE Tactic: Execution
+// Tags: attack.execution
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_susp_winsxs_binary_creation.yml
+
+DeviceFileEvents
+| where (FolderPath endswith ".exe" and FolderPath startswith "C:\\Windows\\WinSxS\\") and (not((InitiatingProcessFolderPath startswith "C:\\Windows\\Systems32\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\SysWOW64\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\WinSxS\\")))

@@ -1,0 +1,13 @@
+// Title: Scheduled Task Created - FileCreation
+// Author: Center for Threat Informed Defense (CTID) Summiting the Pyramid Team
+// Date: 2023-09-27
+// Level: low
+// Description: Detects the creation of a scheduled task via file creation.
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.persistence, attack.privilege-escalation, attack.t1053.005, attack.s0111, car.2013-08-001, detection.threat-hunting
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules-threat-hunting/windows/file/file_event/file_event_win_scheduled_task_creation.yml
+// False Positives:
+//   - Normal behaviour on Windows
+
+DeviceFileEvents
+| where FolderPath contains ":\\Windows\\System32\\Tasks\\" or FolderPath contains ":\\Windows\\SysWOW64\\Tasks\\" or FolderPath contains ":\\Windows\\Tasks\\"

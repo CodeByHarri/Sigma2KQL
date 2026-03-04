@@ -1,0 +1,13 @@
+// Title: Gatekeeper Bypass via Xattr
+// Author: Daniil Yugoslavskiy, oscd.community
+// Date: 2020-10-19
+// Level: low
+// Description: Detects macOS Gatekeeper bypass via xattr utility
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1553.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/macos/process_creation/proc_creation_macos_xattr_gatekeeper_bypass.yml
+// False Positives:
+//   - Legitimate activities
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "-d" and ProcessCommandLine contains "com.apple.quarantine") and FolderPath endswith "/xattr"

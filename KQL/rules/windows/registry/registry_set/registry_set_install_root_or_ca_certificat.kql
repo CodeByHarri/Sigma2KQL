@@ -1,0 +1,11 @@
+// Title: New Root or CA or AuthRoot Certificate to Store
+// Author: frack113
+// Date: 2022-04-04
+// Level: medium
+// Description: Detects the addition of new root, CA or AuthRoot certificates to the Windows registry
+// MITRE Tactic: Impact
+// Tags: attack.impact, attack.t1490
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_set/registry_set_install_root_or_ca_certificat.yml
+
+DeviceRegistryEvents
+| where RegistryValueData =~ "Binary Data" and (RegistryKey endswith "\\SOFTWARE\\Microsoft\\SystemCertificates\\Root\\Certificates*" or RegistryKey endswith "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\Root\\Certificates*" or RegistryKey endswith "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\Root\\Certificates*" or RegistryKey endswith "\\SOFTWARE\\Microsoft\\SystemCertificates\\CA\\Certificates*" or RegistryKey endswith "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\CA\\Certificates*" or RegistryKey endswith "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\CA\\Certificates*" or RegistryKey endswith "\\SOFTWARE\\Microsoft\\SystemCertificates\\AuthRoot\\Certificates*" or RegistryKey endswith "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\AuthRoot\\Certificates*" or RegistryKey endswith "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\AuthRoot\\Certificates*") and RegistryKey endswith "\\Blob"

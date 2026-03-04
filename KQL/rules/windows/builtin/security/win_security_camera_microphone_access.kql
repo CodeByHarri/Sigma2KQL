@@ -1,0 +1,11 @@
+// Title: Processes Accessing the Microphone and Webcam
+// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+// Date: 2020-06-07
+// Level: medium
+// Description: Potential adversaries accessing the microphone and webcam in an endpoint.
+// MITRE Tactic: Collection
+// Tags: attack.collection, attack.t1123
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/win_security_camera_microphone_access.yml
+
+DeviceRegistryEvents
+| where RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\microphone\\NonPackaged" or RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam\\NonPackaged"
