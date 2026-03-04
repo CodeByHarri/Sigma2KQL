@@ -6,6 +6,9 @@ on:
     - cron: '0 2 * * 0'
   workflow_dispatch:
     # Allow manual trigger
+  push:
+    branches:
+      - main
 
 jobs:
   convert-sigma-rules:
