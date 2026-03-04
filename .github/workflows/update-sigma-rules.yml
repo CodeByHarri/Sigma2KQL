@@ -42,7 +42,9 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git diff --quiet KQL/ || echo "changes=true" >> $GITHUB_OUTPUT
+          if [ -n "$(git status --porcelain KQL/)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          fi
 
       - name: Create Pull Request
         if: steps.check_changes.outputs.changes == 'true'
