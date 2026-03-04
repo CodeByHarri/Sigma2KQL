@@ -1,0 +1,14 @@
+// Title: Potential BOINC Software Execution (UC-Berkeley Signature)
+// Author: Matt Anderson (Huntress)
+// Date: 2024-07-23
+// Level: informational
+// Description: Detects the use of software that is related to the University of California, Berkeley via metadata information.
+// This indicates it may be related to BOINC software and can be used maliciously if unauthorized.
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.defense-evasion, attack.t1553, detection.threat-hunting
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules-threat-hunting/windows/process_creation/proc_creation_win_boinc_execution.yml
+// False Positives:
+//   - This software can be used for legitimate purposes when installed intentionally.
+
+DeviceProcessEvents
+| where ProcessVersionInfoFileDescription =~ "University of California, Berkeley"

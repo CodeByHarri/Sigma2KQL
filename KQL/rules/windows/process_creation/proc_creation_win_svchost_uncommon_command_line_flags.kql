@@ -1,0 +1,14 @@
+// Title: Uncommon Svchost Command Line Parameter
+// Author: Liran Ravich
+// Date: 2025-11-14
+// Level: high
+// Description: Detects instances of svchost.exe running with an unusual or uncommon command line parameter by excluding known legitimate or common patterns.
+// This could point at a file masquerading as svchost, a process injection, or hollowing of a legitimate svchost instance.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.privilege-escalation, attack.t1036.005, attack.t1055, attack.t1055.012
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_svchost_uncommon_command_line_flags.yml
+// False Positives:
+//   - Unlikely
+
+DeviceProcessEvents
+| where FolderPath endswith "\\svchost.exe" and (not((ProcessCommandLine =~ "" or ProcessCommandLine matches regex "-k\\s\\w{1,64}(\\s?(-p|-s))?" or isnull(ProcessCommandLine)))) and (not(((ProcessCommandLine contains "svchost.exe" and InitiatingProcessFolderPath endswith "\\MsMpEng.exe") or (ProcessCommandLine =~ "svchost.exe" and InitiatingProcessFolderPath endswith "\\MRT.exe"))))
