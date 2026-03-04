@@ -165,14 +165,9 @@ for rule_folder in RULE_FOLDERS:
                 OUTPUT_DIR = os.path.join(OUTPUT_BASE, rule_folder)
             os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-            # Sanitize filename and convert to snake_case
-            SAFE_FILENAME = "".join(c if c.isalnum() or c in (' ', '_', '-') else '_' for c in sigma_rule.title)
-            # Convert to lowercase snake_case
-            SNAKE_CASE_FILENAME = SAFE_FILENAME.replace(' ', '_').replace('-', '_').lower()
-            # Remove multiple consecutive underscores
-            while '__' in SNAKE_CASE_FILENAME:
-                SNAKE_CASE_FILENAME = SNAKE_CASE_FILENAME.replace('__', '_')
-            output_file = os.path.join(OUTPUT_DIR, SNAKE_CASE_FILENAME + '.kql')
+            # Use the original sigma rule filename (without extension)
+            SOURCE_FILENAME = os.path.splitext(os.path.basename(yml))[0]
+            output_file = os.path.join(OUTPUT_DIR, SOURCE_FILENAME + '.kql')
 
             with open(output_file, 'w', encoding='utf-8') as kql_file:
                 # Write metadata as comments
@@ -193,6 +188,9 @@ for rule_folder in RULE_FOLDERS:
                 
                 kql_file.write(f'// MITRE Tactic: {TACTIC_FOLDER}\n')
                 kql_file.write(f'// Tags: {", ".join(tags) if tags else ""}\n')
+                # Write reference to original sigma rule on GitHub
+                rel_path_url = rel_path.replace('\\', '/')
+                kql_file.write(f'// Reference: https://github.com/SigmaHQ/sigma/blob/master/{rel_path_url}\n')
 
                 # Write false positives if present
                 false_positives = yaml_contents.get("falsepositives", [])
