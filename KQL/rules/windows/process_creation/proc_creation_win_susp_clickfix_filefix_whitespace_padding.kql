@@ -1,0 +1,13 @@
+// Title: Suspicious Explorer Process with Whitespace Padding - ClickFix/FileFix
+// Author: Swachchhanda Shrawan Poudel (Nextron Systems)
+// Date: 2025-11-04
+// Level: high
+// Description: Detects process creation with suspicious whitespace padding followed by a '#' character, which may indicate ClickFix or FileFix techniques used to conceal malicious commands from visual inspection.
+// ClickFix and FileFix are social engineering attack techniques where adversaries distribute phishing documents or malicious links that deceive users into opening the Windows Run dialog box or File Explorer search bar.
+// The victims are then instructed to paste commands from their clipboard, which contain extensive whitespace padding using various Unicode space characters to push the actual malicious command far to the right, effectively hiding it from immediate view.
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1204.004, attack.defense-evasion, attack.t1027.010
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_susp_clickfix_filefix_whitespace_padding.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "#" and InitiatingProcessFolderPath endswith "\\explorer.exe") and (ProcessCommandLine contains "            " or ProcessCommandLine contains "            " or ProcessCommandLine contains "            " or ProcessCommandLine contains "            " or ProcessCommandLine contains "            " or ProcessCommandLine contains "            " or ProcessCommandLine contains "            " or ProcessCommandLine contains "            " or ProcessCommandLine contains "            " or ProcessCommandLine contains "            " or ProcessCommandLine contains "            " or ProcessCommandLine contains "            " or ProcessCommandLine contains "            ")

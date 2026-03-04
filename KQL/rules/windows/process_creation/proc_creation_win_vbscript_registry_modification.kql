@@ -1,0 +1,13 @@
+// Title: Registry Modification Attempt Via VBScript
+// Author: Swachchhanda Shrawan Poudel (Nextron Systems)
+// Date: 2025-08-13
+// Level: medium
+// Description: Detects attempts to modify the registry using VBScript's CreateObject("Wscript.shell") and RegWrite methods via common LOLBINs.
+// It could be an attempt to modify the registry for persistence without using straightforward methods like regedit.exe, reg.exe, or PowerShell.
+// Threat Actors may use this technique to evade detection by security solutions that monitor for direct registry modifications through traditional tools.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.persistence, attack.execution, attack.t1112, attack.t1059.005
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_vbscript_registry_modification.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "CreateObject" and ProcessCommandLine contains "Wscript.shell" and ProcessCommandLine contains ".RegWrite"
