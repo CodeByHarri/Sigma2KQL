@@ -1,7 +1,0 @@
-// Author: Teymur Kheirkhabarov, oscd.community, David ANDRE (additional keywords), Tim Shelton
-// Date: 2019/10/22
-// Level: high
-// Description: Detection well-known mimikatz command line arguments
-// Tags: attack.credential_access, attack.t1003.001, attack.t1003.002, attack.t1003.004, attack.t1003.005, attack.t1003.006
-DeviceProcessEvents
-| where (ProcessCommandLine contains "::aadcookie" or ProcessCommandLine contains "::detours" or ProcessCommandLine contains "::memssp" or ProcessCommandLine contains "::mflt" or ProcessCommandLine contains "::ncroutemon" or ProcessCommandLine contains "::ngcsign" or ProcessCommandLine contains "::printnightmare" or ProcessCommandLine contains "::skeleton" or ProcessCommandLine contains "::preshutdown" or ProcessCommandLine contains "::mstsc" or ProcessCommandLine contains "::multirdp") or (ProcessCommandLine contains "rpc::" or ProcessCommandLine contains "token::" or ProcessCommandLine contains "crypto::" or ProcessCommandLine contains "dpapi::" or ProcessCommandLine contains "sekurlsa::" or ProcessCommandLine contains "kerberos::" or ProcessCommandLine contains "lsadump::" or ProcessCommandLine contains "privilege::" or ProcessCommandLine contains "process::" or ProcessCommandLine contains "vault::") or (ProcessCommandLine contains "DumpCreds" or ProcessCommandLine contains "mimikatz")

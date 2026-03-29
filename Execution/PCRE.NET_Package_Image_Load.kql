@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/10/29
-// Level: high
-// Description: Detects processes loading modules related to PCRE.NET package
-// Tags: attack.execution, attack.t1059
-DeviceImageLoadEvents
-| where FolderPath contains "\\AppData\\Local\\Temp\\ba9ea7344a4a5f591d6e5dc32a13494b\\"

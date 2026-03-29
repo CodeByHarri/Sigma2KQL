@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/08/20
-// Level: medium
-// Description: Detect use of scrobj.dll as this DLL looks for the ScriptletURL key to get the location of the script to execute
-// Tags: attack.persistence, attack.t1546.015
-DeviceRegistryEvents
-| where RegistryValueData =~ "C:\\WINDOWS\\system32\\scrobj.dll" and RegistryKey endswith "InprocServer32\\(Default)"

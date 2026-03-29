@@ -1,9 +1,0 @@
-// Author: Markus Neis
-// Date: 2019/01/16
-// Level: medium
-// Description: Detects installation of a new shim using sdbinst.exe.
-Adversaries may establish persistence and/or elevate privileges by executing malicious content triggered by application shims
-
-// Tags: attack.persistence, attack.privilege_escalation, attack.t1546.011
-DeviceProcessEvents
-| where (ProcessCommandLine contains ".sdb" and (FolderPath endswith "\\sdbinst.exe" or ProcessVersionInfoOriginalFileName =~ "sdbinst.exe")) and (not(((ProcessCommandLine contains ":\\Program Files (x86)\\IIS Express\\iisexpressshim.sdb" or ProcessCommandLine contains ":\\Program Files\\IIS Express\\iisexpressshim.sdb") and InitiatingProcessFolderPath endswith "\\msiexec.exe")))

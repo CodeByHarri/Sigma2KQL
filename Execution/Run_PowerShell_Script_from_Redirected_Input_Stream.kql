@@ -1,7 +1,0 @@
-// Author: Moriarty Meng (idea), Anton Kutepov (rule), oscd.community
-// Date: 2020/10/17
-// Level: high
-// Description: Detects PowerShell script execution via input stream redirect
-// Tags: attack.defense_evasion, attack.execution, attack.t1059
-DeviceProcessEvents
-| where ProcessCommandLine matches regex "\\s-\\s*<" and (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe")

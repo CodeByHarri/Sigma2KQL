@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), frack113
-// Date: 2022/06/19
-// Level: high
-// Description: Detects dropped files with double extensions, which is often used by malware as a method to abuse the fact that Windows hide default extensions by default.
-// Tags: attack.defense_evasion, attack.t1036.007
-DeviceFileEvents
-| where (FolderPath endswith ".rar.exe" or FolderPath endswith ".zip.exe") or ((FolderPath contains ".doc." or FolderPath contains ".docx." or FolderPath contains ".jpg." or FolderPath contains ".pdf." or FolderPath contains ".ppt." or FolderPath contains ".pptx." or FolderPath contains ".xls." or FolderPath contains ".xlsx.") and (FolderPath endswith ".exe" or FolderPath endswith ".iso" or FolderPath endswith ".rar" or FolderPath endswith ".zip"))

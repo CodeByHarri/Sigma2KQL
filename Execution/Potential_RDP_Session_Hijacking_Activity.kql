@@ -1,7 +1,0 @@
-// Author: @juju4
-// Date: 2022/12/27
-// Level: medium
-// Description: Detects potential RDP Session Hijacking activity on Windows systems
-// Tags: attack.execution
-DeviceProcessEvents
-| where (FolderPath endswith "\\tscon.exe" or ProcessVersionInfoOriginalFileName =~ "tscon.exe") and ProcessIntegrityLevel =~ "SYSTEM"

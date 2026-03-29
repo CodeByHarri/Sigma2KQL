@@ -1,0 +1,13 @@
+// Title: CMSTP Execution Registry Event
+// Author: Nik Seetharaman
+// Date: 2018-07-16
+// Level: high
+// Description: Detects various indicators of Microsoft Connection Manager Profile Installer execution
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.execution, attack.t1218.003, attack.g0069, car.2019-04-001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_event/registry_event_cmstp_execution_by_registry.yml
+// False Positives:
+//   - Legitimate CMSTP use (unlikely in modern enterprise environments)
+
+DeviceRegistryEvents
+| where RegistryKey contains "\\cmmgr32.exe"

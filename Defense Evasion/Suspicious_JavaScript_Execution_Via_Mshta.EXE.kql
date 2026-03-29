@@ -1,7 +1,0 @@
-// Author: E.M. Anhaus (originally from Atomic Blue Detections, Endgame), oscd.community
-// Date: 2019/10/24
-// Level: high
-// Description: Detects execution of javascript code using "mshta.exe".
-// Tags: attack.defense_evasion, attack.t1218.005
-DeviceProcessEvents
-| where ProcessCommandLine contains "javascript" and (FolderPath endswith "\\mshta.exe" or ProcessVersionInfoOriginalFileName =~ "MSHTA.EXE")

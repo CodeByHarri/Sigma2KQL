@@ -1,7 +1,0 @@
-// Author: Teymur Kheirkhabarov, Roberto Rodriguez (@Cyb3rWard0g), Open Threat Research (OTR)
-// Date: 2019/10/26
-// Level: high
-// Description: Detection of child processes spawned with SYSTEM privileges by parents with LOCAL SERVICE or NETWORK SERVICE accounts
-// Tags: attack.privilege_escalation, attack.t1134.002
-DeviceProcessEvents
-| where (ProcessIntegrityLevel =~ "System" and (InitiatingProcessAccountName contains "AUTHORI" or InitiatingProcessAccountName contains "AUTORI") and ((InitiatingProcessAccountName =~ "NETWORK SERVICE" and InitiatingProcessAccountDomain startswith "") or (InitiatingProcessAccountName =~ "LOCAL SERVICE" and InitiatingProcessAccountDomain startswith "")) and (AccountName contains "AUTHORI" or AccountName contains "AUTORI") and ((AccountName =~ "SYSTEM" and AccountDomain startswith "") or (AccountName =~ "Système" and AccountDomain startswith "") or (AccountName =~ "СИСТЕМА" and AccountDomain startswith ""))) and (not((ProcessCommandLine contains "DavSetCookie" and FolderPath endswith "\\rundll32.exe")))

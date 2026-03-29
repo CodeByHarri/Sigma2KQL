@@ -1,8 +1,0 @@
-// Author: Michael McKinley (@McKinleyMike), Tony Latteri (@TheLatteri)
-// Date: 2023/09/18
-// Level: medium
-// Description: Detects execution of the Add-In deployment cache updating utility (AddInutil.exe) with uncommon Addinroot or Pipelineroot paths. An adversary may execute AddinUtil.exe with uncommon Addinroot/Pipelineroot paths that point to the adversaries Addins.Store payload.
-
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "-AddInRoot:" or ProcessCommandLine contains "-PipelineRoot:") and (FolderPath endswith "\\addinutil.exe" or ProcessVersionInfoOriginalFileName =~ "AddInUtil.exe")) and (not((ProcessCommandLine contains "-AddInRoot:\"C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\VSTA" or ProcessCommandLine contains "-AddInRoot:C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\VSTA" or ProcessCommandLine contains "-PipelineRoot:\"C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\VSTA" or ProcessCommandLine contains "-PipelineRoot:C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\VSTA")))

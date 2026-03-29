@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/06/21
-// Level: high
-// Description: Detects registry changes to Office trust records where the path is located in a potentially suspicious location
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where (RegistryKey contains "/AppData/Local/Microsoft/Windows/INetCache/" or RegistryKey contains "/AppData/Local/Temp/" or RegistryKey contains "/PerfLogs/" or RegistryKey contains "C:/Users/Public/" or RegistryKey contains "file:///D:/" or RegistryKey contains "file:///E:/") and RegistryKey contains "\\Security\\Trusted Documents\\TrustRecords"

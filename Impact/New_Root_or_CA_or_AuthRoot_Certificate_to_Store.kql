@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/04/04
-// Level: medium
-// Description: Detects the addition of new root, CA or AuthRoot certificates to the Windows registry
-// Tags: attack.impact, attack.t1490
-DeviceRegistryEvents
-| where RegistryValueData =~ "Binary Data" and (RegistryKey contains "\\SOFTWARE\\Microsoft\\SystemCertificates\\Root\\Certificates" or RegistryKey contains "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\Root\\Certificates" or RegistryKey contains "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\Root\\Certificates" or RegistryKey contains "\\SOFTWARE\\Microsoft\\SystemCertificates\\CA\\Certificates" or RegistryKey contains "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\CA\\Certificates" or RegistryKey contains "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\CA\\Certificates" or RegistryKey contains "\\SOFTWARE\\Microsoft\\SystemCertificates\\AuthRoot\\Certificates" or RegistryKey contains "\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\AuthRoot\\Certificates" or RegistryKey contains "\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\AuthRoot\\Certificates") and RegistryKey endswith "\\Blob"

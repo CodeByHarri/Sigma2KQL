@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/02/08
-// Level: medium
-// Description: Detects creation of files which are the results of executing the built-in reconnaissance script "C:\Windows\System32\gatherNetworkInfo.vbs".
-// Tags: attack.discovery
-DeviceFileEvents
-| where (FolderPath endswith "\\Hotfixinfo.txt" or FolderPath endswith "\\netiostate.txt" or FolderPath endswith "\\sysportslog.txt" or FolderPath endswith "\\VmSwitchLog.evtx") and FolderPath startswith "C:\\Windows\\System32\\config"

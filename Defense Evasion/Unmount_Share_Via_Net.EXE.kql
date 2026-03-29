@@ -1,7 +1,0 @@
-// Author: oscd.community, @redcanary, Zach Stanford @svch0st
-// Date: 2020/10/08
-// Level: low
-// Description: Detects when when a mounted share is removed. Adversaries may remove share connections that are no longer useful in order to clean up traces of their operation
-// Tags: attack.defense_evasion, attack.t1070.005
-DeviceProcessEvents
-| where (ProcessCommandLine contains "share" and ProcessCommandLine contains "/delete") and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~ ("net.exe", "net1.exe")))

@@ -1,7 +1,0 @@
-// Author: HieuTT35, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2019/10/24
-// Level: medium
-// Description: Detects the creation or modification of a powershell profile which could indicate suspicious activity as the profile can be used as a mean of persistence
-// Tags: attack.persistence, attack.privilege_escalation, attack.t1546.013
-DeviceFileEvents
-| where FolderPath endswith "\\Microsoft.PowerShell_profile.ps1" or FolderPath endswith "\\PowerShell\\profile.ps1" or FolderPath endswith "\\Program Files\\PowerShell\\7-preview\\profile.ps1" or FolderPath endswith "\\Program Files\\PowerShell\\7\\profile.ps1" or FolderPath endswith "\\Windows\\System32\\WindowsPowerShell\\v1.0\\profile.ps1" or FolderPath endswith "\\WindowsPowerShell\\profile.ps1"

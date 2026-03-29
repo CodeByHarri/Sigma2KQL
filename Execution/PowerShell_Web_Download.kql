@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/03/24
-// Level: medium
-// Description: Detects suspicious ways to download files or content using PowerShell
-// Tags: attack.command_and_control, attack.execution, attack.t1059.001, attack.t1105
-DeviceProcessEvents
-| where ProcessCommandLine contains ".DownloadString(" or ProcessCommandLine contains ".DownloadFile(" or ProcessCommandLine contains "Invoke-WebRequest " or ProcessCommandLine contains "iwr "

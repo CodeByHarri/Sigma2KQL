@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/10/22
-// Level: high
-// Description: Detects suspicious calls of DLLs in rundll32.dll exports by ordinal
-// Tags: attack.defense_evasion, attack.t1218.011
-DeviceProcessEvents
-| where ((ProcessCommandLine contains ",#" or ProcessCommandLine contains ", #" or ProcessCommandLine contains ".dll #" or ProcessCommandLine contains ".ocx #") and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE")) and (not(((ProcessCommandLine contains "EDGEHTML.dll" and ProcessCommandLine contains "#141") or ((ProcessCommandLine contains "\\FileTracker32.dll,#1" or ProcessCommandLine contains "\\FileTracker32.dll\",#1" or ProcessCommandLine contains "\\FileTracker64.dll,#1" or ProcessCommandLine contains "\\FileTracker64.dll\",#1") and (InitiatingProcessFolderPath contains "\\Msbuild\\Current\\Bin\\" or InitiatingProcessFolderPath contains "\\VC\\Tools\\MSVC\\" or InitiatingProcessFolderPath contains "\\Tracker.exe")))))

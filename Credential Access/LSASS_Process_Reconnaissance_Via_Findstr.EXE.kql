@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/08/12
-// Level: high
-// Description: Detects findstring commands that include the keyword lsass, which indicates recon actviity for the LSASS process PID
-// Tags: attack.credential_access, attack.t1552.006
-DeviceProcessEvents
-| where (ProcessCommandLine contains "lsass" and ((FolderPath endswith "\\find.exe" or FolderPath endswith "\\findstr.exe") or (ProcessVersionInfoOriginalFileName in~ ("FIND.EXE", "FINDSTR.EXE")))) or (ProcessCommandLine contains " /i \"lsass" or ProcessCommandLine contains " /i lsass.exe" or ProcessCommandLine contains "findstr \"lsass" or ProcessCommandLine contains "findstr lsass" or ProcessCommandLine contains "findstr.exe \"lsass" or ProcessCommandLine contains "findstr.exe lsass")

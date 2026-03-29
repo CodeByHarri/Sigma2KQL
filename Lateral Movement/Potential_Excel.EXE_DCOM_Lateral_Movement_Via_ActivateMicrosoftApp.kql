@@ -1,8 +1,0 @@
-// Author: Aaron Stratton
-// Date: 2023/11/13
-// Level: high
-// Description: Detects suspicious child processes of Excel which could be an indicator of lateral movement leveraging the "ActivateMicrosoftApp" Excel DCOM object.
-
-// Tags: attack.t1021.003, attack.lateral_movement
-DeviceProcessEvents
-| where ((ProcessVersionInfoOriginalFileName in~ ("foxprow.exe", "schdplus.exe", "winproj.exe")) or (FolderPath endswith "\\foxprow.exe" or FolderPath endswith "\\schdplus.exe" or FolderPath endswith "\\winproj.exe")) and InitiatingProcessFolderPath endswith "\\excel.exe"

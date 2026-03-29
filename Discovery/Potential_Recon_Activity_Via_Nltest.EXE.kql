@@ -1,7 +1,0 @@
-// Author: Craig Young, oscd.community, Georg Lauenstein
-// Date: 2021/07/24
-// Level: medium
-// Description: Detects nltest commands that can be used for information discovery
-// Tags: attack.discovery, attack.t1016, attack.t1482
-DeviceProcessEvents
-| where (FolderPath endswith "\\nltest.exe" or ProcessVersionInfoOriginalFileName =~ "nltestrk.exe") and ((ProcessCommandLine contains "server" and ProcessCommandLine contains "query") or (ProcessCommandLine contains "/user" or ProcessCommandLine contains "all_trusts" or ProcessCommandLine contains "dclist:" or ProcessCommandLine contains "dnsgetdc:" or ProcessCommandLine contains "domain_trusts" or ProcessCommandLine contains "dsgetdc:" or ProcessCommandLine contains "parentdomain" or ProcessCommandLine contains "trusted_domains"))

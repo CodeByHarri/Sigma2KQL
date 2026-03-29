@@ -1,7 +1,0 @@
-// Author: Dimitrios Slamaris
-// Date: 2017/05/15
-// Level: high
-// Description: Detects the installation of a Callout DLL via CalloutDlls and CalloutEnabled parameter in Registry, which can be used to execute code in context of the DHCP server (restart required)
-// Tags: attack.defense_evasion, attack.t1574.002, attack.t1112
-DeviceRegistryEvents
-| where RegistryKey endswith "\\Services\\DHCPServer\\Parameters\\CalloutDlls" or RegistryKey endswith "\\Services\\DHCPServer\\Parameters\\CalloutEnabled"

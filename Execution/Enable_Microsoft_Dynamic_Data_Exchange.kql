@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/02/26
-// Level: medium
-// Description: Enable Dynamic Data Exchange protocol (DDE) in all supported editions of Microsoft Word or Excel.
-// Tags: attack.execution, attack.t1559.002
-DeviceRegistryEvents
-| where (RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey endswith "\\Excel\\Security\\DisableDDEServerLaunch" or RegistryKey endswith "\\Excel\\Security\\DisableDDEServerLookup")) or ((RegistryValueData in~ ("DWORD (0x00000001)", "DWORD (0x00000002)")) and RegistryKey endswith "\\Word\\Security\\AllowDDE")

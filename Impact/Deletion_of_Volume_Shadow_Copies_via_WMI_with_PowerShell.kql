@@ -1,7 +1,0 @@
-// Author: Tim Rauch, Elastic (idea)
-// Date: 2022/09/20
-// Level: high
-// Description: Detects deletion of Windows Volume Shadow Copies with PowerShell code and Get-WMIObject. This technique is used by numerous ransomware families such as Sodinokibi/REvil
-// Tags: attack.impact, attack.t1490
-DeviceProcessEvents
-| where (ProcessCommandLine contains ".Delete()" or ProcessCommandLine contains "Remove-WmiObject" or ProcessCommandLine contains "rwmi" or ProcessCommandLine contains "Remove-CimInstance" or ProcessCommandLine contains "rcim") and (ProcessCommandLine contains "Get-WmiObject" or ProcessCommandLine contains "gwmi" or ProcessCommandLine contains "Get-CimInstance" or ProcessCommandLine contains "gcim") and ProcessCommandLine contains "Win32_ShadowCopy"

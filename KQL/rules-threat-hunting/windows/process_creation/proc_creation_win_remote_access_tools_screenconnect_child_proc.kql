@@ -1,0 +1,14 @@
+// Title: Remote Access Tool - ScreenConnect Remote Command Execution - Hunting
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2024-02-23
+// Level: medium
+// Description: Detects remote binary or command execution via the ScreenConnect Service.
+// Use this rule in order to hunt for potentially anomalous executions originating from ScreenConnect
+// MITRE Tactic: Execution
+// Tags: attack.execution, detection.threat-hunting
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules-threat-hunting/windows/process_creation/proc_creation_win_remote_access_tools_screenconnect_child_proc.yml
+// False Positives:
+//   - Legitimate commands launched from ScreenConnect will also trigger this rule. Look for anomalies.
+
+DeviceProcessEvents
+| where InitiatingProcessFolderPath endswith "\\ScreenConnect.ClientService.exe"

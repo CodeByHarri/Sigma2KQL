@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), oscd.community, Natalia Shornikova
-// Date: 2020/10/14
-// Level: medium
-// Description: Detects calls to "SyncInvoke" that is part of the "CL_Invocation.ps1" script to proxy execution using "System.Diagnostics.Process"
-// Tags: attack.defense_evasion, attack.t1216
-DeviceProcessEvents
-| where ProcessCommandLine contains "SyncInvoke "

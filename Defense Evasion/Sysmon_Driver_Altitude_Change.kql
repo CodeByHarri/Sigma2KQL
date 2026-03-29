@@ -1,9 +1,0 @@
-// Author: B.Talebi
-// Date: 2022/07/28
-// Level: high
-// Description: Detects changes in Sysmon driver altitude value.
-If the Sysmon driver is configured to load at an altitude of another registered service, it will fail to load at boot.
-
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceRegistryEvents
-| where RegistryKey contains "\\Services" and RegistryKey endswith "\\Instances\\Sysmon Instance\\Altitude"

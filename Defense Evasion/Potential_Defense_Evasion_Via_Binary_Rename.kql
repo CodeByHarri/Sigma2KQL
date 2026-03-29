@@ -1,7 +1,0 @@
-// Author: Matthew Green @mgreen27, Ecco, James Pemberton @4A616D6573, oscd.community, Andreas Hunkeler (@Karneades)
-// Date: 2019/06/15
-// Level: medium
-// Description: Detects the execution of a renamed binary often used by attackers or malware leveraging new Sysmon OriginalFileName datapoint.
-// Tags: attack.defense_evasion, attack.t1036.003
-DeviceProcessEvents
-| where (ProcessVersionInfoOriginalFileName in~ ("Cmd.Exe", "CONHOST.EXE", "7z.exe", "WinRAR.exe", "wevtutil.exe", "net.exe", "net1.exe", "netsh.exe", "InstallUtil.exe")) and (not((FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\conhost.exe" or FolderPath endswith "\\7z.exe" or FolderPath endswith "\\WinRAR.exe" or FolderPath endswith "\\wevtutil.exe" or FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe" or FolderPath endswith "\\netsh.exe" or FolderPath endswith "\\InstallUtil.exe")))

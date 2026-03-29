@@ -1,7 +1,0 @@
-// Author: frack113, Florian Roth
-// Date: 2022/12/05
-// Level: high
-// Description: Detects the execution of a renamed version of the "Mavinject" process. Which can be abused to perform process injection using the "/INJECTRUNNING" flag
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1055.001, attack.t1218.013
-DeviceProcessEvents
-| where (ProcessVersionInfoOriginalFileName in~ ("mavinject32.exe", "mavinject64.exe")) and (not((FolderPath endswith "\\mavinject32.exe" or FolderPath endswith "\\mavinject64.exe")))

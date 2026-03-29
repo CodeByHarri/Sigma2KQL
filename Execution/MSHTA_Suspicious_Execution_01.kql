@@ -1,7 +1,0 @@
-// Author: Diego Perez (@darkquassar), Markus Neis, Swisscom (Improve Rule)
-// Date: 2019/02/22
-// Level: high
-// Description: Detection for mshta.exe suspicious execution patterns sometimes involving file polyglotism
-// Tags: attack.defense_evasion, attack.t1140, attack.t1218.005, attack.execution, attack.t1059.007, cve.2020.1599
-DeviceProcessEvents
-| where (ProcessCommandLine contains "vbscript" or ProcessCommandLine contains ".jpg" or ProcessCommandLine contains ".png" or ProcessCommandLine contains ".lnk" or ProcessCommandLine contains ".xls" or ProcessCommandLine contains ".doc" or ProcessCommandLine contains ".zip" or ProcessCommandLine contains ".dll") and FolderPath endswith "\\mshta.exe"

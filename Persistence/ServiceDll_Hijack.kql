@@ -1,9 +1,0 @@
-// Author: frack113
-// Date: 2022/02/04
-// Level: medium
-// Description: Detects changes to the "ServiceDLL" value related to a service in the registry.
-This is often used as a method of persistence.
-
-// Tags: attack.persistence, attack.privilege_escalation, attack.t1543.003
-DeviceRegistryEvents
-| where ((RegistryKey contains "\\System" and RegistryKey contains "ControlSet" and RegistryKey contains "\\Services") and RegistryKey endswith "\\Parameters\\ServiceDll") and (not(((RegistryValueData =~ "%%systemroot%%\\system32\\ntdsa.dll" and InitiatingProcessFolderPath =~ "C:\\Windows\\system32\\lsass.exe" and RegistryKey endswith "\\Services\\NTDS\\Parameters\\ServiceDll") or InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\poqexec.exe" or RegistryValueData =~ "C:\\Windows\\system32\\spool\\drivers\\x64\\3\\PrintConfig.dll"))) and (not((RegistryValueData =~ "C:\\Windows\\System32\\STAgent.dll" and InitiatingProcessFolderPath endswith "\\regsvr32.exe")))

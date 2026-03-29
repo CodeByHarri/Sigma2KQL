@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research), Florian Roth (Nextron Systems), Sreeman, FPT.EagleEye Team
-// Date: 2020/10/12
-// Level: high
-// Description: Detects the use of the Windows Update Client binary (wuauclt.exe) for proxy execution.
-// Tags: attack.defense_evasion, attack.t1218, attack.execution
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "UpdateDeploymentProvider" and ProcessCommandLine contains "RunHandlerComServer") and (FolderPath endswith "\\wuauclt.exe" or ProcessVersionInfoOriginalFileName =~ "wuauclt.exe")) and (not((ProcessCommandLine contains " /UpdateDeploymentProvider UpdateDeploymentProvider.dll " or (ProcessCommandLine contains ":\\Windows\\UUS\\Packages\\Preview\\amd64\\updatedeploy.dll /ClassId" or ProcessCommandLine contains ":\\Windows\\UUS\\amd64\\UpdateDeploy.dll /ClassId") or (ProcessCommandLine contains ":\\Windows\\WinSxS\\" and ProcessCommandLine contains "\\UpdateDeploy.dll /ClassId ") or ProcessCommandLine contains " wuaueng.dll ")))

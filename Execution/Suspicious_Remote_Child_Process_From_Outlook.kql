@@ -1,7 +1,0 @@
-// Author: Markus Neis, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2018/12/27
-// Level: high
-// Description: Detects a suspicious child process spawning from Outlook where the image is located in a remote location (SMB/WebDav shares).
-// Tags: attack.execution, attack.t1059, attack.t1202
-DeviceProcessEvents
-| where FolderPath startswith "\\\\" and InitiatingProcessFolderPath endswith "\\outlook.exe"

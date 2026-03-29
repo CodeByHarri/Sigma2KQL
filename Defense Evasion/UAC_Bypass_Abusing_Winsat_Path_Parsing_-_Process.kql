@@ -1,7 +1,0 @@
-// Author: Christian Burkard (Nextron Systems)
-// Date: 2021/08/30
-// Level: high
-// Description: Detects the pattern of UAC Bypass using a path parsing issue in winsat.exe (UACMe 52)
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1548.002
-DeviceProcessEvents
-| where (ProcessIntegrityLevel in~ ("High", "System")) and InitiatingProcessCommandLine contains "C:\\Windows \\system32\\winsat.exe" and InitiatingProcessFolderPath endswith "\\AppData\\Local\\Temp\\system32\\winsat.exe"

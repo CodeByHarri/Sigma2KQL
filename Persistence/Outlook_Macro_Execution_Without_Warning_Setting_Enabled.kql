@@ -1,7 +1,0 @@
-// Author: @ScoubiMtl
-// Date: 2021/04/05
-// Level: high
-// Description: Detects the modification of Outlook security setting to allow unprompted execution of macros.
-// Tags: attack.persistence, attack.command_and_control, attack.t1137, attack.t1008, attack.t1546
-DeviceRegistryEvents
-| where RegistryValueData contains "0x00000001" and RegistryKey endswith "\\Outlook\\Security\\Level"

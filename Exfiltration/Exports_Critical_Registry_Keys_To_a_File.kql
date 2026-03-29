@@ -1,7 +1,0 @@
-// Author: Oddvar Moe, Sander Wiebing, oscd.community
-// Date: 2020/10/12
-// Level: high
-// Description: Detects the export of a crital Registry key to a file.
-// Tags: attack.exfiltration, attack.t1012
-DeviceProcessEvents
-| where (ProcessCommandLine contains " -E " or ProcessCommandLine contains " /E ") and (ProcessCommandLine contains "hklm" or ProcessCommandLine contains "hkey_local_machine") and (ProcessCommandLine endswith "\\system" or ProcessCommandLine endswith "\\sam" or ProcessCommandLine endswith "\\security") and (FolderPath endswith "\\regedit.exe" or ProcessVersionInfoOriginalFileName =~ "REGEDIT.EXE")

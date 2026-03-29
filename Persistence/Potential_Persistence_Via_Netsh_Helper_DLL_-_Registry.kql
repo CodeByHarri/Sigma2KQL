@@ -1,8 +1,0 @@
-// Author: Anish Bogati
-// Date: 2023/11/28
-// Level: medium
-// Description: Detects changes to the Netsh registry key to add a new DLL value. This change might be an indication of a potential persistence attempt by adding a malicious Netsh helper
-
-// Tags: attack.persistence, attack.t1546.007
-DeviceRegistryEvents
-| where RegistryValueData contains ".dll" and RegistryKey contains "\\SOFTWARE\\Microsoft\\NetSh"

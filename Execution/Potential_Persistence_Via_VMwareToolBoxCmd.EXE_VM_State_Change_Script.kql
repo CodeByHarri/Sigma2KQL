@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/06/14
-// Level: medium
-// Description: Detects execution of the "VMwareToolBoxCmd.exe" with the "script" and "set" flag to setup a specific script to run for a specific VM state
-// Tags: attack.execution, attack.persistence, attack.t1059
-DeviceProcessEvents
-| where (ProcessCommandLine contains " script " and ProcessCommandLine contains " set ") and (FolderPath endswith "\\VMwareToolBoxCmd.exe" or ProcessVersionInfoOriginalFileName =~ "toolbox-cmd.exe")

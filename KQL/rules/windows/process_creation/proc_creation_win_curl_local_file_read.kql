@@ -1,0 +1,11 @@
+// Title: Local File Read Using Curl.EXE
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023-07-27
+// Level: medium
+// Description: Detects execution of "curl.exe" with the "file://" protocol handler in order to read local files.
+// MITRE Tactic: Execution
+// Tags: attack.execution
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_curl_local_file_read.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "file:///" and (FolderPath endswith "\\curl.exe" or ProcessVersionInfoOriginalFileName =~ "curl.exe")

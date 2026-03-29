@@ -1,7 +1,0 @@
-// Author: Thomas Patzke, Romaissa Adjailia, Florian Roth (Nextron Systems)
-// Date: 2017/06/12
-// Level: medium
-// Description: Detects launch of the PSEXESVC service, which means that this system was the target of a psexec remote execution
-// Tags: attack.execution
-DeviceProcessEvents
-| where FolderPath =~ "C:\\Windows\\PSEXESVC.exe" or ProcessVersionInfoOriginalFileName =~ "psexesvc.exe"

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/08/30
-// Level: high
-// Description: Detects the use of DefenderCheck, a tool to evaluate the signatures used in Microsoft Defender. It can be used to figure out the strings / byte chains used in Microsoft Defender to detect a tool and thus used for AV evasion.
-// Tags: attack.defense_evasion, attack.t1027.005
-DeviceProcessEvents
-| where FolderPath endswith "\\DefenderCheck.exe" or ProcessVersionInfoFileDescription =~ "DefenderCheck"

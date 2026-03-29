@@ -1,0 +1,13 @@
+// Title: Windows Admin Share Mount Via Net.EXE
+// Author: oscd.community, Teymur Kheirkhabarov @HeirhabarovT, Zach Stanford @svch0st, wagga
+// Date: 2020-10-05
+// Level: medium
+// Description: Detects when an admin share is mounted using net.exe
+// MITRE Tactic: Lateral Movement
+// Tags: attack.lateral-movement, attack.t1021.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_net_use_mount_admin_share.yml
+// False Positives:
+//   - Administrators
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains " use " and (ProcessCommandLine contains " \\" and ProcessCommandLine contains "\\" and ProcessCommandLine contains "$")) and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~ ("net.exe", "net1.exe")))

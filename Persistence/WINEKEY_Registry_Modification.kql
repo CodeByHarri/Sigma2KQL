@@ -1,7 +1,0 @@
-// Author: omkar72
-// Date: 2020/10/30
-// Level: high
-// Description: Detects potential malicious modification of run keys by winekey or team9 backdoor
-// Tags: attack.persistence, attack.t1547
-DeviceRegistryEvents
-| where RegistryKey endswith "Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Backup Mgr"

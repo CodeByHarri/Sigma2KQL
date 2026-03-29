@@ -1,7 +1,0 @@
-// Author: Swachchhanda Shrawan Poudel
-// Date: 2023/08/02
-// Level: high
-// Description: Detects potential abuse of the provisioning registry key for indirect command execution through "Provlaunch.exe".
-// Tags: attack.defense_evasion, attack.t1218
-DeviceRegistryEvents
-| where RegistryKey contains "\\SOFTWARE\\Microsoft\\Provisioning\\Commands"

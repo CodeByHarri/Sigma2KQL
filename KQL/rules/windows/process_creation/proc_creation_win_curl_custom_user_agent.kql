@@ -1,0 +1,11 @@
+// Title: Curl Web Request With Potential Custom User-Agent
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2023-07-27
+// Level: medium
+// Description: Detects execution of "curl.exe" with a potential custom "User-Agent". Attackers can leverage this to download or exfiltrate data via "curl" to a domain that only accept specific "User-Agent" strings
+// MITRE Tactic: Execution
+// Tags: attack.execution
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_curl_custom_user_agent.yml
+
+DeviceProcessEvents
+| where (FolderPath endswith "\\curl.exe" or ProcessVersionInfoOriginalFileName =~ "curl.exe") and (ProcessCommandLine matches regex "\\s-H\\s" or ProcessCommandLine contains "--header") and ProcessCommandLine contains "User-Agent:"

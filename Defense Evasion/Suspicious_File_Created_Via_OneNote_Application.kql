@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/02/09
-// Level: high
-// Description: Detects suspicious files created via the OneNote application. This could indicate a potential malicious ".one"/".onepkg" file was executed as seen being used in malware activity in the wild
-// Tags: attack.defense_evasion
-DeviceFileEvents
-| where (InitiatingProcessFolderPath endswith "\\onenote.exe" or InitiatingProcessFolderPath endswith "\\onenotem.exe" or InitiatingProcessFolderPath endswith "\\onenoteim.exe") and FolderPath contains "\\AppData\\Local\\Temp\\OneNote\\" and (FolderPath endswith ".bat" or FolderPath endswith ".chm" or FolderPath endswith ".cmd" or FolderPath endswith ".dll" or FolderPath endswith ".exe" or FolderPath endswith ".hta" or FolderPath endswith ".htm" or FolderPath endswith ".html" or FolderPath endswith ".js" or FolderPath endswith ".lnk" or FolderPath endswith ".ps1" or FolderPath endswith ".vbe" or FolderPath endswith ".vbs" or FolderPath endswith ".wsf")

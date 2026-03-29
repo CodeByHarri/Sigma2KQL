@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/12/02
-// Level: high
-// Description: Detects usage of wsudo (Windows Sudo Utility). Which is a tool that let the user execute programs with different permissions (System, Trusted Installer, Administrator...etc)
-// Tags: attack.execution, attack.privilege_escalation, attack.t1059
-DeviceProcessEvents
-| where (ProcessCommandLine contains "-u System" or ProcessCommandLine contains "-uSystem" or ProcessCommandLine contains "-u TrustedInstaller" or ProcessCommandLine contains "-uTrustedInstaller" or ProcessCommandLine contains " --ti ") or (FolderPath endswith "\\wsudo.exe" or ProcessVersionInfoOriginalFileName =~ "wsudo.exe" or ProcessVersionInfoFileDescription =~ "Windows sudo utility" or InitiatingProcessFolderPath endswith "\\wsudo-bridge.exe")

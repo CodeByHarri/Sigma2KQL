@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/03/11
-// Level: high
-// Description: Detects creation of a file named "ntds.dit" (Active Directory Database) by an uncommon parent process or directory
-// Tags: attack.credential_access, attack.t1003.003
-DeviceFileEvents
-| where FolderPath endswith "\\ntds.dit" and ((InitiatingProcessParentFileName in~ ("cscript.exe", "httpd.exe", "nginx.exe", "php-cgi.exe", "powershell.exe", "pwsh.exe", "w3wp.exe", "wscript.exe")) or (InitiatingProcessParentFileName startswith "apache" or InitiatingProcessParentFileName startswith "tomcat" or InitiatingProcessParentFileName startswith "" or InitiatingProcessParentFileName startswith "" or InitiatingProcessParentFileName startswith "" or InitiatingProcessParentFileName startswith ""))

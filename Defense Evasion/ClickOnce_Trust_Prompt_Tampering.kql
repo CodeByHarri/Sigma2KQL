@@ -1,7 +1,0 @@
-// Author: @SerkinValery, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/06/12
-// Level: medium
-// Description: Detects changes to the ClickOnce trust prompt registry key in order to enable an installation from different locations such as the Internet.
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where RegistryValueData =~ "Enabled" and RegistryKey contains "\\SOFTWARE\\MICROSOFT\\.NETFramework\\Security\\TrustManager\\PromptingLevel" and (RegistryKey endswith "\\Internet" or RegistryKey endswith "\\LocalIntranet" or RegistryKey endswith "\\MyComputer" or RegistryKey endswith "\\TrustedSites" or RegistryKey endswith "\\UntrustedSites")

@@ -1,7 +1,0 @@
-// Author: Ecco, Daniil Yugoslavskiy, oscd.community, D3F7A5105
-// Date: 2019/09/26
-// Level: high
-// Description: Detects clearing or configuration of eventlogs using wevtutil, powershell and wmic. Might be used by ransomwares during the attack (seen by NotPetya and others).
-// Tags: attack.defense_evasion, attack.t1070.001, attack.t1562.002, car.2016-04-002
-DeviceProcessEvents
-| where (((ProcessCommandLine contains "Clear-EventLog " or ProcessCommandLine contains "Remove-EventLog " or ProcessCommandLine contains "Limit-EventLog " or ProcessCommandLine contains "Clear-WinEvent ") and (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe")) or (ProcessCommandLine contains "ClearEventLog" and (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\wmic.exe")) or ((ProcessCommandLine contains "clear-log " or ProcessCommandLine contains " cl " or ProcessCommandLine contains "set-log " or ProcessCommandLine contains " sl " or ProcessCommandLine contains "lfn:") and FolderPath endswith "\\wevtutil.exe")) and (not((ProcessCommandLine contains " sl " and (InitiatingProcessFolderPath in~ ("C:\\Windows\\SysWOW64\\msiexec.exe", "C:\\Windows\\System32\\msiexec.exe")))))

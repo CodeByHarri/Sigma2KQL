@@ -1,7 +1,0 @@
-// Author: @pbssubhash
-// Date: 2022/12/08
-// Level: high
-// Description: Detects the setting of the "DumpType" registry value to "2" which stands for a "Full Dump". Technique such as LSASS Shtinkering requires this value to be "2" in order to dump LSASS.
-// Tags: attack.credential_access, attack.t1003.001
-DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000002)" and (RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\LocalDumps\\DumpType" or RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\LocalDumps\\lsass.exe\\DumpType")

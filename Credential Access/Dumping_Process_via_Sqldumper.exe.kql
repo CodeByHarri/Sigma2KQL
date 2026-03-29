@@ -1,7 +1,0 @@
-// Author: Kirill Kiryanov, oscd.community
-// Date: 2020/10/08
-// Level: medium
-// Description: Detects process dump via legitimate sqldumper.exe binary
-// Tags: attack.credential_access, attack.t1003.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "0x0110" or ProcessCommandLine contains "0x01100:40") and FolderPath endswith "\\sqldumper.exe"

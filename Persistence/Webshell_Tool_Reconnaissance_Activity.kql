@@ -1,8 +1,0 @@
-// Author: Cian Heasley, Florian Roth (Nextron Systems)
-// Date: 2020/07/22
-// Level: high
-// Description: Detects processes spawned from web servers (PHP, Tomcat, IIS, etc.) that perform reconnaissance looking for the existence of popular scripting tools (perl, python, wget) on the system via the help commands
-
-// Tags: attack.persistence, attack.t1505.003
-DeviceProcessEvents
-| where (((InitiatingProcessFolderPath contains "-tomcat-" or InitiatingProcessFolderPath contains "\\tomcat") and (InitiatingProcessFolderPath endswith "\\java.exe" or InitiatingProcessFolderPath endswith "\\javaw.exe")) or ((ProcessCommandLine contains "CATALINA_HOME" or ProcessCommandLine contains "catalina.jar") and (InitiatingProcessFolderPath endswith "\\java.exe" or InitiatingProcessFolderPath endswith "\\javaw.exe")) or (InitiatingProcessFolderPath endswith "\\caddy.exe" or InitiatingProcessFolderPath endswith "\\httpd.exe" or InitiatingProcessFolderPath endswith "\\nginx.exe" or InitiatingProcessFolderPath endswith "\\php-cgi.exe" or InitiatingProcessFolderPath endswith "\\w3wp.exe" or InitiatingProcessFolderPath endswith "\\ws_tomcatservice.exe")) and (ProcessCommandLine contains "perl --help" or ProcessCommandLine contains "perl -h" or ProcessCommandLine contains "python --help" or ProcessCommandLine contains "python -h" or ProcessCommandLine contains "python3 --help" or ProcessCommandLine contains "python3 -h" or ProcessCommandLine contains "wget --help")

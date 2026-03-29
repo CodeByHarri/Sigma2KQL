@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/09
-// Level: medium
-// Description: Adversaries may modify system firewalls in order to bypass controls limiting network usage
-// Tags: attack.defense_evasion, attack.t1562.004
-DeviceProcessEvents
-| where (ProcessCommandLine contains "advfirewall" and ProcessCommandLine contains "firewall" and ProcessCommandLine contains "set" and ProcessCommandLine contains "rule" and ProcessCommandLine contains "group=" and ProcessCommandLine contains "new" and ProcessCommandLine contains "enable=Yes") and (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName =~ "netsh.exe")

@@ -1,7 +1,0 @@
-// Author: Antonio Cocomazzi (idea), Florian Roth (Nextron Systems)
-// Date: 2022/04/27
-// Level: high
-// Description: Detects the pattern of a UAC bypass using Windows Event Viewer
-// Tags: attack.defense_evasion, attack.privilege_escalation
-DeviceFileEvents
-| where (FolderPath endswith "\\Microsoft\\Event Viewer\\RecentViews" or FolderPath endswith "\\Microsoft\\EventV~1\\RecentViews") and (not((InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\SysWOW64\\")))

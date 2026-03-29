@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/12/11
-// Level: medium
-// Description: Detects suspicious IIS native-code module installations via command line
-// Tags: attack.persistence, attack.t1505.003
-DeviceProcessEvents
-| where (((ProcessCommandLine contains "install" and ProcessCommandLine contains "module") and (ProcessCommandLine contains "-name:" or ProcessCommandLine contains "/name:")) and (FolderPath endswith "\\appcmd.exe" or ProcessVersionInfoOriginalFileName =~ "appcmd.exe")) and (not(InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\inetsrv\\iissetup.exe"))

@@ -1,7 +1,0 @@
-// Author: Christopher Peacock @securepeacock, SCYTHE @scythe_io
-// Date: 2023/04/28
-// Level: medium
-// Description: Detects a "winlogon.exe" process that initiate network communications with public IP addresses
-// Tags: attack.defense_evasion, attack.execution, attack.command_and_control, attack.t1218.011
-DeviceNetworkEvents
-| where InitiatingProcessFolderPath endswith "\\winlogon.exe" and (not((ipv4_is_in_range(RemoteIP, "127.0.0.0/8") or ipv4_is_in_range(RemoteIP, "10.0.0.0/8") or ipv4_is_in_range(RemoteIP, "172.16.0.0/12") or ipv4_is_in_range(RemoteIP, "192.168.0.0/16") or ipv4_is_in_range(RemoteIP, "169.254.0.0/16") or ipv4_is_in_range(RemoteIP, "::1/128") or ipv4_is_in_range(RemoteIP, "fe80::/10") or ipv4_is_in_range(RemoteIP, "fc00::/7"))))

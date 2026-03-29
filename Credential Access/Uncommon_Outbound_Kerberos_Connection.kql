@@ -1,8 +1,0 @@
-// Author: Ilyas Ochkov, oscd.community
-// Date: 2019/10/24
-// Level: medium
-// Description: Detects uncommon outbound network activity via Kerberos default port indicating possible lateral movement or first stage PrivEsc via delegation.
-
-// Tags: attack.credential_access, attack.t1558, attack.lateral_movement, attack.t1550.003
-DeviceNetworkEvents
-| where RemotePort == 88 and (not(InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\lsass.exe")) and (not(((InitiatingProcessFolderPath in~ ("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe", "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")) or (InitiatingProcessFolderPath in~ ("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe", "C:\\Program Files\\Mozilla Firefox\\firefox.exe")) or InitiatingProcessFolderPath endswith "\\tomcat\\bin\\tomcat8.exe")))

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2018/03/17
-// Level: high
-// Description: Detects a suspicious RDP session redirect using tscon.exe
-// Tags: attack.lateral_movement, attack.t1563.002, attack.t1021.001, car.2013-07-002
-DeviceProcessEvents
-| where ProcessCommandLine contains " /dest:rdp-tcp#"

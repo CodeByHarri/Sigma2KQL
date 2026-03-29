@@ -1,7 +1,0 @@
-// Author: Furkan CALISKAN, @caliskanfurkan_, @oscd_initiative
-// Date: 2020/10/05
-// Level: medium
-// Description: Attackers can use print.exe for remote file copy
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "/D" and ProcessCommandLine contains ".exe") and ProcessCommandLine startswith "print" and FolderPath endswith "\\print.exe") and (not(ProcessCommandLine contains "print.exe"))

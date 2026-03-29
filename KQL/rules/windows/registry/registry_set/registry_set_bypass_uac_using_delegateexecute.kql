@@ -1,0 +1,11 @@
+// Title: Bypass UAC Using DelegateExecute
+// Author: frack113
+// Date: 2022-01-05
+// Level: high
+// Description: Bypasses User Account Control using a fileless method
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.defense-evasion, attack.t1548.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_set/registry_set_bypass_uac_using_delegateexecute.yml
+
+DeviceRegistryEvents
+| where RegistryValueData =~ "(Empty)" and RegistryKey endswith "\\open\\command\\DelegateExecute"

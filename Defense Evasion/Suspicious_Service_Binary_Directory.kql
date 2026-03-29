@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/03/09
-// Level: high
-// Description: Detects a service binary running in a suspicious directory
-// Tags: attack.defense_evasion, attack.t1202
-DeviceProcessEvents
-| where (FolderPath contains "\\Users\\Public\\" or FolderPath contains "\\$Recycle.bin" or FolderPath contains "\\Users\\All Users\\" or FolderPath contains "\\Users\\Default\\" or FolderPath contains "\\Users\\Contacts\\" or FolderPath contains "\\Users\\Searches\\" or FolderPath contains "C:\\Perflogs\\" or FolderPath contains "\\config\\systemprofile\\" or FolderPath contains "\\Windows\\Fonts\\" or FolderPath contains "\\Windows\\IME\\" or FolderPath contains "\\Windows\\addins\\") and (InitiatingProcessFolderPath endswith "\\services.exe" or InitiatingProcessFolderPath endswith "\\svchost.exe")

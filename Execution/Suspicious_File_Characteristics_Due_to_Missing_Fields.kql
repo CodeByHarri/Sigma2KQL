@@ -1,7 +1,0 @@
-// Author: Markus Neis, Sander Wiebing
-// Date: 2018/11/22
-// Level: medium
-// Description: Detects Executables in the Downloads folder without FileVersion,Description,Product,Company likely created with py2exe
-// Tags: attack.execution, attack.t1059.006
-DeviceProcessEvents
-| where ((ProcessVersionInfoFileDescription =~ "?" and ProcessVersionInfoProductVersion =~ "?") or (ProcessVersionInfoFileDescription =~ "?" and ProcessVersionInfoProductName =~ "?") or (ProcessVersionInfoCompanyName =~ "?" and ProcessVersionInfoFileDescription =~ "?")) and FolderPath contains "\\Downloads\\"

@@ -1,9 +1,0 @@
-// Author: xknow (@xknow_infosec), xorxes (@xor_xes)
-// Date: 2019/04/08
-// Level: medium
-// Description: Detects the creation of the PROCEXP152.sys file in the application-data local temporary folder.
-This driver is used by Sysinternals Process Explorer but also by KDU (https://github.com/hfiref0x/KDU) or Ghost-In-The-Logs (https://github.com/bats3c/Ghost-In-The-Logs), which uses KDU.
-
-// Tags: attack.t1562.001, attack.defense_evasion
-DeviceFileEvents
-| where (FolderPath contains "\\AppData\\Local\\Temp\\" and FolderPath endswith "PROCEXP152.sys") and (not((InitiatingProcessFolderPath contains "\\procexp64.exe" or InitiatingProcessFolderPath contains "\\procexp.exe" or InitiatingProcessFolderPath contains "\\procmon64.exe" or InitiatingProcessFolderPath contains "\\procmon.exe")))

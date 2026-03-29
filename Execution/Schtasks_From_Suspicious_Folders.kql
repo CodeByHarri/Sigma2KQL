@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/04/15
-// Level: high
-// Description: Detects scheduled task creations that have suspicious action command and folder combinations
-// Tags: attack.execution, attack.t1053.005
-DeviceProcessEvents
-| where (ProcessCommandLine contains "C:\\ProgramData\\" or ProcessCommandLine contains "%ProgramData%") and (ProcessCommandLine contains "powershell" or ProcessCommandLine contains "pwsh" or ProcessCommandLine contains "cmd /c " or ProcessCommandLine contains "cmd /k " or ProcessCommandLine contains "cmd /r " or ProcessCommandLine contains "cmd.exe /c " or ProcessCommandLine contains "cmd.exe /k " or ProcessCommandLine contains "cmd.exe /r ") and ProcessCommandLine contains " /create " and (FolderPath endswith "\\schtasks.exe" or ProcessVersionInfoOriginalFileName =~ "schtasks.exe")

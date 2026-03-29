@@ -1,7 +1,0 @@
-// Author: Beyu Denis, oscd.community
-// Date: 2020/10/18
-// Level: medium
-// Description: Detects file execution using the msdeploy.exe lolbin
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where (ProcessCommandLine contains "verb:sync" and ProcessCommandLine contains "-source:RunCommand" and ProcessCommandLine contains "-dest:runCommand") and FolderPath endswith "\\msdeploy.exe"

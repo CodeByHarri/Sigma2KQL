@@ -1,7 +1,0 @@
-// Author: elhoim
-// Date: 2022/04/28
-// Level: medium
-// Description: Detects the creation of copy of suspicious files (EXE/DLL) to the default GPO storage folder
-// Tags: attack.t1036.005, attack.defense_evasion
-DeviceFileEvents
-| where FolderPath contains "\\Policies\\{31B2F340-016D-11D2-945F-00C04FB984F9}\\" and (FolderPath endswith ".dll" or FolderPath endswith ".exe")

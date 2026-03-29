@@ -1,7 +1,0 @@
-// Author: Jason Lynch
-// Date: 2019/04/02
-// Level: high
-// Description: Detects an executable in the users directory started from one of the Microsoft Office suite applications (Word, Excel, PowerPoint, Publisher, Visio)
-// Tags: attack.execution, attack.t1204.002, attack.g0046, car.2013-05-002
-DeviceProcessEvents
-| where (FolderPath endswith ".exe" and FolderPath startswith "C:\\users\\" and (InitiatingProcessFolderPath endswith "\\WINWORD.EXE" or InitiatingProcessFolderPath endswith "\\EXCEL.EXE" or InitiatingProcessFolderPath endswith "\\POWERPNT.exe" or InitiatingProcessFolderPath endswith "\\MSPUB.exe" or InitiatingProcessFolderPath endswith "\\VISIO.exe" or InitiatingProcessFolderPath endswith "\\MSACCESS.exe" or InitiatingProcessFolderPath endswith "\\EQNEDT32.exe")) and (not(FolderPath endswith "\\Teams.exe"))

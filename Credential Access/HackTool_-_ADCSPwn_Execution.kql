@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/07/31
-// Level: high
-// Description: Detects command line parameters used by ADCSPwn, a tool to escalate privileges in an active directory network by coercing authenticate from machine accounts and relaying to the certificate service
-// Tags: attack.credential_access, attack.t1557.001
-DeviceProcessEvents
-| where ProcessCommandLine contains " --adcs " and ProcessCommandLine contains " --port "

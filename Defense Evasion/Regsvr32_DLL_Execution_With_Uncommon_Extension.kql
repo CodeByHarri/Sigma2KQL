@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/07/17
-// Level: medium
-// Description: Detects a "regsvr32" execution where the DLL doesn't contain a common file extension.
-// Tags: attack.defense_evasion, attack.t1574, attack.execution
-DeviceProcessEvents
-| where (FolderPath endswith "\\regsvr32.exe" or ProcessVersionInfoOriginalFileName =~ "REGSVR32.EXE") and (not((ProcessCommandLine =~ "" or (ProcessCommandLine contains ".ax" or ProcessCommandLine contains ".cpl" or ProcessCommandLine contains ".dll" or ProcessCommandLine contains ".ocx") or isnull(ProcessCommandLine)))) and (not((ProcessCommandLine contains ".bav" or ProcessCommandLine contains ".ppl")))

@@ -1,7 +1,0 @@
-// Author: Konstantin Grishchenko, oscd.community
-// Date: 2020/10/07
-// Level: medium
-// Description: setupapi.dll library provide InstallHinfSection function for processing INF files. INF file may contain instructions allowing to create values in the registry, modify files and install drivers. This technique could be used to obtain persistence via modifying one of Run or RunOnce registry keys, run process or use other DLLs chain calls (see references) InstallHinfSection function in setupapi.dll calls runonce.exe executable regardless of actual content of INF file.
-// Tags: attack.defense_evasion, attack.t1218.011
-DeviceProcessEvents
-| where FolderPath endswith "\\runonce.exe" and (InitiatingProcessCommandLine contains "setupapi.dll" and InitiatingProcessCommandLine contains "InstallHinfSection") and InitiatingProcessFolderPath endswith "\\rundll32.exe"

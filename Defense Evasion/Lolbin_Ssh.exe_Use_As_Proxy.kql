@@ -1,7 +1,0 @@
-// Author: frack113, Nasreddine Bencherchali
-// Date: 2022/12/29
-// Level: medium
-// Description: Detect usage of the "ssh.exe" binary as a proxy to launch other programs
-// Tags: attack.defense_evasion, attack.t1202
-DeviceProcessEvents
-| where InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\OpenSSH\\sshd.exe" or ((ProcessCommandLine contains "ProxyCommand=" or (ProcessCommandLine contains "PermitLocalCommand" and ProcessCommandLine contains "LocalCommand")) and FolderPath endswith "\\ssh.exe")

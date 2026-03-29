@@ -1,7 +1,0 @@
-// Author: Andreas Hunkeler (@Karneades), Florian Roth
-// Date: 2021/12/17
-// Level: high
-// Description: Detects suspicious processes spawned from a Java host process which could indicate a sign of exploitation (e.g. log4j)
-// Tags: attack.initial_access, attack.persistence, attack.privilege_escalation
-DeviceProcessEvents
-| where (FolderPath endswith "\\AppVLP.exe" or FolderPath endswith "\\bitsadmin.exe" or FolderPath endswith "\\certutil.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\curl.exe" or FolderPath endswith "\\forfiles.exe" or FolderPath endswith "\\hh.exe" or FolderPath endswith "\\mftrace.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe" or FolderPath endswith "\\query.exe" or FolderPath endswith "\\reg.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\schtasks.exe" or FolderPath endswith "\\scrcons.exe" or FolderPath endswith "\\scriptrunner.exe" or FolderPath endswith "\\sh.exe" or FolderPath endswith "\\systeminfo.exe" or FolderPath endswith "\\whoami.exe" or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\wscript.exe") and InitiatingProcessFolderPath endswith "\\java.exe"

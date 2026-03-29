@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/01
-// Level: medium
-// Description: Detects the execution of "wmic" with the "process" flag, which adversary might use to list processes running on the compromised host or list installed software hotfixes and patches.
-// Tags: attack.execution, attack.t1047
-DeviceProcessEvents
-| where (ProcessCommandLine contains "process" and (FolderPath endswith "\\WMIC.exe" or ProcessVersionInfoOriginalFileName =~ "wmic.exe")) and (not((ProcessCommandLine contains "call" and ProcessCommandLine contains "create")))

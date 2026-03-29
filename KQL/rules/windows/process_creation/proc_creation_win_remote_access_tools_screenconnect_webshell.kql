@@ -1,0 +1,13 @@
+// Title: Remote Access Tool - ScreenConnect Server Web Shell Execution
+// Author: Jason Rathbun (Blackpoint Cyber)
+// Date: 2024-02-26
+// Level: high
+// Description: Detects potential web shell execution from the ScreenConnect server process.
+// MITRE Tactic: Initial Access
+// Tags: attack.initial-access, attack.t1190
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_remote_access_tools_screenconnect_webshell.yml
+// False Positives:
+//   - Unlikely
+
+DeviceProcessEvents
+| where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\csc.exe") and InitiatingProcessFolderPath endswith "\\ScreenConnect.Service.exe"

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/10/18
-// Level: high
-// Description: Detects PowerShell execution to set the ACL of a file or a folder
-// Tags: attack.defense_evasion
-DeviceProcessEvents
-| where (ProcessCommandLine contains "Set-Acl " and ProcessCommandLine contains "-AclObject " and ProcessCommandLine contains "-Path ") and ((ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll")) or (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"))

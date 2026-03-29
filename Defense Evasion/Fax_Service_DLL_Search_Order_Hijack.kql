@@ -1,7 +1,0 @@
-// Author: NVISO
-// Date: 2020/05/04
-// Level: high
-// Description: The Fax service attempts to load ualapi.dll, which is non-existent. An attacker can then (side)load their own malicious DLL using this service.
-// Tags: attack.persistence, attack.defense_evasion, attack.t1574.001, attack.t1574.002
-DeviceImageLoadEvents
-| where (FolderPath endswith "ualapi.dll" and InitiatingProcessFolderPath endswith "\\fxssvc.exe") and (not(FolderPath startswith "C:\\Windows\\WinSxS\\"))

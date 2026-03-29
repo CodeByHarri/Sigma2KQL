@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2023/01/15
-// Level: high
-// Description: Detect potential persistence via the creation of an excel add-in (XLL) file to make it run automatically when Excel is started.
-// Tags: attack.persistence, attack.t1137.006
-DeviceRegistryEvents
-| where RegistryValueData endswith ".xll" and RegistryValueData startswith "/R " and RegistryKey contains "Software\\Microsoft\\Office" and RegistryKey endswith "\\Excel\\Options"

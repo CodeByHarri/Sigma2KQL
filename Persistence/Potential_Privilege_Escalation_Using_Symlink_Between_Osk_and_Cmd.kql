@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/12/11
-// Level: high
-// Description: Detects the creation of a symbolic link between "cmd.exe" and the accessibility on-screen keyboard binary (osk.exe) using "mklink". This technique provides an elevated command prompt to the user from the login screen without the need to log in.
-// Tags: attack.privilege_escalation, attack.persistence, attack.t1546.008
-DeviceProcessEvents
-| where (ProcessCommandLine contains "mklink" and ProcessCommandLine contains "\\osk.exe" and ProcessCommandLine contains "\\cmd.exe") and (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")

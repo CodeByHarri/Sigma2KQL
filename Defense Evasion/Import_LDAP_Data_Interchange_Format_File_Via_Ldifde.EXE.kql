@@ -1,8 +1,0 @@
-// Author: @gott_cyber
-// Date: 2022/09/02
-// Level: medium
-// Description: Detects the execution of "Ldifde.exe" with the import flag "-i". The can be abused to include HTTP-based arguments which will allow the arbitrary download of files from a remote server.
-
-// Tags: attack.command_and_control, attack.defense_evasion, attack.t1218, attack.t1105
-DeviceProcessEvents
-| where (ProcessCommandLine contains "-i" and ProcessCommandLine contains "-f") and (FolderPath endswith "\\ldifde.exe" or ProcessVersionInfoOriginalFileName =~ "ldifde.exe")

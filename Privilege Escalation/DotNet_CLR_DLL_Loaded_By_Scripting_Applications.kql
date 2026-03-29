@@ -1,7 +1,0 @@
-// Author: omkar72, oscd.community
-// Date: 2020/10/14
-// Level: high
-// Description: Detects .NET CLR DLLs being loaded by scripting applications such as wscript or cscript. This could be an indication of potential suspicious execution.
-// Tags: attack.execution, attack.privilege_escalation, attack.t1055
-DeviceImageLoadEvents
-| where (FolderPath endswith "\\clr.dll" or FolderPath endswith "\\mscoree.dll" or FolderPath endswith "\\mscorlib.dll") and (InitiatingProcessFolderPath endswith "\\cmstp.exe" or InitiatingProcessFolderPath endswith "\\cscript.exe" or InitiatingProcessFolderPath endswith "\\mshta.exe" or InitiatingProcessFolderPath endswith "\\msxsl.exe" or InitiatingProcessFolderPath endswith "\\regsvr32.exe" or InitiatingProcessFolderPath endswith "\\wmic.exe" or InitiatingProcessFolderPath endswith "\\wscript.exe")

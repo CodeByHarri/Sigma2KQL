@@ -1,7 +1,0 @@
-// Author: Avneet Singh @v3t0_, oscd.community
-// Date: 2020/11/15
-// Level: medium
-// Description: Rule to detect the configuration of Run Once registry key. Configured payload can be run by runonce.exe /AlternateShellStartup
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where (RegistryKey contains "\\Microsoft\\Active Setup\\Installed Components" and RegistryKey endswith "\\StubPath") and (not(((RegistryValueData contains "C:\\Program Files\\Google\\Chrome\\Application\\" and RegistryValueData contains "\\Installer\\chrmstp.exe\" --configure-user-settings --verbose-logging --system-level") or ((RegistryValueData contains "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\" or RegistryValueData contains "C:\\Program Files\\Microsoft\\Edge\\Application\\") and RegistryValueData endswith "\\Installer\\setup.exe\" --configure-user-settings --verbose-logging --system-level --msedge --channel=stable"))))

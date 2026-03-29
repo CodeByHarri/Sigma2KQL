@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/05/19
-// Level: high
-// Description: Detects the suspicious execution of a utility to convert Windows 3.x .grp files or for persistence purposes by malicious software or actors
-// Tags: attack.persistence, attack.t1547
-DeviceProcessEvents
-| where ProcessCommandLine contains "grpconv.exe -o" or ProcessCommandLine contains "grpconv -o"

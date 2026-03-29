@@ -1,7 +1,0 @@
-// Author: Teymur Kheirkhabarov, Endgame, JHasenbusch, Daniil Yugoslavskiy, oscd.community, frack113
-// Date: 2019/10/22
-// Level: high
-// Description: Detects the usage of "reg.exe" in order to dump sensitive registry hives. This includes SAM, SYSTEM and SECURITY hives.
-// Tags: attack.credential_access, attack.t1003.002, attack.t1003.004, attack.t1003.005, car.2013-07-001
-DeviceProcessEvents
-| where (ProcessCommandLine contains " save " or ProcessCommandLine contains " export " or ProcessCommandLine contains " ˢave " or ProcessCommandLine contains " eˣport ") and (ProcessCommandLine contains "\\system" or ProcessCommandLine contains "\\sam" or ProcessCommandLine contains "\\security" or ProcessCommandLine contains "\\ˢystem" or ProcessCommandLine contains "\\syˢtem" or ProcessCommandLine contains "\\ˢyˢtem" or ProcessCommandLine contains "\\ˢam" or ProcessCommandLine contains "\\ˢecurity") and (ProcessCommandLine contains "hklm" or ProcessCommandLine contains "hk˪m" or ProcessCommandLine contains "hkey_local_machine" or ProcessCommandLine contains "hkey_˪ocal_machine" or ProcessCommandLine contains "hkey_loca˪_machine" or ProcessCommandLine contains "hkey_˪oca˪_machine") and (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~ "reg.exe")

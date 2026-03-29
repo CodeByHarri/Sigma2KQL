@@ -1,7 +1,0 @@
-// Author: Avneet Singh @v3t0_, oscd.community
-// Date: 2020/10/18
-// Level: medium
-// Description: Detects potential DLL injection and execution using "Tracker.exe"
-// Tags: attack.defense_evasion, attack.t1055.001
-DeviceProcessEvents
-| where ((ProcessCommandLine contains " /d " or ProcessCommandLine contains " /c ") and (FolderPath endswith "\\tracker.exe" or ProcessVersionInfoFileDescription =~ "Tracker")) and (not((ProcessCommandLine contains " /ERRORREPORT:PROMPT " or (InitiatingProcessFolderPath endswith "\\Msbuild\\Current\\Bin\\MSBuild.exe" or InitiatingProcessFolderPath endswith "\\Msbuild\\Current\\Bin\\amd64\\MSBuild.exe"))))

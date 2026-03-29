@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/07/21
-// Level: high
-// Description: Detects when an attacker adds a new "DLLPathOverride" value to the "Natural Language" key in order to achieve persistence which will get invoked by "SearchIndexer.exe" process
-// Tags: attack.persistence
-DeviceRegistryEvents
-| where RegistryKey contains "\\SYSTEM\\CurrentControlSet\\Control\\ContentIndex\\Language" and (RegistryKey contains "\\StemmerDLLPathOverride" or RegistryKey contains "\\WBDLLPathOverride" or RegistryKey contains "\\StemmerClass" or RegistryKey contains "\\WBreakerClass")

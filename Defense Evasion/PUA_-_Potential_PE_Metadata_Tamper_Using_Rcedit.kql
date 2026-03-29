@@ -1,7 +1,0 @@
-// Author: Micah Babinski
-// Date: 2022/12/11
-// Level: medium
-// Description: Detects the use of rcedit to potentially alter executable PE metadata properties, which could conceal efforts to rename system utilities for defense evasion.
-// Tags: attack.defense_evasion, attack.t1036.003, attack.t1036, attack.t1027.005, attack.t1027
-DeviceProcessEvents
-| where (ProcessCommandLine contains "OriginalFileName" or ProcessCommandLine contains "CompanyName" or ProcessCommandLine contains "FileDescription" or ProcessCommandLine contains "ProductName" or ProcessCommandLine contains "ProductVersion" or ProcessCommandLine contains "LegalCopyright") and ProcessCommandLine contains "--set-" and ((FolderPath endswith "\\rcedit-x64.exe" or FolderPath endswith "\\rcedit-x86.exe") or ProcessVersionInfoFileDescription =~ "Edit resources of exe" or ProcessVersionInfoProductName =~ "rcedit")

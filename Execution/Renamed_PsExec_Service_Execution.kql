@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/07/21
-// Level: high
-// Description: Detects suspicious launch of a renamed version of the PSEXESVC service with, which is not often used by legitimate administrators
-// Tags: attack.execution
-DeviceProcessEvents
-| where ProcessVersionInfoOriginalFileName =~ "psexesvc.exe" and (not(FolderPath =~ "C:\\Windows\\PSEXESVC.exe"))

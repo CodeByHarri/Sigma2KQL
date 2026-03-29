@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/01/28
-// Level: high
-// Description: Detects commands that temporarily turn off Volume Snapshots
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where ProcessCommandLine contains "\\Services\\VSS\\Diag" and ProcessCommandLine contains "/d Disabled"

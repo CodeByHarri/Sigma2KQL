@@ -1,7 +1,0 @@
-// Author: Christian Burkard (Nextron Systems)
-// Date: 2021/08/23
-// Level: high
-// Description: Detects the pattern of UAC Bypass using Windows Media Player osksupport.dll (UACMe 32)
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1548.002
-DeviceProcessEvents
-| where (FolderPath =~ "C:\\Program Files\\Windows Media Player\\osk.exe" and (ProcessIntegrityLevel in~ ("High", "System"))) or (FolderPath =~ "C:\\Windows\\System32\\cmd.exe" and (ProcessIntegrityLevel in~ ("High", "System")) and InitiatingProcessCommandLine =~ "\"C:\\Windows\\system32\\mmc.exe\" \"C:\\Windows\\system32\\eventvwr.msc\" /s")

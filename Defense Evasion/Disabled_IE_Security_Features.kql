@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2020/06/19
-// Level: high
-// Description: Detects command lines that indicate unwanted modifications to registry keys that disable important Internet Explorer security features
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains " -name IEHarden " and ProcessCommandLine contains " -value 0 ") or (ProcessCommandLine contains " -name DEPOff " and ProcessCommandLine contains " -value 1 ") or (ProcessCommandLine contains " -name DisableFirstRunCustomize " and ProcessCommandLine contains " -value 2 ")

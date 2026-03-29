@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/11/11
-// Level: medium
-// Description: Detects suspicious command line flags that let the user set a target user and command as e.g. seen in PsExec-like tools
-// Tags: attack.privilege_escalation
-DeviceProcessEvents
-| where (ProcessCommandLine contains " -c cmd" or ProcessCommandLine contains " -c \"cmd" or ProcessCommandLine contains " -c powershell" or ProcessCommandLine contains " -c \"powershell" or ProcessCommandLine contains " --command cmd" or ProcessCommandLine contains " --command powershell" or ProcessCommandLine contains " -c whoami" or ProcessCommandLine contains " -c wscript" or ProcessCommandLine contains " -c cscript") and (ProcessCommandLine contains " -u system " or ProcessCommandLine contains " --user system " or ProcessCommandLine contains " -u NT" or ProcessCommandLine contains " -u \"NT" or ProcessCommandLine contains " -u 'NT" or ProcessCommandLine contains " --system " or ProcessCommandLine contains " -u administrator ")

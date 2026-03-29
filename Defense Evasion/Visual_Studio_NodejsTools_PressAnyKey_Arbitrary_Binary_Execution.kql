@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/01/11
-// Level: medium
-// Description: Detects child processes of Microsoft.NodejsTools.PressAnyKey.exe that can be used to execute any other binary
-// Tags: attack.execution, attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\Microsoft.NodejsTools.PressAnyKey.exe"

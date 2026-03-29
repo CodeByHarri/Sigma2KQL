@@ -1,7 +1,0 @@
-// Author: elhoim
-// Date: 2022/04/28
-// Level: medium
-// Description: Detects suspicious connections from Microsoft Sync Center to non-private IPs.
-// Tags: attack.t1055, attack.t1218, attack.execution, attack.defense_evasion
-DeviceNetworkEvents
-| where InitiatingProcessFolderPath endswith "\\mobsync.exe" and (not((ipv4_is_in_range(RemoteIP, "127.0.0.0/8") or ipv4_is_in_range(RemoteIP, "10.0.0.0/8") or ipv4_is_in_range(RemoteIP, "172.16.0.0/12") or ipv4_is_in_range(RemoteIP, "192.168.0.0/16") or ipv4_is_in_range(RemoteIP, "169.254.0.0/16") or ipv4_is_in_range(RemoteIP, "::1/128") or ipv4_is_in_range(RemoteIP, "fe80::/10") or ipv4_is_in_range(RemoteIP, "fc00::/7"))))

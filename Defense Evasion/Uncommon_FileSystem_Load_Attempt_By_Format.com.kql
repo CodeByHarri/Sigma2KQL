@@ -1,8 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/01/04
-// Level: high
-// Description: Detects the execution of format.com with an uncommon filesystem selection that could indicate a defense evasion activity in which "format.com" is used to load malicious DLL files or other programs.
-
-// Tags: attack.defense_evasion
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/fs:" and FolderPath endswith "\\format.com") and (not((ProcessCommandLine contains "/fs:exFAT" or ProcessCommandLine contains "/fs:FAT" or ProcessCommandLine contains "/fs:NTFS" or ProcessCommandLine contains "/fs:ReFS" or ProcessCommandLine contains "/fs:UDF")))

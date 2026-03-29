@@ -1,7 +1,0 @@
-// Author: juju4
-// Date: 2018/12/11
-// Level: medium
-// Description: Detects potential commandline obfuscation using known escape characters
-// Tags: attack.defense_evasion, attack.t1140
-DeviceProcessEvents
-| where ProcessCommandLine contains "h^t^t^p" or ProcessCommandLine contains "h\"t\"t\"p"

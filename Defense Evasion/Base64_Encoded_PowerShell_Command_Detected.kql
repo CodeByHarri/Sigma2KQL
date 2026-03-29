@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2020/01/29
-// Level: high
-// Description: Detects usage of the "FromBase64String" function in the commandline which is used to decode a base64 encoded string
-// Tags: attack.t1027, attack.defense_evasion, attack.t1140, attack.t1059.001
-DeviceProcessEvents
-| where ProcessCommandLine contains "::FromBase64String("

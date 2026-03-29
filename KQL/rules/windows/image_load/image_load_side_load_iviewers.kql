@@ -1,0 +1,11 @@
+// Title: Potential Iviewers.DLL Sideloading
+// Author: X__Junior (Nextron Systems)
+// Date: 2023-03-21
+// Level: high
+// Description: Detects potential DLL sideloading of "iviewers.dll" (OLE/COM Object Interface Viewer)
+// MITRE Tactic: Persistence
+// Tags: attack.persistence, attack.defense-evasion, attack.privilege-escalation, attack.t1574.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/image_load/image_load_side_load_iviewers.yml
+
+DeviceImageLoadEvents
+| where FolderPath endswith "\\iviewers.dll" and (not((FolderPath startswith "C:\\Program Files (x86)\\Windows Kits\\" or FolderPath startswith "C:\\Program Files\\Windows Kits\\")))

@@ -1,7 +1,0 @@
-// Author: Nikita Nazarov, oscd.community
-// Date: 2020/10/16
-// Level: medium
-// Description: Adversaries may attempt to enumerate software for a variety of reasons, such as figuring out what security measures are present or if the compromised system has a version of software that is vulnerable.
-// Tags: attack.discovery, attack.t1518
-DeviceProcessEvents
-| where (ProcessCommandLine contains "query" and ProcessCommandLine contains "\\software\\" and ProcessCommandLine contains "/v" and ProcessCommandLine contains "svcversion") and FolderPath endswith "\\reg.exe"

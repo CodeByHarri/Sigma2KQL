@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/05/05
-// Level: high
-// Description: Detects a whoami.exe executed with the /priv command line flag instructing the tool to show all current user privileges. This is often used after a privilege escalation attempt.
-// Tags: attack.privilege_escalation, attack.discovery, attack.t1033
-DeviceProcessEvents
-| where (ProcessCommandLine contains " /priv" or ProcessCommandLine contains " -priv") and (FolderPath endswith "\\whoami.exe" or ProcessVersionInfoOriginalFileName =~ "whoami.exe")

@@ -1,9 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), frack113
-// Date: 2023/10/20
-// Level: medium
-// Description: Detects execution of "findstr" to search for common names of security tools. Attackers often pipe the results of recon commands such as "tasklist" or "whoami" to "findstr" in order to filter out the results.
-This detection focuses on the keywords that the attacker might use as a filter.
-
-// Tags: attack.discovery, attack.t1518.001
-DeviceProcessEvents
-| where (ProcessCommandLine endswith " avira" or ProcessCommandLine endswith " avira\"" or ProcessCommandLine endswith " cb" or ProcessCommandLine endswith " cb\"" or ProcessCommandLine endswith " cylance" or ProcessCommandLine endswith " cylance\"" or ProcessCommandLine endswith " defender" or ProcessCommandLine endswith " defender\"" or ProcessCommandLine endswith " kaspersky" or ProcessCommandLine endswith " kaspersky\"" or ProcessCommandLine endswith " kes" or ProcessCommandLine endswith " kes\"" or ProcessCommandLine endswith " mc" or ProcessCommandLine endswith " mc\"" or ProcessCommandLine endswith " sec" or ProcessCommandLine endswith " sec\"" or ProcessCommandLine endswith " sentinel" or ProcessCommandLine endswith " sentinel\"" or ProcessCommandLine endswith " symantec" or ProcessCommandLine endswith " symantec\"" or ProcessCommandLine endswith " virus" or ProcessCommandLine endswith " virus\"") and ((FolderPath endswith "\\find.exe" or FolderPath endswith "\\findstr.exe") or (ProcessVersionInfoOriginalFileName in~ ("FIND.EXE", "FINDSTR.EXE")))

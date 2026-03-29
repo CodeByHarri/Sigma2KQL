@@ -1,9 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/04/17
-// Level: high
-// Description: Detects usage of winget to add a new insecure (http) download source.
-Winget will not allow the addition of insecure sources, hence this could indicate potential suspicious activity (or typos)
-
-// Tags: attack.defense_evasion, attack.execution, attack.t1059
-DeviceProcessEvents
-| where (ProcessCommandLine contains "source " and ProcessCommandLine contains "add " and ProcessCommandLine contains "http://") and (FolderPath endswith "\\winget.exe" or ProcessVersionInfoOriginalFileName =~ "winget.exe")

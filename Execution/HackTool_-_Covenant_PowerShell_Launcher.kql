@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community
-// Date: 2020/06/04
-// Level: high
-// Description: Detects suspicious command lines used in Covenant luanchers
-// Tags: attack.execution, attack.defense_evasion, attack.t1059.001, attack.t1564.003
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "-Command" or ProcessCommandLine contains "-EncodedCommand") and (ProcessCommandLine contains "-Sta" and ProcessCommandLine contains "-Nop" and ProcessCommandLine contains "-Window" and ProcessCommandLine contains "Hidden")) or (ProcessCommandLine contains "sv o (New-Object IO.MemorySteam);sv d " or ProcessCommandLine contains "mshta file.hta" or ProcessCommandLine contains "GruntHTTP" or ProcessCommandLine contains "-EncodedCommand cwB2ACAAbwAgA")

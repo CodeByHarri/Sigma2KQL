@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/12/09
-// Level: informational
-// Description: ForceV1 asks for information directly from the kernel space. Conhost connects to the console application. High IntegrityLevel means the process is running with elevated privileges, such as an Administrator context.
-// Tags: attack.defense_evasion, attack.t1202
-DeviceProcessEvents
-| where (ProcessCommandLine contains "conhost.exe" and ProcessCommandLine contains "0xffffffff" and ProcessCommandLine contains "-ForceV1") and ProcessIntegrityLevel =~ "High"

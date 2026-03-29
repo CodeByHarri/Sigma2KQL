@@ -1,7 +1,0 @@
-// Author: Kutepov Anton, oscd.community
-// Date: 2019/10/24
-// Level: medium
-// Description: Detects the execution of netsh with the "trace" flag in order to start a network capture
-// Tags: attack.discovery, attack.credential_access, attack.t1040
-DeviceProcessEvents
-| where (ProcessCommandLine contains "trace" and ProcessCommandLine contains "start") and (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName =~ "netsh.exe")

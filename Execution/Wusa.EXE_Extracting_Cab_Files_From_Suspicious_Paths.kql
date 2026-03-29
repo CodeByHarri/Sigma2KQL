@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/05
-// Level: high
-// Description: Detects usage of the "wusa.exe" (Windows Update Standalone Installer) utility to extract cab using the "/extract" argument from suspicious paths
-// Tags: attack.execution
-DeviceProcessEvents
-| where (ProcessCommandLine contains ":\\PerfLogs\\" or ProcessCommandLine contains ":\\Users\\Public\\" or ProcessCommandLine contains ":\\Windows\\Temp\\" or ProcessCommandLine contains "\\Appdata\\Local\\Temp\\") and (ProcessCommandLine contains "/extract:" and FolderPath endswith "\\wusa.exe")

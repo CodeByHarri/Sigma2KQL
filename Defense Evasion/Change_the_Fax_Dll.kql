@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/07/17
-// Level: high
-// Description: Detect possible persistence using Fax DLL load when service restart
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where (RegistryKey contains "\\Software\\Microsoft\\Fax\\Device Providers" and RegistryKey contains "\\ImageName") and (not(RegistryValueData =~ "%systemroot%\\system32\\fxst30.dll"))

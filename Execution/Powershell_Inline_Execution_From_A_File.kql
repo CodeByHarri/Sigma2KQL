@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/12/25
-// Level: medium
-// Description: Detects inline execution of PowerShell code from a file
-// Tags: attack.execution, attack.t1059.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "iex " or ProcessCommandLine contains "Invoke-Expression " or ProcessCommandLine contains "Invoke-Command " or ProcessCommandLine contains "icm ") and ProcessCommandLine contains " -raw" and (ProcessCommandLine contains "cat " or ProcessCommandLine contains "get-content " or ProcessCommandLine contains "type ")

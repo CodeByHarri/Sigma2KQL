@@ -1,9 +1,0 @@
-// Author: Timur Zinniatullin, oscd.community
-// Date: 2019/10/21
-// Level: medium
-// Description: Detects the execution of the MSXSL utility. This can be used to execute Extensible Stylesheet Language (XSL) files. These files are commonly used to describe the processing and rendering of data within XML files.
-Adversaries can abuse this functionality to execute arbitrary files while potentially bypassing application whitelisting defenses.
-
-// Tags: attack.defense_evasion, attack.t1220
-DeviceProcessEvents
-| where FolderPath endswith "\\msxsl.exe"

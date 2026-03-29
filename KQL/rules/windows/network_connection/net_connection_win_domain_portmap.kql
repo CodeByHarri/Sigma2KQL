@@ -1,0 +1,13 @@
+// Title: Network Communication Initiated To Portmap.IO Domain
+// Author: Florian Roth (Nextron Systems)
+// Date: 2024-05-31
+// Level: medium
+// Description: Detects an executable accessing the portmap.io domain, which could be a sign of forbidden C2 traffic or data exfiltration by malicious actors
+// MITRE Tactic: Command and Control
+// Tags: attack.t1041, attack.command-and-control, attack.t1090.002, attack.exfiltration
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/network_connection/net_connection_win_domain_portmap.yml
+// False Positives:
+//   - Legitimate use of portmap.io domains
+
+DeviceNetworkEvents
+| where RemoteUrl endswith ".portmap.io"

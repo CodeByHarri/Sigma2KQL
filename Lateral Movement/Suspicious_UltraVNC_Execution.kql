@@ -1,7 +1,0 @@
-// Author: Bhabesh Raj
-// Date: 2022/03/04
-// Level: high
-// Description: Detects suspicious UltraVNC command line flag combination that indicate a auto reconnect upon execution, e.g. startup (as seen being used by Gamaredon threat group)
-// Tags: attack.lateral_movement, attack.g0047, attack.t1021.005
-DeviceProcessEvents
-| where ProcessCommandLine contains "-autoreconnect " and ProcessCommandLine contains "-connect " and ProcessCommandLine contains "-id:"

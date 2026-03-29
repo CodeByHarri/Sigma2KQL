@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2018/03/18
-// Level: high
-// Description: Detects the creation of taskmgr.exe process in context of LOCAL_SYSTEM
-// Tags: attack.defense_evasion, attack.t1036
-DeviceProcessEvents
-| where FolderPath endswith "\\taskmgr.exe" and (AccountName contains "AUTHORI" or AccountName contains "AUTORI")

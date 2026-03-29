@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/12/13
-// Level: medium
-// Description: Detects potential DLL sideloading using ClassicExplorer32.dll from the Classic Shell software
-// Tags: attack.defense_evasion, attack.persistence, attack.privilege_escalation, attack.t1574.001, attack.t1574.002
-DeviceImageLoadEvents
-| where FolderPath endswith "\\ClassicExplorer32.dll" and (not(FolderPath startswith "C:\\Program Files\\Classic Shell\\"))

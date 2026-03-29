@@ -1,7 +1,0 @@
-// Author: Bartlomiej Czyz @bczyz1, oscd.community
-// Date: 2020/10/11
-// Level: medium
-// Description: Detects value modification of registry key containing path to binary used as screensaver.
-// Tags: attack.persistence, attack.privilege_escalation, attack.t1546.002
-DeviceRegistryEvents
-| where RegistryKey endswith "\\Control Panel\\Desktop\\SCRNSAVE.EXE" and (not((InitiatingProcessFolderPath endswith "\\rundll32.exe" or InitiatingProcessFolderPath endswith "\\explorer.exe")))

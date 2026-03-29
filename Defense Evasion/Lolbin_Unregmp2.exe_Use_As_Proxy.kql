@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/12/29
-// Level: medium
-// Description: Detect usage of the "unregmp2.exe" binary as a proxy to launch a custom version of "wmpnscfg.exe"
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ProcessCommandLine contains " /HideWMP" and (FolderPath endswith "\\unregmp2.exe" or ProcessVersionInfoOriginalFileName =~ "unregmp2.exe")

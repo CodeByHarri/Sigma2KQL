@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali
-// Date: 2023/02/07
-// Level: medium
-// Description: Detects execution of a renamed autohotkey.exe binary based on PE metadata fields
-// Tags: attack.defense_evasion
-DeviceProcessEvents
-| where (ProcessVersionInfoProductName contains "AutoHotkey" or ProcessVersionInfoFileDescription contains "AutoHotkey" or (ProcessVersionInfoOriginalFileName in~ ("AutoHotkey.exe", "AutoHotkey.rc"))) and (not(((FolderPath endswith "\\AutoHotkey.exe" or FolderPath endswith "\\AutoHotkey32.exe" or FolderPath endswith "\\AutoHotkey32_UIA.exe" or FolderPath endswith "\\AutoHotkey64.exe" or FolderPath endswith "\\AutoHotkey64_UIA.exe" or FolderPath endswith "\\AutoHotkeyA32.exe" or FolderPath endswith "\\AutoHotkeyA32_UIA.exe" or FolderPath endswith "\\AutoHotkeyU32.exe" or FolderPath endswith "\\AutoHotkeyU32_UIA.exe" or FolderPath endswith "\\AutoHotkeyU64.exe" or FolderPath endswith "\\AutoHotkeyU64_UIA.exe") or FolderPath contains "\\AutoHotkey")))

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Florian Roth (Nextron Systems)
-// Date: 2022/08/25
-// Level: critical
-// Description: Detects process activity patterns as seen being used by Sliver C2 framework implants
-// Tags: attack.execution, attack.t1059
-DeviceProcessEvents
-| where ProcessCommandLine contains "-NoExit -Command [Console]::OutputEncoding=[Text.UTF8Encoding]::UTF8"

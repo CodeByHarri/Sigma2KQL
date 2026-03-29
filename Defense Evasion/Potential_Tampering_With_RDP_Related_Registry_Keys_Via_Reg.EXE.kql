@@ -1,7 +1,0 @@
-// Author: pH-T (Nextron Systems), @Kostastsale, @TheDFIRReport
-// Date: 2022/02/12
-// Level: high
-// Description: Detects the execution of "reg.exe" for enabling/disabling the RDP service on the host by tampering with the 'CurrentControlSet\Control\Terminal Server' values
-// Tags: attack.defense_evasion, attack.lateral_movement, attack.t1021.001, attack.t1112
-DeviceProcessEvents
-| where ((ProcessCommandLine contains " add " and ProcessCommandLine contains "\\CurrentControlSet\\Control\\Terminal Server" and ProcessCommandLine contains "REG_DWORD" and ProcessCommandLine contains " /f") and (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~ "reg.exe")) and ((ProcessCommandLine contains "Licensing Core" and ProcessCommandLine contains "EnableConcurrentSessions") or (ProcessCommandLine contains "WinStations\\RDP-Tcp" or ProcessCommandLine contains "MaxInstanceCount" or ProcessCommandLine contains "fEnableWinStation" or ProcessCommandLine contains "TSUserEnabled" or ProcessCommandLine contains "TSEnabled" or ProcessCommandLine contains "TSAppCompat" or ProcessCommandLine contains "IdleWinStationPoolCount" or ProcessCommandLine contains "TSAdvertise" or ProcessCommandLine contains "AllowTSConnections" or ProcessCommandLine contains "fSingleSessionPerUser" or ProcessCommandLine contains "fDenyTSConnections"))

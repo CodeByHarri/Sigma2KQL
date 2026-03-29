@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/09/01
-// Level: medium
-// Description: Detects execution from an Alternate Data Stream (ADS). Adversaries may use NTFS file attributes to hide their malicious data in order to evade detection
-// Tags: attack.defense_evasion, attack.t1564.004
-DeviceProcessEvents
-| where ProcessCommandLine contains "txt:" and ((ProcessCommandLine contains "esentutl " and ProcessCommandLine contains " /y " and ProcessCommandLine contains " /d " and ProcessCommandLine contains " /o ") or (ProcessCommandLine contains "makecab " and ProcessCommandLine contains ".cab") or (ProcessCommandLine contains "reg " and ProcessCommandLine contains " export ") or (ProcessCommandLine contains "regedit " and ProcessCommandLine contains " /E ") or (ProcessCommandLine contains "type " and ProcessCommandLine contains " > "))

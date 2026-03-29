@@ -1,7 +1,0 @@
-// Author: FPT.EagleEye, Thomas Patzke (improvements)
-// Date: 2021/06/29
-// Level: informational
-// Description: Detect DLL Load from Spooler Service backup folder
-// Tags: attack.persistence, attack.defense_evasion, attack.privilege_escalation, attack.t1574, cve.2021.1675, cve.2021.34527
-DeviceImageLoadEvents
-| where (FolderPath contains "\\Windows\\System32\\spool\\drivers\\x64\\3\\" or FolderPath contains "\\Windows\\System32\\spool\\drivers\\x64\\4\\") and FolderPath endswith ".dll" and InitiatingProcessFolderPath endswith "\\spoolsv.exe"

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/06/10
-// Level: medium
-// Description: Detects creation of new ".dll" files inside the plugins directory of a notepad++ installation by a process other than "gup.exe". Which could indicates possible persistence
-// Tags: attack.persistence
-DeviceFileEvents
-| where (FolderPath contains "\\Notepad++\\plugins\\" and FolderPath endswith ".dll") and (not((InitiatingProcessFolderPath endswith "\\Notepad++\\updater\\gup.exe" or (InitiatingProcessFolderPath contains "\\AppData\\Local\\Temp\\" and (InitiatingProcessFolderPath endswith "\\target.exe" or InitiatingProcessFolderPath endswith "Installer.x64.exe") and InitiatingProcessFolderPath startswith "C:\\Users\\"))))

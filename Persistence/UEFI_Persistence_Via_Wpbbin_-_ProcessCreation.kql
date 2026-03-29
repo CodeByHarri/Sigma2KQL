@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/07/18
-// Level: high
-// Description: Detects execution of the binary "wpbbin" which is used as part of the UEFI based persistence method described in the reference section
-// Tags: attack.persistence, attack.defense_evasion, attack.t1542.001
-DeviceProcessEvents
-| where FolderPath =~ "C:\\Windows\\System32\\wpbbin.exe"

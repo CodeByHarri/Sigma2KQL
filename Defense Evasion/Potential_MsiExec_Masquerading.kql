@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/11/14
-// Level: high
-// Description: Detects the execution of msiexec.exe from an uncommon directory
-// Tags: attack.defense_evasion, attack.t1036.005
-DeviceProcessEvents
-| where (FolderPath endswith "\\msiexec.exe" or ProcessVersionInfoOriginalFileName =~ "\\msiexec.exe") and (not((FolderPath startswith "C:\\Windows\\System32\\" or FolderPath startswith "C:\\Windows\\SysWOW64\\" or FolderPath startswith "C:\\Windows\\WinSxS\\")))

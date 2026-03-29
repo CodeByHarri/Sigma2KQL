@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/01
-// Level: low
-// Description: Use of hostname to get information
-// Tags: attack.discovery, attack.t1082
-DeviceProcessEvents
-| where FolderPath endswith "\\HOSTNAME.EXE"

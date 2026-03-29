@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/08/14
-// Level: medium
-// Description: Detects the removal of a port or application rule in the Windows Firewall configuration using netsh
-// Tags: attack.defense_evasion, attack.t1562.004
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "firewall" and ProcessCommandLine contains "delete ") and (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName =~ "netsh.exe")) and (not((ProcessCommandLine contains "name=Dropbox" and InitiatingProcessFolderPath endswith "\\Dropbox.exe")))

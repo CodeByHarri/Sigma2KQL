@@ -1,7 +1,0 @@
-// Author: Christian Burkard (Nextron Systems)
-// Date: 2021/08/30
-// Level: high
-// Description: Detects the pattern of UAC Bypass using NTFS reparse point and wusa.exe DLL hijacking (UACMe 36)
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1548.002
-DeviceFileEvents
-| where FolderPath endswith "\\AppData\\Local\\Temp\\api-ms-win-core-kernel32-legacy-l1.DLL" and FolderPath startswith "C:\\Users\\"

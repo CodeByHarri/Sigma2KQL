@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/05/30
-// Level: medium
-// Description: Detects potential persistence activity via the registering of a new custom protocole handlers. While legitimate applications register protocole handlers often times during installation. And attacker can abuse this by setting a custom handler to be used as a persistence mechanism.
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where (RegistryValueData startswith "URL:" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\CLASSES") and (not(((InitiatingProcessFolderPath startswith "C:\\Program Files (x86)" or InitiatingProcessFolderPath startswith "C:\\Program Files\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\SysWOW64\\") or RegistryValueData startswith "URL:ms-")))

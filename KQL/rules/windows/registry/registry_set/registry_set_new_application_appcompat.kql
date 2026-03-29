@@ -1,0 +1,15 @@
+// Title: New Application in AppCompat
+// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+// Date: 2020-05-02
+// Level: informational
+// Description: A General detection for a new application in AppCompat. This indicates an application executing for the first time on an endpoint.
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1204.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_set/registry_set_new_application_appcompat.yml
+// False Positives:
+//   - This rule is to explore new applications on an endpoint. False positives depends on the organization.
+//   - Newly setup system.
+//   - Legitimate installation of new application.
+
+DeviceRegistryEvents
+| where RegistryKey endswith "\\AppCompatFlags\\Compatibility Assistant\\Store*"

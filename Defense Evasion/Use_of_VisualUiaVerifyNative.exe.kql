@@ -1,7 +1,0 @@
-// Author: Christopher Peacock @SecurePeacock, SCYTHE @scythe_io
-// Date: 2022/06/01
-// Level: medium
-// Description: VisualUiaVerifyNative.exe is a Windows SDK that can be used for AWL bypass and is listed in Microsoft's recommended block rules.
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where FolderPath endswith "\\VisualUiaVerifyNative.exe" or ProcessVersionInfoOriginalFileName =~ "VisualUiaVerifyNative.exe"

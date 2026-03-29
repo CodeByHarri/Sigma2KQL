@@ -1,7 +1,0 @@
-// Author: Kyaw Min Thein, Furkan Caliskan (@caliskanfurkan_)
-// Date: 2020/06/22
-// Level: high
-// Description: Detects the malicious use of a control panel item
-// Tags: attack.execution, attack.defense_evasion, attack.t1218.002, attack.persistence, attack.t1546
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "add" and ProcessCommandLine contains "CurrentVersion\\Control Panel\\CPLs") and (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~ "reg.exe")) or (ProcessCommandLine endswith ".cpl" and (not(((ProcessCommandLine contains "regsvr32 " and ProcessCommandLine contains " /s " and ProcessCommandLine contains "igfxCPL.cpl") or (ProcessCommandLine contains "\\System32\\" or ProcessCommandLine contains "%System%" or ProcessCommandLine contains "|C:\\Windows\\system32|")))))

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/01/02
-// Level: medium
-// Description: Detects execution of ruby using the "-e" flag. This is could be used as a way to launch a reverse shell or execute live ruby code.
-// Tags: attack.execution, attack.t1059
-DeviceProcessEvents
-| where ProcessCommandLine contains " -e" and (FolderPath endswith "\\ruby.exe" or ProcessVersionInfoOriginalFileName =~ "ruby.exe")

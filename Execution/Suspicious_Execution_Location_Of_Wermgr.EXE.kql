@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/10/14
-// Level: high
-// Description: Detects suspicious Windows Error Reporting manager (wermgr.exe) execution location.
-// Tags: attack.execution
-DeviceProcessEvents
-| where FolderPath endswith "\\wermgr.exe" and (not((FolderPath startswith "C:\\Windows\\System32\\" or FolderPath startswith "C:\\Windows\\SysWOW64\\" or FolderPath startswith "C:\\Windows\\WinSxS\\")))

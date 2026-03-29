@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2017/11/04
-// Level: medium
-// Description: Detects a rundll32 that communicates with public IP addresses
-// Tags: attack.defense_evasion, attack.t1218.011, attack.execution
-DeviceNetworkEvents
-| where InitiatingProcessFolderPath endswith "\\rundll32.exe" and (not((InitiatingProcessCommandLine endswith "\\system32\\PcaSvc.dll,PcaPatchSdbTask" or DeviceName endswith ".internal.cloudapp.net" or (ipv4_is_in_range(RemoteIP, "127.0.0.0/8") or ipv4_is_in_range(RemoteIP, "10.0.0.0/8") or ipv4_is_in_range(RemoteIP, "172.16.0.0/12") or ipv4_is_in_range(RemoteIP, "192.168.0.0/16") or ipv4_is_in_range(RemoteIP, "169.254.0.0/16") or ipv4_is_in_range(RemoteIP, "::1/128") or ipv4_is_in_range(RemoteIP, "fe80::/10") or ipv4_is_in_range(RemoteIP, "fc00::/7")) or (ipv4_is_in_range(RemoteIP, "20.0.0.0/8") or ipv4_is_in_range(RemoteIP, "51.103.0.0/16") or ipv4_is_in_range(RemoteIP, "51.104.0.0/16") or ipv4_is_in_range(RemoteIP, "51.105.0.0/16")) or (RemotePort == 443 and InitiatingProcessParentFileName =~ "svchost.exe"))))

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), oscd.community
-// Date: 2018/07/18
-// Level: high
-// Description: Detects a possible persistence mechanism using RUN key for Windows Explorer and pointing to a suspicious folder
-// Tags: attack.persistence, attack.t1547.001
-DeviceRegistryEvents
-| where (RegistryValueData contains ":\\$Recycle.bin\\" or RegistryValueData contains ":\\ProgramData\\" or RegistryValueData contains ":\\Temp\\" or RegistryValueData contains ":\\Users\\Default\\" or RegistryValueData contains ":\\Users\\Public\\" or RegistryValueData contains ":\\Windows\\Temp\\" or RegistryValueData contains "\\AppData\\Local\\Temp\\") and RegistryKey endswith "\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run"

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/01/16
-// Level: medium
-// Description: Detects a JAVA process running with remote debugging allowing more than just localhost to connect
-// Tags: attack.t1203, attack.execution
-DeviceProcessEvents
-| where (ProcessCommandLine contains "transport=dt_socket,address=" and (ProcessCommandLine contains "jre1." or ProcessCommandLine contains "jdk1.")) and (not((ProcessCommandLine contains "address=127.0.0.1" or ProcessCommandLine contains "address=localhost")))

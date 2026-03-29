@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/07/24
-// Level: critical
-// Description: Detects different hacktools used for relay attacks on Windows for privilege escalation
-// Tags: attack.execution, attack.t1557.001
-DeviceProcessEvents
-| where ((ProcessCommandLine contains ".exe -c \"{" and ProcessCommandLine endswith "}\" -z") or (FolderPath contains "PetitPotam" or FolderPath contains "RottenPotato" or FolderPath contains "HotPotato" or FolderPath contains "JuicyPotato" or FolderPath contains "\\just_dce_" or FolderPath contains "Juicy Potato" or FolderPath contains "\\temp\\rot.exe" or FolderPath contains "\\Potato.exe" or FolderPath contains "\\SpoolSample.exe" or FolderPath contains "\\Responder.exe" or FolderPath contains "\\smbrelayx" or FolderPath contains "\\ntlmrelayx" or FolderPath contains "\\LocalPotato") or (ProcessCommandLine contains "Invoke-Tater" or ProcessCommandLine contains " smbrelay" or ProcessCommandLine contains " ntlmrelay" or ProcessCommandLine contains "cme smb " or ProcessCommandLine contains " /ntlm:NTLMhash " or ProcessCommandLine contains "Invoke-PetitPotam" or (ProcessCommandLine contains ".exe -t " and ProcessCommandLine contains " -p "))) and (not((FolderPath contains "HotPotatoes6" or FolderPath contains "HotPotatoes7" or FolderPath contains "HotPotatoes ")))

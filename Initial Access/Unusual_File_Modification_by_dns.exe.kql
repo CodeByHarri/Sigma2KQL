@@ -1,7 +1,0 @@
-// Author: Tim Rauch (Nextron Systems), Elastic (idea)
-// Date: 2022/09/27
-// Level: high
-// Description: Detects an unexpected file being modified by dns.exe which my indicate activity related to remote code execution or other forms of exploitation as seen in CVE-2020-1350 (SigRed)
-// Tags: attack.initial_access, attack.t1133
-DeviceFileEvents
-| where InitiatingProcessFolderPath endswith "\\dns.exe" and (not(FolderPath endswith "\\dns.log"))

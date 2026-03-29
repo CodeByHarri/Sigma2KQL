@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2020/07/09
-// Level: high
-// Description: Detects suspicious encoded character syntax often used for defense evasion
-// Tags: attack.execution, attack.t1059.001, attack.defense_evasion, attack.t1027
-DeviceProcessEvents
-| where ProcessCommandLine contains "(WCHAR)0x"

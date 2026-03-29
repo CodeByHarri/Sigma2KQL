@@ -1,9 +1,0 @@
-// Author: Janantha Marasinghe (https://github.com/blueteam0ps)
-// Date: 2021/02/02
-// Level: high
-// Description: Threat actors can use auditpol binary to change audit policy configuration to impair detection capability.
-This can be carried out by selectively disabling/removing certain audit policies as well as restoring a custom policy owned by the threat actor.
-
-// Tags: attack.defense_evasion, attack.t1562.002
-DeviceProcessEvents
-| where (ProcessCommandLine contains "disable" or ProcessCommandLine contains "clear" or ProcessCommandLine contains "remove" or ProcessCommandLine contains "restore") and (FolderPath endswith "\\auditpol.exe" or ProcessVersionInfoOriginalFileName =~ "AUDITPOL.EXE")

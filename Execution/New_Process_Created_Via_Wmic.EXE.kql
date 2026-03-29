@@ -1,7 +1,0 @@
-// Author: Michael Haag, Florian Roth (Nextron Systems), juju4, oscd.community
-// Date: 2019/01/16
-// Level: medium
-// Description: Detects new process creation using WMIC via the "process call create" flag
-// Tags: attack.execution, attack.t1047, car.2016-03-002
-DeviceProcessEvents
-| where (ProcessCommandLine contains "process" and ProcessCommandLine contains "call" and ProcessCommandLine contains "create") and (FolderPath endswith "\\wmic.exe" or ProcessVersionInfoOriginalFileName =~ "wmic.exe")

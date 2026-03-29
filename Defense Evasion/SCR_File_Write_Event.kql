@@ -1,7 +1,0 @@
-// Author: Christopher Peacock @securepeacock, SCYTHE @scythe_io
-// Date: 2022/04/27
-// Level: medium
-// Description: Detects the creation of screensaver files (.scr) outside of system folders. Attackers may execute an application as an ".SCR" file using "rundll32.exe desk.cpl,InstallScreenSaver" for example.
-// Tags: attack.defense_evasion, attack.t1218.011
-DeviceFileEvents
-| where FolderPath endswith ".scr" and (not((FolderPath contains ":\\$WINDOWS.~BT\\NewOS\\" or FolderPath contains ":\\Windows\\System32\\" or FolderPath contains ":\\Windows\\SysWOW64\\" or FolderPath contains ":\\Windows\\WinSxS\\" or FolderPath contains ":\\WUDownloadCache\\")))

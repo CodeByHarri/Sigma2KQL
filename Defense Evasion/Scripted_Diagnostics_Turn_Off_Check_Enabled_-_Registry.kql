@@ -1,7 +1,0 @@
-// Author: Christopher Peacock @securepeacock, SCYTHE @scythe_io
-// Date: 2022/06/15
-// Level: medium
-// Description: Detects enabling TurnOffCheck which can be used to bypass defense of MSDT Follina vulnerability
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "\\Policies\\Microsoft\\Windows\\ScriptedDiagnostics\\TurnOffCheck"

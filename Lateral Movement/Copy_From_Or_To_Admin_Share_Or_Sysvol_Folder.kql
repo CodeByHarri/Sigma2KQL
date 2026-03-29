@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), oscd.community, Teymur Kheirkhabarov @HeirhabarovT, Zach Stanford @svch0st, Nasreddine Bencherchali
-// Date: 2019/12/30
-// Level: medium
-// Description: Detects a copy command or a copy utility execution to or from an Admin share or remote
-// Tags: attack.lateral_movement, attack.collection, attack.exfiltration, attack.t1039, attack.t1048, attack.t1021.002
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "\\" and ProcessCommandLine contains "$") or ProcessCommandLine contains "\\Sysvol\\") and (((FolderPath endswith "\\robocopy.exe" or FolderPath endswith "\\xcopy.exe") or (ProcessVersionInfoOriginalFileName in~ ("robocopy.exe", "XCOPY.EXE"))) or (ProcessCommandLine contains "copy" and (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")) or ((ProcessCommandLine contains "copy-item" or ProcessCommandLine contains "copy " or ProcessCommandLine contains "cpi " or ProcessCommandLine contains " cp " or ProcessCommandLine contains "move " or ProcessCommandLine contains "move-item" or ProcessCommandLine contains " mi " or ProcessCommandLine contains " mv ") and ((FolderPath contains "\\powershell.exe" or FolderPath contains "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll")))))

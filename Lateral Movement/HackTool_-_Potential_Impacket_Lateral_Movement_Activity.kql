@@ -1,7 +1,0 @@
-// Author: Ecco, oscd.community, Jonhnathan Ribeiro, Tim Rauch
-// Date: 2019/09/03
-// Level: high
-// Description: Detects wmiexec/dcomexec/atexec/smbexec from Impacket framework
-// Tags: attack.execution, attack.t1047, attack.lateral_movement, attack.t1021.003
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "cmd.exe" and ProcessCommandLine contains "/C" and ProcessCommandLine contains "Windows\\Temp\\" and ProcessCommandLine contains "&1") and (InitiatingProcessCommandLine contains "svchost.exe -k netsvcs" or InitiatingProcessCommandLine contains "taskeng.exe")) or ((ProcessCommandLine contains "cmd.exe" and ProcessCommandLine contains "/Q" and ProcessCommandLine contains "/c" and ProcessCommandLine contains "\\\\127.0.0.1\\" and ProcessCommandLine contains "&1") and (InitiatingProcessFolderPath endswith "\\wmiprvse.exe" or InitiatingProcessFolderPath endswith "\\mmc.exe" or InitiatingProcessFolderPath endswith "\\explorer.exe" or InitiatingProcessFolderPath endswith "\\services.exe"))

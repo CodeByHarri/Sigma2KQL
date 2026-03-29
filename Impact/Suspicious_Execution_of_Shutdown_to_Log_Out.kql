@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/10/01
-// Level: medium
-// Description: Detects the rare use of the command line tool shutdown to logoff a user
-// Tags: attack.impact, attack.t1529
-DeviceProcessEvents
-| where ProcessCommandLine contains "/l" and FolderPath endswith "\\shutdown.exe"

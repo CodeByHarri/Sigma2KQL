@@ -1,7 +1,0 @@
-// Author: X__Junior (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/05/15
-// Level: medium
-// Description: Detects potential DLL sideloading of "goopdate.dll", a DLL used by googleupdate.exe
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1574.001, attack.t1574.002
-DeviceImageLoadEvents
-| where FolderPath endswith "\\goopdate.dll" and (not((FolderPath startswith "C:\\Program Files (x86)\\" or FolderPath startswith "C:\\Program Files\\"))) and (not(((FolderPath contains "\\AppData\\Local\\Temp\\GUM" and FolderPath contains ".tmp\\goopdate.dll") and (InitiatingProcessFolderPath contains "\\AppData\\Local\\Temp\\GUM" and InitiatingProcessFolderPath contains ".tmp\\Dropbox"))))

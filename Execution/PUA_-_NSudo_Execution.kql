@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), Nasreddine Bencherchali
-// Date: 2022/01/24
-// Level: high
-// Description: Detects the use of NSudo tool for command execution
-// Tags: attack.execution, attack.t1569.002, attack.s0029
-DeviceProcessEvents
-| where (ProcessCommandLine contains "-U:S " or ProcessCommandLine contains "-U:T " or ProcessCommandLine contains "-U:E " or ProcessCommandLine contains "-P:E " or ProcessCommandLine contains "-M:S " or ProcessCommandLine contains "-M:H " or ProcessCommandLine contains "-U=S " or ProcessCommandLine contains "-U=T " or ProcessCommandLine contains "-U=E " or ProcessCommandLine contains "-P=E " or ProcessCommandLine contains "-M=S " or ProcessCommandLine contains "-M=H " or ProcessCommandLine contains "-ShowWindowMode:Hide") and ((FolderPath endswith "\\NSudo.exe" or FolderPath endswith "\\NSudoLC.exe" or FolderPath endswith "\\NSudoLG.exe") or (ProcessVersionInfoOriginalFileName in~ ("NSudo.exe", "NSudoLC.exe", "NSudoLG.exe")))

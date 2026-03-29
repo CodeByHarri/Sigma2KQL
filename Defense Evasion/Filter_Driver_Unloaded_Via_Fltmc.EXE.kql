@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali
-// Date: 2023/02/13
-// Level: high
-// Description: Detect filter driver unloading activity via fltmc.exe
-// Tags: attack.defense_evasion, attack.t1070, attack.t1562, attack.t1562.002
-DeviceProcessEvents
-| where (ProcessCommandLine contains "unload" and (FolderPath endswith "\\fltMC.exe" or ProcessVersionInfoOriginalFileName =~ "fltMC.exe")) and (not(ProcessCommandLine endswith "unload rtp_filesystem_filter"))

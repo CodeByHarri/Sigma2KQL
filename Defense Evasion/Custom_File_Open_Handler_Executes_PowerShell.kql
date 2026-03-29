@@ -1,7 +1,0 @@
-// Author: CD_R0M_
-// Date: 2022/06/11
-// Level: high
-// Description: Detects the abuse of custom file open handler, executing powershell
-// Tags: attack.defense_evasion, attack.t1202
-DeviceRegistryEvents
-| where (RegistryValueData contains "powershell" and RegistryValueData contains "-command") and RegistryKey contains "shell\\open\\command"

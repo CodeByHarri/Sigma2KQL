@@ -1,7 +1,0 @@
-// Author: Nik Seetharaman, frack113
-// Date: 2019/01/16
-// Level: medium
-// Description: Detects invocation of Microsoft Workflow Compiler, which may permit the execution of arbitrary unsigned code.
-// Tags: attack.defense_evasion, attack.execution, attack.t1127, attack.t1218
-DeviceProcessEvents
-| where FolderPath endswith "\\Microsoft.Workflow.Compiler.exe" or ProcessVersionInfoOriginalFileName =~ "Microsoft.Workflow.Compiler.exe"

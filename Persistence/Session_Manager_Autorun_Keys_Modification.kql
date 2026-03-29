@@ -1,7 +1,0 @@
-// Author: Victor Sergeev, Daniil Yugoslavskiy, Gleb Sukhodolskiy, Timur Zinniatullin, oscd.community, Tim Shelton, frack113 (split)
-// Date: 2019/10/25
-// Level: medium
-// Description: Detects modification of autostart extensibility point (ASEP) in registry.
-// Tags: attack.persistence, attack.t1547.001, attack.t1546.009
-DeviceRegistryEvents
-| where RegistryKey contains "\\System\\CurrentControlSet\\Control\\Session Manager" and (RegistryKey contains "\\SetupExecute" or RegistryKey contains "\\S0InitialCommand" or RegistryKey contains "\\KnownDlls" or RegistryKey contains "\\Execute" or RegistryKey contains "\\BootExecute" or RegistryKey contains "\\AppCertDlls") and (not(RegistryValueData =~ "(Empty)"))

@@ -1,7 +1,0 @@
-// Author: Nextron Systems
-// Date: 2022/06/01
-// Level: high
-// Description: Detects sdiagnhost.exe calling a suspicious child process (e.g. used in exploits for Follina / CVE-2022-30190)
-// Tags: attack.defense_evasion, attack.t1036, attack.t1218
-DeviceProcessEvents
-| where (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\taskkill.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\calc.exe") and InitiatingProcessFolderPath endswith "\\sdiagnhost.exe"

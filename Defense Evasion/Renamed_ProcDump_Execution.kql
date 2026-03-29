@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/11/18
-// Level: high
-// Description: Detects the execution of a renamed ProcDump executable often used by attackers or malware
-// Tags: attack.defense_evasion, attack.t1036.003
-DeviceProcessEvents
-| where (ProcessVersionInfoOriginalFileName =~ "procdump" or ((ProcessCommandLine contains " -ma " or ProcessCommandLine contains " /ma ") and (ProcessCommandLine contains " -accepteula " or ProcessCommandLine contains " /accepteula "))) and (not((FolderPath endswith "\\procdump.exe" or FolderPath endswith "\\procdump64.exe")))

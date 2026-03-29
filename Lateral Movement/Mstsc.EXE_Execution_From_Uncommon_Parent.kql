@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/04/18
-// Level: high
-// Description: Detects potential RDP connection via Mstsc using a local ".rdp" file located in suspicious locations.
-// Tags: attack.lateral_movement
-DeviceProcessEvents
-| where (FolderPath endswith "\\mstsc.exe" or ProcessVersionInfoOriginalFileName =~ "mstsc.exe") and (InitiatingProcessFolderPath endswith "\\brave.exe" or InitiatingProcessFolderPath endswith "\\CCleanerBrowser.exe" or InitiatingProcessFolderPath endswith "\\chrome.exe" or InitiatingProcessFolderPath endswith "\\chromium.exe" or InitiatingProcessFolderPath endswith "\\firefox.exe" or InitiatingProcessFolderPath endswith "\\iexplore.exe" or InitiatingProcessFolderPath endswith "\\microsoftedge.exe" or InitiatingProcessFolderPath endswith "\\msedge.exe" or InitiatingProcessFolderPath endswith "\\opera.exe" or InitiatingProcessFolderPath endswith "\\vivaldi.exe" or InitiatingProcessFolderPath endswith "\\whale.exe" or InitiatingProcessFolderPath endswith "\\outlook.exe")

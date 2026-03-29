@@ -1,9 +1,0 @@
-// Author: Ensar Şamil, @sblmsrsn, @oscd_initiative, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2020/10/07
-// Level: medium
-// Description: Detects the execution of Xwizard tool with the "RunWizard" flag and a GUID like argument.
-This utility can be abused in order to run custom COM object created in the registry.
-
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ((ProcessCommandLine =~ "RunWizard" and ProcessCommandLine matches regex "\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}") and (FolderPath endswith "\\xwizard.exe" or ProcessVersionInfoOriginalFileName =~ "xwizard.exe")) or ((ProcessCommandLine =~ "RunWizard" and ProcessCommandLine matches regex "\\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\\}") and (not((FolderPath endswith "\\xwizard.exe" or ProcessVersionInfoOriginalFileName =~ "xwizard.exe"))))

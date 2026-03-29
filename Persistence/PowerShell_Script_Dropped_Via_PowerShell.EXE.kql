@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2023/05/09
-// Level: low
-// Description: Detects PowerShell creating a PowerShell file (.ps1). While often times this behavior is benign, sometimes it can be a sign of a dropper script trying to achieve persistence.
-// Tags: attack.persistence
-DeviceFileEvents
-| where ((InitiatingProcessFolderPath endswith "\\powershell.exe" or InitiatingProcessFolderPath endswith "\\pwsh.exe") and FolderPath endswith ".ps1") and (not(((FolderPath contains "\\AppData\\Local\\Temp\\" and FolderPath startswith "C:\\Users\\") or FolderPath contains "__PSScriptPolicyTest_" or FolderPath startswith "C:\\Windows\\Temp\\")))

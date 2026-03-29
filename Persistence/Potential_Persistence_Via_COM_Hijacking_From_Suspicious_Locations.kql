@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/07/28
-// Level: high
-// Description: Detects potential COM object hijacking where the "Server" (In/Out) is pointing to a suspicious or unsuale location
-// Tags: attack.persistence, attack.t1546.015
-DeviceRegistryEvents
-| where (RegistryValueData contains "\\AppData\\Local\\Temp\\" or RegistryValueData contains "\\Desktop\\" or RegistryValueData contains "\\Downloads\\" or RegistryValueData contains "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\" or RegistryValueData contains "\\System32\\spool\\drivers\\color\\" or RegistryValueData contains "\\Users\\Public\\" or RegistryValueData contains "\\Windows\\Temp\\" or RegistryValueData contains "%appdata%" or RegistryValueData contains "%temp%" or RegistryValueData contains "%tmp%") and RegistryKey contains "\\CLSID" and (RegistryKey endswith "\\InprocServer32\\(Default)" or RegistryKey endswith "\\LocalServer32\\(Default)")

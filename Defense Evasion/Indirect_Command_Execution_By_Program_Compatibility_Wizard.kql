@@ -1,7 +1,0 @@
-// Author: A. Sungurov , oscd.community
-// Date: 2020/10/12
-// Level: low
-// Description: Detect indirect command execution via Program Compatibility Assistant pcwrun.exe
-// Tags: attack.defense_evasion, attack.t1218, attack.execution
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\pcwrun.exe"

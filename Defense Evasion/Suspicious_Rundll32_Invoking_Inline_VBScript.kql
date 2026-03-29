@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/03/05
-// Level: high
-// Description: Detects suspicious process related to rundll32 based on command line that invokes inline VBScript as seen being used by UNC2452
-// Tags: attack.defense_evasion, attack.t1055
-DeviceProcessEvents
-| where ProcessCommandLine contains "rundll32.exe" and ProcessCommandLine contains "Execute" and ProcessCommandLine contains "RegRead" and ProcessCommandLine contains "window.close"

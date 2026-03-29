@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Florian Roth (Nextron Systems)
-// Date: 2023/04/11
-// Level: medium
-// Description: Detects renamed execution of "Microsoft.NodejsTools.PressAnyKey.exe", which can be abused as a LOLBIN to execute arbitrary binaries
-// Tags: attack.execution, attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ProcessVersionInfoOriginalFileName =~ "Microsoft.NodejsTools.PressAnyKey.exe" and (not(FolderPath endswith "\\Microsoft.NodejsTools.PressAnyKey.exe"))

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2017/03/19
-// Level: high
-// Description: Detects uncommon or suspicious child processes of "eventvwr.exe" which might indicate a UAC bypass attempt
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1548.002, car.2019-04-001
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\eventvwr.exe" and (not((FolderPath endswith ":\\Windows\\System32\\mmc.exe" or FolderPath endswith ":\\Windows\\System32\\WerFault.exe" or FolderPath endswith ":\\Windows\\SysWOW64\\WerFault.exe")))

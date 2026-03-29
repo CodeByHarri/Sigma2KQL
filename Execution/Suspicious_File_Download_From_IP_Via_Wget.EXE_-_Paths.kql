@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2024/02/23
-// Level: high
-// Description: Detects potentially suspicious file downloads directly from IP addresses and stored in suspicious locations using Wget.exe
-// Tags: attack.execution
-DeviceProcessEvents
-| where (ProcessCommandLine matches regex "\\s-O\\s" or ProcessCommandLine contains "--output-document") and ProcessCommandLine contains "http" and (FolderPath endswith "\\wget.exe" or ProcessVersionInfoOriginalFileName =~ "wget.exe") and ProcessCommandLine matches regex "://[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}" and ((ProcessCommandLine contains ":\\PerfLogs\\" or ProcessCommandLine contains ":\\Temp\\" or ProcessCommandLine contains ":\\Users\\Public\\" or ProcessCommandLine contains ":\\Windows\\Help\\" or ProcessCommandLine contains ":\\Windows\\Temp\\" or ProcessCommandLine contains "\\Temporary Internet") or (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine contains "\\Favorites\\") or (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine contains "\\Favourites\\") or (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine contains "\\Contacts\\") or (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine contains "\\Pictures\\"))

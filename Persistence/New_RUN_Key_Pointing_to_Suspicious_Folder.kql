@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), Markus Neis, Sander Wiebing
-// Date: 2018/08/25
-// Level: high
-// Description: Detects suspicious new RUN key element pointing to an executable in a suspicious folder
-// Tags: attack.persistence, attack.t1547.001
-DeviceRegistryEvents
-| where (((RegistryValueData contains ":\\$Recycle.bin\\" or RegistryValueData contains ":\\Temp\\" or RegistryValueData contains ":\\Users\\Default\\" or RegistryValueData contains ":\\Users\\Desktop\\" or RegistryValueData contains ":\\Users\\Public\\" or RegistryValueData contains ":\\Windows\\Temp\\" or RegistryValueData contains "\\AppData\\Local\\Temp\\" or RegistryValueData contains "%temp%\\" or RegistryValueData contains "%tmp%\\") or (RegistryValueData startswith "%Public%\\" or RegistryValueData startswith "wscript" or RegistryValueData startswith "cscript")) and (RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run" or RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce")) and (not(((RegistryValueData contains "rundll32.exe C:\\WINDOWS\\system32\\advpack.dll,DelNodeRunDLL32" and RegistryValueData contains "C:\\Windows\\Temp\\") and InitiatingProcessFolderPath startswith "C:\\Windows\\SoftwareDistribution\\Download\\")))

@@ -1,7 +1,0 @@
-// Author: Tobias Michalski (Nextron Systems)
-// Date: 2021/06/10
-// Level: high
-// Description: Detects potential persistence activity via outlook today pages. An attacker can set a custom page to execute arbitrary code and link to it via the registry key "UserDefinedUrl".
-// Tags: attack.persistence, attack.t1112
-DeviceRegistryEvents
-| where (RegistryKey contains "Software\\Microsoft\\Office" and RegistryKey contains "\\Outlook\\Today") and ((RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "Stamp") or RegistryKey endswith "UserDefinedUrl") and (not((InitiatingProcessFolderPath endswith "\\OfficeClickToRun.exe" and (InitiatingProcessFolderPath startswith "C:\\Program Files\\Common Files\\Microsoft Shared\\ClickToRun\\" or InitiatingProcessFolderPath startswith "C:\\Program Files\\Common Files\\Microsoft Shared\\ClickToRun\\Updates\\"))))

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/03/14
-// Level: medium
-// Description: Detects the execution of Sysinternals ADExplorer with the "-snapshot" flag in order to save a local copy of the active directory database.
-// Tags: attack.credential_access, attack.t1552.001, attack.t1003.003
-DeviceProcessEvents
-| where ProcessCommandLine contains "snapshot" and (FolderPath endswith "\\ADExplorer.exe" or ProcessVersionInfoOriginalFileName =~ "AdExp")

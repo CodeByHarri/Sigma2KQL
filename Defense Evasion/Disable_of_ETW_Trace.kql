@@ -1,7 +1,0 @@
-// Author: @neu5ron, Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community
-// Date: 2019/03/22
-// Level: high
-// Description: Detects a command that clears or disables any ETW trace log which could indicate a logging evasion.
-// Tags: attack.defense_evasion, attack.t1070, attack.t1562.006, car.2016-04-002
-DeviceProcessEvents
-| where (ProcessCommandLine contains "cl" and ProcessCommandLine contains "/Trace") or (ProcessCommandLine contains "clear-log" and ProcessCommandLine contains "/Trace") or (ProcessCommandLine contains "sl" and ProcessCommandLine contains "/e:false") or (ProcessCommandLine contains "set-log" and ProcessCommandLine contains "/e:false") or (ProcessCommandLine contains "logman" and ProcessCommandLine contains "update" and ProcessCommandLine contains "trace" and ProcessCommandLine contains "--p" and ProcessCommandLine contains "-ets") or ProcessCommandLine contains "Remove-EtwTraceProvider" or (ProcessCommandLine contains "Set-EtwTraceProvider" and ProcessCommandLine contains "0x11")

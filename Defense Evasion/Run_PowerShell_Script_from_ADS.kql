@@ -1,7 +1,0 @@
-// Author: Sergey Soldatov, Kaspersky Lab, oscd.community
-// Date: 2019/10/30
-// Level: high
-// Description: Detects PowerShell script execution from Alternate Data Stream (ADS)
-// Tags: attack.defense_evasion, attack.t1564.004
-DeviceProcessEvents
-| where (ProcessCommandLine contains "Get-Content" and ProcessCommandLine contains "-Stream") and (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") and (InitiatingProcessFolderPath endswith "\\powershell.exe" or InitiatingProcessFolderPath endswith "\\pwsh.exe")

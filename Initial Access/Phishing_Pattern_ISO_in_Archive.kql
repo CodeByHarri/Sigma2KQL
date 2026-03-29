@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/06/07
-// Level: high
-// Description: Detects cases in which an ISO files is opend within an archiver like 7Zip or Winrar, which is a sign of phishing as threat actors put small ISO files in archives as email attachments to bypass certain filters and protective measures (mark of web)
-// Tags: attack.initial_access, attack.t1566
-DeviceProcessEvents
-| where (FolderPath endswith "\\isoburn.exe" or FolderPath endswith "\\PowerISO.exe" or FolderPath endswith "\\ImgBurn.exe") and (InitiatingProcessFolderPath endswith "\\Winrar.exe" or InitiatingProcessFolderPath endswith "\\7zFM.exe" or InitiatingProcessFolderPath endswith "\\peazip.exe")

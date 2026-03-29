@@ -1,7 +1,0 @@
-// Author: Trent Liffick (@tliffick)
-// Date: 2020/05/14
-// Level: high
-// Description: Attempts to detect system changes made by Blue Mockingbird
-// Tags: attack.execution, attack.t1112, attack.t1047
-DeviceRegistryEvents
-| where RegistryKey endswith "\\CurrentControlSet\\Services\\wercplsupport\\Parameters\\ServiceDll"

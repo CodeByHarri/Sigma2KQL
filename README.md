@@ -1,68 +1,137 @@
-# Sigma2KQL
-Sigma Queries turned into KQL for Defender using [pysigma-backend-microsoft365defender](https://github.com/AttackIQ/pySigma-backend-microsoft365defender/tree/main)
+![Update Sigma Rules](https://github.com/Khadinxc/Sigma2KQL/actions/workflows/update-sigma-rules.yml/badge.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/Khadinxc/Sigma2KQL)
+# Sigma2KQL - Automated Updates
+Sigma Queries turned into KQL for Defender and Microsoft Sentinel using [pysigma-backend-KQL-backend](https://github.com/AttackIQ/pySigma-backend-kusto/tree/main)
 
-Reproducible Example:
-```python
-!git clone https://github.com/SigmaHQ/sigma.git
-!pip install pysigma-backend-microsoft365defender
-import os, glob
-path = 'sigma/rules/*/'
-file_pattern = os.path.join(path,'*.yml')
-file_list_a = glob.glob(file_pattern)
+__Disclaimer: Not all of these rules have been validated either to ensure KQL is functional or if they are an exact replica of the Sigma rule. The script was created with the assumption that the pySigma Kusto backend does what it is meant to do.__
 
-import yaml
-
-def convert_to_string(yaml_dict):
-    # We change default style of strings to None (it's '>' in PyYAML)
-    # This means that PyYAML will choose style based on the data
-    yaml.SafeDumper.org_represent_str = yaml.SafeDumper.represent_str
-    def repr_str(dumper, data):
-        if '\n' in data:
-            return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
-        return dumper.org_represent_str(data)
-    yaml.add_representer(str, repr_str, Dumper=yaml.SafeDumper)
-
-    yaml_str = yaml.dump(yaml_dict, default_flow_style=False, Dumper=yaml.SafeDumper)
-    return yaml_str
-
-from sigma.rule import SigmaRule
-from sigma.backends.microsoft365defender import Microsoft365DefenderBackend
-from sigma.pipelines.microsoft365defender import microsoft_365_defender_pipeline
-
-
-for yml in detections_yml_paths:
-  with open(yml) as yaml_file:
-    try:
-      yaml_contents = load(yaml_file, Loader=SafeLoader)
-      # Define an example rule as a YAML str
-      sigma_rule = SigmaRule.from_yaml(convert_to_string(yaml_contents))
-      # Create backend, which automatically adds the pipeline
-      m365def_backend = Microsoft365DefenderBackend()
-
-      # Or apply the pipeline manually
-      pipeline = microsoft_365_defender_pipeline()
-      pipeline.apply(sigma_rule)
-
-      # Convert the rule
-      print(sigma_rule.title + " KQL Query: \n")
-      kql_query = m365def_backend.convert_rule(sigma_rule)[0]
-      print(kql_query)
-      print("\n \n ")
-
-      # Write the KQL query to a .kql file
-      with open('/KQL/'+sigma_rule.title.replace(' ', '_') + '.kql', 'w') as kql_file:
-        # Write metadata as comments
-        kql_file.write(f'// Author: {yaml_contents.get("author", "")}\n')
-        kql_file.write(f'// Date: {yaml_contents.get("date", "")}\n')
-        kql_file.write(f'// Level: {yaml_contents.get("level", "")}\n')
-        kql_file.write(f'// Description: {yaml_contents.get("description", "")}\n')
-        # Here it's assumed that 'tags' is a list
-        tags = yaml_contents.get("tags", [])
-        kql_file.write(f'// Tags: {", ".join(tags) if tags else ""}\n')
-        # Write the actual KQL query
-        kql_file.write(kql_query)
-        
-    except:
-      print(sigma_rule.title + " KQL Query: \n")
-      print('SigmaTransformationError: Rule category not yet supported by the Microsoft 365 Defender Sigma backend.')
 ```
+├───KQL
+│   ├───rules
+│   ├───rules-compliance
+│   ├───rules-emerging-threats
+│   ├───rules-placeholder
+│   └───rules-threat-hunting
+```
+
+## How do I use the helper to do this locally or in a Detection as Code pipeline?
+
+I've included a pip freeze of required libraries and as per standard practice for Python development I suggest creating a virtual environment not to _break_ system wide package management. 
+
+### Run the following commands to get started:
+
+**Clone the sigma rules repository:**
+
+```
+git clone https://github.com/SigmaHQ/sigma.git
+```
+
+```
+python -m venv .venv
+```
+
+**With Windows:**
+```
+.\.venv\Scripts\Activate.ps1
+```
+
+**With Linux**
+```
+./.venv/bin/activate
+```
+**Once in your Python virtual env:**
+
+```
+pip install -r requirements.txt
+```
+
+**Then you can use the script like this:**
+
+```
+..\.venv\Scripts\python.exe .\helper.py --sigma-dir "C:/Users/Kaiber/sigma" --output-dir "C:/Users/Kaiber/Sigma2KQL-2025/KQL"
+```
+
+### Sample Rule Summary:
+
+```
+rules-threat-hunting Summary:
+  Successful: 96
+  Failed: 33
+  Tactics covered: 13
+
+================================================================================
+OVERALL CONVERSION COMPLETE!
+================================================================================
+Total files processed: 3637
+Total successful conversions: 2225
+Total failed conversions: 1412
+
+Output base directory: D:\Projects\SigmaTerraform\Sigma2KQL-2025\KQL
+
+Folder structure created:
+  rules/
+  rules-emerging-threats/
+  rules-threat-hunting/
+```
+
+### Sample Rule:
+
+**Sigma Rule:**
+```
+title: 7Zip Compressing Dump Files
+id: ec570e53-4c76-45a9-804d-dc3f355ff7a7
+related:
+    - id: 1ac14d38-3dfc-4635-92c7-e3fd1c5f5bfc
+      type: derived
+status: test
+description: Detects execution of 7z in order to compress a file with a ".dmp"/".dump" extension, which could be a step in a process of dump file exfiltration.
+references:
+    - https://thedfirreport.com/2022/09/26/bumblebee-round-two/
+author: Nasreddine Bencherchali (Nextron Systems)
+date: 2022-09-27
+modified: 2023-09-12
+tags:
+    - attack.collection
+    - attack.t1560.001
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_img:
+        - Description|contains: '7-Zip'
+        - Image|endswith:
+              - '\7z.exe'
+              - '\7zr.exe'
+              - '\7za.exe'
+        - OriginalFileName:
+              - '7z.exe'
+              - '7za.exe'
+    selection_extension:
+        CommandLine|contains:
+            - '.dmp'
+            - '.dump'
+            - '.hdmp'
+    condition: all of selection_*
+falsepositives:
+    - Legitimate use of 7z with a command line in which ".dmp" or ".dump" appears accidentally
+    - Legitimate use of 7z to compress WER ".dmp" files for troubleshooting
+level: medium
+```
+
+**KQL Rule:**
+```
+// Title: 7Zip Compressing Dump Files
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022-09-27
+// Level: medium
+// Description: Detects execution of 7z in order to compress a file with a ".dmp"/".dump" extension, which could be a step in a process of dump file exfiltration.
+// MITRE Tactic: Collection
+// Tags: attack.collection, attack.t1560.001
+// False Positives:
+//   - Legitimate use of 7z with a command line in which ".dmp" or ".dump" appears accidentally
+//   - Legitimate use of 7z to compress WER ".dmp" files for troubleshooting
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains ".dmp" or ProcessCommandLine contains ".dump" or ProcessCommandLine contains ".hdmp") and (ProcessVersionInfoFileDescription contains "7-Zip" or (FolderPath endswith "\\7z.exe" or FolderPath endswith "\\7zr.exe" or FolderPath endswith "\\7za.exe") or (ProcessVersionInfoOriginalFileName in~ ("7z.exe", "7za.exe")))
+```
+

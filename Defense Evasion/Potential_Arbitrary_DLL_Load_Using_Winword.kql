@@ -1,7 +1,0 @@
-// Author: Victor Sergeev, oscd.community
-// Date: 2020/10/09
-// Level: medium
-// Description: Detects potential DLL sideloading using the Microsoft Office winword process via the '/l' flag.
-// Tags: attack.defense_evasion, attack.t1202
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/l " and ProcessCommandLine contains ".dll") and (FolderPath endswith "\\WINWORD.exe" or ProcessVersionInfoOriginalFileName =~ "WinWord.exe")

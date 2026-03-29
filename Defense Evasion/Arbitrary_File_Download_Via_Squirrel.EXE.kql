@@ -1,8 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Karneades / Markus Neis, Jonhnathan Ribeiro, oscd.community
-// Date: 2022/06/09
-// Level: medium
-// Description: Detects the usage of the "Squirrel.exe" to download arbitrary files. This binary is part of multiple Electron based software installations (Slack, Teams, Discord, etc.)
-
-// Tags: attack.defense_evasion, attack.execution, attack.t1218
-DeviceProcessEvents
-| where (ProcessCommandLine contains " --download " or ProcessCommandLine contains " --update " or ProcessCommandLine contains " --updateRollback=") and ProcessCommandLine contains "http" and (FolderPath endswith "\\squirrel.exe" or FolderPath endswith "\\update.exe")

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/01/04
-// Level: medium
-// Description: Detects execution of WinRAR in order to compress a file with a ".dmp"/".dump" extension, which could be a step in a process of dump file exfiltration.
-// Tags: attack.collection, attack.t1560.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains ".dmp" or ProcessCommandLine contains ".dump" or ProcessCommandLine contains ".hdmp") and ((FolderPath endswith "\\rar.exe" or FolderPath endswith "\\winrar.exe") or ProcessVersionInfoFileDescription =~ "Command line RAR")

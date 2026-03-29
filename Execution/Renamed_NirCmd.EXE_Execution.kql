@@ -1,7 +1,0 @@
-// Author: X__Junior (Nextron Systems)
-// Date: 2024/03/11
-// Level: high
-// Description: Detects the execution of a renamed "NirCmd.exe" binary based on the PE metadata fields.
-// Tags: attack.execution, attack.t1059, attack.defense_evasion, attack.t1202
-DeviceProcessEvents
-| where ProcessVersionInfoOriginalFileName =~ "NirCmd.exe" and (not((FolderPath endswith "\\nircmd.exe" or FolderPath endswith "\\nircmdc.exe")))

@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/10/31
-// Level: high
-// Description: Detects the image load of VSS DLL by uncommon executables
-// Tags: attack.defense_evasion, attack.impact, attack.t1490
-DeviceImageLoadEvents
-| where FolderPath endswith "\\vssapi.dll" and (not(((InitiatingProcessFolderPath startswith "C:\\Program Files\\" or InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\") or InitiatingProcessFolderPath startswith "C:\\ProgramData\\Package Cache\\" or ((InitiatingProcessFolderPath in~ ("C:\\Windows\\explorer.exe", "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe")) or (InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\SysWOW64\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\Temp\\{" or InitiatingProcessFolderPath startswith "C:\\Windows\\WinSxS\\")))))

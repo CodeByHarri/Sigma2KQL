@@ -1,9 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/10/12
-// Level: medium
-// Description: Detects the use of the Windows Update Client binary (wuauclt.exe) to proxy execute code and making network connections.
-One could easily make the DLL spawn a new process and inject to it to proxy the network connection and bypass this rule.
-
-// Tags: attack.defense_evasion, attack.t1218
-DeviceNetworkEvents
-| where (InitiatingProcessCommandLine contains " /RunHandlerComServer" and InitiatingProcessFolderPath contains "wuauclt") and (not((InitiatingProcessCommandLine =~ "" or isnull(InitiatingProcessCommandLine) or (ipv4_is_in_range(RemoteIP, "127.0.0.0/8") or ipv4_is_in_range(RemoteIP, "10.0.0.0/8") or ipv4_is_in_range(RemoteIP, "169.254.0.0/16") or ipv4_is_in_range(RemoteIP, "172.16.0.0/12") or ipv4_is_in_range(RemoteIP, "192.168.0.0/16") or ipv4_is_in_range(RemoteIP, "::1/128") or ipv4_is_in_range(RemoteIP, "fe80::/10") or ipv4_is_in_range(RemoteIP, "fc00::/7")) or (ipv4_is_in_range(RemoteIP, "20.184.0.0/13") or ipv4_is_in_range(RemoteIP, "20.192.0.0/10") or ipv4_is_in_range(RemoteIP, "23.79.0.0/16") or ipv4_is_in_range(RemoteIP, "51.10.0.0/15") or ipv4_is_in_range(RemoteIP, "51.103.0.0/16") or ipv4_is_in_range(RemoteIP, "51.104.0.0/15") or ipv4_is_in_range(RemoteIP, "52.224.0.0/11")) or (InitiatingProcessCommandLine contains ":\\Windows\\UUS\\Packages\\Preview\\amd64\\updatedeploy.dll /ClassId" or InitiatingProcessCommandLine contains ":\\Windows\\UUS\\amd64\\UpdateDeploy.dll /ClassId") or (InitiatingProcessCommandLine contains ":\\Windows\\WinSxS\\" and InitiatingProcessCommandLine contains "\\UpdateDeploy.dll /ClassId "))))

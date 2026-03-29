@@ -1,7 +1,0 @@
-// Author: X__Junior (Nextron Systems)
-// Date: 2023/09/11
-// Level: high
-// Description: Detects the execution of a Chromium based browser process with the "headless" flag and a URL pointing to the mockbin.org service (which can be used to exfiltrate data).
-// Tags: attack.execution
-DeviceProcessEvents
-| where ProcessCommandLine contains "--headless" and (FolderPath endswith "\\brave.exe" or FolderPath endswith "\\chrome.exe" or FolderPath endswith "\\msedge.exe" or FolderPath endswith "\\opera.exe" or FolderPath endswith "\\vivaldi.exe") and (ProcessCommandLine contains "://run.mocky" or ProcessCommandLine contains "://mockbin")

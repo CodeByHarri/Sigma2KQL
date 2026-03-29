@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/02/23
-// Level: high
-// Description: Detects suspicious starts of explorer.exe that use the /NOUACCHECK flag that allows to run all sub processes of that newly started explorer.exe without any UAC checks
-// Tags: attack.defense_evasion, attack.t1548.002
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/NOUACCHECK" and FolderPath endswith "\\explorer.exe") and (not((InitiatingProcessCommandLine =~ "C:\\Windows\\system32\\svchost.exe -k netsvcs -p -s Schedule" or InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\svchost.exe")))

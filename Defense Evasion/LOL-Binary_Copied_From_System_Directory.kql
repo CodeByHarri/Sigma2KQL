@@ -1,8 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/08/29
-// Level: high
-// Description: Detects a suspicious copy operation that tries to copy a known LOLBIN from system (System32, SysWOW64, WinSxS) directories to another on disk in order to bypass detections based on locations.
-
-// Tags: attack.defense_evasion, attack.t1036.003
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "copy " and FolderPath endswith "\\cmd.exe") or ((FolderPath endswith "\\robocopy.exe" or FolderPath endswith "\\xcopy.exe") or (ProcessVersionInfoOriginalFileName in~ ("robocopy.exe", "XCOPY.EXE"))) or ((ProcessCommandLine contains "copy-item" or ProcessCommandLine contains " copy " or ProcessCommandLine contains "cpi " or ProcessCommandLine contains " cp ") and (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"))) and ((ProcessCommandLine contains "\\bitsadmin.exe" or ProcessCommandLine contains "\\calc.exe" or ProcessCommandLine contains "\\certutil.exe" or ProcessCommandLine contains "\\cmdl32.exe" or ProcessCommandLine contains "\\cscript.exe" or ProcessCommandLine contains "\\mshta.exe" or ProcessCommandLine contains "\\rundll32.exe" or ProcessCommandLine contains "\\wscript.exe") and (ProcessCommandLine contains "\\System32" or ProcessCommandLine contains "\\SysWOW64" or ProcessCommandLine contains "\\WinSxS"))

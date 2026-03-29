@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/22
-// Level: medium
-// Description: Detects the execution of Radmin which can be abused by an adversary to remotely control Windows machines
-// Tags: attack.execution, attack.lateral_movement, attack.t1072
-DeviceProcessEvents
-| where ProcessVersionInfoFileDescription =~ "Radmin Viewer" or ProcessVersionInfoProductName =~ "Radmin Viewer" or ProcessVersionInfoOriginalFileName =~ "Radmin.exe"

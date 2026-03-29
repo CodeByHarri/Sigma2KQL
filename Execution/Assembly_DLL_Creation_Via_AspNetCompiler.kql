@@ -1,8 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/08/14
-// Level: medium
-// Description: Detects the creation of new DLL assembly files by "aspnet_compiler.exe", which could be a sign of "aspnet_compiler" abuse to proxy execution through a build provider.
-
-// Tags: attack.execution
-DeviceFileEvents
-| where InitiatingProcessFolderPath endswith "\\aspnet_compiler.exe" and (FolderPath contains "\\Temporary ASP.NET Files\\" and FolderPath contains "\\assembly\\tmp\\" and FolderPath contains ".dll")

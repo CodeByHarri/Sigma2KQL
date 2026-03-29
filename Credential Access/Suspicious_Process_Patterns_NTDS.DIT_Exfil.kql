@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/03/11
-// Level: high
-// Description: Detects suspicious process patterns used in NTDS.DIT exfiltration
-// Tags: attack.credential_access, attack.t1003.003
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "ac i ntds" and ProcessCommandLine contains "create full") or (ProcessCommandLine contains "/c copy " and ProcessCommandLine contains "\\windows\\ntds\\ntds.dit") or (ProcessCommandLine contains "activate instance ntds" and ProcessCommandLine contains "create full") or (ProcessCommandLine contains "powershell" and ProcessCommandLine contains "ntds.dit") or ((FolderPath endswith "\\NTDSDump.exe" or FolderPath endswith "\\NTDSDumpEx.exe") or (ProcessCommandLine contains "ntds.dit" and ProcessCommandLine contains "system.hiv") or ProcessCommandLine contains "NTDSgrab.ps1")) or (((InitiatingProcessFolderPath contains "\\apache" or InitiatingProcessFolderPath contains "\\tomcat" or InitiatingProcessFolderPath contains "\\AppData\\" or InitiatingProcessFolderPath contains "\\Temp\\" or InitiatingProcessFolderPath contains "\\Public\\" or InitiatingProcessFolderPath contains "\\PerfLogs\\") or (FolderPath contains "\\apache" or FolderPath contains "\\tomcat" or FolderPath contains "\\AppData\\" or FolderPath contains "\\Temp\\" or FolderPath contains "\\Public\\" or FolderPath contains "\\PerfLogs\\")) and ProcessCommandLine contains "ntds.dit")

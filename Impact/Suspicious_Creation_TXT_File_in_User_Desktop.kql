@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/12/26
-// Level: high
-// Description: Ransomware create txt file in the user Desktop
-// Tags: attack.impact, attack.t1486
-DeviceFileEvents
-| where InitiatingProcessFolderPath endswith "\\cmd.exe" and (FolderPath contains "\\Users\\" and FolderPath contains "\\Desktop\\") and FolderPath endswith ".txt"

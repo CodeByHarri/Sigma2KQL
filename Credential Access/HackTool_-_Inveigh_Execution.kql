@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/10/24
-// Level: critical
-// Description: Detects the use of Inveigh a cross-platform .NET IPv4/IPv6 machine-in-the-middle tool
-// Tags: attack.credential_access, attack.t1003.001
-DeviceProcessEvents
-| where FolderPath endswith "\\Inveigh.exe" or (ProcessVersionInfoOriginalFileName in~ ("\\Inveigh.exe", "\\Inveigh.dll")) or ProcessVersionInfoFileDescription =~ "Inveigh" or (ProcessCommandLine contains " -SpooferIP" or ProcessCommandLine contains " -ReplyToIPs " or ProcessCommandLine contains " -ReplyToDomains " or ProcessCommandLine contains " -ReplyToMACs " or ProcessCommandLine contains " -SnifferIP")

@@ -1,9 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), frack113
-// Date: 2024/05/10
-// Level: high
-// Description: Detects the dump of highly sensitive files such as "NTDS.DIT" and "SECURITY" hive.
-Attackers can leverage the "wbadmin" utility in order to dump sensitive files that might contain credential or sensitive information.
-
-// Tags: attack.credential_access, attack.t1003.003
-DeviceProcessEvents
-| where (ProcessCommandLine contains "start" or ProcessCommandLine contains "backup") and (FolderPath endswith "\\wbadmin.exe" or ProcessVersionInfoOriginalFileName =~ "WBADMIN.EXE") and (ProcessCommandLine contains "\\config\\SAM" or ProcessCommandLine contains "\\config\\SECURITY" or ProcessCommandLine contains "\\config\\SYSTEM" or ProcessCommandLine contains "\\Windows\\NTDS\\NTDS.dit")

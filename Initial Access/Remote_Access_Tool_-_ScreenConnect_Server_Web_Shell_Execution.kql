@@ -1,7 +1,0 @@
-// Author: Jason Rathbun (Blackpoint Cyber)
-// Date: 2024/02/26
-// Level: high
-// Description: Detects potential web shell execution from the ScreenConnect server process.
-// Tags: attack.initial_access, attack.t1190
-DeviceProcessEvents
-| where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\csc.exe") and InitiatingProcessFolderPath endswith "\\ScreenConnect.Service.exe"

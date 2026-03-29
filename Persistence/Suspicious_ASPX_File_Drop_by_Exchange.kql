@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), MSTI (query, idea)
-// Date: 2022/10/01
-// Level: high
-// Description: Detects suspicious file type dropped by an Exchange component in IIS into a suspicious folder
-// Tags: attack.persistence, attack.t1505.003
-DeviceFileEvents
-| where (InitiatingProcessCommandLine contains "MSExchange" and InitiatingProcessFolderPath endswith "\\w3wp.exe" and (FolderPath contains "FrontEnd\\HttpProxy\\" or FolderPath contains "\\inetpub\\wwwroot\\aspnet_client\\")) and (FolderPath endswith ".aspx" or FolderPath endswith ".asp" or FolderPath endswith ".ashx")

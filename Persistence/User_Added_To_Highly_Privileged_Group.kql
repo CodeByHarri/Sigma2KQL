@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2024/02/23
-// Level: high
-// Description: Detects addition of users to highly privileged groups via "Net" or "Add-LocalGroupMember".
-// Tags: attack.persistence, attack.t1098
-DeviceProcessEvents
-| where (ProcessCommandLine contains "Group Policy Creator Owners" or ProcessCommandLine contains "Schema Admins") and ((ProcessCommandLine contains "localgroup " and ProcessCommandLine contains " /add") or (ProcessCommandLine contains "Add-LocalGroupMember " and ProcessCommandLine contains " -Group "))

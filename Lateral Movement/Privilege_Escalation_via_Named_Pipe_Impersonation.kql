@@ -1,7 +1,0 @@
-// Author: Tim Rauch, Elastic (idea)
-// Date: 2022/09/27
-// Level: high
-// Description: Detects a remote file copy attempt to a hidden network share. This may indicate lateral movement or data staging activity.
-// Tags: attack.lateral_movement, attack.t1021
-DeviceProcessEvents
-| where (ProcessCommandLine contains "echo" and ProcessCommandLine contains ">" and ProcessCommandLine contains "\\\\.\\pipe\\") and ((FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe") or (ProcessVersionInfoOriginalFileName in~ ("Cmd.Exe", "PowerShell.EXE")))

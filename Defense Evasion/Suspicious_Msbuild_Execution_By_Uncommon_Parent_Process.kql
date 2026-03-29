@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/11/17
-// Level: medium
-// Description: Detects suspicious execution of 'Msbuild.exe' by a uncommon parent process
-// Tags: attack.defense_evasion
-DeviceProcessEvents
-| where (FolderPath endswith "\\MSBuild.exe" or ProcessVersionInfoOriginalFileName =~ "MSBuild.exe") and (not((InitiatingProcessFolderPath endswith "\\devenv.exe" or InitiatingProcessFolderPath endswith "\\cmd.exe" or InitiatingProcessFolderPath endswith "\\msbuild.exe" or InitiatingProcessFolderPath endswith "\\python.exe" or InitiatingProcessFolderPath endswith "\\explorer.exe" or InitiatingProcessFolderPath endswith "\\nuget.exe")))

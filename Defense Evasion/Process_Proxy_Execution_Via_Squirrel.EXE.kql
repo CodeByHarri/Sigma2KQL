@@ -1,8 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Karneades / Markus Neis, Jonhnathan Ribeiro, oscd.community
-// Date: 2022/06/09
-// Level: medium
-// Description: Detects the usage of the "Squirrel.exe" binary to execute arbitrary processes. This binary is part of multiple Electron based software installations (Slack, Teams, Discord, etc.)
-
-// Tags: attack.defense_evasion, attack.execution, attack.t1218
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "--processStart" or ProcessCommandLine contains "--processStartAndWait" or ProcessCommandLine contains "--createShortcut") and (FolderPath endswith "\\squirrel.exe" or FolderPath endswith "\\update.exe")) and (not(((ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine contains "\\AppData\\Local\\Discord\\Update.exe" and ProcessCommandLine contains " --processStart" and ProcessCommandLine contains "Discord.exe") or ((ProcessCommandLine contains "--createShortcut" or ProcessCommandLine contains "--processStartAndWait") and (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine contains "\\AppData\\Local\\GitHubDesktop\\Update.exe" and ProcessCommandLine contains "GitHubDesktop.exe")) or ((ProcessCommandLine contains "--processStart" or ProcessCommandLine contains "--createShortcut") and (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine contains "\\AppData\\Local\\Microsoft\\Teams\\Update.exe" and ProcessCommandLine contains "Teams.exe")) or ((ProcessCommandLine contains "--processStart" or ProcessCommandLine contains "--createShortcut") and (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine contains "\\AppData\\Local\\yammerdesktop\\Update.exe" and ProcessCommandLine contains "Yammer.exe")))))

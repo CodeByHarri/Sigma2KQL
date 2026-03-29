@@ -1,0 +1,11 @@
+// Title: OSACompile Run-Only Execution
+// Author: Sohan G (D4rkCiph3r)
+// Date: 2023-01-31
+// Level: high
+// Description: Detects potential suspicious run-only executions compiled using OSACompile
+// MITRE Tactic: Execution
+// Tags: attack.t1059.002, attack.execution
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/macos/process_creation/proc_creation_macos_osacompile_runonly_execution.yml
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "osacompile" and ProcessCommandLine contains " -x " and ProcessCommandLine contains " -e "

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/10/01
-// Level: high
-// Description: Detects the suspicious RUN keys created by software located in Download or temporary Outlook/Internet Explorer directories
-// Tags: attack.persistence, attack.t1547.001
-DeviceRegistryEvents
-| where (InitiatingProcessFolderPath contains "\\Downloads\\" or InitiatingProcessFolderPath contains "\\Temporary Internet Files\\Content.Outlook\\" or InitiatingProcessFolderPath contains "\\Local Settings\\Temporary Internet Files\\") and RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"

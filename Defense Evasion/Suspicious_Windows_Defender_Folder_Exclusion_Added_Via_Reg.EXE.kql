@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/02/13
-// Level: medium
-// Description: Detects the usage of "reg.exe" to add Defender folder exclusions. Qbot has been seen using this technique to add exclusions for folders within AppData and ProgramData.
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Paths" or ProcessCommandLine contains "SOFTWARE\\Microsoft\\Microsoft Antimalware\\Exclusions\\Paths") and (ProcessCommandLine contains "ADD " and ProcessCommandLine contains "/t " and ProcessCommandLine contains "REG_DWORD " and ProcessCommandLine contains "/v " and ProcessCommandLine contains "/d " and ProcessCommandLine contains "0") and FolderPath endswith "\\reg.exe"

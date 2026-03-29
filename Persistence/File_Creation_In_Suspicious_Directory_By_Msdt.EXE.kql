@@ -1,7 +1,0 @@
-// Author: Vadim Varganov, Florian Roth (Nextron Systems)
-// Date: 2022/08/24
-// Level: high
-// Description: Detects msdt.exe creating files in suspicious directories which could be a sign of exploitation of either Follina or Dogwalk vulnerabilities
-// Tags: attack.persistence, attack.t1547.001, cve.2022.30190
-DeviceFileEvents
-| where InitiatingProcessFolderPath endswith "\\msdt.exe" and (FolderPath contains "\\Desktop\\" or FolderPath contains "\\Start Menu\\Programs\\Startup\\" or FolderPath contains "C:\\PerfLogs\\" or FolderPath contains "C:\\ProgramData\\" or FolderPath contains "C:\\Users\\Public\\")

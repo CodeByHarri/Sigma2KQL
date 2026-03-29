@@ -1,7 +1,0 @@
-// Author: Teymur Kheirkhabarov, Daniil Yugoslavskiy, oscd.community
-// Date: 2019/10/22
-// Level: medium
-// Description: Shadow Copies creation using operating systems utilities, possible credential access
-// Tags: attack.credential_access, attack.t1003, attack.t1003.002, attack.t1003.003
-DeviceProcessEvents
-| where (ProcessCommandLine contains "shadow" and ProcessCommandLine contains "create") and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\vssadmin.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll", "wmic.exe", "VSSADMIN.EXE")))

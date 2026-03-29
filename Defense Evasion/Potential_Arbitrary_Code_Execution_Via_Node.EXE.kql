@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/09/09
-// Level: high
-// Description: Detects the execution node.exe which is shipped with multiple software such as VMware, Adobe...etc. In order to execute arbitrary code. For example to establish reverse shell as seen in Log4j attacks...etc
-// Tags: attack.defense_evasion, attack.t1127
-DeviceProcessEvents
-| where ((ProcessCommandLine contains " -e " or ProcessCommandLine contains " --eval ") and FolderPath endswith "\\node.exe") and (ProcessCommandLine contains ".exec(" and ProcessCommandLine contains "net.socket" and ProcessCommandLine contains ".connect" and ProcessCommandLine contains "child_process")

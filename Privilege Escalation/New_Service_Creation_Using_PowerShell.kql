@@ -1,7 +1,0 @@
-// Author: Timur Zinniatullin, Daniil Yugoslavskiy, oscd.community
-// Date: 2023/02/20
-// Level: low
-// Description: Detects the creation of a new service using powershell.
-// Tags: attack.persistence, attack.privilege_escalation, attack.t1543.003
-DeviceProcessEvents
-| where ProcessCommandLine contains "New-Service" and ProcessCommandLine contains "-BinaryPathName"

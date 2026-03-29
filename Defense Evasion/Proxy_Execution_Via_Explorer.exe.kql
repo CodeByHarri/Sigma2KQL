@@ -1,7 +1,0 @@
-// Author: Furkan CALISKAN, @caliskanfurkan_, @oscd_initiative
-// Date: 2020/10/05
-// Level: low
-// Description: Attackers can use explorer.exe for evading defense mechanisms
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ProcessCommandLine contains "explorer.exe" and FolderPath endswith "\\explorer.exe" and InitiatingProcessFolderPath endswith "\\cmd.exe"

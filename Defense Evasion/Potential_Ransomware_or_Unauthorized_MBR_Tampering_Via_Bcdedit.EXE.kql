@@ -1,7 +1,0 @@
-// Author: @neu5ron
-// Date: 2019/02/07
-// Level: medium
-// Description: Detects potential malicious and unauthorized usage of bcdedit.exe
-// Tags: attack.defense_evasion, attack.t1070, attack.persistence, attack.t1542.003
-DeviceProcessEvents
-| where (ProcessCommandLine contains "delete" or ProcessCommandLine contains "deletevalue" or ProcessCommandLine contains "import" or ProcessCommandLine contains "safeboot" or ProcessCommandLine contains "network") and (FolderPath endswith "\\bcdedit.exe" or ProcessVersionInfoOriginalFileName =~ "bcdedit.exe")

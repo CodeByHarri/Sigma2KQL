@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), frack113
-// Date: 2021/11/29
-// Level: high
-// Description: Detects the execution of REGSVR32.exe with DLL files masquerading as other files
-// Tags: attack.defense_evasion, attack.t1218.010
-DeviceProcessEvents
-| where (ProcessCommandLine endswith ".bin" or ProcessCommandLine endswith ".bmp" or ProcessCommandLine endswith ".cr2" or ProcessCommandLine endswith ".dat" or ProcessCommandLine endswith ".eps" or ProcessCommandLine endswith ".gif" or ProcessCommandLine endswith ".ico" or ProcessCommandLine endswith ".jpeg" or ProcessCommandLine endswith ".jpg" or ProcessCommandLine endswith ".nef" or ProcessCommandLine endswith ".orf" or ProcessCommandLine endswith ".png" or ProcessCommandLine endswith ".raw" or ProcessCommandLine endswith ".sr2" or ProcessCommandLine endswith ".temp" or ProcessCommandLine endswith ".tif" or ProcessCommandLine endswith ".tiff" or ProcessCommandLine endswith ".tmp" or ProcessCommandLine endswith ".rtf" or ProcessCommandLine endswith ".txt") and (FolderPath endswith "\\regsvr32.exe" or ProcessVersionInfoOriginalFileName =~ "REGSVR32.EXE")

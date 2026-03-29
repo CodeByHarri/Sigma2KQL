@@ -1,7 +1,0 @@
-// Author: Markus Neis
-// Date: 2018/07/24
-// Level: high
-// Description: Detects default lsass dump filename from SafetyKatz
-// Tags: attack.credential_access, attack.t1003.001
-DeviceFileEvents
-| where FolderPath endswith "\\Temp\\debug.bin"

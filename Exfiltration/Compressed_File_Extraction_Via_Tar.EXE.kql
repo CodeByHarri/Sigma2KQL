@@ -1,9 +1,0 @@
-// Author: AdmU3
-// Date: 2023/12/19
-// Level: low
-// Description: Detects execution of "tar.exe" in order to extract compressed file.
-Adversaries may abuse various utilities in order to decompress data to avoid detection.
-
-// Tags: attack.collection, attack.exfiltration, attack.t1560, attack.t1560.001
-DeviceProcessEvents
-| where ProcessCommandLine contains "-x" and (FolderPath endswith "\\tar.exe" or ProcessVersionInfoOriginalFileName =~ "bsdtar")

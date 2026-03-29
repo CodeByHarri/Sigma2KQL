@@ -1,9 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/26
-// Level: high
-// Description: Detects when the "index" value of a scheduled task is modified from the registry
-Which effectively hides it from any tooling such as "schtasks /query" (Read the referenced link for more information about the effects of this technique)
-
-// Tags: attack.defense_evasion, attack.t1562
-DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey contains "\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Schedule\\TaskCache\\Tree" and RegistryKey contains "Index")

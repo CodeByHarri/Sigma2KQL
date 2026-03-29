@@ -1,7 +1,0 @@
-// Author: vburov
-// Date: 2019/02/23
-// Level: low
-// Description: Detect suspicious parent processes of well-known Windows processes
-// Tags: attack.defense_evasion, attack.t1036.003, attack.t1036.005
-DeviceProcessEvents
-| where (FolderPath endswith "\\svchost.exe" or FolderPath endswith "\\taskhost.exe" or FolderPath endswith "\\lsm.exe" or FolderPath endswith "\\lsass.exe" or FolderPath endswith "\\services.exe" or FolderPath endswith "\\lsaiso.exe" or FolderPath endswith "\\csrss.exe" or FolderPath endswith "\\wininit.exe" or FolderPath endswith "\\winlogon.exe") and (not((((InitiatingProcessFolderPath contains "\\Windows Defender\\" or InitiatingProcessFolderPath contains "\\Microsoft Security Client\\") and InitiatingProcessFolderPath endswith "\\MsMpEng.exe") or (isnull(InitiatingProcessFolderPath) or InitiatingProcessFolderPath =~ "-") or ((InitiatingProcessFolderPath endswith "\\SavService.exe" or InitiatingProcessFolderPath endswith "\\ngen.exe") or (InitiatingProcessFolderPath contains "\\System32\\" or InitiatingProcessFolderPath contains "\\SysWOW64\\")))))

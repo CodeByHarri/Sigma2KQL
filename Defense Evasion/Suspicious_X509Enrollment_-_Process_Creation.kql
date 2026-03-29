@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/12/23
-// Level: medium
-// Description: Detect use of X509Enrollment
-// Tags: attack.defense_evasion, attack.t1553.004
-DeviceProcessEvents
-| where ProcessCommandLine contains "X509Enrollment.CBinaryConverter" or ProcessCommandLine contains "884e2002-217d-11da-b2a4-000e7bbb2b09"

@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/05/02
-// Level: medium
-// Description: A General detection for files being created in the Windows startup directory. This could be an indicator of persistence.
-// Tags: attack.persistence, attack.t1547.001
-DeviceFileEvents
-| where FolderPath contains "\\Microsoft\\Windows\\Start Menu\\Programs\\StartUp" and (not((InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\wuauclt.exe" or FolderPath startswith "C:\\$WINDOWS.~BT\\NewOS\\")))

@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/05/16
-// Level: medium
-// Description: Detects the execution of the LOLBIN gpscript, which executes logon or startup scripts configured in Group Policy
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ((ProcessCommandLine contains " /logon" or ProcessCommandLine contains " /startup") and (FolderPath endswith "\\gpscript.exe" or ProcessVersionInfoOriginalFileName =~ "GPSCRIPT.EXE")) and (not(InitiatingProcessCommandLine =~ "C:\\windows\\system32\\svchost.exe -k netsvcs -p -s gpsvc"))

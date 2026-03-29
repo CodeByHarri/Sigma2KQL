@@ -1,7 +1,0 @@
-// Author: Aaron Greetham (@beardofbinary) - NCC Group
-// Date: 2021/05/26
-// Level: medium
-// Description: Detects Rclone config files being created
-// Tags: attack.exfiltration, attack.t1567.002
-DeviceFileEvents
-| where FolderPath contains ":\\Users\\" and FolderPath contains "\\.config\\rclone\\"

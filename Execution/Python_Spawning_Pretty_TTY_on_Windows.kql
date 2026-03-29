@@ -1,7 +1,0 @@
-// Author: Nextron Systems
-// Date: 2022/06/03
-// Level: high
-// Description: Detects python spawning a pretty tty
-// Tags: attack.execution, attack.t1059
-DeviceProcessEvents
-| where (FolderPath endswith "python.exe" or FolderPath endswith "python3.exe" or FolderPath endswith "python2.exe") and ((ProcessCommandLine contains "import pty" and ProcessCommandLine contains ".spawn(") or ProcessCommandLine contains "from pty import spawn")

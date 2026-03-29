@@ -1,7 +1,0 @@
-// Author: C.J. May
-// Date: 2022/08/09
-// Level: high
-// Description: Detects default file names outputted by the BloodHound collection tool SharpHound
-// Tags: attack.discovery, attack.t1087.001, attack.t1087.002, attack.t1482, attack.t1069.001, attack.t1069.002, attack.execution, attack.t1059.001
-DeviceFileEvents
-| where (FolderPath endswith "BloodHound.zip" or FolderPath endswith "_computers.json" or FolderPath endswith "_containers.json" or FolderPath endswith "_domains.json" or FolderPath endswith "_gpos.json" or FolderPath endswith "_groups.json" or FolderPath endswith "_ous.json" or FolderPath endswith "_users.json") and (not((InitiatingProcessFolderPath endswith "\\svchost.exe" and FolderPath endswith "\\pocket_containers.json" and FolderPath startswith "C:\\Program Files\\WindowsApps\\Microsoft.")))

@@ -1,7 +1,0 @@
-// Author: Alexander Rausch
-// Date: 2020/06/24
-// Level: high
-// Description: Detects files dropped by Winnti as described in RedMimicry Winnti playbook
-// Tags: attack.defense_evasion, attack.t1027
-DeviceFileEvents
-| where FolderPath endswith "\\gthread-3.6.dll" or FolderPath endswith "\\sigcmm-2.4.dll" or FolderPath endswith "\\Windows\\Temp\\tmp.bat"

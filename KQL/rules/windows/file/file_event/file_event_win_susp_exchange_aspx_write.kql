@@ -1,0 +1,11 @@
+// Title: Suspicious MSExchangeMailboxReplication ASPX Write
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022-02-25
+// Level: high
+// Description: Detects suspicious activity in which the MSExchangeMailboxReplication process writes .asp and .apsx files to disk, which could be a sign of ProxyShell exploitation
+// MITRE Tactic: Initial Access
+// Tags: attack.initial-access, attack.t1190, attack.persistence, attack.t1505.003
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_susp_exchange_aspx_write.yml
+
+DeviceFileEvents
+| where InitiatingProcessFolderPath endswith "\\MSExchangeMailboxReplication.exe" and (FolderPath endswith ".aspx" or FolderPath endswith ".asp")

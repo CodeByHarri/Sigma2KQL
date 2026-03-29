@@ -1,7 +1,0 @@
-// Author: Georg Lauenstein (sure[secure])
-// Date: 2022/09/19
-// Level: high
-// Description: WinPEAS is a script that search for possible paths to escalate privileges on Windows hosts. The checks are explained on book.hacktricks.xyz
-// Tags: attack.privilege_escalation, attack.t1082, attack.t1087, attack.t1046
-DeviceProcessEvents
-| where ProcessCommandLine contains "https://github.com/carlospolop/PEASS-ng/releases/latest/download/" or (ProcessCommandLine contains " applicationsinfo" or ProcessCommandLine contains " browserinfo" or ProcessCommandLine contains " eventsinfo" or ProcessCommandLine contains " fileanalysis" or ProcessCommandLine contains " filesinfo" or ProcessCommandLine contains " processinfo" or ProcessCommandLine contains " servicesinfo" or ProcessCommandLine contains " windowscreds") or (InitiatingProcessCommandLine endswith " -linpeas" or ProcessCommandLine endswith " -linpeas") or (ProcessVersionInfoOriginalFileName =~ "winPEAS.exe" or (FolderPath endswith "\\winPEASany_ofs.exe" or FolderPath endswith "\\winPEASany.exe" or FolderPath endswith "\\winPEASx64_ofs.exe" or FolderPath endswith "\\winPEASx64.exe" or FolderPath endswith "\\winPEASx86_ofs.exe" or FolderPath endswith "\\winPEASx86.exe"))

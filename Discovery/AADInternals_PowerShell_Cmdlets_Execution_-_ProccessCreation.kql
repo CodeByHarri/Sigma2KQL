@@ -1,7 +1,0 @@
-// Author: Austin Songer (@austinsonger), Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/12/23
-// Level: high
-// Description: Detects ADDInternals Cmdlet execution. A tool for administering Azure AD and Office 365. Which can be abused by threat actors to attack Azure AD or Office 365.
-// Tags: attack.execution, attack.reconnaissance, attack.discovery, attack.credential_access, attack.impact
-DeviceProcessEvents
-| where (ProcessCommandLine contains "Add-AADInt" or ProcessCommandLine contains "ConvertTo-AADInt" or ProcessCommandLine contains "Disable-AADInt" or ProcessCommandLine contains "Enable-AADInt" or ProcessCommandLine contains "Export-AADInt" or ProcessCommandLine contains "Get-AADInt" or ProcessCommandLine contains "Grant-AADInt" or ProcessCommandLine contains "Install-AADInt" or ProcessCommandLine contains "Invoke-AADInt" or ProcessCommandLine contains "Join-AADInt" or ProcessCommandLine contains "New-AADInt" or ProcessCommandLine contains "Open-AADInt" or ProcessCommandLine contains "Read-AADInt" or ProcessCommandLine contains "Register-AADInt" or ProcessCommandLine contains "Remove-AADInt" or ProcessCommandLine contains "Restore-AADInt" or ProcessCommandLine contains "Search-AADInt" or ProcessCommandLine contains "Send-AADInt" or ProcessCommandLine contains "Set-AADInt" or ProcessCommandLine contains "Start-AADInt" or ProcessCommandLine contains "Update-AADInt") and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.Exe", "pwsh.dll")))

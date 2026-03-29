@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/08/26
-// Level: medium
-// Description: Detects suspicious child processes of SysAidServer (as seen in MERCURY threat actor intrusions)
-// Tags: attack.lateral_movement, attack.t1210
-DeviceProcessEvents
-| where InitiatingProcessCommandLine contains "SysAidServer" and (InitiatingProcessFolderPath endswith "\\java.exe" or InitiatingProcessFolderPath endswith "\\javaw.exe")

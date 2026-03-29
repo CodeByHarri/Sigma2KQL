@@ -1,0 +1,13 @@
+// Title: Potential Persistence Via Logon Scripts - Registry
+// Author: Tom Ueltschi (@c_APT_ure)
+// Date: 2019-01-12
+// Level: medium
+// Description: Detects creation of "UserInitMprLogonScript" registry value which can be used as a persistence method by malicious actors
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.t1037.001, attack.persistence, attack.lateral-movement
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_set/registry_set_persistence_logon_scripts_userinitmprlogonscript.yml
+// False Positives:
+//   - Investigate the contents of the "UserInitMprLogonScript" value to determine of the added script is legitimate
+
+DeviceRegistryEvents
+| where RegistryKey contains "UserInitMprLogonScript"

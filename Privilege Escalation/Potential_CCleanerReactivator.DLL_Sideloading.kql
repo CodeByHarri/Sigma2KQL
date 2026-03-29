@@ -1,7 +1,0 @@
-// Author: X__Junior
-// Date: 2023/07/13
-// Level: medium
-// Description: Detects potential DLL sideloading of "CCleanerReactivator.dll"
-// Tags: attack.defense_evasion, attack.persistence, attack.privilege_escalation, attack.t1574.001, attack.t1574.002
-DeviceImageLoadEvents
-| where FolderPath endswith "\\CCleanerReactivator.dll" and (not((InitiatingProcessFolderPath endswith "\\CCleanerReactivator.exe" and (InitiatingProcessFolderPath startswith "C:\\Program Files\\CCleaner\\" or InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\CCleaner\\"))))

@@ -1,7 +1,0 @@
-// Author: X__Junior (Nextron Systems)
-// Date: 2023/06/30
-// Level: medium
-// Description: Detects execution of "curl.exe" with the "--insecure" flag.
-// Tags: attack.execution
-DeviceProcessEvents
-| where (ProcessCommandLine matches regex "\\s-k\\s" or ProcessCommandLine contains "--insecure") and (FolderPath endswith "\\curl.exe" or ProcessVersionInfoOriginalFileName =~ "curl.exe")

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/02/06
-// Level: high
-// Description: Detects execution of the Notepad++ updater in a suspicious directory, which is often used in DLL side-loading attacks
-// Tags: attack.defense_evasion, attack.t1574.002
-DeviceProcessEvents
-| where FolderPath endswith "\\GUP.exe" and (not(((FolderPath endswith "\\Program Files\\Notepad++\\updater\\GUP.exe" or FolderPath endswith "\\Program Files (x86)\\Notepad++\\updater\\GUP.exe") or (FolderPath contains "\\Users\\" and (FolderPath endswith "\\AppData\\Local\\Notepad++\\updater\\GUP.exe" or FolderPath endswith "\\AppData\\Roaming\\Notepad++\\updater\\GUP.exe")))))

@@ -1,0 +1,89 @@
+name: Update Sigma to KQL Rules
+
+on:
+  schedule:
+    # Run weekly on Sunday at 2 AM UTC
+    - cron: '0 2 * * 0'
+  workflow_dispatch:
+    # Allow manual trigger
+  push:
+    branches:
+      - main
+
+jobs:
+  convert-sigma-rules:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Sigma2KQL repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Clone Sigma rules repository
+        run: |
+          git clone https://github.com/SigmaHQ/sigma.git
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Sigma to KQL conversion
+        run: |
+          python helper.py --sigma-dir "./sigma" --output-dir "./KQL"
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [ -n "$(git status --porcelain KQL/)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.changes == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update KQL rules from latest Sigma rules'
+          branch: update-sigma-rules-${{ github.run_number }}
+          delete-branch: true
+          title: 'Update KQL Rules from Sigma Repository'
+          body: |
+            ## Automated Sigma to KQL Conversion
+            
+            This PR contains updated KQL rules converted from the latest Sigma rules repository.
+            
+            ### Changes
+            - Updated KQL rules from SigmaHQ/sigma repository
+            - Conversion date: ${{ github.event.repository.updated_at }}
+            - Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            
+            ### Review Checklist
+            - [ ] Review changed rules for accuracy
+            - [ ] Verify new rules are properly formatted
+            - [ ] Check for any failed conversions in workflow logs
+            
+            ---
+            *This PR was automatically created by the Update Sigma Rules workflow.*
+          labels: |
+            automated
+            sigma-update
+          reviewers: ${{ github.repository_owner }}
+
+      - name: Summary
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          echo "✅ Pull request created with updated Sigma rules"
+          echo "📊 Check the PR for detailed changes"
+        
+      - name: No changes summary
+        if: steps.check_changes.outputs.changes != 'true'
+        run: |
+          echo "ℹ️ No changes detected - rules are up to date"

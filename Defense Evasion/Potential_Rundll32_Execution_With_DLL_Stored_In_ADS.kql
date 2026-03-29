@@ -1,7 +1,0 @@
-// Author: Harjot Singh, '@cyb3rjy0t'
-// Date: 2023/01/21
-// Level: high
-// Description: Detects execution of rundll32 where the DLL being called is stored in an Alternate Data Stream (ADS).
-// Tags: attack.defense_evasion, attack.t1564.004
-DeviceProcessEvents
-| where ProcessCommandLine matches regex "[Rr][Uu][Nn][Dd][Ll][Ll]32(\\.[Ee][Xx][Ee])? \\S+?\\w:\\S+?:" and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE")

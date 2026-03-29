@@ -1,0 +1,13 @@
+// Title: Creation of a Diagcab
+// Author: frack113
+// Date: 2022-06-08
+// Level: medium
+// Description: Detects the creation of diagcab file, which could be caused by some legitimate installer or is a sign of exploitation (review the filename and its location)
+// MITRE Tactic: Resource Development
+// Tags: attack.resource-development
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_susp_diagcab.yml
+// False Positives:
+//   - Legitimate microsoft diagcab
+
+DeviceFileEvents
+| where FolderPath endswith ".diagcab"

@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/10/12
-// Level: critical
-// Description: Detects a threat actor creating a file named `wbemcomn.dll` in the `C:\Windows\System32\wbem\` directory over the network and loading it for a WMI DLL Hijack scenario.
-// Tags: attack.execution, attack.t1047, attack.lateral_movement, attack.t1021.002
-DeviceFileEvents
-| where InitiatingProcessFolderPath =~ "System" and FolderPath endswith "\\wbem\\wbemcomn.dll"

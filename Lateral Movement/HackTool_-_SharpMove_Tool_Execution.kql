@@ -1,8 +1,0 @@
-// Author: Luca Di Bartolomeo (CrimpSec)
-// Date: 2024/01/29
-// Level: high
-// Description: Detects the execution of SharpMove, a .NET utility performing multiple tasks such as "Task Creation", "SCM" query, VBScript execution using WMI via its PE metadata and command line options.
-
-// Tags: attack.lateral_movement, attack.t1021.002
-DeviceProcessEvents
-| where (FolderPath endswith "\\SharpMove.exe" or ProcessVersionInfoOriginalFileName =~ "SharpMove.exe") or ((ProcessCommandLine contains "action=create" or ProcessCommandLine contains "action=dcom" or ProcessCommandLine contains "action=executevbs" or ProcessCommandLine contains "action=hijackdcom" or ProcessCommandLine contains "action=modschtask" or ProcessCommandLine contains "action=modsvc" or ProcessCommandLine contains "action=query" or ProcessCommandLine contains "action=scm" or ProcessCommandLine contains "action=startservice" or ProcessCommandLine contains "action=taskscheduler") and ProcessCommandLine contains "computername=")

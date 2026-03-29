@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2017/04/15
-// Level: high
-// Description: Detects suspicious Rundll32 execution from control.exe as used by Equation Group and Exploit Kits
-// Tags: attack.defense_evasion, attack.t1218.011
-DeviceProcessEvents
-| where ((FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE") and InitiatingProcessFolderPath endswith "\\System32\\control.exe") and (not(ProcessCommandLine contains "Shell32.dll"))

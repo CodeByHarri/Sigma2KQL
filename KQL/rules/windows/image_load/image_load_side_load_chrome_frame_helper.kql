@@ -1,0 +1,11 @@
+// Title: Potential Chrome Frame Helper DLL Sideloading
+// Author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)
+// Date: 2022-08-17
+// Level: medium
+// Description: Detects potential DLL sideloading of "chrome_frame_helper.dll"
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.persistence, attack.privilege-escalation, attack.t1574.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/image_load/image_load_side_load_chrome_frame_helper.yml
+
+DeviceImageLoadEvents
+| where FolderPath endswith "\\chrome_frame_helper.dll" and (not((FolderPath startswith "C:\\Program Files\\Google\\Chrome\\Application\\" or FolderPath startswith "C:\\Program Files (x86)\\Google\\Chrome\\Application\\"))) and (not(FolderPath contains "\\AppData\\local\\Google\\Chrome\\Application\\"))

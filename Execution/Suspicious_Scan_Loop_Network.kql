@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/03/12
-// Level: medium
-// Description: Adversaries may attempt to get a listing of other systems by IP address, hostname, or other logical identifier on a network that may be used for Lateral Movement from the current system
-// Tags: attack.execution, attack.t1059, attack.discovery, attack.t1018
-DeviceProcessEvents
-| where (ProcessCommandLine contains "for " or ProcessCommandLine contains "foreach ") and (ProcessCommandLine contains "nslookup" or ProcessCommandLine contains "ping")

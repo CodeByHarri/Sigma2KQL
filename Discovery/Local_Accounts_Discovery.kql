@@ -1,7 +1,0 @@
-// Author: Timur Zinniatullin, Daniil Yugoslavskiy, oscd.community
-// Date: 2019/10/21
-// Level: low
-// Description: Local accounts, System Owner/User discovery using operating systems utilities
-// Tags: attack.discovery, attack.t1033, attack.t1087.001
-DeviceProcessEvents
-| where (((ProcessCommandLine contains " /c" and ProcessCommandLine contains "dir " and ProcessCommandLine contains "\\Users\\") and FolderPath endswith "\\cmd.exe") and (not(ProcessCommandLine contains " rmdir "))) or ((ProcessCommandLine contains "user" and (FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe")) and (not((ProcessCommandLine contains "/domain" or ProcessCommandLine contains "/add" or ProcessCommandLine contains "/delete" or ProcessCommandLine contains "/active" or ProcessCommandLine contains "/expires" or ProcessCommandLine contains "/passwordreq" or ProcessCommandLine contains "/scriptpath" or ProcessCommandLine contains "/times" or ProcessCommandLine contains "/workstations")))) or ((ProcessCommandLine contains " /l" and FolderPath endswith "\\cmdkey.exe") or (FolderPath endswith "\\whoami.exe" or FolderPath endswith "\\quser.exe" or FolderPath endswith "\\qwinsta.exe") or ((ProcessCommandLine contains "useraccount" and ProcessCommandLine contains "get") and FolderPath endswith "\\wmic.exe"))

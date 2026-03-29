@@ -1,9 +1,0 @@
-// Author: Michael McKinley (@McKinleyMike), Tony Latteri (@TheLatteri)
-// Date: 2023/09/18
-// Level: medium
-// Description: Detects a network connection initiated by the Add-In deployment cache updating utility "AddInutil.exe".
-This could indicate a potential command and control communication as this tool doesn't usually initiate network activity.
-
-// Tags: attack.defense_evasion, attack.t1218
-DeviceNetworkEvents
-| where InitiatingProcessFolderPath endswith "\\addinutil.exe"

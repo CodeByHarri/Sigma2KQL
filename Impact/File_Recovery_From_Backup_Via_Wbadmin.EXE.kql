@@ -1,9 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), frack113
-// Date: 2024/05/10
-// Level: medium
-// Description: Detects the recovery of files from backups via "wbadmin.exe".
-Attackers can restore sensitive files such as NTDS.DIT or Registry Hives from backups in order to potentially extract credentials.
-
-// Tags: attack.impact, attack.t1490
-DeviceProcessEvents
-| where (ProcessCommandLine contains " recovery" and ProcessCommandLine contains "recoveryTarget" and ProcessCommandLine contains "itemtype:File") and (FolderPath endswith "\\wbadmin.exe" or ProcessVersionInfoOriginalFileName =~ "WBADMIN.EXE")

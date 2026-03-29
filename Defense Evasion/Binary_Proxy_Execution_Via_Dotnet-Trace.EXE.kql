@@ -1,7 +1,0 @@
-// Author: Jimmy Bayne (@bohops)
-// Date: 2024/01/02
-// Level: medium
-// Description: Detects commandline arguments for executing a child process via dotnet-trace.exe
-// Tags: attack.execution, attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where (ProcessCommandLine contains "-- " and ProcessCommandLine contains "collect") and (FolderPath endswith "\\dotnet-trace.exe" or ProcessVersionInfoOriginalFileName =~ "dotnet-trace.dll")

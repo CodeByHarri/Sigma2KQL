@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/10/20
-// Level: high
-// Description: Detects the volume shadow copy service initialization and processing via esentutl. Registry keys such as HKLM\\System\\CurrentControlSet\\Services\\VSS\\Diag\\VolSnap\\Volume are captured.
-// Tags: attack.credential_access, attack.t1003.002
-DeviceRegistryEvents
-| where (InitiatingProcessFolderPath endswith "esentutl.exe" and RegistryKey contains "System\\CurrentControlSet\\Services\\VSS") and (not(RegistryKey contains "System\\CurrentControlSet\\Services\\VSS\\Start"))

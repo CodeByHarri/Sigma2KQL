@@ -1,0 +1,11 @@
+// Title: Potential DLL Sideloading Via ClassicExplorer32.dll
+// Author: frack113
+// Date: 2022-12-13
+// Level: medium
+// Description: Detects potential DLL sideloading using ClassicExplorer32.dll from the Classic Shell software
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.persistence, attack.privilege-escalation, attack.t1574.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/image_load/image_load_side_load_classicexplorer32.yml
+
+DeviceImageLoadEvents
+| where FolderPath endswith "\\ClassicExplorer32.dll" and (not(FolderPath startswith "C:\\Program Files\\Classic Shell\\"))

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/05/22
-// Level: high
-// Description: Detects execution of "odbcconf" with the "-f" flag in order to load a response file with a non-".rsp" extension.
-// Tags: attack.defense_evasion, attack.t1218.008
-DeviceProcessEvents
-| where ((ProcessCommandLine contains " -f " or ProcessCommandLine contains " /f ") and (FolderPath endswith "\\odbcconf.exe" or ProcessVersionInfoOriginalFileName =~ "odbcconf.exe")) and (not((ProcessCommandLine contains ".rsp" or (ProcessCommandLine contains ".exe /E /F \"C:\\WINDOWS\\system32\\odbcconf.tmp\"" and FolderPath =~ "C:\\Windows\\System32\\odbcconf.exe" and InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\runonce.exe"))))

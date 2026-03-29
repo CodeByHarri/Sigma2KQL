@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/08/27
-// Level: critical
-// Description: Detects indicators of a UAC bypass method by mocking directories
-// Tags: attack.defense_evasion, attack.t1548.002
-DeviceProcessEvents
-| where FolderPath contains "C:\\Windows \\System32\\"

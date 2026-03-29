@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), Samir Bousseaden (idea)
-// Date: 2019/06/17
-// Level: medium
-// Description: Detects a suspicious child process of userinit
-// Tags: attack.defense_evasion, attack.t1055
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\userinit.exe" and (not((ProcessCommandLine contains "\\netlogon\\" or (FolderPath endswith "\\explorer.exe" or ProcessVersionInfoOriginalFileName =~ "explorer.exe"))))

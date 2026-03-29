@@ -1,0 +1,13 @@
+// Title: Remote Access Tool - Cmd.EXE Execution via AnyViewer
+// Author: @kostastsale
+// Date: 2024-08-03
+// Level: medium
+// Description: Detects execution of "cmd.exe" via the AnyViewer RMM agent on a remote management sessions.
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.persistence, detection.threat-hunting
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules-threat-hunting/windows/process_creation/proc_creation_win_remote_access_tools_anyviewer_shell_exec.yml
+// False Positives:
+//   - Legitimate use for admin activity.
+
+DeviceProcessEvents
+| where FolderPath endswith "\\cmd.exe" and InitiatingProcessCommandLine contains "AVCore.exe\" -d" and InitiatingProcessFolderPath endswith "\\AVCore.exe"

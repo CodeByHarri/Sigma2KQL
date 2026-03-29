@@ -1,7 +1,0 @@
-// Author: Victor Sergeev, Daniil Yugoslavskiy, Gleb Sukhodolskiy, Timur Zinniatullin, oscd.community, Tim Shelton, frack113 (split)
-// Date: 2019/10/25
-// Level: medium
-// Description: Detects modification of autostart extensibility point (ASEP) in registry.
-// Tags: attack.persistence, attack.t1547.001
-DeviceRegistryEvents
-| where RegistryKey contains "\\Software\\Wow6432Node\\Classes" and (RegistryKey contains "\\Folder\\ShellEx\\ExtShellFolderViews" or RegistryKey contains "\\Folder\\ShellEx\\DragDropHandlers" or RegistryKey contains "\\Folder\\ShellEx\\ColumnHandlers" or RegistryKey contains "\\Directory\\Shellex\\DragDropHandlers" or RegistryKey contains "\\Directory\\Shellex\\CopyHookHandlers" or RegistryKey contains "\\CLSID\\{AC757296-3522-4E11-9862-C17BE5A1767E}\\Instance" or RegistryKey contains "\\CLSID\\{ABE3B9A4-257D-4B97-BD1A-294AF496222E}\\Instance" or RegistryKey contains "\\CLSID\\{7ED96837-96F0-4812-B211-F13C24117ED3}\\Instance" or RegistryKey contains "\\CLSID\\{083863F1-70DE-11d0-BD40-00A0C911CE86}\\Instance" or RegistryKey contains "\\AllFileSystemObjects\\ShellEx\\DragDropHandlers" or RegistryKey contains "\\ShellEx\\PropertySheetHandlers" or RegistryKey contains "\\ShellEx\\ContextMenuHandlers") and (not(RegistryValueData =~ "(Empty)"))

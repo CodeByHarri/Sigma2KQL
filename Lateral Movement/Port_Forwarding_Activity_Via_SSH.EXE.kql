@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/10/12
-// Level: medium
-// Description: Detects port forwarding activity via SSH.exe
-// Tags: attack.command_and_control, attack.lateral_movement, attack.t1572, attack.t1021.001, attack.t1021.004
-DeviceProcessEvents
-| where (ProcessCommandLine contains " -R " or ProcessCommandLine contains " /R ") and FolderPath endswith "\\ssh.exe"

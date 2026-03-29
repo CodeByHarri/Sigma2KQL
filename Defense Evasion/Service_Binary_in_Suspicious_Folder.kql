@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), frack113
-// Date: 2022/05/02
-// Level: high
-// Description: Detect the creation of a service with a service binary located in a suspicious directory
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where (((RegistryValueData in~ ("DWORD (0x00000000)", "DWORD (0x00000001)", "DWORD (0x00000002)")) and (InitiatingProcessFolderPath contains "\\Users\\Public\\" or InitiatingProcessFolderPath contains "\\Perflogs\\" or InitiatingProcessFolderPath contains "\\ADMIN$\\" or InitiatingProcessFolderPath contains "\\Temp\\") and RegistryKey endswith "\\Start" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services") or ((RegistryValueData contains "\\Users\\Public\\" or RegistryValueData contains "\\Perflogs\\" or RegistryValueData contains "\\ADMIN$\\" or RegistryValueData contains "\\Temp\\") and RegistryKey endswith "\\ImagePath" and RegistryKey startswith "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services")) and (not((InitiatingProcessFolderPath contains "\\Common Files\\" and InitiatingProcessFolderPath contains "\\Temp\\")))

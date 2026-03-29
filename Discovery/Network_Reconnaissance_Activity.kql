@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/02/07
-// Level: high
-// Description: Detects a set of suspicious network related commands often used in recon stages
-// Tags: attack.discovery, attack.t1087, attack.t1082, car.2016-03-001
-DeviceProcessEvents
-| where ProcessCommandLine contains "nslookup" and ProcessCommandLine contains "_ldap._tcp.dc._msdcs."

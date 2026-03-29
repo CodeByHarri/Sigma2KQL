@@ -1,8 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Anish Bogati
-// Date: 2024/01/05
-// Level: high
-// Description: Detects the execution of "forfiles" from a non-default location, in order to potentially spawn a custom "cmd.exe" from the current working directory.
-
-// Tags: attack.defense_evasion, attack.t1036
-DeviceProcessEvents
-| where (ProcessCommandLine startswith "/c echo \"" and FolderPath endswith "\\cmd.exe" and (InitiatingProcessCommandLine endswith ".exe" or InitiatingProcessCommandLine endswith ".exe\"")) and (not(((FolderPath contains ":\\Windows\\System32\\" or FolderPath contains ":\\Windows\\SysWOW64\\") and FolderPath endswith "\\cmd.exe" and (InitiatingProcessFolderPath contains ":\\Windows\\System32\\" or InitiatingProcessFolderPath contains ":\\Windows\\SysWOW64\\") and InitiatingProcessFolderPath endswith "\\forfiles.exe")))

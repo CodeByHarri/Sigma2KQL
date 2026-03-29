@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/10/14
-// Level: high
-// Description: Detects suspicious Windows Error Reporting manager (wermgr.exe) child process
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1055, attack.t1036
-DeviceProcessEvents
-| where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\ipconfig.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe" or FolderPath endswith "\\netstat.exe" or FolderPath endswith "\\nslookup.exe" or FolderPath endswith "\\powershell_ise.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\systeminfo.exe" or FolderPath endswith "\\whoami.exe" or FolderPath endswith "\\wscript.exe") and InitiatingProcessFolderPath endswith "\\wermgr.exe"

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/02/25
-// Level: high
-// Description: This rule detects suspicious processes with parent images located in the C:\Users\Public folder
-// Tags: attack.defense_evasion, attack.execution, attack.t1564, attack.t1059
-DeviceProcessEvents
-| where (ProcessCommandLine contains "powershell" or ProcessCommandLine contains "cmd.exe /c " or ProcessCommandLine contains "cmd.exe /r " or ProcessCommandLine contains "cmd.exe /k " or ProcessCommandLine contains "cmd /c " or ProcessCommandLine contains "cmd /r " or ProcessCommandLine contains "cmd /k " or ProcessCommandLine contains "wscript.exe" or ProcessCommandLine contains "cscript.exe" or ProcessCommandLine contains "bitsadmin" or ProcessCommandLine contains "certutil" or ProcessCommandLine contains "mshta.exe") and InitiatingProcessFolderPath startswith "C:\\Users\\Public\\"

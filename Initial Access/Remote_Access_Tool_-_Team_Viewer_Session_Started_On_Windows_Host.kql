@@ -1,9 +1,0 @@
-// Author: Josh Nickels, Qi Nan
-// Date: 2024/03/11
-// Level: low
-// Description: Detects the command line executed when TeamViewer starts a session started by a remote host.
-Once a connection has been started, an investigator can verify the connection details by viewing the "incoming_connections.txt" log file in the TeamViewer folder.
-
-// Tags: attack.initial_access, attack.t1133
-DeviceProcessEvents
-| where ProcessCommandLine endswith "TeamViewer_Desktop.exe --IPCport 5939 --Module 1" and FolderPath =~ "TeamViewer_Desktop.exe" and InitiatingProcessFolderPath =~ "TeamViewer_Service.exe"

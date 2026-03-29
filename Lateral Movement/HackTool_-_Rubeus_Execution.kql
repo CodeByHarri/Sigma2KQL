@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2018/12/19
-// Level: critical
-// Description: Detects the execution of the hacktool Rubeus via PE information of command line parameters
-// Tags: attack.credential_access, attack.t1003, attack.t1558.003, attack.lateral_movement, attack.t1550.003
-DeviceProcessEvents
-| where FolderPath endswith "\\Rubeus.exe" or ProcessVersionInfoOriginalFileName =~ "Rubeus.exe" or ProcessVersionInfoFileDescription =~ "Rubeus" or (ProcessCommandLine contains "asreproast " or ProcessCommandLine contains "dump /service:krbtgt " or ProcessCommandLine contains "dump /luid:0x" or ProcessCommandLine contains "kerberoast " or ProcessCommandLine contains "createnetonly /program:" or ProcessCommandLine contains "ptt /ticket:" or ProcessCommandLine contains "/impersonateuser:" or ProcessCommandLine contains "renew /ticket:" or ProcessCommandLine contains "asktgt /user:" or ProcessCommandLine contains "harvest /interval:" or ProcessCommandLine contains "s4u /user:" or ProcessCommandLine contains "s4u /ticket:" or ProcessCommandLine contains "hash /password:" or ProcessCommandLine contains "golden /aes256:" or ProcessCommandLine contains "silver /user:")

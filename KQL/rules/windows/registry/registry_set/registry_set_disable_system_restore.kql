@@ -1,0 +1,11 @@
+// Title: Registry Disable System Restore
+// Author: frack113
+// Date: 2022-04-04
+// Level: high
+// Description: Detects the modification of the registry to disable a system restore on the computer
+// MITRE Tactic: Impact
+// Tags: attack.impact, attack.t1490
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_set/registry_set_disable_system_restore.yml
+
+DeviceRegistryEvents
+| where RegistryValueData =~ "DWORD (0x00000001)" and (RegistryKey contains "\\Policies\\Microsoft\\Windows NT\\SystemRestore" or RegistryKey contains "\\Microsoft\\Windows NT\\CurrentVersion\\SystemRestore") and (RegistryKey endswith "DisableConfig" or RegistryKey endswith "DisableSR")

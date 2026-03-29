@@ -1,7 +1,0 @@
-// Author: Christopher Peacock '@securepeacock', SCYTHE '@scythe_io'
-// Date: 2022/03/29
-// Level: low
-// Description: Attackers may leverage fsutil to enumerated connected drives.
-// Tags: attack.discovery, attack.t1120
-DeviceProcessEvents
-| where ProcessCommandLine contains "drives" and (FolderPath endswith "\\fsutil.exe" or ProcessVersionInfoOriginalFileName =~ "fsutil.exe")

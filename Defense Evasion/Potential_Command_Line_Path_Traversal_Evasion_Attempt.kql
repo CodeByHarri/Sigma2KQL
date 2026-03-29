@@ -1,7 +1,0 @@
-// Author: Christian Burkard (Nextron Systems)
-// Date: 2021/10/26
-// Level: medium
-// Description: Detects potential evasion or obfuscation attempts using bogus path traversal via the commandline
-// Tags: attack.defense_evasion, attack.t1036
-DeviceProcessEvents
-| where (((ProcessCommandLine contains "\\..\\Windows\\" or ProcessCommandLine contains "\\..\\System32\\" or ProcessCommandLine contains "\\..\\..\\") and FolderPath contains "\\Windows\\") or ProcessCommandLine contains ".exe\\..\\") and (not((ProcessCommandLine contains "\\Citrix\\Virtual Smart Card\\Citrix.Authentication.VirtualSmartcard.Launcher.exe\\..\\" or ProcessCommandLine contains "\\Google\\Drive\\googledrivesync.exe\\..\\")))

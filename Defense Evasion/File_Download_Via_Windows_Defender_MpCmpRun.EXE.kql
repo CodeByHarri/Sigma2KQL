@@ -1,7 +1,0 @@
-// Author: Matthew Matchen
-// Date: 2020/09/04
-// Level: high
-// Description: Detects the use of Windows Defender MpCmdRun.EXE to download files
-// Tags: attack.defense_evasion, attack.t1218, attack.command_and_control, attack.t1105
-DeviceProcessEvents
-| where (ProcessCommandLine contains "DownloadFile" and ProcessCommandLine contains "url") and (ProcessVersionInfoOriginalFileName =~ "MpCmdRun.exe" or FolderPath endswith "\\MpCmdRun.exe" or ProcessCommandLine contains "MpCmdRun.exe" or ProcessVersionInfoFileDescription =~ "Microsoft Malware Protection Command Line Utility")

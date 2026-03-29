@@ -1,7 +1,0 @@
-// Author: Endgame, JHasenbusch (ported for oscd.community)
-// Date: 2018/10/30
-// Level: low
-// Description: Detects attempts to enumerate file shares, printer shares and sessions using "net.exe" with the "view" flag.
-// Tags: attack.discovery, attack.t1018
-DeviceProcessEvents
-| where (ProcessCommandLine contains "view" and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~ ("net.exe", "net1.exe")))) and (not(ProcessCommandLine contains "\\\\"))

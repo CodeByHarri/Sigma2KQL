@@ -1,0 +1,11 @@
+// Title: SAM Registry Hive Handle Request
+// Author: Roberto Rodriguez @Cyb3rWard0g
+// Date: 2019-08-12
+// Level: high
+// Description: Detects handles requested to SAM registry hive
+// MITRE Tactic: Discovery
+// Tags: attack.discovery, attack.t1012, attack.credential-access, attack.t1552.002
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/win_security_sam_registry_hive_handle_request.yml
+
+DeviceRegistryEvents
+| where RegistryKey endswith "\\SAM"

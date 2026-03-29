@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/03/18
-// Level: medium
-// Description: Detects registry modifications that hide internal tools or functions from the user (malware like Agent Tesla, Hermetic Wiper uses this technique)
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where (RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowInfoTip" or RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowCompColor")) or (RegistryValueData =~ "DWORD (0x00000001)" and (RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideClock" or RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideSCAHealth" or RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideSCANetwork" or RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideSCAPower" or RegistryKey endswith "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideSCAVolume"))

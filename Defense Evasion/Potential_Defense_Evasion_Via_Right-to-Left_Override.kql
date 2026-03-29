@@ -1,9 +1,0 @@
-// Author: Micah Babinski, @micahbabinski
-// Date: 2023/02/15
-// Level: high
-// Description: Detects the presence of the "u202+E" character, which causes a terminal, browser, or operating system to render text in a right-to-left sequence.
-This is used as an obfuscation and masquerading techniques.
-
-// Tags: attack.defense_evasion, attack.t1036.002
-DeviceProcessEvents
-| where ProcessCommandLine contains "‮"

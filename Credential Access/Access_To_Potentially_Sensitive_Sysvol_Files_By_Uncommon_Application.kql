@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2023/12/21
-// Level: medium
-// Description: Detects file access requests to potentially sensitive files hosted on the Windows Sysvol share.
-// Tags: attack.credential_access, attack.t1552.006
-DeviceFileEvents
-| where ((FileName contains "\\sysvol\\" and FileName contains "\\Policies\\") and (FileName endswith "audit.csv" or FileName endswith "Files.xml" or FileName endswith "GptTmpl.inf" or FileName endswith "groups.xml" or FileName endswith "Registry.pol" or FileName endswith "Registry.xml" or FileName endswith "scheduledtasks.xml" or FileName endswith "scripts.ini" or FileName endswith "services.xml") and FileName startswith "\\") and (not((InitiatingProcessFolderPath startswith ":\\Program Files (x86)\\" or InitiatingProcessFolderPath startswith ":\\Program Files\\" or InitiatingProcessFolderPath startswith ":\\Windows\\explorer.exe" or InitiatingProcessFolderPath startswith ":\\Windows\\system32\\" or InitiatingProcessFolderPath startswith ":\\Windows\\SysWOW64\\")))

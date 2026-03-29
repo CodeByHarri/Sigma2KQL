@@ -1,9 +1,0 @@
-// Author: Stephen Lincoln @slincoln-aiq (AttackIQ)
-// Date: 2023/12/21
-// Level: medium
-// Description: Detects the execution of "reg.exe" to alter registry keys that would replace the user's desktop background.
-This is a common technique used by malware to change the desktop background to a ransom note or other image.
-
-// Tags: attack.defense_evasion, attack.impact, attack.t1112, attack.t1491.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "add" and (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~ "reg.exe")) and (ProcessCommandLine contains "Control Panel\\Desktop" or ProcessCommandLine contains "CurrentVersion\\Policies\\ActiveDesktop" or ProcessCommandLine contains "CurrentVersion\\Policies\\System") and ((ProcessCommandLine contains "/v NoChangingWallpaper" and ProcessCommandLine contains "/d 1") or (ProcessCommandLine contains "/v Wallpaper" and ProcessCommandLine contains "/t REG_SZ") or (ProcessCommandLine contains "/v WallpaperStyle" and ProcessCommandLine contains "/d 2"))

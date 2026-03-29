@@ -1,0 +1,11 @@
+// Title: Suspicious SysAidServer Child
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022-08-26
+// Level: medium
+// Description: Detects suspicious child processes of SysAidServer (as seen in MERCURY threat actor intrusions)
+// MITRE Tactic: Lateral Movement
+// Tags: attack.lateral-movement, attack.t1210
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_java_sysaidserver_susp_child_process.yml
+
+DeviceProcessEvents
+| where InitiatingProcessCommandLine contains "SysAidServer" and (InitiatingProcessFolderPath endswith "\\java.exe" or InitiatingProcessFolderPath endswith "\\javaw.exe")

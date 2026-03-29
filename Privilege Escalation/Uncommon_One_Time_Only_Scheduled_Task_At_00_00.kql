@@ -1,7 +1,0 @@
-// Author: pH-T (Nextron Systems)
-// Date: 2022/07/15
-// Level: high
-// Description: Detects scheduled task creation events that include suspicious actions, and is run once at 00:00
-// Tags: attack.execution, attack.persistence, attack.privilege_escalation, attack.t1053.005
-DeviceProcessEvents
-| where (ProcessCommandLine contains "wscript" or ProcessCommandLine contains "vbscript" or ProcessCommandLine contains "cscript" or ProcessCommandLine contains "wmic " or ProcessCommandLine contains "wmic.exe" or ProcessCommandLine contains "regsvr32.exe" or ProcessCommandLine contains "powershell" or ProcessCommandLine contains "\\AppData\\") and (FolderPath contains "\\schtasks.exe" or ProcessVersionInfoOriginalFileName =~ "schtasks.exe") and (ProcessCommandLine contains "once" and ProcessCommandLine contains "00:00")

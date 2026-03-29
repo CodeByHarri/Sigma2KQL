@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/12
-// Level: medium
-// Description: Detects usage of findstr with the "EVERYONE" or "BUILTIN" keywords. This is seen being used in combination with "icacls" to look for misconfigured files or folders permissions
-// Tags: attack.credential_access, attack.t1552.006
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "\"Everyone\"" or ProcessCommandLine contains "'Everyone'" or ProcessCommandLine contains "\"BUILTIN\\\"" or ProcessCommandLine contains "'BUILTIN\\'") and ((FolderPath endswith "\\find.exe" or FolderPath endswith "\\findstr.exe") or (ProcessVersionInfoOriginalFileName in~ ("FIND.EXE", "FINDSTR.EXE")))) or (ProcessCommandLine contains "icacls " and ProcessCommandLine contains "findstr " and ProcessCommandLine contains "Everyone")

@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez @Cyb3rWard0g
-// Date: 2019/09/12
-// Level: medium
-// Description: Detects remote PowerShell sections by monitoring for wsmprovhost (WinRM host process) as a parent or child process (sign of an active PowerShell remote session).
-// Tags: attack.execution, attack.t1059.001, attack.t1021.006
-DeviceProcessEvents
-| where FolderPath endswith "\\wsmprovhost.exe" or InitiatingProcessFolderPath endswith "\\wsmprovhost.exe"

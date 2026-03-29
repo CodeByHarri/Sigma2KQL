@@ -1,9 +1,0 @@
-// Author: @gott_cyber
-// Date: 2022/08/29
-// Level: medium
-// Description: Detects the use of the PhoneDeepLink parameter to potentially sideload a DLL file that does not exist. This non-existent DLL file is named "ShellChromeAPI.dll".
-Adversaries can drop their own renamed DLL and execute it via DeviceEnroller.exe using this parameter
-
-// Tags: attack.defense_evasion, attack.t1574.002
-DeviceProcessEvents
-| where ProcessCommandLine contains "/PhoneDeepLink" and (FolderPath endswith "\\deviceenroller.exe" or ProcessVersionInfoOriginalFileName =~ "deviceenroller.exe")

@@ -1,8 +1,0 @@
-// Author: Max Altgelt (Nextron Systems), Tobias Michalski (Nextron Systems)
-// Date: 2021/08/09
-// Level: high
-// Description: Detects a command that accesses the VolumeShadowCopy in order to extract sensitive files such as the Security or SAM registry hives or the AD database (ntds.dit)
-
-// Tags: attack.impact, attack.t1490
-DeviceProcessEvents
-| where ProcessCommandLine contains "\\\\?\\GLOBALROOT\\Device\\HarddiskVolumeShadowCopy" and (ProcessCommandLine contains "\\NTDS.dit" or ProcessCommandLine contains "\\SYSTEM" or ProcessCommandLine contains "\\SECURITY")

@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/12/31
-// Level: medium
-// Description: Detects uncommon child processes of "DefaultPack.EXE" binary as a proxy to launch other programs
-// Tags: attack.t1218, attack.defense_evasion, attack.execution
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\DefaultPack.exe"

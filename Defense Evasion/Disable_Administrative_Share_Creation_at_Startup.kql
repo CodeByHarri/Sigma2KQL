@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/16
-// Level: medium
-// Description: Administrative shares are hidden network shares created by Microsoft Windows NT operating systems that grant system administrators remote access to every disk volume on a network-connected system
-// Tags: attack.defense_evasion, attack.t1070.005
-DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey contains "\\Services\\LanmanServer\\Parameters" and (RegistryKey endswith "\\AutoShareWks" or RegistryKey endswith "\\AutoShareServer")

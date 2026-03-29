@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/09/17
-// Level: high
-// Description: Detects tampering with the "ChannelAccess" registry key in order to change access to Windows event channel.
-// Tags: attack.defense_evasion, attack.t1562.002
-DeviceRegistryEvents
-| where ((RegistryValueData contains "(A;;0x1;;;LA)" or RegistryValueData contains "(A;;0x1;;;SY)" or RegistryValueData contains "(A;;0x5;;;BA)") and RegistryKey contains "\\Microsoft\\Windows\\CurrentVersion\\WINEVT\\Channels" and RegistryKey endswith "\\ChannelAccess") and (not(((InitiatingProcessFolderPath endswith "\\TiWorker.exe" and InitiatingProcessFolderPath startswith "C:\\Windows\\WinSxS\\") or InitiatingProcessFolderPath =~ "C:\\Windows\\servicing\\TrustedInstaller.exe")))

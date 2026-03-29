@@ -1,9 +1,0 @@
-// Author: frack113
-// Date: 2022/03/02
-// Level: medium
-// Description: A symbolic link is a type of file that contains a reference to another file.
-This is probably done to make sure that the ransomware is able to follow shortcuts on the machine in order to find the original file to encrypt
-
-// Tags: attack.execution, attack.t1059
-DeviceProcessEvents
-| where (ProcessCommandLine contains "behavior " and ProcessCommandLine contains "set " and ProcessCommandLine contains "SymlinkEvaluation") and (FolderPath endswith "\\fsutil.exe" or ProcessVersionInfoOriginalFileName =~ "fsutil.exe")

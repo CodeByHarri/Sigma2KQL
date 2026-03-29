@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/02/10
-// Level: high
-// Description: Detects a possible process memory dump that uses the white-listed Citrix TrolleyExpress.exe filename as a way to dump the lsass process memory
-// Tags: attack.defense_evasion, attack.t1218.011, attack.credential_access, attack.t1003.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "\\TrolleyExpress 7" or ProcessCommandLine contains "\\TrolleyExpress 8" or ProcessCommandLine contains "\\TrolleyExpress 9" or ProcessCommandLine contains "\\TrolleyExpress.exe 7" or ProcessCommandLine contains "\\TrolleyExpress.exe 8" or ProcessCommandLine contains "\\TrolleyExpress.exe 9" or ProcessCommandLine contains "\\TrolleyExpress.exe -ma ") or (FolderPath endswith "\\TrolleyExpress.exe" and (not((isnull(ProcessVersionInfoOriginalFileName) or ProcessVersionInfoOriginalFileName contains "CtxInstall"))))

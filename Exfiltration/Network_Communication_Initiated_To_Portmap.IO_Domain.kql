@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2024/05/31
-// Level: medium
-// Description: Detects an executable accessing the portmap.io domain, which could be a sign of forbidden C2 traffic or data exfiltration by malicious actors
-// Tags: attack.t1041, attack.command_and_control, attack.t1090.002, attack.exfiltration
-DeviceNetworkEvents
-| where RemoteUrl endswith ".portmap.io"

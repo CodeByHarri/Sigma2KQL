@@ -1,7 +1,0 @@
-// Author: Janantha Marasinghe (https://github.com/blueteam0ps), FPT.EagleEye Team, omkar72, oscd.community
-// Date: 2021/02/02
-// Level: high
-// Description: Detects AdFind execution with common flags seen used during attacks
-// Tags: attack.discovery, attack.t1018, attack.t1087.002, attack.t1482, attack.t1069.002, stp.1u
-DeviceProcessEvents
-| where ProcessCommandLine contains "domainlist" or ProcessCommandLine contains "trustdmp" or ProcessCommandLine contains "dcmodes" or ProcessCommandLine contains "adinfo" or ProcessCommandLine contains " dclist " or ProcessCommandLine contains "computer_pwdnotreqd" or ProcessCommandLine contains "objectcategory=" or ProcessCommandLine contains "-subnets -f" or ProcessCommandLine contains "name=\"Domain Admins\"" or ProcessCommandLine contains "-sc u:" or ProcessCommandLine contains "domainncs" or ProcessCommandLine contains "dompol" or ProcessCommandLine contains " oudmp " or ProcessCommandLine contains "subnetdmp" or ProcessCommandLine contains "gpodmp" or ProcessCommandLine contains "fspdmp" or ProcessCommandLine contains "users_noexpire" or ProcessCommandLine contains "computers_active" or ProcessCommandLine contains "computers_pwdnotreqd"

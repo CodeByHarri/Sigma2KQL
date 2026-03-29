@@ -1,7 +1,0 @@
-// Author: frack113, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2021/12/26
-// Level: high
-// Description: Detects when adversaries stop services or processes by disabling their respective scheduled tasks in order to conduct data destructive activities
-// Tags: attack.impact, attack.t1489
-DeviceProcessEvents
-| where (ProcessCommandLine contains "\\Windows\\BitLocker" or ProcessCommandLine contains "\\Windows\\ExploitGuard" or ProcessCommandLine contains "\\Windows\\SystemRestore\\SR" or ProcessCommandLine contains "\\Windows\\UpdateOrchestrator\\" or ProcessCommandLine contains "\\Windows\\Windows Defender\\" or ProcessCommandLine contains "\\Windows\\WindowsBackup\\" or ProcessCommandLine contains "\\Windows\\WindowsUpdate\\") and (ProcessCommandLine contains "/Change" and ProcessCommandLine contains "/TN" and ProcessCommandLine contains "/disable") and FolderPath endswith "\\schtasks.exe"

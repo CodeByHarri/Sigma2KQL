@@ -1,7 +1,0 @@
-// Author: Nextron Systems
-// Date: 2022/06/01
-// Level: high
-// Description: Detects msdt.exe executed by a suspicious parent as seen in CVE-2022-30190 / Follina exploitation
-// Tags: attack.defense_evasion, attack.t1036, attack.t1218
-DeviceProcessEvents
-| where (FolderPath endswith "\\msdt.exe" or ProcessVersionInfoOriginalFileName =~ "msdt.exe") and (InitiatingProcessFolderPath endswith "\\cmd.exe" or InitiatingProcessFolderPath endswith "\\cscript.exe" or InitiatingProcessFolderPath endswith "\\mshta.exe" or InitiatingProcessFolderPath endswith "\\powershell.exe" or InitiatingProcessFolderPath endswith "\\pwsh.exe" or InitiatingProcessFolderPath endswith "\\regsvr32.exe" or InitiatingProcessFolderPath endswith "\\rundll32.exe" or InitiatingProcessFolderPath endswith "\\schtasks.exe" or InitiatingProcessFolderPath endswith "\\wmic.exe" or InitiatingProcessFolderPath endswith "\\wscript.exe" or InitiatingProcessFolderPath endswith "\\wsl.exe")

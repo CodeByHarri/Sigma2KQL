@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/07/17
-// Level: high
-// Description: Detect change of the user account associated with the FAX service to avoid the escalation problem.
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where RegistryKey =~ "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services\\Fax\\ObjectName" and (not(RegistryValueData contains "NetworkService"))

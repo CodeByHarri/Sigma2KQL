@@ -1,0 +1,11 @@
+// Title: SQLite Firefox Profile Data DB Access
+// Author: frack113
+// Date: 2022-04-08
+// Level: high
+// Description: Detect usage of the "sqlite" binary to query databases in Firefox and other Gecko-based browsers for potential data stealing.
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1539, attack.collection, attack.t1005
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_sqlite_firefox_gecko_profile_data.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "cookies.sqlite" or ProcessCommandLine contains "places.sqlite") and (ProcessVersionInfoProductName =~ "SQLite" or (FolderPath endswith "\\sqlite.exe" or FolderPath endswith "\\sqlite3.exe"))

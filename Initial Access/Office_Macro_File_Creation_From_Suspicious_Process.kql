@@ -1,7 +1,0 @@
-// Author: frack113, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/01/23
-// Level: high
-// Description: Detects the creation of a office macro file from a a suspicious process
-// Tags: attack.initial_access, attack.t1566.001
-DeviceFileEvents
-| where ((InitiatingProcessFolderPath endswith "\\cscript.exe" or InitiatingProcessFolderPath endswith "\\mshta.exe" or InitiatingProcessFolderPath endswith "\\regsvr32.exe" or InitiatingProcessFolderPath endswith "\\rundll32.exe" or InitiatingProcessFolderPath endswith "\\wscript.exe") or (InitiatingProcessParentFileName in~ ("cscript.exe", "mshta.exe", "regsvr32.exe", "rundll32.exe", "wscript.exe"))) and (FolderPath endswith ".docm" or FolderPath endswith ".dotm" or FolderPath endswith ".xlsm" or FolderPath endswith ".xltm" or FolderPath endswith ".potm" or FolderPath endswith ".pptm")

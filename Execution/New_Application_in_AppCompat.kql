@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/05/02
-// Level: informational
-// Description: A General detection for a new application in AppCompat. This indicates an application executing for the first time on an endpoint.
-// Tags: attack.execution, attack.t1204.002
-DeviceRegistryEvents
-| where RegistryKey contains "\\AppCompatFlags\\Compatibility Assistant\\Store"

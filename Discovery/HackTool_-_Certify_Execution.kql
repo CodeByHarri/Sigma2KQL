@@ -1,7 +1,0 @@
-// Author: pH-T (Nextron Systems)
-// Date: 2023/04/17
-// Level: high
-// Description: Detects Certify a tool for Active Directory certificate abuse based on PE metadata characteristics and common command line arguments.
-// Tags: attack.discovery, attack.credential_access, attack.t1649
-DeviceProcessEvents
-| where (FolderPath endswith "\\Certify.exe" or ProcessVersionInfoOriginalFileName =~ "Certify.exe" or ProcessVersionInfoFileDescription contains "Certify") or ((ProcessCommandLine contains ".exe cas " or ProcessCommandLine contains ".exe find " or ProcessCommandLine contains ".exe pkiobjects " or ProcessCommandLine contains ".exe request " or ProcessCommandLine contains ".exe download ") and (ProcessCommandLine contains " /vulnerable" or ProcessCommandLine contains " /template:" or ProcessCommandLine contains " /altname:" or ProcessCommandLine contains " /domain:" or ProcessCommandLine contains " /path:" or ProcessCommandLine contains " /ca:"))

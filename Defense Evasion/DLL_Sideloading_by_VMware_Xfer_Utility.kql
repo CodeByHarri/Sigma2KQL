@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/02
-// Level: high
-// Description: Detects execution of VMware Xfer utility (VMwareXferlogs.exe) from the non-default directory which may be an attempt to sideload arbitrary DLL
-// Tags: attack.defense_evasion, attack.t1574.002
-DeviceProcessEvents
-| where FolderPath endswith "\\VMwareXferlogs.exe" and (not(FolderPath startswith "C:\\Program Files\\VMware\\"))

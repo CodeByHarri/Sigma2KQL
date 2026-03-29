@@ -1,7 +1,0 @@
-// Author: pH-T (Nextron Systems)
-// Date: 2023/04/17
-// Level: high
-// Description: Detects Certipy a tool for Active Directory Certificate Services enumeration and abuse based on PE metadata characteristics and common command line arguments.
-// Tags: attack.discovery, attack.credential_access, attack.t1649
-DeviceProcessEvents
-| where (FolderPath endswith "\\Certipy.exe" or ProcessVersionInfoOriginalFileName =~ "Certipy.exe" or ProcessVersionInfoFileDescription contains "Certipy") or ((ProcessCommandLine contains " auth " or ProcessCommandLine contains " find " or ProcessCommandLine contains " forge " or ProcessCommandLine contains " relay " or ProcessCommandLine contains " req " or ProcessCommandLine contains " shadow ") and (ProcessCommandLine contains " -bloodhound" or ProcessCommandLine contains " -ca-pfx " or ProcessCommandLine contains " -dc-ip " or ProcessCommandLine contains " -kirbi" or ProcessCommandLine contains " -old-bloodhound" or ProcessCommandLine contains " -pfx " or ProcessCommandLine contains " -target" or ProcessCommandLine contains " -username " or ProcessCommandLine contains " -vulnerable" or ProcessCommandLine contains "auth -pfx" or ProcessCommandLine contains "shadow auto" or ProcessCommandLine contains "shadow list"))

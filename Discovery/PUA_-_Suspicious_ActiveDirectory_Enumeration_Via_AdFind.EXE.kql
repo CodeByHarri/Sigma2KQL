@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/12/13
-// Level: high
-// Description: Detects active directory enumeration activity using known AdFind CLI flags
-// Tags: attack.discovery, attack.t1087.002
-DeviceProcessEvents
-| where ProcessCommandLine contains "-sc admincountdmp" or ProcessCommandLine contains "-sc exchaddresses" or (ProcessCommandLine contains "lockoutduration" or ProcessCommandLine contains "lockoutthreshold" or ProcessCommandLine contains "lockoutobservationwindow" or ProcessCommandLine contains "maxpwdage" or ProcessCommandLine contains "minpwdage" or ProcessCommandLine contains "minpwdlength" or ProcessCommandLine contains "pwdhistorylength" or ProcessCommandLine contains "pwdproperties")

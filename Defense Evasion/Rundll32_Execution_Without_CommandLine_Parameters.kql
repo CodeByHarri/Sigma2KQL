@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/05/27
-// Level: high
-// Description: Detects suspicious start of rundll32.exe without any parameters as found in CobaltStrike beacon activity
-// Tags: attack.defense_evasion, attack.t1202
-DeviceProcessEvents
-| where (ProcessCommandLine endswith "\\rundll32.exe" or ProcessCommandLine endswith "\\rundll32.exe\"" or ProcessCommandLine endswith "\\rundll32") and (not((InitiatingProcessFolderPath contains "\\AppData\\Local\\" or InitiatingProcessFolderPath contains "\\Microsoft\\Edge\\")))

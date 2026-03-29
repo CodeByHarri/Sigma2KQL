@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/04/08
-// Level: high
-// Description: Detect usage of the "sqlite" binary to query databases in Firefox and other Gecko-based browsers for potential data stealing.
-// Tags: attack.credential_access, attack.t1539, attack.collection, attack.t1005
-DeviceProcessEvents
-| where (ProcessCommandLine contains "cookies.sqlite" or ProcessCommandLine contains "places.sqlite") and (ProcessVersionInfoProductName =~ "SQLite" or (FolderPath endswith "\\sqlite.exe" or FolderPath endswith "\\sqlite3.exe"))

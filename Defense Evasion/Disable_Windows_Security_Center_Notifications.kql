@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/08/19
-// Level: medium
-// Description: Detect set UseActionCenterExperience to 0 to disable the Windows security center notification
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey endswith "Windows\\CurrentVersion\\ImmersiveShell\\UseActionCenterExperience"

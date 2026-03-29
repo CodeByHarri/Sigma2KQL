@@ -1,0 +1,11 @@
+// Title: Potential Arbitrary Command Execution Via FTP.EXE
+// Author: Victor Sergeev, oscd.community
+// Date: 2020-10-09
+// Level: medium
+// Description: Detects execution of "ftp.exe" script with the "-s" or "/s" flag and any child processes ran by "ftp.exe".
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059, attack.defense-evasion, attack.t1202
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_ftp_arbitrary_command_execution.yml
+
+DeviceProcessEvents
+| where InitiatingProcessFolderPath endswith "\\ftp.exe" or ((ProcessCommandLine contains "-s:" or ProcessCommandLine contains "/s:" or ProcessCommandLine contains "–s:" or ProcessCommandLine contains "—s:" or ProcessCommandLine contains "―s:") and (FolderPath endswith "\\ftp.exe" or ProcessVersionInfoOriginalFileName =~ "ftp.exe"))

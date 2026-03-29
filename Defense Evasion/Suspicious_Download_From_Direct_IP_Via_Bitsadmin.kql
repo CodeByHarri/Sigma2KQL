@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/06/28
-// Level: high
-// Description: Detects usage of bitsadmin downloading a file using an URL that contains an IP
-// Tags: attack.defense_evasion, attack.persistence, attack.t1197, attack.s0190, attack.t1036.003
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "://1" or ProcessCommandLine contains "://2" or ProcessCommandLine contains "://3" or ProcessCommandLine contains "://4" or ProcessCommandLine contains "://5" or ProcessCommandLine contains "://6" or ProcessCommandLine contains "://7" or ProcessCommandLine contains "://8" or ProcessCommandLine contains "://9") and (ProcessCommandLine contains " /transfer " or ProcessCommandLine contains " /create " or ProcessCommandLine contains " /addfile ") and (FolderPath endswith "\\bitsadmin.exe" or ProcessVersionInfoOriginalFileName =~ "bitsadmin.exe")) and (not(ProcessCommandLine contains "://7-"))

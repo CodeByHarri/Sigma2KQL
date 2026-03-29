@@ -1,9 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/12/06
-// Level: low
-// Description: Detects a network connection initiated by a binary to "api.mega.co.nz".
-Attackers were seen abusing file sharing websites similar to "mega.nz" in order to upload/download additional payloads.
-
-// Tags: attack.exfiltration, attack.t1567.001
-DeviceNetworkEvents
-| where RemoteUrl endswith "mega.co.nz" or RemoteUrl endswith "mega.nz"

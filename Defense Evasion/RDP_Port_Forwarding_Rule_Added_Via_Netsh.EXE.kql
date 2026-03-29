@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), oscd.community
-// Date: 2019/01/29
-// Level: high
-// Description: Detects the execution of netsh to configure a port forwarding of port 3389 (RDP) rule
-// Tags: attack.lateral_movement, attack.defense_evasion, attack.command_and_control, attack.t1090
-DeviceProcessEvents
-| where (ProcessCommandLine contains " i" and ProcessCommandLine contains " p" and ProcessCommandLine contains "=3389" and ProcessCommandLine contains " c") and (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName =~ "netsh.exe")

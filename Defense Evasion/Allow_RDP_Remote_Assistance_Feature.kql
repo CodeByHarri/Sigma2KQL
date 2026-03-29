@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/08/19
-// Level: medium
-// Description: Detect enable rdp feature to allow specific user to rdp connect on the targeted machine
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "System\\CurrentControlSet\\Control\\Terminal Server\\fAllowToGetHelp"

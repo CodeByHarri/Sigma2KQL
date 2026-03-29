@@ -1,7 +1,0 @@
-// Author: oscd.community, Teymur Kheirkhabarov @HeirhabarovT, Zach Stanford @svch0st, wagga
-// Date: 2020/10/05
-// Level: medium
-// Description: Detects when an admin share is mounted using net.exe
-// Tags: attack.lateral_movement, attack.t1021.002
-DeviceProcessEvents
-| where (ProcessCommandLine contains " use " and (ProcessCommandLine contains " \\" and ProcessCommandLine contains "\\" and ProcessCommandLine contains "$")) and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~ ("net.exe", "net1.exe")))

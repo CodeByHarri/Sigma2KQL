@@ -1,7 +1,0 @@
-// Author: Maxim Pavlunin, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2020/04/01
-// Level: high
-// Description: Detects a suspicious child process of a Microsoft HTML Help (HH.exe)
-// Tags: attack.defense_evasion, attack.execution, attack.initial_access, attack.t1047, attack.t1059.001, attack.t1059.003, attack.t1059.005, attack.t1059.007, attack.t1218, attack.t1218.001, attack.t1218.010, attack.t1218.011, attack.t1566, attack.t1566.001
-DeviceProcessEvents
-| where (FolderPath endswith "\\CertReq.exe" or FolderPath endswith "\\CertUtil.exe" or FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\installutil.exe" or FolderPath endswith "\\MSbuild.exe" or FolderPath endswith "\\MSHTA.EXE" or FolderPath endswith "\\msiexec.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\schtasks.exe" or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\wscript.exe") and InitiatingProcessFolderPath endswith "\\hh.exe"

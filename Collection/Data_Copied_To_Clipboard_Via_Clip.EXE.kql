@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/07/27
-// Level: low
-// Description: Detects the execution of clip.exe in order to copy data to the clipboard. Adversaries may collect data stored in the clipboard from users copying information within or between applications.
-// Tags: attack.collection, attack.t1115
-DeviceProcessEvents
-| where FolderPath endswith "\\clip.exe" or ProcessVersionInfoOriginalFileName =~ "clip.exe"

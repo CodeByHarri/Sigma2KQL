@@ -1,7 +1,0 @@
-// Author: Anish Bogati
-// Date: 2024/01/09
-// Level: medium
-// Description: Detects image load events of system control panel items (.cpl) from uncommon or non-system locations which might be the result of sideloading.
-// Tags: attack.defense_evasion, attack.t1036
-DeviceImageLoadEvents
-| where (FolderPath endswith "\\hdwwiz.cpl" or FolderPath endswith "\\appwiz.cpl") and (not((FolderPath contains ":\\Windows\\System32\\" or FolderPath contains ":\\Windows\\SysWOW64\\" or FolderPath contains ":\\Windows\\WinSxS\\")))

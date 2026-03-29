@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), Hieu Tran
-// Date: 2023/03/13
-// Level: medium
-// Description: Detects potential DLL files being downloaded using the PowerShell Invoke-WebRequest cmdlet
-// Tags: attack.command_and_control, attack.execution, attack.t1059.001, attack.t1105
-DeviceProcessEvents
-| where (ProcessCommandLine contains "Invoke-WebRequest " or ProcessCommandLine contains "IWR ") and (ProcessCommandLine contains "http" and ProcessCommandLine contains "OutFile" and ProcessCommandLine contains ".dll")

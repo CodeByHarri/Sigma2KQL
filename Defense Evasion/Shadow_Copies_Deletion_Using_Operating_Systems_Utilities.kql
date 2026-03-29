@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), Michael Haag, Teymur Kheirkhabarov, Daniil Yugoslavskiy, oscd.community, Andreas Hunkeler (@Karneades)
-// Date: 2019/10/22
-// Level: high
-// Description: Shadow Copies deletion using operating systems utilities
-// Tags: attack.defense_evasion, attack.impact, attack.t1070, attack.t1490
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "shadow" and ProcessCommandLine contains "delete") and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\vssadmin.exe" or FolderPath endswith "\\diskshadow.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll", "wmic.exe", "VSSADMIN.EXE", "diskshadow.exe")))) or ((ProcessCommandLine contains "delete" and ProcessCommandLine contains "catalog" and ProcessCommandLine contains "quiet") and (FolderPath endswith "\\wbadmin.exe" or ProcessVersionInfoOriginalFileName =~ "WBADMIN.EXE")) or (((ProcessCommandLine contains "unbounded" or ProcessCommandLine contains "/MaxSize=") and (ProcessCommandLine contains "resize" and ProcessCommandLine contains "shadowstorage")) and (FolderPath endswith "\\vssadmin.exe" or ProcessVersionInfoOriginalFileName =~ "VSSADMIN.EXE"))

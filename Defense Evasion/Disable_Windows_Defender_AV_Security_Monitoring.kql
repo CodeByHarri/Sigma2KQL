@@ -1,7 +1,0 @@
-// Author: ok @securonix invrep-de, oscd.community, frack113
-// Date: 2020/10/12
-// Level: high
-// Description: Detects attackers attempting to disable Windows Defender using Powershell
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where (((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll"))) and (ProcessCommandLine contains "-DisableBehaviorMonitoring $true" or ProcessCommandLine contains "-DisableRuntimeMonitoring $true")) or ((FolderPath endswith "\\sc.exe" or ProcessVersionInfoOriginalFileName =~ "sc.exe") and ((ProcessCommandLine contains "delete" and ProcessCommandLine contains "WinDefend") or (ProcessCommandLine contains "config" and ProcessCommandLine contains "WinDefend" and ProcessCommandLine contains "start=disabled") or (ProcessCommandLine contains "stop" and ProcessCommandLine contains "WinDefend")))

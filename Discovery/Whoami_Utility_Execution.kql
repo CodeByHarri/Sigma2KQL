@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2018/08/13
-// Level: low
-// Description: Detects the execution of whoami, which is often used by attackers after exploitation / privilege escalation
-// Tags: attack.discovery, attack.t1033, car.2016-03-001
-DeviceProcessEvents
-| where FolderPath endswith "\\whoami.exe" or ProcessVersionInfoOriginalFileName =~ "whoami.exe"

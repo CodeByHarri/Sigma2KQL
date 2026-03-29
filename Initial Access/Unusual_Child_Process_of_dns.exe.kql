@@ -1,7 +1,0 @@
-// Author: Tim Rauch, Elastic (idea)
-// Date: 2022/09/27
-// Level: high
-// Description: Detects an unexpected process spawning from dns.exe which may indicate activity related to remote code execution or other forms of exploitation as seen in CVE-2020-1350 (SigRed)
-// Tags: attack.initial_access, attack.t1133
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\dns.exe" and (not(FolderPath endswith "\\conhost.exe"))

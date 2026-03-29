@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), E.M. Anhaus (originally from Atomic Blue Detections, Endgame), oscd.community
-// Date: 2022/06/14
-// Level: medium
-// Description: Detects execition of commands and binaries from the context of The program compatibility assistant (Pcalua.exe). This can be used as a LOLBIN in order to bypass application whitelisting.
-// Tags: attack.execution, attack.t1059
-DeviceProcessEvents
-| where ProcessCommandLine contains " -a" and FolderPath endswith "\\pcalua.exe"

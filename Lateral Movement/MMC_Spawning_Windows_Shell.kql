@@ -1,7 +1,0 @@
-// Author: Karneades, Swisscom CSIRT
-// Date: 2019/08/05
-// Level: high
-// Description: Detects a Windows command line executable started from MMC
-// Tags: attack.lateral_movement, attack.t1021.003
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\mmc.exe" and ((FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\sh.exe" or FolderPath endswith "\\bash.exe" or FolderPath endswith "\\reg.exe" or FolderPath endswith "\\regsvr32.exe") or FolderPath contains "\\BITSADMIN")

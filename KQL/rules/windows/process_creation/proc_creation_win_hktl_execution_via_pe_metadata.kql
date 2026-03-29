@@ -1,0 +1,13 @@
+// Title: Hacktool Execution - PE Metadata
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022-04-27
+// Level: high
+// Description: Detects the execution of different Windows based hacktools via PE metadata (company, product, etc.) even if the files have been renamed
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.resource-development, attack.t1588.002, attack.t1003
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_hktl_execution_via_pe_metadata.yml
+// False Positives:
+//   - Unlikely
+
+DeviceProcessEvents
+| where ProcessVersionInfoCompanyName =~ "Cube0x0"

@@ -1,0 +1,13 @@
+// Title: HackTool - Dumpert Process Dumper Default File
+// Author: Florian Roth (Nextron Systems)
+// Date: 2020-02-04
+// Level: critical
+// Description: Detects the creation of the default dump file used by Outflank Dumpert tool. A process dumper, which dumps the lsass process memory
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1003.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_hktl_dumpert.yml
+// False Positives:
+//   - Very unlikely
+
+DeviceFileEvents
+| where FolderPath endswith "dumpert.dmp"

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/30
-// Level: high
-// Description: Detects cmstp loading "dll" or "ocx" files from suspicious locations
-// Tags: attack.defense_evasion, attack.t1218.003
-DeviceImageLoadEvents
-| where (FolderPath contains "\\PerfLogs\\" or FolderPath contains "\\ProgramData\\" or FolderPath contains "\\Users\\" or FolderPath contains "\\Windows\\Temp\\" or FolderPath contains "C:\\Temp\\") and (FolderPath endswith ".dll" or FolderPath endswith ".ocx") and InitiatingProcessFolderPath endswith "\\cmstp.exe"

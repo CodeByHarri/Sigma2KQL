@@ -1,9 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/05/02
-// Level: medium
-// Description: Detects "svchost.exe" spawning "rundll32.exe" with command arguments like "C:\windows\system32\davclnt.dll,DavSetCookie".
-This could be an indicator of exfiltration or use of WebDav to launch code (hosted on a WebDav server).
-
-// Tags: attack.exfiltration, attack.t1048.003
-DeviceProcessEvents
-| where ProcessCommandLine contains "C:\\windows\\system32\\davclnt.dll,DavSetCookie" and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE") and InitiatingProcessFolderPath endswith "\\svchost.exe"

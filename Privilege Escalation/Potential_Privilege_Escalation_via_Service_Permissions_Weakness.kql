@@ -1,7 +1,0 @@
-// Author: Teymur Kheirkhabarov
-// Date: 2019/10/26
-// Level: high
-// Description: Detect modification of services configuration (ImagePath, FailureCommand and ServiceDLL) in registry by processes with Medium integrity level
-// Tags: attack.privilege_escalation, attack.t1574.011
-DeviceProcessEvents
-| where (ProcessCommandLine contains "\\ImagePath" or ProcessCommandLine contains "\\FailureCommand" or ProcessCommandLine contains "\\ServiceDll") and (ProcessCommandLine contains "ControlSet" and ProcessCommandLine contains "services") and ProcessIntegrityLevel =~ "Medium"

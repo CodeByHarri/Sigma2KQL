@@ -1,7 +1,0 @@
-// Author: Janantha Marasinghe
-// Date: 2020/09/26
-// Level: low
-// Description: Adversaries can carry out malicious operations using a virtual instance to avoid detection. This rule is built to detect the registration of the Virtualbox driver or start of a Virtualbox VM.
-// Tags: attack.defense_evasion, attack.t1564.006, attack.t1564
-DeviceProcessEvents
-| where (ProcessCommandLine contains "VBoxRT.dll,RTR3Init" or ProcessCommandLine contains "VBoxC.dll" or ProcessCommandLine contains "VBoxDrv.sys") or (ProcessCommandLine contains "startvm" or ProcessCommandLine contains "controlvm")

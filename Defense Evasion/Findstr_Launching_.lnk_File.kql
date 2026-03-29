@@ -1,7 +1,0 @@
-// Author: Trent Liffick
-// Date: 2020/05/01
-// Level: medium
-// Description: Detects usage of findstr to identify and execute a lnk file as seen within the HHS redirect attack
-// Tags: attack.defense_evasion, attack.t1036, attack.t1202, attack.t1027.003
-DeviceProcessEvents
-| where (ProcessCommandLine endswith ".lnk" or ProcessCommandLine endswith ".lnk\"" or ProcessCommandLine endswith ".lnk'") and ((FolderPath endswith "\\find.exe" or FolderPath endswith "\\findstr.exe") or (ProcessVersionInfoOriginalFileName in~ ("FIND.EXE", "FINDSTR.EXE")))

@@ -1,7 +1,0 @@
-// Author: elhoim, CD_ROM_
-// Date: 2022/04/27
-// Level: high
-// Description: Detects RunDLL32.exe spawning explorer.exe as child, which is very uncommon, often observes Gamarue spawning the explorer.exe process in an unusual way
-// Tags: attack.defense_evasion, attack.t1218.011
-DeviceProcessEvents
-| where (FolderPath endswith "\\explorer.exe" and InitiatingProcessFolderPath endswith "\\rundll32.exe") and (not(InitiatingProcessCommandLine contains "\\shell32.dll,Control_RunDLL"))

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/08/03
-// Level: medium
-// Description: Detects execution of "VSDiagnostics.exe" with the "start" command in order to launch and proxy arbitrary binaries.
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where (ProcessCommandLine contains " /launch:" or ProcessCommandLine contains " -launch:") and ProcessCommandLine contains "start" and (FolderPath endswith "\\VSDiagnostics.exe" or ProcessVersionInfoOriginalFileName =~ "VSDiagnostics.exe")

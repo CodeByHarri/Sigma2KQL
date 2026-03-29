@@ -1,7 +1,0 @@
-// Author: pH-T (Nextron Systems)
-// Date: 2022/03/01
-// Level: high
-// Description: Detects suspicious base64 encoded and obfuscated "LOAD" keyword used in .NET "reflection.assembly"
-// Tags: attack.execution, attack.defense_evasion, attack.t1059.001, attack.t1027
-DeviceProcessEvents
-| where ProcessCommandLine contains "OgA6ACgAIgBMACIAKwAiAG8AYQBkACIAKQ" or ProcessCommandLine contains "oAOgAoACIATAAiACsAIgBvAGEAZAAiACkA" or ProcessCommandLine contains "6ADoAKAAiAEwAIgArACIAbwBhAGQAIgApA" or ProcessCommandLine contains "OgA6ACgAIgBMAG8AIgArACIAYQBkACIAKQ" or ProcessCommandLine contains "oAOgAoACIATABvACIAKwAiAGEAZAAiACkA" or ProcessCommandLine contains "6ADoAKAAiAEwAbwAiACsAIgBhAGQAIgApA" or ProcessCommandLine contains "OgA6ACgAIgBMAG8AYQAiACsAIgBkACIAKQ" or ProcessCommandLine contains "oAOgAoACIATABvAGEAIgArACIAZAAiACkA" or ProcessCommandLine contains "6ADoAKAAiAEwAbwBhACIAKwAiAGQAIgApA" or ProcessCommandLine contains "OgA6ACgAJwBMACcAKwAnAG8AYQBkACcAKQ" or ProcessCommandLine contains "oAOgAoACcATAAnACsAJwBvAGEAZAAnACkA" or ProcessCommandLine contains "6ADoAKAAnAEwAJwArACcAbwBhAGQAJwApA" or ProcessCommandLine contains "OgA6ACgAJwBMAG8AJwArACcAYQBkACcAKQ" or ProcessCommandLine contains "oAOgAoACcATABvACcAKwAnAGEAZAAnACkA" or ProcessCommandLine contains "6ADoAKAAnAEwAbwAnACsAJwBhAGQAJwApA" or ProcessCommandLine contains "OgA6ACgAJwBMAG8AYQAnACsAJwBkACcAKQ" or ProcessCommandLine contains "oAOgAoACcATABvAGEAJwArACcAZAAnACkA" or ProcessCommandLine contains "6ADoAKAAnAEwAbwBhACcAKwAnAGQAJwApA"

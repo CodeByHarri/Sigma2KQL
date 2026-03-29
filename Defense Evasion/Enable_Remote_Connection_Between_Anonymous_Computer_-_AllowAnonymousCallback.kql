@@ -1,7 +1,0 @@
-// Author: X__Junior (Nextron Systems)
-// Date: 2023/11/03
-// Level: medium
-// Description: Detects enabling of the "AllowAnonymousCallback" registry value, which allows a remote connection between computers that do not have a trust relationship.
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey contains "\\Microsoft\\WBEM\\CIMOM\\AllowAnonymousCallback"

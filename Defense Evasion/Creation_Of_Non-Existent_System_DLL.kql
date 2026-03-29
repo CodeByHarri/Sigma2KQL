@@ -1,9 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), fornotes
-// Date: 2022/12/01
-// Level: medium
-// Description: Detects the creation of system DLLs that are usually not present on the system (or at least not in system directories).
-Usually this technique is used to achieve DLL hijacking.
-
-// Tags: attack.defense_evasion, attack.persistence, attack.privilege_escalation, attack.t1574.001, attack.t1574.002
-DeviceFileEvents
-| where FolderPath endswith ":\\Windows\\System32\\TSMSISrv.dll" or FolderPath endswith ":\\Windows\\System32\\TSVIPSrv.dll" or FolderPath endswith ":\\Windows\\System32\\wbem\\wbemcomn.dll" or FolderPath endswith ":\\Windows\\System32\\WLBSCTRL.dll" or FolderPath endswith ":\\Windows\\System32\\wow64log.dll" or FolderPath endswith ":\\Windows\\System32\\WptsExtensions.dll" or FolderPath endswith "\\SprintCSP.dll"

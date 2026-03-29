@@ -1,7 +1,0 @@
-// Author: FPT.EagleEye, wagga, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2021/03/03
-// Level: high
-// Description: Detects usage of the "TcpClient" class. Which can be abused to establish remote connections and reverse-shells. As seen used by the Nishang "Invoke-PowerShellTcpOneLine" reverse shell and other.
-// Tags: attack.execution, attack.t1059.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains " Net.Sockets.TCPClient" and ProcessCommandLine contains ".GetStream(" and ProcessCommandLine contains ".Write(") and ((ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll")) or (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe"))

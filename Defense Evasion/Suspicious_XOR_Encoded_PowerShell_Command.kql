@@ -1,7 +1,0 @@
-// Author: Sami Ruohonen, Harish Segar, Tim Shelton, Teymur Kheirkhabarov, Vasiliy Burov, oscd.community, Nasreddine Bencherchali
-// Date: 2018/09/05
-// Level: medium
-// Description: Detects presence of a potentially xor encoded powershell command
-// Tags: attack.defense_evasion, attack.execution, attack.t1059.001, attack.t1140, attack.t1027
-DeviceProcessEvents
-| where (ProcessCommandLine contains "ForEach" or ProcessCommandLine contains "for(" or ProcessCommandLine contains "for " or ProcessCommandLine contains "-join " or ProcessCommandLine contains "-join'" or ProcessCommandLine contains "-join\"" or ProcessCommandLine contains "-join`" or ProcessCommandLine contains "::Join" or ProcessCommandLine contains "[char]") and ProcessCommandLine contains "bxor" and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll")) or ProcessVersionInfoFileDescription =~ "Windows PowerShell" or ProcessVersionInfoProductName =~ "PowerShell Core 6")

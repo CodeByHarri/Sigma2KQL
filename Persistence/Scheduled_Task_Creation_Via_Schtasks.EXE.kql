@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/01/16
-// Level: low
-// Description: Detects the creation of scheduled tasks by user accounts via the "schtasks" utility.
-// Tags: attack.execution, attack.persistence, attack.privilege_escalation, attack.t1053.005, attack.s0111, car.2013-08-001, stp.1u
-DeviceProcessEvents
-| where (ProcessCommandLine contains " /create " and FolderPath endswith "\\schtasks.exe") and (not((AccountName contains "AUTHORI" or AccountName contains "AUTORI")))

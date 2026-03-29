@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/21
-// Level: high
-// Description: Once executed, colorcpl.exe will copy the arbitrary file to c:\windows\system32\spool\drivers\color\
-// Tags: attack.defense_evasion, attack.t1564
-DeviceFileEvents
-| where InitiatingProcessFolderPath endswith "\\colorcpl.exe" and (not((FolderPath endswith ".icm" or FolderPath endswith ".gmmp" or FolderPath endswith ".cdmp" or FolderPath endswith ".camp")))

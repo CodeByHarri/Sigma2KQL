@@ -1,0 +1,13 @@
+// Title: Invocation of Active Directory Diagnostic Tool (ntdsutil.exe)
+// Author: Thomas Patzke
+// Date: 2019-01-16
+// Level: medium
+// Description: Detects execution of ntdsutil.exe, which can be used for various attacks against the NTDS database (NTDS.DIT)
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1003.003
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_ntdsutil_usage.yml
+// False Positives:
+//   - NTDS maintenance
+
+DeviceProcessEvents
+| where FolderPath endswith "\\ntdsutil.exe"

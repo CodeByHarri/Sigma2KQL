@@ -1,7 +1,0 @@
-// Author: Den Iuzvyk
-// Date: 2020/06/07
-// Level: high
-// Description: Detects Processes accessing the camera and microphone from suspicious folder
-// Tags: attack.collection, attack.t1125, attack.t1123
-DeviceRegistryEvents
-| where (RegistryKey contains "\\Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore" and RegistryKey contains "\\NonPackaged") and (RegistryKey contains "microphone" or RegistryKey contains "webcam") and (RegistryKey contains ":#Windows#Temp#" or RegistryKey contains ":#$Recycle.bin#" or RegistryKey contains ":#Temp#" or RegistryKey contains ":#Users#Public#" or RegistryKey contains ":#Users#Default#" or RegistryKey contains ":#Users#Desktop#")

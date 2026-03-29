@@ -1,7 +1,0 @@
-// Author: bohops
-// Date: 2022/10/30
-// Level: medium
-// Description: Detects Microsoft Visual Studio vsls-agent.exe lolbin execution with a suspicious library load using the --agentExtensionPath parameter
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where (ProcessCommandLine contains "--agentExtensionPath" and FolderPath endswith "\\vsls-agent.exe") and (not(ProcessCommandLine contains "Microsoft.VisualStudio.LiveShare.Agent."))

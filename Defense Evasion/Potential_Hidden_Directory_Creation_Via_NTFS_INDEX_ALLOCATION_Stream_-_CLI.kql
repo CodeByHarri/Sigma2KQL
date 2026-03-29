@@ -1,8 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Scoubi (@ScoubiMtl)
-// Date: 2023/10/09
-// Level: medium
-// Description: Detects command line containing reference to the "::$index_allocation" stream, which can be used as a technique to prevent access to folders or files from tooling such as "explorer.exe" or "powershell.exe"
-
-// Tags: attack.defense_evasion, attack.t1564.004
-DeviceProcessEvents
-| where ProcessCommandLine contains "::$index_allocation"

@@ -1,7 +1,0 @@
-// Author: Victor Sergeev, Daniil Yugoslavskiy, Gleb Sukhodolskiy, Timur Zinniatullin, oscd.community, Tim Shelton, frack113 (split)
-// Date: 2019/10/25
-// Level: medium
-// Description: Detects modification of autostart extensibility point (ASEP) in registry.
-// Tags: attack.persistence, attack.t1547.001
-DeviceRegistryEvents
-| where RegistryKey contains "\\Software\\Policies\\Microsoft\\Windows\\System\\Scripts" and (RegistryKey contains "\\Startup" or RegistryKey contains "\\Shutdown" or RegistryKey contains "\\Logon" or RegistryKey contains "\\Logoff") and (not(RegistryValueData =~ "(Empty)"))

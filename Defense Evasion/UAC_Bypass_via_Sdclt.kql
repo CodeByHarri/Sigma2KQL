@@ -1,7 +1,0 @@
-// Author: Omer Yampel, Christian Burkard (Nextron Systems)
-// Date: 2017/03/17
-// Level: high
-// Description: Detects the pattern of UAC Bypass using registry key manipulation of sdclt.exe (e.g. UACMe 53)
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1548.002, car.2019-04-001
-DeviceRegistryEvents
-| where RegistryKey endswith "Software\\Classes\\exefile\\shell\\runas\\command\\isolatedCommand" or (RegistryValueData matches regex "-1[0-9]{3}\\\\Software\\\\Classes\\\\" and RegistryKey endswith "Software\\Classes\\Folder\\shell\\open\\command\\SymbolicLinkValue")

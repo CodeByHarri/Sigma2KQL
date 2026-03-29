@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/01/21
-// Level: high
-// Description: Detects commands that indicate a Raccine removal from an end system. Raccine is a free ransomware protection tool.
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "taskkill " and ProcessCommandLine contains "RaccineSettings.exe") or (ProcessCommandLine contains "reg.exe" and ProcessCommandLine contains "delete" and ProcessCommandLine contains "Raccine Tray") or (ProcessCommandLine contains "schtasks" and ProcessCommandLine contains "/DELETE" and ProcessCommandLine contains "Raccine Rules Updater")

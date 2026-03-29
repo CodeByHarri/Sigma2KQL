@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/07/22
-// Level: medium
-// Description: Detects suspicious execution of "PDQDeployRunner" which is part of the PDQDeploy service stack that is responsible for executing commands and packages on a remote machines
-// Tags: attack.execution
-DeviceProcessEvents
-| where ((FolderPath endswith "\\bash.exe" or FolderPath endswith "\\certutil.exe" or FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\csc.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\dllhost.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\msiexec.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\scriptrunner.exe" or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\wsl.exe") or (FolderPath contains ":\\ProgramData\\" or FolderPath contains ":\\Users\\Public\\" or FolderPath contains ":\\Windows\\TEMP\\" or FolderPath contains "\\AppData\\Local\\Temp") or (ProcessCommandLine contains " -decode " or ProcessCommandLine contains " -enc " or ProcessCommandLine contains " -encodedcommand " or ProcessCommandLine contains " -w hidden" or ProcessCommandLine contains "DownloadString" or ProcessCommandLine contains "FromBase64String" or ProcessCommandLine contains "http" or ProcessCommandLine contains "iex " or ProcessCommandLine contains "Invoke-")) and InitiatingProcessFolderPath contains "\\PDQDeployRunner-"

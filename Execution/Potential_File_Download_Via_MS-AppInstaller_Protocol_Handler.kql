@@ -1,9 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Swachchhanda Shrawan Poudel
-// Date: 2023/11/09
-// Level: medium
-// Description: Detects usage of the "ms-appinstaller" protocol handler via command line to potentially download arbitrary files via AppInstaller.EXE
-The downloaded files are temporarly stored in ":\Users\%username%\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\AC\INetCache\<RANDOM-8-CHAR-DIRECTORY>"
-
-// Tags: attack.defense_evasion, attack.execution, attack.t1218
-DeviceProcessEvents
-| where (ProcessCommandLine contains "ms-appinstaller://" and ProcessCommandLine contains "source=") and ProcessCommandLine contains "http"

@@ -1,7 +1,0 @@
-// Author: Tobias Michalski (Nextron Systems)
-// Date: 2021/06/10
-// Level: high
-// Description: Detects the creation of a new Outlook form which can contain malicious code
-// Tags: attack.persistence, attack.t1137.003
-DeviceFileEvents
-| where InitiatingProcessFolderPath endswith "\\outlook.exe" and (FolderPath contains "\\AppData\\Local\\Microsoft\\FORMS\\IPM" or FolderPath contains "\\Local Settings\\Application Data\\Microsoft\\Forms")

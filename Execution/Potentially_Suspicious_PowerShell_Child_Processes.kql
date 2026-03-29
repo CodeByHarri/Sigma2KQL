@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), Tim Shelton
-// Date: 2022/04/26
-// Level: high
-// Description: Detects potentially suspicious child processes spawned by PowerShell
-// Tags: attack.execution, attack.t1059.001
-DeviceProcessEvents
-| where ((FolderPath endswith "\\bash.exe" or FolderPath endswith "\\bitsadmin.exe" or FolderPath endswith "\\certutil.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\forfiles.exe" or FolderPath endswith "\\hh.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\schtasks.exe" or FolderPath endswith "\\scrcons.exe" or FolderPath endswith "\\scriptrunner.exe" or FolderPath endswith "\\sh.exe" or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\wscript.exe") and (InitiatingProcessFolderPath endswith "\\powershell_ise.exe" or InitiatingProcessFolderPath endswith "\\powershell.exe" or InitiatingProcessFolderPath endswith "\\pwsh.exe")) and (not((ProcessCommandLine contains "\\Program Files\\Amazon\\WorkspacesConfig\\Scripts\\" and InitiatingProcessCommandLine contains "\\Program Files\\Amazon\\WorkspacesConfig\\Scripts\\")))

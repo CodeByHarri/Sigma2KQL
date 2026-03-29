@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/01
-// Level: low
-// Description: Detects usage of the "systeminfo" command to retrieve information
-// Tags: attack.discovery, attack.t1082
-DeviceProcessEvents
-| where FolderPath endswith "\\systeminfo.exe" or ProcessVersionInfoOriginalFileName =~ "sysinfo.exe"

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/01/11
-// Level: high
-// Description: Detects uses of the SysInternals ProcDump utility in which ProcDump or its output get renamed, or a dump file is moved or copied to a different name
-// Tags: attack.defense_evasion, attack.t1036, attack.t1003.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "copy procdump" or ProcessCommandLine contains "move procdump") or ((ProcessCommandLine contains "2.dmp" or ProcessCommandLine contains "lsass" or ProcessCommandLine contains "out.dmp") and (ProcessCommandLine contains "copy " and ProcessCommandLine contains ".dmp ")) or (ProcessCommandLine contains "copy lsass.exe_" or ProcessCommandLine contains "move lsass.exe_")

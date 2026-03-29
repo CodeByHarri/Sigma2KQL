@@ -1,7 +1,0 @@
-// Author: E.M. Anhaus (originally from Atomic Blue Detections, Endgame), oscd.community
-// Date: 2019/10/24
-// Level: high
-// Description: Detects the use of the bcdedit command to tamper with the boot configuration data. This technique is often times used by malware or attackers as a destructive way before launching ransomware.
-// Tags: attack.impact, attack.t1490
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "bootstatuspolicy" and ProcessCommandLine contains "ignoreallfailures") or (ProcessCommandLine contains "recoveryenabled" and ProcessCommandLine contains "no")) and (FolderPath endswith "\\bcdedit.exe" or ProcessVersionInfoOriginalFileName =~ "bcdedit.exe") and ProcessCommandLine contains "set"

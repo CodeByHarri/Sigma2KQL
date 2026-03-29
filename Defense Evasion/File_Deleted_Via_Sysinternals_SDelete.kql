@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/05/02
-// Level: medium
-// Description: Detects the deletion of files by the Sysinternals SDelete utility. It looks for the common name pattern used to rename files.
-// Tags: attack.defense_evasion, attack.t1070.004
-DeviceFileEvents
-| where (FolderPath endswith ".AAA" or FolderPath endswith ".ZZZ") and (not(FolderPath endswith "\\Wireshark\\radius\\dictionary.alcatel-lucent.aaa"))

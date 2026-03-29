@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2018/06/22
-// Level: medium
-// Description: Detects suspicious sysprep process start with AppData folder as target (as used by Trojan Syndicasec in Thrip report by Symantec)
-// Tags: attack.execution, attack.t1059
-DeviceProcessEvents
-| where ProcessCommandLine contains "\\AppData\\" and FolderPath endswith "\\sysprep.exe"

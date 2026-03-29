@@ -1,7 +1,0 @@
-// Author: omkar72
-// Date: 2020/10/30
-// Level: medium
-// Description: Detects user accept agreement execution in psexec commandline
-// Tags: attack.execution, attack.t1569, attack.t1021
-DeviceProcessEvents
-| where FolderPath endswith "\\psexec.exe" or ProcessVersionInfoOriginalFileName =~ "psexec.c"

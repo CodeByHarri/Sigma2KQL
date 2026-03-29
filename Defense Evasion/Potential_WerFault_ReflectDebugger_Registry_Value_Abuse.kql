@@ -1,7 +1,0 @@
-// Author: X__Junior
-// Date: 2023/05/18
-// Level: high
-// Description: Detects potential WerFault "ReflectDebugger" registry value abuse for persistence.
-// Tags: attack.defense_evasion, attack.t1036.003
-DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\Microsoft\\Windows\\Windows Error Reporting\\Hangs\\ReflectDebugger"

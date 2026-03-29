@@ -1,7 +1,0 @@
-// Author: Antonlovesdnb
-// Date: 2020/02/19
-// Level: medium
-// Description: Detects any assembly DLL being loaded by an Office Product
-// Tags: attack.execution, attack.t1204.002
-DeviceImageLoadEvents
-| where FolderPath startswith "C:\\Windows\\assembly\\" and (InitiatingProcessFolderPath endswith "\\excel.exe" or InitiatingProcessFolderPath endswith "\\mspub.exe" or InitiatingProcessFolderPath endswith "\\onenote.exe" or InitiatingProcessFolderPath endswith "\\onenoteim.exe" or InitiatingProcessFolderPath endswith "\\outlook.exe" or InitiatingProcessFolderPath endswith "\\powerpnt.exe" or InitiatingProcessFolderPath endswith "\\winword.exe")

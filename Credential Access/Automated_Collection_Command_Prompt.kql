@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/07/28
-// Level: medium
-// Description: Once established within a system or network, an adversary may use automated techniques for collecting internal data.
-// Tags: attack.collection, attack.t1119, attack.credential_access, attack.t1552.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains ".doc" or ProcessCommandLine contains ".docx" or ProcessCommandLine contains ".xls" or ProcessCommandLine contains ".xlsx" or ProcessCommandLine contains ".ppt" or ProcessCommandLine contains ".pptx" or ProcessCommandLine contains ".rtf" or ProcessCommandLine contains ".pdf" or ProcessCommandLine contains ".txt") and ((ProcessCommandLine contains "dir " and ProcessCommandLine contains " /b " and ProcessCommandLine contains " /s ") or ((ProcessCommandLine contains " /e " or ProcessCommandLine contains " /si ") and ProcessVersionInfoOriginalFileName =~ "FINDSTR.EXE"))

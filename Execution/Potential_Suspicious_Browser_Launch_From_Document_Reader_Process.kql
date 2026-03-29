@@ -1,8 +1,0 @@
-// Author: Joseph Kamau
-// Date: 2024/05/27
-// Level: medium
-// Description: Detects when a browser process or browser tab is launched from an application that handles document files such as Adobe, Microsoft Office, etc. And connects to a web application over http(s), this could indicate a possible phishing attempt.
-
-// Tags: attack.execution, attack.t1204.002
-DeviceProcessEvents
-| where ProcessCommandLine contains "http" and (FolderPath endswith "\\brave.exe" or FolderPath endswith "\\chrome.exe" or FolderPath endswith "\\firefox.exe" or FolderPath endswith "\\msedge.exe" or FolderPath endswith "\\opera.exe" or FolderPath endswith "\\maxthon.exe" or FolderPath endswith "\\seamonkey.exe" or FolderPath endswith "\\vivaldi.exe" or FolderPath startswith "") and (InitiatingProcessFolderPath contains "Acrobat Reader" or InitiatingProcessFolderPath contains "Microsoft Office" or InitiatingProcessFolderPath contains "PDF Reader")

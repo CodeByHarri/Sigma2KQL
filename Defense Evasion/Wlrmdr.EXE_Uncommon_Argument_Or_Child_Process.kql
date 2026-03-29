@@ -1,9 +1,0 @@
-// Author: frack113, manasmbellani
-// Date: 2022/02/16
-// Level: medium
-// Description: Detects the execution of "Wlrmdr.exe" with the "-u" command line flag which allows anything passed to it to be an argument of the ShellExecute API, which would allow an attacker to execute arbitrary binaries.
-This detection also focuses on any uncommon child processes spawned from "Wlrmdr.exe" as a supplement for those that posses "ParentImage" telemetry.
-
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\wlrmdr.exe" or ((((ProcessCommandLine contains "-s " or ProcessCommandLine contains "/s ") and (ProcessCommandLine contains "-f " or ProcessCommandLine contains "/f ") and (ProcessCommandLine contains "-t " or ProcessCommandLine contains "/t ") and (ProcessCommandLine contains "-m " or ProcessCommandLine contains "/m ") and (ProcessCommandLine contains "-a " or ProcessCommandLine contains "/a ") and (ProcessCommandLine contains "-u " or ProcessCommandLine contains "/u ")) and (FolderPath endswith "\\wlrmdr.exe" or ProcessVersionInfoOriginalFileName =~ "WLRMNDR.EXE")) and (not(((InitiatingProcessFolderPath in~ ("", "-")) or isnull(InitiatingProcessFolderPath) or InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\winlogon.exe"))))

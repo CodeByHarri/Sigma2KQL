@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/10/20
-// Level: medium
-// Description: Detects loading of "credui.dll" and related DLLs by an uncommon process. Attackers might leverage this DLL for potential use of "CredUIPromptForCredentials" or "CredUnPackAuthenticationBufferW".
-// Tags: attack.credential_access, attack.collection, attack.t1056.002
-DeviceImageLoadEvents
-| where ((FolderPath endswith "\\credui.dll" or FolderPath endswith "\\wincredui.dll") or (InitiatingProcessVersionInfoOriginalFileName in~ ("credui.dll", "wincredui.dll"))) and (not(((InitiatingProcessFolderPath in~ ("C:\\Windows\\explorer.exe", "C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe", "C:\\Windows\\regedit.exe")) or (InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\" or InitiatingProcessFolderPath startswith "C:\\Program Files\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\" or InitiatingProcessFolderPath startswith "C:\\Windows\\SysWOW64\\")))) and (not(((InitiatingProcessFolderPath contains "\\AppData\\Local\\Microsoft\\OneDrive\\" and InitiatingProcessFolderPath startswith "C:\\Users\\") or InitiatingProcessFolderPath endswith "\\opera_autoupdate.exe" or (InitiatingProcessFolderPath endswith "\\procexp64.exe" or InitiatingProcessFolderPath endswith "\\procexp.exe") or (InitiatingProcessFolderPath contains "\\AppData\\Local\\Microsoft\\Teams\\" and InitiatingProcessFolderPath endswith "\\Teams.exe" and InitiatingProcessFolderPath startswith "C:\\Users\\"))))

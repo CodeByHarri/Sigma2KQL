@@ -1,8 +1,0 @@
-// Author: frack113
-// Date: 2021/07/13
-// Level: medium
-// Description: Detects usage of "ProtocolHandler" to download files. Downloaded files will be located in the cache folder (for example - %LOCALAPPDATA%\Microsoft\Windows\INetCache\IE)
-
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where (ProcessCommandLine contains "ftp://" or ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://") and (FolderPath endswith "\\protocolhandler.exe" or ProcessVersionInfoOriginalFileName =~ "ProtocolHandler.exe")

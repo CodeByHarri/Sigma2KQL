@@ -1,7 +1,0 @@
-// Author: frack113, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/05
-// Level: medium
-// Description: Detect use of the Windows 8.3 short name. Which could be used as a method to avoid command-line detection
-// Tags: attack.defense_evasion, attack.t1564.004
-DeviceProcessEvents
-| where (ProcessCommandLine contains "~1.exe" or ProcessCommandLine contains "~1.bat" or ProcessCommandLine contains "~1.msi" or ProcessCommandLine contains "~1.vbe" or ProcessCommandLine contains "~1.vbs" or ProcessCommandLine contains "~1.dll" or ProcessCommandLine contains "~1.ps1" or ProcessCommandLine contains "~1.js" or ProcessCommandLine contains "~1.hta" or ProcessCommandLine contains "~2.exe" or ProcessCommandLine contains "~2.bat" or ProcessCommandLine contains "~2.msi" or ProcessCommandLine contains "~2.vbe" or ProcessCommandLine contains "~2.vbs" or ProcessCommandLine contains "~2.dll" or ProcessCommandLine contains "~2.ps1" or ProcessCommandLine contains "~2.js" or ProcessCommandLine contains "~2.hta") and (not(((InitiatingProcessFolderPath endswith "\\WebEx\\WebexHost.exe" or InitiatingProcessFolderPath endswith "\\thor\\thor64.exe") or ProcessCommandLine contains "C:\\xampp\\vcredist\\VCREDI~1.EXE")))

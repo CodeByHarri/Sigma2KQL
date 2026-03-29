@@ -1,7 +1,0 @@
-// Author: Cedric MAURUGEON, Florian Roth (Nextron Systems), Swachchhanda Shrawan Poudel, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2021/09/24
-// Level: high
-// Description: Detects the use of the Microsoft Windows Resource Leak Diagnostic tool "rdrleakdiag.exe" to dump process memory
-// Tags: attack.credential_access, attack.t1003.001
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "fullmemdmp" or ProcessCommandLine contains "/memdmp" or ProcessCommandLine contains "-memdmp") and (ProcessCommandLine contains " -o " or ProcessCommandLine contains " /o ") and (ProcessCommandLine contains " -p " or ProcessCommandLine contains " /p ")) or ((FolderPath endswith "\\rdrleakdiag.exe" or ProcessVersionInfoOriginalFileName =~ "RdrLeakDiag.exe") and (ProcessCommandLine contains "fullmemdmp" or ProcessCommandLine contains "/memdmp" or ProcessCommandLine contains "-memdmp"))

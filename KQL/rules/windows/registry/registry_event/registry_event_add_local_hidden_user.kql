@@ -1,0 +1,11 @@
+// Title: Creation of a Local Hidden User Account by Registry
+// Author: Christian Burkard (Nextron Systems)
+// Date: 2021-05-03
+// Level: high
+// Description: Sysmon registry detection of a local hidden user account.
+// MITRE Tactic: Persistence
+// Tags: attack.persistence, attack.t1136.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_event/registry_event_add_local_hidden_user.yml
+
+DeviceRegistryEvents
+| where InitiatingProcessFolderPath endswith "\\lsass.exe" and RegistryKey endswith "\\SAM\\SAM\\Domains\\Account\\Users\\Names*" and RegistryKey endswith "$\\(Default)"

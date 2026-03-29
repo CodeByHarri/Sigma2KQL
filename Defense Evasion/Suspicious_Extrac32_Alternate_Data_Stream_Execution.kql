@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/11/26
-// Level: medium
-// Description: Extract data from cab file and hide it in an alternate data stream
-// Tags: attack.defense_evasion, attack.t1564.004
-DeviceProcessEvents
-| where (ProcessCommandLine contains "extrac32.exe" and ProcessCommandLine contains ".cab") and ProcessCommandLine matches regex ":[^\\\\]"

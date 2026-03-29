@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/02/13
-// Level: high
-// Description: load malicious registered COM objects
-// Tags: attack.privilege_escalation, attack.persistence, attack.t1546.015
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "-sta " or ProcessCommandLine contains "-localserver ") and (ProcessCommandLine contains "{" and ProcessCommandLine contains "}")) and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE")

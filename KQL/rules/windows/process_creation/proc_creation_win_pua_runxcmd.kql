@@ -1,0 +1,13 @@
+// Title: PUA - RunXCmd Execution
+// Author: Florian Roth (Nextron Systems)
+// Date: 2022-01-24
+// Level: high
+// Description: Detects the use of the RunXCmd tool to execute commands with System or TrustedInstaller accounts
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1569.002, attack.s0029
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_pua_runxcmd.yml
+// False Positives:
+//   - Legitimate use by administrators
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains " /account=system " or ProcessCommandLine contains " /account=ti ") and ProcessCommandLine contains "/exec="

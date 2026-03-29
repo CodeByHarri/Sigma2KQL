@@ -1,7 +1,0 @@
-// Author: E.M. Anhaus (originally from Atomic Blue Detections, Endgame), oscd.community
-// Date: 2019/10/24
-// Level: high
-// Description: Detect commandline usage of Microsoft Connection Manager Profile Installer (cmstp.exe) to install specially formatted local .INF files
-// Tags: attack.privilege_escalation, attack.defense_evasion, attack.t1548.002, attack.t1218.003
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/s" or ProcessCommandLine contains "-s" or ProcessCommandLine contains "/au" or ProcessCommandLine contains "-au" or ProcessCommandLine contains "/ni" or ProcessCommandLine contains "-ni") and (FolderPath endswith "\\cmstp.exe" or ProcessVersionInfoOriginalFileName =~ "CMSTP.EXE")

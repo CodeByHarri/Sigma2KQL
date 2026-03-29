@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/06/21
-// Level: high
-// Description: Detects changes to registry keys related to "Trusted Location" of Microsoft Office where the path is set to something uncommon. Attackers might add additional trusted locations to avoid macro security restrictions.
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where (RegistryKey contains "Security\\Trusted Locations\\Location" and RegistryKey endswith "\\Path") and (not(((InitiatingProcessFolderPath contains ":\\Program Files\\Microsoft Office\\" or InitiatingProcessFolderPath contains ":\\Program Files (x86)\\Microsoft Office\\") or (InitiatingProcessFolderPath contains ":\\Program Files\\Common Files\\Microsoft Shared\\ClickToRun\\" and InitiatingProcessFolderPath endswith "\\OfficeClickToRun.exe")))) and (not((RegistryValueData contains "%APPDATA%\\Microsoft\\Templates" or RegistryValueData contains "%%APPDATA%%\\Microsoft\\Templates" or RegistryValueData contains "%APPDATA%\\Microsoft\\Word\\Startup" or RegistryValueData contains "%%APPDATA%%\\Microsoft\\Word\\Startup" or RegistryValueData contains ":\\Program Files (x86)\\Microsoft Office\\root\\Templates\\" or RegistryValueData contains ":\\Program Files\\Microsoft Office (x86)\\Templates" or RegistryValueData contains ":\\Program Files\\Microsoft Office\\root\\Templates\\" or RegistryValueData contains ":\\Program Files\\Microsoft Office\\Templates\\")))

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/10/11
-// Level: critical
-// Description: Detects a WMI backdoor in Exchange Transport Agents via WMI event filters
-// Tags: attack.persistence, attack.t1546.003
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\EdgeTransport.exe" and (not((FolderPath =~ "C:\\Windows\\System32\\conhost.exe" or (FolderPath endswith "\\Bin\\OleConverter.exe" and FolderPath startswith "C:\\Program Files\\Microsoft\\Exchange Server\\"))))

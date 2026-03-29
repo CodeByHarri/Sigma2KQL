@@ -1,7 +1,0 @@
-// Author: Timur Zinniatullin, oscd.community
-// Date: 2019/10/21
-// Level: medium
-// Description: Detects the usage of "reg.exe" in order to query reconnaissance information from the registry. Adversaries may interact with the Windows registry to gather information about credentials, the system, configuration, and installed software.
-// Tags: attack.discovery, attack.t1012, attack.t1007
-DeviceProcessEvents
-| where ProcessCommandLine contains "query" and (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~ "reg.exe") and (ProcessCommandLine contains "currentVersion\\windows" or ProcessCommandLine contains "winlogon\\" or ProcessCommandLine contains "currentVersion\\shellServiceObjectDelayLoad" or ProcessCommandLine contains "currentVersion\\run" or ProcessCommandLine contains "currentVersion\\policies\\explorer\\run" or ProcessCommandLine contains "currentcontrolset\\services")

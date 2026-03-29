@@ -1,9 +1,0 @@
-// Author: Markus Neis, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2018/08/25
-// Level: high
-// Description: Detects potential PowerShell execution from a DLL instead of the usual PowerShell process as seen used in PowerShdll.
-This detection assumes that PowerShell commands are passed via the CommandLine.
-
-// Tags: attack.defense_evasion, attack.t1218.011
-DeviceProcessEvents
-| where (ProcessCommandLine contains "Default.GetString" or ProcessCommandLine contains "DownloadString" or ProcessCommandLine contains "FromBase64String" or ProcessCommandLine contains "ICM " or ProcessCommandLine contains "IEX " or ProcessCommandLine contains "Invoke-Command" or ProcessCommandLine contains "Invoke-Expression") and ((FolderPath endswith "\\InstallUtil.exe" or FolderPath endswith "\\RegAsm.exe" or FolderPath endswith "\\RegSvcs.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\rundll32.exe") or (ProcessVersionInfoOriginalFileName in~ ("InstallUtil.exe", "RegAsm.exe", "RegSvcs.exe", "REGSVR32.EXE", "RUNDLL32.EXE")))

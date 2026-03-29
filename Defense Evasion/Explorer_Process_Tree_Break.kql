@@ -1,9 +1,0 @@
-// Author: Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems), @gott_cyber
-// Date: 2019/06/29
-// Level: medium
-// Description: Detects a command line process that uses explorer.exe to launch arbitrary commands or binaries,
-which is similar to cmd.exe /c, only it breaks the process tree and makes its parent a new instance of explorer spawning from "svchost"
-
-// Tags: attack.defense_evasion, attack.t1036
-DeviceProcessEvents
-| where ProcessCommandLine contains "/factory,{75dff2b7-6936-4c06-a8bb-676a7b00b24b}" or (ProcessCommandLine contains "explorer.exe" and ProcessCommandLine contains " /root,")

@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/16
-// Level: medium
-// Description: Deployment Image Servicing and Management tool. DISM is used to enumerate, install, uninstall, configure, and update features and packages in Windows images
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "/Online" and ProcessCommandLine contains "/Disable-Feature") and FolderPath endswith "\\Dism.exe") or (FolderPath endswith "\\DismHost.exe" and (InitiatingProcessCommandLine contains "/Online" and InitiatingProcessCommandLine contains "/Disable-Feature"))

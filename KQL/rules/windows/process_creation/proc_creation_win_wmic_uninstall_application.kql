@@ -1,0 +1,11 @@
+// Title: Application Removed Via Wmic.EXE
+// Author: frack113
+// Date: 2022-01-28
+// Level: medium
+// Description: Detects the removal or uninstallation of an application via "Wmic.EXE".
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1047
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_wmic_uninstall_application.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "call" and ProcessCommandLine contains "uninstall") and (FolderPath endswith "\\WMIC.exe" or ProcessVersionInfoOriginalFileName =~ "wmic.exe")

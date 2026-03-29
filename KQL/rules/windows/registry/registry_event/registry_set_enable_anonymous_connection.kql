@@ -1,0 +1,13 @@
+// Title: Enable Remote Connection Between Anonymous Computer - AllowAnonymousCallback
+// Author: X__Junior (Nextron Systems)
+// Date: 2023-11-03
+// Level: medium
+// Description: Detects enabling of the "AllowAnonymousCallback" registry value, which allows a remote connection between computers that do not have a trust relationship.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1562.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/registry/registry_event/registry_set_enable_anonymous_connection.yml
+// False Positives:
+//   - Administrative activity
+
+DeviceRegistryEvents
+| where RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey contains "\\Microsoft\\WBEM\\CIMOM\\AllowAnonymousCallback"

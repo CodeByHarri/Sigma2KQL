@@ -1,0 +1,13 @@
+// Title: Potential SPN Enumeration Via Setspn.EXE
+// Author: Markus Neis, keepwatch
+// Date: 2018-11-14
+// Level: medium
+// Description: Detects service principal name (SPN) enumeration used for Kerberoasting
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1558.003
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_setspn_spn_enumeration.yml
+// False Positives:
+//   - Administration activity
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains " -q " or ProcessCommandLine contains " /q ") and (FolderPath endswith "\\setspn.exe" or ProcessVersionInfoOriginalFileName =~ "setspn.exe" or (ProcessVersionInfoFileDescription contains "Query or reset the computer" and ProcessVersionInfoFileDescription contains "SPN attribute"))

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), wagga
-// Date: 2018/03/20
-// Level: high
-// Description: Detects NetNTLM downgrade attack
-// Tags: attack.defense_evasion, attack.t1562.001, attack.t1112
-DeviceRegistryEvents
-| where (RegistryKey contains "SYSTEM" and RegistryKey contains "ControlSet" and RegistryKey contains "\\Control\\Lsa") and (RegistryKey endswith "\\lmcompatibilitylevel" or RegistryKey endswith "\\NtlmMinClientSec" or RegistryKey endswith "\\RestrictSendingNTLMTraffic")

@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/28
-// Level: medium
-// Description: Uninstall an application with wmic
-// Tags: attack.execution, attack.t1047
-DeviceProcessEvents
-| where (ProcessCommandLine contains "call" or ProcessCommandLine contains "uninstall") and (FolderPath endswith "\\WMIC.exe" or ProcessVersionInfoOriginalFileName =~ "wmic.exe")

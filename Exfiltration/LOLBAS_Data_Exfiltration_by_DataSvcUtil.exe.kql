@@ -1,7 +1,0 @@
-// Author: Ialle Teixeira @teixeira0xfffff, Austin Songer @austinsonger
-// Date: 2021/09/30
-// Level: medium
-// Description: Detects when a user performs data exfiltration by using DataSvcUtil.exe
-// Tags: attack.exfiltration, attack.t1567
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/in:" or ProcessCommandLine contains "/out:" or ProcessCommandLine contains "/uri:") and (FolderPath endswith "\\DataSvcUtil.exe" or ProcessVersionInfoOriginalFileName =~ "DataSvcUtil.exe")

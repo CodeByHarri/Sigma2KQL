@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/05/05
-// Level: medium
-// Description: Detects potential DLL sideloading of "libcurl.dll" by the "gup.exe" process from an uncommon location
-// Tags: attack.defense_evasion, attack.persistence, attack.privilege_escalation, attack.t1574.001, attack.t1574.002
-DeviceImageLoadEvents
-| where (FolderPath endswith "\\libcurl.dll" and InitiatingProcessFolderPath endswith "\\gup.exe") and (not(InitiatingProcessFolderPath endswith "\\Notepad++\\updater\\GUP.exe"))

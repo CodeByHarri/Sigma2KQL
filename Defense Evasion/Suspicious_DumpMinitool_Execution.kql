@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/04/06
-// Level: high
-// Description: Detects suspicious ways to use the "DumpMinitool.exe" binary
-// Tags: attack.defense_evasion, attack.t1036, attack.t1003.001
-DeviceProcessEvents
-| where ((FolderPath endswith "\\DumpMinitool.exe" or FolderPath endswith "\\DumpMinitool.x86.exe" or FolderPath endswith "\\DumpMinitool.arm64.exe") or (ProcessVersionInfoOriginalFileName in~ ("DumpMinitool.exe", "DumpMinitool.x86.exe", "DumpMinitool.arm64.exe"))) and ((not((FolderPath contains "\\Microsoft Visual Studio\\" or FolderPath contains "\\Extensions\\"))) or ProcessCommandLine contains ".txt" or ((ProcessCommandLine contains " Full" or ProcessCommandLine contains " Mini" or ProcessCommandLine contains " WithHeap") and (not(ProcessCommandLine contains "--dumpType"))))

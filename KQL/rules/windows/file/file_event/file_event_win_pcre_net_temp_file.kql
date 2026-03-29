@@ -1,0 +1,11 @@
+// Title: PCRE.NET Package Temp Files
+// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
+// Date: 2020-10-29
+// Level: high
+// Description: Detects processes creating temp files related to PCRE.NET package
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file/file_event/file_event_win_pcre_net_temp_file.yml
+
+DeviceFileEvents
+| where FolderPath contains "\\AppData\\Local\\Temp\\ba9ea7344a4a5f591d6e5dc32a13494b\\"

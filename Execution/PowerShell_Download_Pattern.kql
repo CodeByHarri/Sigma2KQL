@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), oscd.community, Jonhnathan Ribeiro
-// Date: 2019/01/16
-// Level: medium
-// Description: Detects a Powershell process that contains download commands in its command line string
-// Tags: attack.execution, attack.t1059.001
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "string(" or ProcessCommandLine contains "file(") and (ProcessCommandLine contains "new-object" and ProcessCommandLine contains "net.webclient)." and ProcessCommandLine contains "download")) and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll")))

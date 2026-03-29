@@ -1,7 +1,0 @@
-// Author: Nik Seetharaman, Christian Burkard (Nextron Systems)
-// Date: 2019/07/31
-// Level: high
-// Description: Detects UAC Bypass Attempt Using Microsoft Connection Manager Profile Installer Autoelevate-capable COM Objects (e.g. UACMe ID of 41, 43, 58 or 65)
-// Tags: attack.execution, attack.defense_evasion, attack.privilege_escalation, attack.t1548.002, attack.t1218.003, attack.g0069, car.2019-04-001
-DeviceProcessEvents
-| where (ProcessIntegrityLevel in~ ("High", "System")) and (InitiatingProcessCommandLine contains " /Processid:{3E5FC7F9-9A51-4367-9063-A120244FBEC7}" or InitiatingProcessCommandLine contains " /Processid:{3E000D72-A845-4CD9-BD83-80C07C3B881F}" or InitiatingProcessCommandLine contains " /Processid:{BD54C901-076B-434E-B6C7-17C531F4AB41}" or InitiatingProcessCommandLine contains " /Processid:{D2E7041B-2927-42FB-8E9F-7CE93B6DC937}" or InitiatingProcessCommandLine contains " /Processid:{E9495B87-D950-4AB5-87A5-FF6D70BF3E90}") and InitiatingProcessFolderPath endswith "\\DllHost.exe"

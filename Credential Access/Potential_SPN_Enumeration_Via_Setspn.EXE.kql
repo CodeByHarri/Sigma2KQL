@@ -1,7 +1,0 @@
-// Author: Markus Neis, keepwatch
-// Date: 2018/11/14
-// Level: medium
-// Description: Detects service principal name (SPN) enumeration used for Kerberoasting
-// Tags: attack.credential_access, attack.t1558.003
-DeviceProcessEvents
-| where (ProcessCommandLine contains " -q " or ProcessCommandLine contains " /q ") and (FolderPath endswith "\\setspn.exe" or ProcessVersionInfoOriginalFileName =~ "setspn.exe" or (ProcessVersionInfoFileDescription contains "Query or reset the computer" and ProcessVersionInfoFileDescription contains "SPN attribute"))

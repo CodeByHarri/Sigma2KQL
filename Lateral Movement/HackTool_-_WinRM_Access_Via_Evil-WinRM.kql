@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/07
-// Level: medium
-// Description: Adversaries may use Valid Accounts to log into a computer using the Remote Desktop Protocol (RDP). The adversary may then perform actions as the logged-on user.
-// Tags: attack.lateral_movement, attack.t1021.006
-DeviceProcessEvents
-| where (ProcessCommandLine contains "-i " and ProcessCommandLine contains "-u " and ProcessCommandLine contains "-p ") and FolderPath endswith "\\ruby.exe"

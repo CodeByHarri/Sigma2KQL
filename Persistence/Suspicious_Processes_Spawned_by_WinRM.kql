@@ -1,7 +1,0 @@
-// Author: Andreas Hunkeler (@Karneades), Markus Neis
-// Date: 2021/05/20
-// Level: high
-// Description: Detects suspicious processes including shells spawnd from WinRM host process
-// Tags: attack.t1190, attack.initial_access, attack.persistence, attack.privilege_escalation
-DeviceProcessEvents
-| where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\sh.exe" or FolderPath endswith "\\bash.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\wsl.exe" or FolderPath endswith "\\schtasks.exe" or FolderPath endswith "\\certutil.exe" or FolderPath endswith "\\whoami.exe" or FolderPath endswith "\\bitsadmin.exe") and InitiatingProcessFolderPath endswith "\\wsmprovhost.exe"

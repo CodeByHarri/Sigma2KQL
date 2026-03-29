@@ -1,7 +1,0 @@
-// Author: Jose Luis Sanchez Martinez (@Joseliyo_Jstnk)
-// Date: 2022/05/24
-// Level: medium
-// Description: Detects the use of Jlaive to execute assemblies in a copied PowerShell
-// Tags: attack.execution, attack.t1059.003
-DeviceProcessEvents
-| where (InitiatingProcessCommandLine endswith ".bat" and InitiatingProcessFolderPath endswith "\\cmd.exe") and (((ProcessCommandLine contains "powershell.exe" and ProcessCommandLine contains ".bat.exe") and FolderPath endswith "\\xcopy.exe") or ((ProcessCommandLine contains "pwsh.exe" and ProcessCommandLine contains ".bat.exe") and FolderPath endswith "\\xcopy.exe") or ((ProcessCommandLine contains "+s" and ProcessCommandLine contains "+h" and ProcessCommandLine contains ".bat.exe") and FolderPath endswith "\\attrib.exe"))

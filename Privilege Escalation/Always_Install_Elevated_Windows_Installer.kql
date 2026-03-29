@@ -1,7 +1,0 @@
-// Author: Teymur Kheirkhabarov (idea), Mangatas Tondang (rule), oscd.community
-// Date: 2020/10/13
-// Level: medium
-// Description: Detects Windows Installer service (msiexec.exe) trying to install MSI packages with SYSTEM privilege
-// Tags: attack.privilege_escalation, attack.t1548.002
-DeviceProcessEvents
-| where (((FolderPath contains "\\Windows\\Installer\\" and FolderPath contains "msi") and FolderPath endswith "tmp") or (FolderPath endswith "\\msiexec.exe" and ProcessIntegrityLevel =~ "System")) and (AccountName contains "AUTHORI" or AccountName contains "AUTORI") and (not(((InitiatingProcessFolderPath startswith "C:\\Program Files\\Avast Software\\" or InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\Avast Software\\") or InitiatingProcessFolderPath startswith "C:\\ProgramData\\Avira\\" or (InitiatingProcessFolderPath startswith "C:\\Program Files\\Google\\Update\\" or InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\Google\\Update\\") or InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\services.exe" or (ProcessCommandLine endswith "\\system32\\msiexec.exe /V" or InitiatingProcessCommandLine endswith "\\system32\\msiexec.exe /V") or InitiatingProcessFolderPath startswith "C:\\ProgramData\\Sophos\\")))

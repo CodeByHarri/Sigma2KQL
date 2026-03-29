@@ -1,7 +1,0 @@
-// Author: Sreeman
-// Date: 2020/09/29
-// Level: medium
-// Description: Detects the modification of an existing service in order to execute an arbitrary payload when the service is started or killed as a potential method for persistence.
-// Tags: attack.persistence, attack.t1543.003, attack.t1574.011
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "sc " and ProcessCommandLine contains "config " and ProcessCommandLine contains "binpath=") or (ProcessCommandLine contains "sc " and ProcessCommandLine contains "failure" and ProcessCommandLine contains "command=")) or ((ProcessCommandLine contains ".sh" or ProcessCommandLine contains ".exe" or ProcessCommandLine contains ".dll" or ProcessCommandLine contains ".bin$" or ProcessCommandLine contains ".bat" or ProcessCommandLine contains ".cmd" or ProcessCommandLine contains ".js" or ProcessCommandLine contains ".msh$" or ProcessCommandLine contains ".reg$" or ProcessCommandLine contains ".scr" or ProcessCommandLine contains ".ps" or ProcessCommandLine contains ".vb" or ProcessCommandLine contains ".jar" or ProcessCommandLine contains ".pl") and ((ProcessCommandLine contains "reg " and ProcessCommandLine contains "add " and ProcessCommandLine contains "FailureCommand") or (ProcessCommandLine contains "reg " and ProcessCommandLine contains "add " and ProcessCommandLine contains "ImagePath")))

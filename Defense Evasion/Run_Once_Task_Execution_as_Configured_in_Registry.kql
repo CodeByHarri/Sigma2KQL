@@ -1,7 +1,0 @@
-// Author: Avneet Singh @v3t0_, oscd.community, Christopher Peacock @SecurePeacock (updated)
-// Date: 2020/10/18
-// Level: low
-// Description: This rule detects the execution of Run Once task as configured in the registry
-// Tags: attack.defense_evasion, attack.t1112
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/AlternateShellStartup" or ProcessCommandLine endswith "/r") and (FolderPath endswith "\\runonce.exe" or ProcessVersionInfoFileDescription =~ "Run Once Wrapper")

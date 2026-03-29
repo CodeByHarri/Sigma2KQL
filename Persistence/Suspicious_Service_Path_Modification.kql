@@ -1,7 +1,0 @@
-// Author: Victor Sergeev, oscd.community, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2019/10/21
-// Level: high
-// Description: Detects service path modification via the "sc" binary to a suspicious command or path
-// Tags: attack.persistence, attack.privilege_escalation, attack.t1543.003
-DeviceProcessEvents
-| where (ProcessCommandLine contains "powershell" or ProcessCommandLine contains "cmd " or ProcessCommandLine contains "mshta" or ProcessCommandLine contains "wscript" or ProcessCommandLine contains "cscript" or ProcessCommandLine contains "rundll32" or ProcessCommandLine contains "svchost" or ProcessCommandLine contains "dllhost" or ProcessCommandLine contains "cmd.exe /c" or ProcessCommandLine contains "cmd.exe /k" or ProcessCommandLine contains "cmd.exe /r" or ProcessCommandLine contains "cmd /c" or ProcessCommandLine contains "cmd /k" or ProcessCommandLine contains "cmd /r" or ProcessCommandLine contains "C:\\Users\\Public" or ProcessCommandLine contains "\\Downloads\\" or ProcessCommandLine contains "\\Desktop\\" or ProcessCommandLine contains "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\" or ProcessCommandLine contains "C:\\Windows\\TEMP\\" or ProcessCommandLine contains "\\AppData\\Local\\Temp") and (ProcessCommandLine contains "config" and ProcessCommandLine contains "binPath") and FolderPath endswith "\\sc.exe"

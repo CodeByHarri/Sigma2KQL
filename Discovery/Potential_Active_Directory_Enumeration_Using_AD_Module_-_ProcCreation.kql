@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2023/01/22
-// Level: medium
-// Description: Detects usage of the "Import-Module" cmdlet to load the "Microsoft.ActiveDirectory.Management.dl" DLL. Which is often used by attackers to perform AD enumeration.
-// Tags: attack.reconnaissance, attack.discovery, attack.impact
-DeviceProcessEvents
-| where (ProcessCommandLine contains "Import-Module " or ProcessCommandLine contains "ipmo ") and ProcessCommandLine contains "Microsoft.ActiveDirectory.Management.dll" and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll")))

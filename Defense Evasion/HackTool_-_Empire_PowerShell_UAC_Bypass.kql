@@ -1,7 +1,0 @@
-// Author: Ecco
-// Date: 2019/08/30
-// Level: critical
-// Description: Detects some Empire PowerShell UAC bypass methods
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1548.002, car.2019-04-001
-DeviceProcessEvents
-| where ProcessCommandLine contains " -NoP -NonI -w Hidden -c $x=$((gp HKCU:Software\\Microsoft\\Windows Update).Update)" or ProcessCommandLine contains " -NoP -NonI -c $x=$((gp HKCU:Software\\Microsoft\\Windows Update).Update);"

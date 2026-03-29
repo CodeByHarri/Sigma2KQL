@@ -1,7 +1,0 @@
-// Author: Michael R. (@nahamike01)
-// Date: 2020/03/08
-// Level: high
-// Description: Detects the execution of CSharp interactive console by PowerShell
-// Tags: attack.execution, attack.t1127
-DeviceProcessEvents
-| where FolderPath endswith "\\csi.exe" and ProcessVersionInfoOriginalFileName =~ "csi.exe" and (InitiatingProcessFolderPath endswith "\\powershell.exe" or InitiatingProcessFolderPath endswith "\\pwsh.exe" or InitiatingProcessFolderPath endswith "\\powershell_ise.exe")

@@ -1,0 +1,13 @@
+// Title: Shell Invocation via Env Command - Linux
+// Author: Li Ling, Andy Parkidomo, Robert Rakowski, Blake Hartstein (Bloomberg L.P.)
+// Date: 2024-09-02
+// Level: high
+// Description: Detects the use of the env command to invoke a shell. This may indicate an attempt to bypass restricted environments, escalate privileges, or execute arbitrary commands.
+// MITRE Tactic: Execution
+// Tags: attack.execution, attack.t1059
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/linux/process_creation/proc_creation_lnx_env_shell_invocation.yml
+// False Positives:
+//   - Github operations such as ghe-backup
+
+DeviceProcessEvents
+| where (ProcessCommandLine endswith "/bin/bash" or ProcessCommandLine endswith "/bin/dash" or ProcessCommandLine endswith "/bin/fish" or ProcessCommandLine endswith "/bin/sh" or ProcessCommandLine endswith "/bin/zsh") and FolderPath endswith "/env"

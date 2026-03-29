@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/09/18
-// Level: medium
-// Description: Detects a remote DLL load event via "rundll32.exe".
-// Tags: attack.execution, attack.t1204.002
-DeviceImageLoadEvents
-| where FolderPath startswith "\\\\" and InitiatingProcessFolderPath endswith "\\rundll32.exe"

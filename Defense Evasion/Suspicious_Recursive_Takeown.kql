@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/30
-// Level: medium
-// Description: Adversaries can interact with the DACLs using built-in Windows commands takeown which can grant adversaries higher permissions on specific files and folders
-// Tags: attack.defense_evasion, attack.t1222.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/f " and ProcessCommandLine contains "/r") and FolderPath endswith "\\takeown.exe"

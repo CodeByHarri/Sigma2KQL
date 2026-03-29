@@ -1,7 +1,0 @@
-// Author: frack113, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2021/06/08
-// Level: high
-// Description: Detects changes to Microsoft Office protected view registry keys with which the attacker disables this feature.
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceRegistryEvents
-| where (RegistryKey contains "\\SOFTWARE\\Microsoft\\Office" and RegistryKey contains "\\Security\\ProtectedView") and ((RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey endswith "\\enabledatabasefileprotectedview" or RegistryKey endswith "\\enableforeigntextfileprotectedview")) or (RegistryValueData =~ "DWORD (0x00000001)" and (RegistryKey endswith "\\DisableAttachementsInPV" or RegistryKey endswith "\\DisableInternetFilesInPV" or RegistryKey endswith "\\DisableIntranetCheck" or RegistryKey endswith "\\DisableUnsafeLocationsInPV")))

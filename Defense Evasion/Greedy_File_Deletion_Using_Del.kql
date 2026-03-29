@@ -1,7 +1,0 @@
-// Author: frack113 , X__Junior (Nextron Systems)
-// Date: 2021/12/02
-// Level: medium
-// Description: Detects execution of the "del" builtin command to remove files using greedy/wildcard expression. This is often used by malware to delete content of folders that perhaps contains the initial malware infection or to delete evidence.
-// Tags: attack.defense_evasion, attack.t1070.004
-DeviceProcessEvents
-| where (ProcessCommandLine contains "del " or ProcessCommandLine contains "erase ") and (ProcessCommandLine contains "\\*.au3" or ProcessCommandLine contains "\\*.dll" or ProcessCommandLine contains "\\*.exe" or ProcessCommandLine contains "\\*.js") and (FolderPath endswith "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.Exe")

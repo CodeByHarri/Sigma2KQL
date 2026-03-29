@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/07/03
-// Level: high
-// Description: Detects suspicious network connections made by a well-known Windows binary run with no command line parameters
-// Tags: attack.defense_evasion
-DeviceNetworkEvents
-| where ((InitiatingProcessCommandLine endswith "\\regsvr32.exe" or InitiatingProcessCommandLine endswith "\\rundll32.exe" or InitiatingProcessCommandLine endswith "\\dllhost.exe") and (InitiatingProcessFolderPath endswith "\\regsvr32.exe" or InitiatingProcessFolderPath endswith "\\rundll32.exe" or InitiatingProcessFolderPath endswith "\\dllhost.exe")) and (not((InitiatingProcessCommandLine =~ "" or isnull(InitiatingProcessCommandLine))))

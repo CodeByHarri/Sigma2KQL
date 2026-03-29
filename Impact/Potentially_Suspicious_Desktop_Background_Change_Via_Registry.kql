@@ -1,9 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Stephen Lincoln @slincoln-aiq (AttackIQ)
-// Date: 2023/12/21
-// Level: medium
-// Description: Detects regsitry value settings that would replace the user's desktop background.
-This is a common technique used by malware to change the desktop background to a ransom note or other image.
-
-// Tags: attack.defense_evasion, attack.impact, attack.t1112, attack.t1491.001
-DeviceRegistryEvents
-| where (RegistryKey contains "Control Panel\\Desktop" or RegistryKey contains "CurrentVersion\\Policies\\ActiveDesktop" or RegistryKey contains "CurrentVersion\\Policies\\System") and ((RegistryValueData =~ "DWORD (0x00000001)" and RegistryKey endswith "NoChangingWallpaper") or RegistryKey endswith "\\Wallpaper" or (RegistryValueData =~ "2" and RegistryKey endswith "\\WallpaperStyle")) and (not(InitiatingProcessFolderPath endswith "\\svchost.exe"))

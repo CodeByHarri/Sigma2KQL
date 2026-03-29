@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/06/04
-// Level: medium
-// Description: Detects a suspicious call to the user32.dll function that locks the user workstation
-// Tags: attack.defense_evasion
-DeviceProcessEvents
-| where ProcessCommandLine contains "user32.dll," and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.EXE") and InitiatingProcessFolderPath endswith "\\cmd.exe" and ProcessCommandLine contains "LockWorkStation"

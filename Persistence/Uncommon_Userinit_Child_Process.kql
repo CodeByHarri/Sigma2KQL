@@ -1,7 +1,0 @@
-// Author: Tom Ueltschi (@c_APT_ure), Tim Shelton
-// Date: 2019/01/12
-// Level: high
-// Description: Detects uncommon "userinit.exe" child processes, which could be a sign of uncommon shells or login scripts used for persistence.
-// Tags: attack.t1037.001, attack.persistence
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\userinit.exe" and (not(FolderPath endswith ":\\WINDOWS\\explorer.exe")) and (not(((FolderPath endswith ":\\Program Files (x86)\\Citrix\\HDX\\bin\\cmstart.exe" or FolderPath endswith ":\\Program Files (x86)\\Citrix\\HDX\\bin\\icast.exe" or FolderPath endswith ":\\Program Files (x86)\\Citrix\\System32\\icast.exe" or FolderPath endswith ":\\Program Files\\Citrix\\HDX\\bin\\cmstart.exe" or FolderPath endswith ":\\Program Files\\Citrix\\HDX\\bin\\icast.exe" or FolderPath endswith ":\\Program Files\\Citrix\\System32\\icast.exe") or isnull(FolderPath) or (ProcessCommandLine contains "netlogon.bat" or ProcessCommandLine contains "UsrLogon.cmd") or (FolderPath endswith ":\\Windows\\System32\\proquota.exe" or FolderPath endswith ":\\Windows\\SysWOW64\\proquota.exe") or ProcessCommandLine =~ "PowerShell.exe")))

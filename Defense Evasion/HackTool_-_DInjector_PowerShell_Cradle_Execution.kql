@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/12/07
-// Level: critical
-// Description: Detects the use of the Dinject PowerShell cradle based on the specific flags
-// Tags: attack.defense_evasion, attack.t1055
-DeviceProcessEvents
-| where ProcessCommandLine contains " /am51" and ProcessCommandLine contains " /password"

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2024/03/11
-// Level: high
-// Description: Detects file creation events with filename patterns used by CrackMapExec.
-// Tags: attack.credential_access, attack.t1003.001
-DeviceFileEvents
-| where FolderPath startswith "C:\\Windows\\Temp\\" and ((FolderPath matches regex "\\\\[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.txt$" or FolderPath matches regex "\\\\[a-zA-Z]{8}\\.tmp$") or (FolderPath endswith "\\temp.ps1" or FolderPath endswith "\\msol.ps1"))

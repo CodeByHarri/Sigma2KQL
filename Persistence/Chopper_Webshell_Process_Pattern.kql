@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), MSTI (query)
-// Date: 2022/10/01
-// Level: high
-// Description: Detects patterns found in process executions cause by China Chopper like tiny (ASPX) webshells
-// Tags: attack.persistence, attack.t1505.003, attack.t1018, attack.t1033, attack.t1087
-DeviceProcessEvents
-| where (ProcessCommandLine contains "&ipconfig&echo" or ProcessCommandLine contains "&quser&echo" or ProcessCommandLine contains "&whoami&echo" or ProcessCommandLine contains "&c:&echo" or ProcessCommandLine contains "&cd&echo" or ProcessCommandLine contains "&dir&echo" or ProcessCommandLine contains "&echo [E]" or ProcessCommandLine contains "&echo [S]") and (FolderPath endswith "\\w3wp.exe" or InitiatingProcessFolderPath endswith "\\w3wp.exe")

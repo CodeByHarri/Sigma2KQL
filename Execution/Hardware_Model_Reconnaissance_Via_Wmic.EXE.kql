@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2023/02/14
-// Level: medium
-// Description: Detects the execution of WMIC with the "csproduct" which is used to obtain information such as hardware models and vendor information
-// Tags: attack.execution, attack.t1047, car.2016-03-002
-DeviceProcessEvents
-| where ProcessCommandLine contains "csproduct" and (FolderPath endswith "\\wmic.exe" or ProcessVersionInfoOriginalFileName =~ "wmic.exe")

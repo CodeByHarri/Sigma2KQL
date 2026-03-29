@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2017/08/15
-// Level: medium
-// Description: Detects an uncommon svchost parent process
-// Tags: attack.defense_evasion, attack.t1036.005
-DeviceProcessEvents
-| where FolderPath endswith "\\svchost.exe" and (not(((InitiatingProcessFolderPath endswith "\\Mrt.exe" or InitiatingProcessFolderPath endswith "\\MsMpEng.exe" or InitiatingProcessFolderPath endswith "\\ngen.exe" or InitiatingProcessFolderPath endswith "\\rpcnet.exe" or InitiatingProcessFolderPath endswith "\\services.exe" or InitiatingProcessFolderPath endswith "\\TiWorker.exe") or (InitiatingProcessFolderPath in~ ("-", "")) or isnull(InitiatingProcessFolderPath))))

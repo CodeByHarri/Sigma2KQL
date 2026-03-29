@@ -1,7 +1,0 @@
-// Author: Samir Bousseaden
-// Date: 2019/02/16
-// Level: high
-// Description: Detects svchost hosting RDP termsvcs communicating with the loopback address and on TCP port 3389
-// Tags: attack.command_and_control, attack.t1572, attack.lateral_movement, attack.t1021.001, car.2013-07-002
-DeviceNetworkEvents
-| where (ipv4_is_in_range(RemoteIP, "127.0.0.0/8") or ipv4_is_in_range(RemoteIP, "::1/128")) and (InitiatingProcessFolderPath endswith "\\svchost.exe" and LocalPort == 3389)

@@ -1,7 +1,0 @@
-// Author: Sreeman
-// Date: 2020/04/21
-// Level: medium
-// Description: Monitors for the hiding possible malicious files in the C:\Windows\Fonts\ location. This folder doesn't require admin privillege to be written and executed from.
-// Tags: attack.t1211, attack.t1059, attack.defense_evasion, attack.persistence
-DeviceProcessEvents
-| where (ProcessCommandLine contains "echo" or ProcessCommandLine contains "copy" or ProcessCommandLine contains "type" or ProcessCommandLine contains "file createnew" or ProcessCommandLine contains "cacls") and ProcessCommandLine contains "C:\\Windows\\Fonts\\" and (ProcessCommandLine contains ".sh" or ProcessCommandLine contains ".exe" or ProcessCommandLine contains ".dll" or ProcessCommandLine contains ".bin" or ProcessCommandLine contains ".bat" or ProcessCommandLine contains ".cmd" or ProcessCommandLine contains ".js" or ProcessCommandLine contains ".msh" or ProcessCommandLine contains ".reg" or ProcessCommandLine contains ".scr" or ProcessCommandLine contains ".ps" or ProcessCommandLine contains ".vb" or ProcessCommandLine contains ".jar" or ProcessCommandLine contains ".pl" or ProcessCommandLine contains ".inf" or ProcessCommandLine contains ".cpl" or ProcessCommandLine contains ".hta" or ProcessCommandLine contains ".msi" or ProcessCommandLine contains ".vbs")

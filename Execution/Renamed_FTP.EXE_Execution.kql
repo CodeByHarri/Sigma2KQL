@@ -1,7 +1,0 @@
-// Author: Victor Sergeev, oscd.community
-// Date: 2020/10/09
-// Level: medium
-// Description: Detects the execution of a renamed "ftp.exe" binary based on the PE metadata fields
-// Tags: attack.execution, attack.t1059, attack.defense_evasion, attack.t1202
-DeviceProcessEvents
-| where ProcessVersionInfoOriginalFileName =~ "ftp.exe" and (not(FolderPath endswith "\\ftp.exe"))

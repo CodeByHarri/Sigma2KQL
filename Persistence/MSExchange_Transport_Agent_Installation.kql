@@ -1,7 +1,0 @@
-// Author: Tobias Michalski (Nextron Systems)
-// Date: 2021/06/08
-// Level: medium
-// Description: Detects the Installation of a Exchange Transport Agent
-// Tags: attack.persistence, attack.t1505.002
-DeviceProcessEvents
-| where ProcessCommandLine contains "Install-TransportAgent"

@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/06/03
-// Level: high
-// Description: Detects the use of SDelete to erase a file not the free space
-// Tags: attack.impact, attack.t1485
-DeviceProcessEvents
-| where ProcessVersionInfoOriginalFileName =~ "sdelete.exe" and (not((ProcessCommandLine contains " -h" or ProcessCommandLine contains " -c" or ProcessCommandLine contains " -z" or ProcessCommandLine contains " /?")))

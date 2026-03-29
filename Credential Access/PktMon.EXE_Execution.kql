@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/03/17
-// Level: medium
-// Description: Detects execution of PktMon, a tool that captures network packets.
-// Tags: attack.credential_access, attack.t1040
-DeviceProcessEvents
-| where FolderPath endswith "\\pktmon.exe" or ProcessVersionInfoOriginalFileName =~ "PktMon.exe"

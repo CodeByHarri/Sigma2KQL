@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/11/15
-// Level: high
-// Description: Detects creation of files with names used by different memory dumping tools to create a memory dump of the LSASS process memory, which contains user credentials.
-// Tags: attack.credential_access, attack.t1003.001
-DeviceFileEvents
-| where (FolderPath endswith "\\lsass.dmp" or FolderPath endswith "\\lsass.zip" or FolderPath endswith "\\lsass.rar" or FolderPath endswith "\\Andrew.dmp" or FolderPath endswith "\\Coredump.dmp" or FolderPath endswith "\\NotLSASS.zip" or FolderPath endswith "\\PPLBlade.dmp") or (FolderPath contains "\\lsass_2" or FolderPath contains "\\lsassdump" or FolderPath contains "\\lsassdmp") or (FolderPath contains "\\lsass" and FolderPath contains ".dmp") or (FolderPath contains "SQLDmpr" and FolderPath endswith ".mdmp") or (FolderPath endswith ".dmp" and FolderPath startswith "nanodump")

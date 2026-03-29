@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/08/20
-// Level: critical
-// Description: Detects the use of SharpUp, a tool for local privilege escalation
-// Tags: attack.privilege_escalation, attack.t1615, attack.t1569.002, attack.t1574.005
-DeviceProcessEvents
-| where FolderPath endswith "\\SharpUp.exe" or ProcessVersionInfoFileDescription =~ "SharpUp" or (ProcessCommandLine contains "HijackablePaths" or ProcessCommandLine contains "UnquotedServicePath" or ProcessCommandLine contains "ProcessDLLHijack" or ProcessCommandLine contains "ModifiableServiceBinaries" or ProcessCommandLine contains "ModifiableScheduledTask" or ProcessCommandLine contains "DomainGPPPassword" or ProcessCommandLine contains "CachedGPPPassword")

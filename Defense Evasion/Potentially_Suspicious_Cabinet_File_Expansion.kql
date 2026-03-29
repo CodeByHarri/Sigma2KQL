@@ -1,7 +1,0 @@
-// Author: Bhabesh Raj, X__Junior (Nextron Systems)
-// Date: 2021/07/30
-// Level: medium
-// Description: Detects the expansion or decompression of cabinet files from potentially suspicious or uncommon locations, e.g. seen in Iranian MeteorExpress related attacks
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "-F:" or ProcessCommandLine contains "/F:") and FolderPath endswith "\\expand.exe") and ((ProcessCommandLine contains ":\\Perflogs\\" or ProcessCommandLine contains ":\\Users\\Public\\" or ProcessCommandLine contains "\\Temporary Internet" or ProcessCommandLine contains ":\\ProgramData" or ProcessCommandLine contains "\\AppData\\Local\\Temp" or ProcessCommandLine contains "\\AppData\\Roaming\\Temp" or ProcessCommandLine contains ":\\Windows\\Temp") or ((ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine contains "\\Favorites\\") or (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine contains "\\Favourites\\") or (ProcessCommandLine contains ":\\Users\\" and ProcessCommandLine contains "\\Contacts\\"))) and (not((ProcessCommandLine contains "C:\\ProgramData\\Dell\\UpdateService\\Temp\\" and InitiatingProcessFolderPath =~ "C:\\Program Files (x86)\\Dell\\UpdateService\\ServiceShell.exe")))

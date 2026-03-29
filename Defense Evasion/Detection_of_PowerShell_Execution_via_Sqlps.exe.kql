@@ -1,9 +1,0 @@
-// Author: Agro (@agro_sev) oscd.community
-// Date: 2020/10/10
-// Level: medium
-// Description: This rule detects execution of a PowerShell code through the sqlps.exe utility, which is included in the standard set of utilities supplied with the MSSQL Server.
-Script blocks are not logged in this case, so this utility helps to bypass protection mechanisms based on the analysis of these logs.
-
-// Tags: attack.execution, attack.t1059.001, attack.defense_evasion, attack.t1127
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\sqlps.exe" or ((FolderPath endswith "\\sqlps.exe" or ProcessVersionInfoOriginalFileName =~ "sqlps.exe") and (not(InitiatingProcessFolderPath endswith "\\sqlagent.exe")))

@@ -1,7 +1,0 @@
-// Author: Sittikorn S
-// Date: 2021/06/22
-// Level: high
-// Description: Detects the execution of a renamed MegaSync.exe as seen used by ransomware families like Nefilim, Sodinokibi, Pysa, and Conti.
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ProcessVersionInfoOriginalFileName =~ "megasync.exe" and (not(FolderPath endswith "\\megasync.exe"))

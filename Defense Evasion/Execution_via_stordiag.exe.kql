@@ -1,7 +1,0 @@
-// Author: Austin Songer (@austinsonger)
-// Date: 2021/10/21
-// Level: high
-// Description: Detects the use of stordiag.exe to execute schtasks.exe systeminfo.exe and fltmc.exe
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ((FolderPath endswith "\\schtasks.exe" or FolderPath endswith "\\systeminfo.exe" or FolderPath endswith "\\fltmc.exe") and InitiatingProcessFolderPath endswith "\\stordiag.exe") and (not((InitiatingProcessFolderPath startswith "c:\\windows\\system32\\" or InitiatingProcessFolderPath startswith "c:\\windows\\syswow64\\")))

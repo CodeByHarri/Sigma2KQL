@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/03/09
-// Level: medium
-// Description: Detects updates to Sysmon's configuration. Attackers might update or replace the Sysmon configuration with a bare bone one to avoid monitoring without shutting down the service completely
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "-c" or ProcessCommandLine contains "/c") and ((FolderPath endswith "\\Sysmon64.exe" or FolderPath endswith "\\Sysmon.exe") or ProcessVersionInfoFileDescription =~ "System activity monitor")

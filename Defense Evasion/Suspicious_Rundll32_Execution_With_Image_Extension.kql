@@ -1,7 +1,0 @@
-// Author: Hieu Tran
-// Date: 2023/03/13
-// Level: high
-// Description: Detects the execution of Rundll32.exe with DLL files masquerading as image files
-// Tags: attack.defense_evasion, attack.t1218.011
-DeviceProcessEvents
-| where (ProcessCommandLine contains ".bmp" or ProcessCommandLine contains ".cr2" or ProcessCommandLine contains ".eps" or ProcessCommandLine contains ".gif" or ProcessCommandLine contains ".ico" or ProcessCommandLine contains ".jpeg" or ProcessCommandLine contains ".jpg" or ProcessCommandLine contains ".nef" or ProcessCommandLine contains ".orf" or ProcessCommandLine contains ".png" or ProcessCommandLine contains ".raw" or ProcessCommandLine contains ".sr2" or ProcessCommandLine contains ".tif" or ProcessCommandLine contains ".tiff") and (FolderPath endswith "\\rundll32.exe" or ProcessVersionInfoOriginalFileName =~ "RUNDLL32.exe")

@@ -1,9 +1,0 @@
-// Author: frack113
-// Date: 2022/01/01
-// Level: low
-// Description: This tool enables enumeration and exporting of all DNS records in the zone for recon purposes of internal networks Python 3 and python.exe must be installed,
-Usee to Query/modify DNS records for Active Directory integrated DNS via LDAP
-
-// Tags: attack.discovery, attack.t1018
-DeviceProcessEvents
-| where ProcessCommandLine contains "adidnsdump" and FolderPath endswith "\\python.exe"

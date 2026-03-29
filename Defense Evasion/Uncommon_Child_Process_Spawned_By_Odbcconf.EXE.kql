@@ -1,7 +1,0 @@
-// Author: Harjot Singh @cyb3rjy0t
-// Date: 2023/05/22
-// Level: medium
-// Description: Detects an uncommon child process of "odbcconf.exe" binary which normally shouldn't have any child processes.
-// Tags: attack.defense_evasion, attack.t1218.008
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\odbcconf.exe"

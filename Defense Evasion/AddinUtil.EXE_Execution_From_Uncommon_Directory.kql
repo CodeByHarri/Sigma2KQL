@@ -1,7 +1,0 @@
-// Author: Michael McKinley (@McKinleyMike), Tony Latteri (@TheLatteri)
-// Date: 2023/09/18
-// Level: medium
-// Description: Detects execution of the Add-In deployment cache updating utility (AddInutil.exe) from a non-standard directory.
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where (FolderPath endswith "\\addinutil.exe" or ProcessVersionInfoOriginalFileName =~ "AddInUtil.exe") and (not((FolderPath contains ":\\Windows\\Microsoft.NET\\Framework\\" or FolderPath contains ":\\Windows\\Microsoft.NET\\Framework64\\" or FolderPath contains ":\\Windows\\WinSxS\\")))

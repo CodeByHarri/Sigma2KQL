@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/12/10
-// Level: medium
-// Description: Detects a Python process initiating a network connection. While this often relates to package installation, it can also indicate a potential malicious script communicating with a C&C server.
-// Tags: attack.discovery, attack.t1046
-DeviceNetworkEvents
-| where InitiatingProcessFolderPath contains "python" and (not((RemoteIP =~ "127.0.0.1" and LocalIP =~ "127.0.0.1"))) and (not((((InitiatingProcessCommandLine contains ":\\ProgramData\\Anaconda3\\Scripts\\conda-script.py" and InitiatingProcessCommandLine contains "update") and InitiatingProcessParentFileName =~ "conda.exe") or (InitiatingProcessCommandLine contains "C:\\ProgramData\\Anaconda3\\Scripts\\jupyter-notebook-script.py" and InitiatingProcessParentFileName =~ "python.exe"))))

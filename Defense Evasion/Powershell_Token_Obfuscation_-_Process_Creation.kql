@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/12/27
-// Level: high
-// Description: Detects TOKEN OBFUSCATION technique from Invoke-Obfuscation
-// Tags: attack.defense_evasion, attack.t1027.009
-DeviceProcessEvents
-| where ProcessCommandLine matches regex "\\w+`(\\w+|-|.)`[\\w+|\\s]" or ProcessCommandLine matches regex ""(\\{\\d\\})+"\\s*-f" or ProcessCommandLine matches regex "\\$\\{((e|n|v)*`(e|n|v)*)+:path\\}|\\$\\{((e|n|v)*`(e|n|v)*)+:((p|a|t|h)*`(p|a|t|h)*)+\\}|\\$\\{env:((p|a|t|h)*`(p|a|t|h)*)+\\}"

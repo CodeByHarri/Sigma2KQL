@@ -1,0 +1,11 @@
+// Title: Suspicious Execution of Shutdown
+// Author: frack113
+// Date: 2022-01-01
+// Level: medium
+// Description: Use of the commandline to shutdown or reboot windows
+// MITRE Tactic: Impact
+// Tags: attack.impact, attack.t1529
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_shutdown_execution.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "/r " or ProcessCommandLine contains "/s ") and FolderPath endswith "\\shutdown.exe"

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/05/16
-// Level: medium
-// Description: Detects the creation of the LiveKD driver, which is used for live kernel debugging
-// Tags: attack.defense_evasion, attack.privilege_escalation
-DeviceFileEvents
-| where (InitiatingProcessFolderPath endswith "\\livekd.exe" or InitiatingProcessFolderPath endswith "\\livek64.exe") and FolderPath =~ "C:\\Windows\\System32\\drivers\\LiveKdD.SYS"

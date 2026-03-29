@@ -1,7 +1,0 @@
-// Author: omkar72
-// Date: 2020/10/25
-// Level: medium
-// Description: Detects the addition of office test registry that allows a user to specify an arbitrary DLL that will be executed every time an Office application is started
-// Tags: attack.persistence, attack.t1137.002
-DeviceRegistryEvents
-| where RegistryKey contains "\\Software\\Microsoft\\Office test\\Special\\Perf"

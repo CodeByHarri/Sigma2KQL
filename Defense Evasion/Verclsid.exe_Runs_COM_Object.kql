@@ -1,7 +1,0 @@
-// Author: Victor Sergeev, oscd.community
-// Date: 2020/10/09
-// Level: medium
-// Description: Detects when verclsid.exe is used to run COM object via GUID
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/S" and ProcessCommandLine contains "/C") and (FolderPath endswith "\\verclsid.exe" or ProcessVersionInfoOriginalFileName =~ "verclsid.exe")

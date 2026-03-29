@@ -1,7 +1,0 @@
-// Author: Beyu Denis, oscd.community, Tim Shelton, Thurein Oo
-// Date: 2019/10/22
-// Level: medium
-// Description: Detects the creation of files with certain extensions on a static web site. This can be indicative of potential uploads of a web shell.
-// Tags: attack.persistence, attack.t1505.003
-DeviceFileEvents
-| where (((FolderPath contains ".ashx" or FolderPath contains ".asp" or FolderPath contains ".ph" or FolderPath contains ".soap") and FolderPath contains "\\inetpub\\wwwroot\\") or (FolderPath contains ".ph" and (FolderPath contains "\\www\\" or FolderPath contains "\\htdocs\\" or FolderPath contains "\\html\\"))) and (not((FolderPath contains "\\xampp" or InitiatingProcessFolderPath =~ "System" or (FolderPath contains "\\AppData\\Local\\Temp\\" or FolderPath contains "\\Windows\\Temp\\"))))

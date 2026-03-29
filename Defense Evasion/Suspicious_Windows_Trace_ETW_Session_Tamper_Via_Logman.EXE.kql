@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/02/11
-// Level: high
-// Description: Detects the execution of "logman" utility in order to disable or delete Windows trace sessions
-// Tags: attack.defense_evasion, attack.t1562.001, attack.t1070.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "stop " or ProcessCommandLine contains "delete ") and (FolderPath endswith "\\logman.exe" or ProcessVersionInfoOriginalFileName =~ "Logman.exe") and (ProcessCommandLine contains "Circular Kernel Context Logger" or ProcessCommandLine contains "EventLog-" or ProcessCommandLine contains "SYSMON TRACE" or ProcessCommandLine contains "SysmonDnsEtwSession")

@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/09/02
-// Level: medium
-// Description: Detects signs of the WMI script host process "scrcons.exe" loading scripting DLLs which could indicates WMI ActiveScriptEventConsumers EventConsumers activity.
-// Tags: attack.lateral_movement, attack.privilege_escalation, attack.persistence, attack.t1546.003
-DeviceImageLoadEvents
-| where (FolderPath endswith "\\vbscript.dll" or FolderPath endswith "\\wbemdisp.dll" or FolderPath endswith "\\wshom.ocx" or FolderPath endswith "\\scrrun.dll") and InitiatingProcessFolderPath endswith "\\scrcons.exe"

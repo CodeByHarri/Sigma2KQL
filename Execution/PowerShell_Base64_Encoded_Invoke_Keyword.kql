@@ -1,7 +1,0 @@
-// Author: pH-T (Nextron Systems), Harjot Singh, @cyb3rjy0t
-// Date: 2022/05/20
-// Level: high
-// Description: Detects UTF-8 and UTF-16 Base64 encoded powershell 'Invoke-' calls
-// Tags: attack.execution, attack.t1059.001, attack.defense_evasion, attack.t1027
-DeviceProcessEvents
-| where ProcessCommandLine contains " -e" and (ProcessCommandLine contains "SQBuAHYAbwBrAGUALQ" or ProcessCommandLine contains "kAbgB2AG8AawBlAC0A" or ProcessCommandLine contains "JAG4AdgBvAGsAZQAtA" or ProcessCommandLine contains "SW52b2tlL" or ProcessCommandLine contains "ludm9rZS" or ProcessCommandLine contains "JbnZva2Ut") and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll")))

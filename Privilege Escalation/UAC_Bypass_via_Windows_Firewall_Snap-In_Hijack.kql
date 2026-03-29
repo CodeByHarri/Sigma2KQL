@@ -1,7 +1,0 @@
-// Author: Tim Rauch, Elastic (idea)
-// Date: 2022/09/27
-// Level: medium
-// Description: Detects attempts to bypass User Account Control (UAC) by hijacking the Microsoft Management Console (MMC) Windows Firewall snap-in
-// Tags: attack.privilege_escalation, attack.t1548
-DeviceProcessEvents
-| where (InitiatingProcessCommandLine contains "WF.msc" and InitiatingProcessFolderPath endswith "\\mmc.exe") and (not(FolderPath endswith "\\WerFault.exe"))

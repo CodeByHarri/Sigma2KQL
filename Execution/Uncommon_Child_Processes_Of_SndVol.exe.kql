@@ -1,7 +1,0 @@
-// Author: X__Junior (Nextron Systems)
-// Date: 2023/06/09
-// Level: medium
-// Description: Detects potentially uncommon child processes of SndVol.exe (the Windows volume mixer)
-// Tags: attack.execution
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\SndVol.exe" and (not((ProcessCommandLine contains " shell32.dll,Control_RunDLL " and FolderPath endswith "\\rundll32.exe")))

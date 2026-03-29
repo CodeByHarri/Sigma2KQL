@@ -1,7 +1,0 @@
-// Author: oscd.community, Dmitry Uchakin
-// Date: 2020/10/07
-// Level: high
-// Description: Unfixed method for UAC bypass from Windows 10. WSReset.exe file associated with the Windows Store. It will run a binary file contained in a low-privilege registry.
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1548.002
-DeviceRegistryEvents
-| where RegistryKey endswith "\\AppX82a6gwre4fdg3bt635tn5ctqjf8msdd2\\Shell\\open\\command"

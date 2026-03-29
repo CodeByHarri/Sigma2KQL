@@ -1,7 +1,0 @@
-// Author: Bhabesh Raj
-// Date: 2022/08/01
-// Level: high
-// Description: Detects potential sideloading of "mpclient.dll" by Windows Defender processes ("MpCmdRun" and "NisSrv") from their non-default directory.
-// Tags: attack.defense_evasion, attack.t1574.002
-DeviceProcessEvents
-| where (FolderPath endswith "\\MpCmdRun.exe" or FolderPath endswith "\\NisSrv.exe") and (not((FolderPath startswith "C:\\Program Files (x86)\\Windows Defender\\" or FolderPath startswith "C:\\Program Files\\Microsoft Security Client\\" or FolderPath startswith "C:\\Program Files\\Windows Defender\\" or FolderPath startswith "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\" or FolderPath startswith "C:\\Windows\\WinSxS\\")))

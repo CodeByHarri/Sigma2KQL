@@ -1,7 +1,0 @@
-// Author: Ivan Dyachkov, Yulia Fomina, oscd.community
-// Date: 2020/10/07
-// Level: medium
-// Description: Detects using register-cimprovider.exe to execute arbitrary dll file.
-// Tags: attack.defense_evasion, attack.t1574
-DeviceProcessEvents
-| where (ProcessCommandLine contains "-path" and ProcessCommandLine contains "dll") and FolderPath endswith "\\register-cimprovider.exe"

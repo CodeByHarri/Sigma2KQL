@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), Markus Neis, Jonhnathan Ribeiro, Daniil Yugoslavskiy, Anton Kutepov, oscd.community
-// Date: 2018/09/03
-// Level: high
-// Description: Detects suspicious powershell process starts with base64 encoded commands (e.g. Emotet)
-// Tags: attack.execution, attack.t1059.001
-DeviceProcessEvents
-| where ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll"))) and (((ProcessCommandLine contains " JAB" or ProcessCommandLine contains " SUVYI" or ProcessCommandLine contains " SQBFAFgA" or ProcessCommandLine contains " aQBlAHgA" or ProcessCommandLine contains " aWV4I" or ProcessCommandLine contains " IAA" or ProcessCommandLine contains " IAB" or ProcessCommandLine contains " UwB" or ProcessCommandLine contains " cwB") and ProcessCommandLine contains " -e") or (ProcessCommandLine contains ".exe -ENCOD " or ProcessCommandLine contains " BA^J e-")) and (not(ProcessCommandLine contains " -ExecutionPolicy remotesigned "))

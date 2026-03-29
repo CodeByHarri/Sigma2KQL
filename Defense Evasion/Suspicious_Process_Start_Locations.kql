@@ -1,7 +1,0 @@
-// Author: juju4, Jonhnathan Ribeiro, oscd.community
-// Date: 2019/01/16
-// Level: medium
-// Description: Detects suspicious process run from unusual locations
-// Tags: attack.defense_evasion, attack.t1036, car.2013-05-002
-DeviceProcessEvents
-| where (FolderPath contains ":\\RECYCLER\\" or FolderPath contains ":\\SystemVolumeInformation\\") or (FolderPath startswith "C:\\Windows\\Tasks\\" or FolderPath startswith "C:\\Windows\\debug\\" or FolderPath startswith "C:\\Windows\\fonts\\" or FolderPath startswith "C:\\Windows\\help\\" or FolderPath startswith "C:\\Windows\\drivers\\" or FolderPath startswith "C:\\Windows\\addins\\" or FolderPath startswith "C:\\Windows\\cursors\\" or FolderPath startswith "C:\\Windows\\system32\\tasks\\")

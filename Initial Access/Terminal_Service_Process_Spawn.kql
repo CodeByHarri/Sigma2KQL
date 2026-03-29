@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/05/22
-// Level: high
-// Description: Detects a process spawned by the terminal service server process (this could be an indicator for an exploitation of CVE-2019-0708)
-// Tags: attack.initial_access, attack.t1190, attack.lateral_movement, attack.t1210, car.2013-07-002
-DeviceProcessEvents
-| where (InitiatingProcessCommandLine contains "\\svchost.exe" and InitiatingProcessCommandLine contains "termsvcs") and (not(((FolderPath endswith "\\rdpclip.exe" or FolderPath endswith ":\\Windows\\System32\\csrss.exe" or FolderPath endswith ":\\Windows\\System32\\wininit.exe" or FolderPath endswith ":\\Windows\\System32\\winlogon.exe") or isnull(FolderPath))))

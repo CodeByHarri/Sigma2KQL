@@ -1,0 +1,14 @@
+// Title: Suspicious Scheduled Task Creation Involving Temp Folder
+// Author: Florian Roth (Nextron Systems)
+// Date: 2021-03-11
+// Level: high
+// Description: Detects the creation of scheduled tasks that involves a temporary folder and runs only once
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.execution, attack.persistence, attack.t1053.005
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_schtasks_creation_temp_folder.yml
+// False Positives:
+//   - Administrative activity
+//   - Software installation
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains " /create " and ProcessCommandLine contains " /sc once " and ProcessCommandLine contains "\\Temp\\") and FolderPath endswith "\\schtasks.exe"

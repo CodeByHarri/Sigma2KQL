@@ -1,8 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/19
-// Level: medium
-// Description: Detects use of .NET InstallUtil.exe in order to download arbitrary files. The files will be written to "%LOCALAPPDATA%\Microsoft\Windows\INetCache\IE\"
-
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where (ProcessCommandLine contains "ftp://" or ProcessCommandLine contains "http://" or ProcessCommandLine contains "https://") and (FolderPath endswith "\\InstallUtil.exe" or ProcessVersionInfoOriginalFileName =~ "InstallUtil.exe")

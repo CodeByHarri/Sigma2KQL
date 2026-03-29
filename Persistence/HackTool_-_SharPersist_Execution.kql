@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/09/15
-// Level: high
-// Description: Detects the execution of the hacktool SharPersist - used to deploy various different kinds of persistence mechanisms
-// Tags: attack.persistence, attack.t1053
-DeviceProcessEvents
-| where (ProcessCommandLine contains " -t schtask -c " or ProcessCommandLine contains " -t startupfolder -c ") or (ProcessCommandLine contains " -t reg -c " and ProcessCommandLine contains " -m add") or (ProcessCommandLine contains " -t service -c " and ProcessCommandLine contains " -m add") or (ProcessCommandLine contains " -t schtask -c " and ProcessCommandLine contains " -m add") or (FolderPath endswith "\\SharPersist.exe" or ProcessVersionInfoProductName =~ "SharPersist")

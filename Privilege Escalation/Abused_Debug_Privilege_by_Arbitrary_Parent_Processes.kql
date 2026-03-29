@@ -1,7 +1,0 @@
-// Author: Semanur Guneysu @semanurtg, oscd.community
-// Date: 2020/10/28
-// Level: high
-// Description: Detection of unusual child processes by different system processes
-// Tags: attack.privilege_escalation, attack.t1548
-DeviceProcessEvents
-| where (((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\cmd.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll", "Cmd.Exe"))) and ((InitiatingProcessFolderPath endswith "\\winlogon.exe" or InitiatingProcessFolderPath endswith "\\services.exe" or InitiatingProcessFolderPath endswith "\\lsass.exe" or InitiatingProcessFolderPath endswith "\\csrss.exe" or InitiatingProcessFolderPath endswith "\\smss.exe" or InitiatingProcessFolderPath endswith "\\wininit.exe" or InitiatingProcessFolderPath endswith "\\spoolsv.exe" or InitiatingProcessFolderPath endswith "\\searchindexer.exe") and (AccountName contains "AUTHORI" or AccountName contains "AUTORI"))) and (not((ProcessCommandLine contains " route " and ProcessCommandLine contains " ADD ")))

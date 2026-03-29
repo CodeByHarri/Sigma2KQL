@@ -1,7 +1,0 @@
-// Author: Muhammad Faisal
-// Date: 2023/08/02
-// Level: medium
-// Description: Detects potential Amazon SSM agent hijack attempts as outlined in the Mitiga research report.
-// Tags: attack.command_and_control, attack.persistence, attack.t1219
-DeviceProcessEvents
-| where (ProcessCommandLine contains "-register " and ProcessCommandLine contains "-code " and ProcessCommandLine contains "-id " and ProcessCommandLine contains "-region ") and FolderPath endswith "\\amazon-ssm-agent.exe"

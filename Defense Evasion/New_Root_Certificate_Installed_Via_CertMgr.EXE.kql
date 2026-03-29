@@ -1,9 +1,0 @@
-// Author: oscd.community, @redcanary, Zach Stanford @svch0st
-// Date: 2023/03/05
-// Level: medium
-// Description: Detects execution of "certmgr" with the "add" flag in order to install a new certificate on the system.
-Adversaries may install a root certificate on a compromised system to avoid warnings when connecting to adversary controlled web servers.
-
-// Tags: attack.defense_evasion, attack.t1553.004
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/add" and ProcessCommandLine contains "root") and (FolderPath endswith "\\CertMgr.exe" or ProcessVersionInfoOriginalFileName =~ "CERTMGT.EXE")

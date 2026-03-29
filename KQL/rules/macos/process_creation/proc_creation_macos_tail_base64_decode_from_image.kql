@@ -1,0 +1,11 @@
+// Title: Potential Base64 Decoded From Images
+// Author: Joseliyo Sanchez, @Joseliyo_Jstnk
+// Date: 2023-12-20
+// Level: high
+// Description: Detects the use of tail to extract bytes at an offset from an image and then decode the base64 value to create a new file with the decoded content. The detected execution is a bash one-liner.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1140
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/macos/process_creation/proc_creation_macos_tail_base64_decode_from_image.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "base64" and ProcessCommandLine contains "-d" and ProcessCommandLine contains ">") and (ProcessCommandLine contains ".avif" or ProcessCommandLine contains ".gif" or ProcessCommandLine contains ".jfif" or ProcessCommandLine contains ".jpeg" or ProcessCommandLine contains ".jpg" or ProcessCommandLine contains ".pjp" or ProcessCommandLine contains ".pjpeg" or ProcessCommandLine contains ".png" or ProcessCommandLine contains ".svg" or ProcessCommandLine contains ".webp") and FolderPath endswith "/bash" and (ProcessCommandLine contains "tail" and ProcessCommandLine contains "-c")

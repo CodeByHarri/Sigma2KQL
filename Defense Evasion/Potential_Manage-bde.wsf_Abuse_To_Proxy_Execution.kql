@@ -1,7 +1,0 @@
-// Author: oscd.community, Natalia Shornikova, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2020/10/13
-// Level: high
-// Description: Detects potential abuse of the "manage-bde.wsf" script as a LOLBIN to proxy execution
-// Tags: attack.defense_evasion, attack.t1216
-DeviceProcessEvents
-| where (ProcessCommandLine contains "manage-bde.wsf" and (FolderPath endswith "\\wscript.exe" or ProcessVersionInfoOriginalFileName =~ "wscript.exe")) or ((InitiatingProcessCommandLine contains "manage-bde.wsf" and (InitiatingProcessFolderPath endswith "\\cscript.exe" or InitiatingProcessFolderPath endswith "\\wscript.exe")) and (not(FolderPath endswith "\\cmd.exe")))

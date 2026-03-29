@@ -1,0 +1,13 @@
+// Title: User Has Been Deleted Via Userdel
+// Author: Tuan Le (NCSGroup)
+// Date: 2022-12-26
+// Level: medium
+// Description: Detects execution of the "userdel" binary. Which is used to delete a user account and related files. This is sometimes abused by threat actors in order to cover their tracks
+// MITRE Tactic: Impact
+// Tags: attack.impact, attack.t1531
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/linux/process_creation/proc_creation_lnx_userdel.yml
+// False Positives:
+//   - Legitimate administrator activities
+
+DeviceProcessEvents
+| where FolderPath endswith "/userdel"

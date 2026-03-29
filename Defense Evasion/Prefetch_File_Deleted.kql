@@ -1,7 +1,0 @@
-// Author: Cedric MAURUGEON
-// Date: 2021/09/29
-// Level: high
-// Description: Detects the deletion of a prefetch file which may indicate an attempt to destroy forensic evidence
-// Tags: attack.defense_evasion, attack.t1070.004
-DeviceFileEvents
-| where (FolderPath contains ":\\Windows\\Prefetch\\" and FolderPath endswith ".pf") and (not((InitiatingProcessFolderPath endswith ":\\windows\\system32\\svchost.exe" and (RequestAccountName contains "AUTHORI" or RequestAccountName contains "AUTORI"))))

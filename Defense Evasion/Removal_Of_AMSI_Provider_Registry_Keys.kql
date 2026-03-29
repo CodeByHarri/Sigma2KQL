@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/06/07
-// Level: high
-// Description: Detects the deletion of AMSI provider registry key entries in HKLM\Software\Microsoft\AMSI. This technique could be used by an attacker in order to disable AMSI inspection.
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceRegistryEvents
-| where (ActionType in~ ("RegistryKeyDeleted", "RegistryValueDeleted")) and (RegistryKey endswith "{2781761E-28E0-4109-99FE-B9D127C57AFE}" or RegistryKey endswith "{A7C452EF-8E9F-42EB-9F2B-245613CA0DC9}")

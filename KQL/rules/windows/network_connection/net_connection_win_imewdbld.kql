@@ -1,0 +1,11 @@
+// Title: Network Connection Initiated By IMEWDBLD.EXE
+// Author: frack113
+// Date: 2022-01-22
+// Level: high
+// Description: Detects a network connection initiated by IMEWDBLD.EXE. This might indicate potential abuse of the utility as a LOLBIN in order to download arbitrary files or additional payloads.
+// MITRE Tactic: Command and Control
+// Tags: attack.command-and-control, attack.t1105
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/network_connection/net_connection_win_imewdbld.yml
+
+DeviceNetworkEvents
+| where InitiatingProcessFolderPath endswith "\\IMEWDBLD.exe"

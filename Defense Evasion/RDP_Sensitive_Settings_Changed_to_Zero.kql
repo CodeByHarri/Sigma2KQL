@@ -1,9 +1,0 @@
-// Author: Samir Bousseaden, David ANDRE, Roberto Rodriguez @Cyb3rWard0g, Nasreddine Bencherchali
-// Date: 2022/09/29
-// Level: medium
-// Description: Detects tampering of RDP Terminal Service/Server sensitive settings.
-Such as allowing unauthorized users access to a system via the 'fAllowUnsolicited' or enabling RDP via 'fDenyTSConnections', etc.
-
-// Tags: attack.defense_evasion, attack.persistence, attack.t1112
-DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey endswith "\\fDenyTSConnections" or RegistryKey endswith "\\fSingleSessionPerUser" or RegistryKey endswith "\\UserAuthentication")

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/07/18
-// Level: high
-// Description: Detects creation of a file named "wpbbin" in the "%systemroot%\system32\" directory. Which could be indicative of UEFI based persistence method
-// Tags: attack.persistence, attack.defense_evasion, attack.t1542.001
-DeviceFileEvents
-| where FolderPath =~ "C:\\Windows\\System32\\wpbbin.exe"

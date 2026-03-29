@@ -1,7 +1,0 @@
-// Author: Christopher Peacock @SecurePeacock, SCYTHE @scythe_io
-// Date: 2022/06/01
-// Level: medium
-// Description: The Workflow Command-line Compiler can be used for AWL bypass and is listed in Microsoft's recommended block rules.
-// Tags: attack.defense_evasion, attack.t1127
-DeviceProcessEvents
-| where FolderPath endswith "\\wfc.exe" or ProcessVersionInfoOriginalFileName =~ "wfc.exe"

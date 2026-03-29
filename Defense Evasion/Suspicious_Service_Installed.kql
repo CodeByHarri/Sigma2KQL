@@ -1,9 +1,0 @@
-// Author: xknow (@xknow_infosec), xorxes (@xor_xes)
-// Date: 2019/04/08
-// Level: medium
-// Description: Detects installation of NalDrv or PROCEXP152 services via registry-keys to non-system32 folders.
-Both services are used in the tool Ghost-In-The-Logs (https://github.com/bats3c/Ghost-In-The-Logs), which uses KDU (https://github.com/hfiref0x/KDU)
-
-// Tags: attack.t1562.001, attack.defense_evasion
-DeviceRegistryEvents
-| where (RegistryKey in~ ("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services\\NalDrv\\ImagePath", "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet001\\Services\\PROCEXP152\\ImagePath")) and (not((RegistryValueData contains "\\WINDOWS\\system32\\Drivers\\PROCEXP152.SYS" and (InitiatingProcessFolderPath endswith "\\procexp64.exe" or InitiatingProcessFolderPath endswith "\\procexp.exe" or InitiatingProcessFolderPath endswith "\\procmon64.exe" or InitiatingProcessFolderPath endswith "\\procmon.exe" or InitiatingProcessFolderPath endswith "\\handle.exe" or InitiatingProcessFolderPath endswith "\\handle64.exe"))))

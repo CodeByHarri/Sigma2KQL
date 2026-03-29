@@ -1,9 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), AdmU3
-// Date: 2023/12/19
-// Level: low
-// Description: Detects execution of "tar.exe" in order to create a compressed file.
-Adversaries may abuse various utilities to compress or encrypt data before exfiltration.
-
-// Tags: attack.collection, attack.exfiltration, attack.t1560, attack.t1560.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "-c" or ProcessCommandLine contains "-r" or ProcessCommandLine contains "-u") and (FolderPath endswith "\\tar.exe" or ProcessVersionInfoOriginalFileName =~ "bsdtar")

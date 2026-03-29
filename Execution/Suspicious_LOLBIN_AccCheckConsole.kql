@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/01/06
-// Level: high
-// Description: Detects suspicious LOLBIN AccCheckConsole execution with parameters as used to load an arbitrary DLL
-// Tags: attack.execution
-DeviceProcessEvents
-| where (ProcessCommandLine contains " -window " and ProcessCommandLine contains ".dll") and (FolderPath endswith "\\AccCheckConsole.exe" or ProcessVersionInfoOriginalFileName =~ "AccCheckConsole.exe")

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2018/03/23
-// Level: high
-// Description: Detects a ping command that uses a hex encoded IP address
-// Tags: attack.defense_evasion, attack.t1140, attack.t1027
-DeviceProcessEvents
-| where ProcessCommandLine contains "0x" and FolderPath endswith "\\ping.exe"

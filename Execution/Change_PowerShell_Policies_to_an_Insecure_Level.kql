@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/11/01
-// Level: medium
-// Description: Detects changing the PowerShell script execution policy to a potentially insecure level using the "-ExecutionPolicy" flag.
-// Tags: attack.execution, attack.t1059.001
-DeviceProcessEvents
-| where ((ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll")) or (FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe")) and (ProcessCommandLine contains "Bypass" or ProcessCommandLine contains "Unrestricted") and (ProcessCommandLine contains "-executionpolicy " or ProcessCommandLine contains " -ep " or ProcessCommandLine contains " -exec ")

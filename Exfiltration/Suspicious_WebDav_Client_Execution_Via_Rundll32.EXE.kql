@@ -1,8 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Florian Roth (Nextron Systems)
-// Date: 2023/03/16
-// Level: high
-// Description: Detects "svchost.exe" spawning "rundll32.exe" with command arguments like C:\windows\system32\davclnt.dll,DavSetCookie. This could be an indicator of exfiltration or use of WebDav to launch code (hosted on WebDav Server) or potentially a sign of exploitation of CVE-2023-23397
-
-// Tags: attack.exfiltration, attack.t1048.003, cve.2023.23397
-DeviceProcessEvents
-| where (ProcessCommandLine contains "C:\\windows\\system32\\davclnt.dll,DavSetCookie" and ProcessCommandLine matches regex "://\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}" and FolderPath endswith "\\rundll32.exe" and InitiatingProcessCommandLine contains "-s WebClient" and InitiatingProcessFolderPath endswith "\\svchost.exe") and (not((ProcessCommandLine contains "://10." or ProcessCommandLine contains "://192.168." or ProcessCommandLine contains "://172.16." or ProcessCommandLine contains "://172.17." or ProcessCommandLine contains "://172.18." or ProcessCommandLine contains "://172.19." or ProcessCommandLine contains "://172.20." or ProcessCommandLine contains "://172.21." or ProcessCommandLine contains "://172.22." or ProcessCommandLine contains "://172.23." or ProcessCommandLine contains "://172.24." or ProcessCommandLine contains "://172.25." or ProcessCommandLine contains "://172.26." or ProcessCommandLine contains "://172.27." or ProcessCommandLine contains "://172.28." or ProcessCommandLine contains "://172.29." or ProcessCommandLine contains "://172.30." or ProcessCommandLine contains "://172.31." or ProcessCommandLine contains "://127." or ProcessCommandLine contains "://169.254.")))

@@ -1,7 +1,0 @@
-// Author: Konstantin Grishchenko, oscd.community
-// Date: 2020/10/17
-// Level: medium
-// Description: Csi.exe is a signed binary from Microsoft that comes with Visual Studio and provides C# interactive capabilities. It can be used to run C# code from a file passed as a parameter in command line. Early version of this utility provided with Microsoft “Roslyn” Community Technology Preview was named 'rcsi.exe'
-// Tags: attack.execution, attack.t1072, attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ProcessVersionInfoCompanyName =~ "Microsoft Corporation" and ((FolderPath endswith "\\csi.exe" or FolderPath endswith "\\rcsi.exe") or (ProcessVersionInfoOriginalFileName in~ ("csi.exe", "rcsi.exe")))

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/02/11
-// Level: high
-// Description: Detects the creation of files that look like exports of the local SAM (Security Account Manager)
-// Tags: attack.credential_access, attack.t1003.002
-DeviceFileEvents
-| where (FolderPath endswith "\\Temp\\sam" or FolderPath endswith "\\sam.sav" or FolderPath endswith "\\Intel\\sam" or FolderPath endswith "\\sam.hive" or FolderPath endswith "\\Perflogs\\sam" or FolderPath endswith "\\ProgramData\\sam" or FolderPath endswith "\\Users\\Public\\sam" or FolderPath endswith "\\AppData\\Local\\sam" or FolderPath endswith "\\AppData\\Roaming\\sam" or FolderPath endswith "_ShadowSteal.zip" or FolderPath endswith "\\Documents\\SAM.export" or FolderPath endswith ":\\sam") or (FolderPath contains "\\hive_sam_" or FolderPath contains "\\sam.save" or FolderPath contains "\\sam.export" or FolderPath contains "\\~reg_sam.save" or FolderPath contains "\\sam_backup" or FolderPath contains "\\sam.bck" or FolderPath contains "\\sam.backup")

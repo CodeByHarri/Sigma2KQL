@@ -1,7 +1,0 @@
-// Author: X__Junior (Nextron Systems)
-// Date: 2023/07/12
-// Level: high
-// Description: Detects file write event from/to a fake recycle bin folder that is often used as a staging directory for malware
-// Tags: attack.persistence, attack.defense_evasion
-DeviceFileEvents
-| where (InitiatingProcessFolderPath contains "RECYCLERS.BIN\\" or InitiatingProcessFolderPath contains "RECYCLER.BIN\\") or (FolderPath contains "RECYCLERS.BIN\\" or FolderPath contains "RECYCLER.BIN\\")

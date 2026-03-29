@@ -1,7 +1,0 @@
-// Author: Arun Chauhan
-// Date: 2023/02/03
-// Level: low
-// Description: Detects nltest commands that can be used for information discovery
-// Tags: attack.discovery, attack.t1016, attack.t1018, attack.t1482
-DeviceProcessEvents
-| where FolderPath endswith "\\nltest.exe" or ProcessVersionInfoOriginalFileName =~ "nltestrk.exe"

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/03/21
-// Level: high
-// Description: Detects suspicious parent processes that should not have any children or should only have a single possible child program
-// Tags: attack.defense_evasion, attack.t1036
-DeviceProcessEvents
-| where (InitiatingProcessFolderPath endswith "\\minesweeper.exe" or InitiatingProcessFolderPath endswith "\\winver.exe" or InitiatingProcessFolderPath endswith "\\bitsadmin.exe") or ((InitiatingProcessFolderPath endswith "\\csrss.exe" or InitiatingProcessFolderPath endswith "\\certutil.exe" or InitiatingProcessFolderPath endswith "\\eventvwr.exe" or InitiatingProcessFolderPath endswith "\\calc.exe" or InitiatingProcessFolderPath endswith "\\notepad.exe") and (not((isnull(FolderPath) or (FolderPath endswith "\\WerFault.exe" or FolderPath endswith "\\wermgr.exe" or FolderPath endswith "\\conhost.exe" or FolderPath endswith "\\mmc.exe" or FolderPath endswith "\\win32calc.exe" or FolderPath endswith "\\notepad.exe")))))

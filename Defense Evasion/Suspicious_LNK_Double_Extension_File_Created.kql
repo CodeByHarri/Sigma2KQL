@@ -1,8 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), frack113
-// Date: 2022/11/07
-// Level: medium
-// Description: Detects the creation of files with an "LNK" as a second extension. This is sometimes used by malware as a method to abuse the fact that Windows hides the "LNK" extension by default.
-
-// Tags: attack.defense_evasion, attack.t1036.007
-DeviceFileEvents
-| where ((FolderPath contains ".doc." or FolderPath contains ".docx." or FolderPath contains ".jpg." or FolderPath contains ".pdf." or FolderPath contains ".ppt." or FolderPath contains ".pptx." or FolderPath contains ".xls." or FolderPath contains ".xlsx.") and FolderPath endswith ".lnk") and (not(FolderPath contains "\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\")) and (not(((InitiatingProcessFolderPath endswith "\\excel.exe" and FolderPath contains "\\AppData\\Roaming\\Microsoft\\Excel") or (InitiatingProcessFolderPath endswith "\\powerpnt.exe" and FolderPath contains "\\AppData\\Roaming\\Microsoft\\PowerPoint") or ((InitiatingProcessFolderPath endswith "\\excel.exe" or InitiatingProcessFolderPath endswith "\\powerpnt.exe" or InitiatingProcessFolderPath endswith "\\winword.exe") and FolderPath contains "\\AppData\\Roaming\\Microsoft\\Office\\Recent\\") or (InitiatingProcessFolderPath endswith "\\winword.exe" and FolderPath contains "\\AppData\\Roaming\\Microsoft\\Word"))))

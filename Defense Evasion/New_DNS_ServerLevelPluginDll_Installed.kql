@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2017/05/08
-// Level: high
-// Description: Detects the installation of a DNS plugin DLL via ServerLevelPluginDll parameter in registry, which can be used to execute code in context of the DNS server (restart required)
-// Tags: attack.defense_evasion, attack.t1574.002, attack.t1112
-DeviceRegistryEvents
-| where RegistryKey endswith "\\services\\DNS\\Parameters\\ServerLevelPluginDll"

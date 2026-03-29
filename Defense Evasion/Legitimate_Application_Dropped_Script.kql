@@ -1,7 +1,0 @@
-// Author: frack113, Florian Roth (Nextron Systems)
-// Date: 2022/08/21
-// Level: high
-// Description: Detects programs on a Windows system that should not write scripts to disk
-// Tags: attack.defense_evasion, attack.t1218
-DeviceFileEvents
-| where (InitiatingProcessFolderPath endswith "\\eqnedt32.exe" or InitiatingProcessFolderPath endswith "\\wordpad.exe" or InitiatingProcessFolderPath endswith "\\wordview.exe" or InitiatingProcessFolderPath endswith "\\certutil.exe" or InitiatingProcessFolderPath endswith "\\certoc.exe" or InitiatingProcessFolderPath endswith "\\CertReq.exe" or InitiatingProcessFolderPath endswith "\\Desktopimgdownldr.exe" or InitiatingProcessFolderPath endswith "\\esentutl.exe" or InitiatingProcessFolderPath endswith "\\mshta.exe" or InitiatingProcessFolderPath endswith "\\AcroRd32.exe" or InitiatingProcessFolderPath endswith "\\RdrCEF.exe" or InitiatingProcessFolderPath endswith "\\hh.exe" or InitiatingProcessFolderPath endswith "\\finger.exe") and (FolderPath endswith ".ps1" or FolderPath endswith ".bat" or FolderPath endswith ".vbs" or FolderPath endswith ".scf" or FolderPath endswith ".wsf" or FolderPath endswith ".wsh")

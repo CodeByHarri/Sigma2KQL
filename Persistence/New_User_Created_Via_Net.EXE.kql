@@ -1,7 +1,0 @@
-// Author: Endgame, JHasenbusch (adapted to Sigma for oscd.community)
-// Date: 2018/10/30
-// Level: medium
-// Description: Identifies the creation of local users via the net.exe command.
-// Tags: attack.persistence, attack.t1136.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "user" and ProcessCommandLine contains "add") and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~ ("net.exe", "net1.exe")))

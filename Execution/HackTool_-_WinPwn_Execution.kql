@@ -1,8 +1,0 @@
-// Author: Swachchhanda Shrawan Poudel
-// Date: 2023/12/04
-// Level: high
-// Description: Detects commandline keywords indicative of potential usge of the tool WinPwn. A tool for Windows and Active Directory reconnaissance and exploitation.
-
-// Tags: attack.credential_access, attack.defense_evasion, attack.discovery, attack.execution, attack.privilege_escalation, attack.t1046, attack.t1082, attack.t1106, attack.t1518, attack.t1548.002, attack.t1552.001, attack.t1555, attack.t1555.003
-DeviceProcessEvents
-| where ProcessCommandLine contains "Offline_Winpwn" or ProcessCommandLine contains "WinPwn " or ProcessCommandLine contains "WinPwn.exe" or ProcessCommandLine contains "WinPwn.ps1"

@@ -1,0 +1,13 @@
+// Title: Remote Access Tool - ScreenConnect Installation Execution
+// Author: Florian Roth (Nextron Systems)
+// Date: 2021-02-11
+// Level: medium
+// Description: Detects ScreenConnect program starts that establish a remote access to a system.
+// MITRE Tactic: Persistence
+// Tags: attack.persistence, attack.initial-access, attack.t1133
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_remote_access_tools_screenconnect_installation_cli_param.yml
+// False Positives:
+//   - Legitimate use by administrative staff
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "e=Access&" and ProcessCommandLine contains "y=Guest&" and ProcessCommandLine contains "&p=" and ProcessCommandLine contains "&c=" and ProcessCommandLine contains "&k="

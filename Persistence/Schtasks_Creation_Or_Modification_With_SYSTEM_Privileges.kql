@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/07/28
-// Level: high
-// Description: Detects the creation or update of a scheduled task to run with "NT AUTHORITY\SYSTEM" privileges
-// Tags: attack.execution, attack.persistence, attack.t1053.005
-DeviceProcessEvents
-| where (((ProcessCommandLine contains " /change " or ProcessCommandLine contains " /create ") and FolderPath endswith "\\schtasks.exe") and ProcessCommandLine contains "/ru " and (ProcessCommandLine contains "NT AUT" or ProcessCommandLine contains " SYSTEM ")) and (not(((ProcessCommandLine contains "/Create /F /RU System /SC WEEKLY /TN AviraSystemSpeedupVerify /TR " or ProcessCommandLine contains ":\\Program Files (x86)\\Avira\\System Speedup\\setup\\avira_speedup_setup.exe" or ProcessCommandLine contains "/VERIFY /VERYSILENT /NOSTART /NODOTNET /NORESTART\" /RL HIGHEST") or ((ProcessCommandLine contains "/TN TVInstallRestore" and ProcessCommandLine contains "\\TeamViewer_.exe") and FolderPath endswith "\\schtasks.exe"))))

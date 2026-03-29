@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/04/04
-// Level: high
-// Description: Detects the modification of the registry to allow a driver or service to persist in Safe Mode.
-// Tags: attack.defense_evasion, attack.t1564.001
-DeviceRegistryEvents
-| where (RegistryValueData =~ "Service" and (RegistryKey contains "\\Control\\SafeBoot\\Minimal" or RegistryKey contains "\\Control\\SafeBoot\\Network") and RegistryKey endswith "\\(Default)") and (not((InitiatingProcessFolderPath =~ "C:\\WINDOWS\\system32\\msiexec.exe" and (RegistryKey endswith "\\Control\\SafeBoot\\Minimal\\SAVService\\(Default)" or RegistryKey endswith "\\Control\\SafeBoot\\Network\\SAVService\\(Default)"))))

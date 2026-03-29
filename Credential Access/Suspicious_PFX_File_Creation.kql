@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/05/02
-// Level: medium
-// Description: A general detection for processes creating PFX files. This could be an indicator of an adversary exporting a local certificate to a PFX file.
-// Tags: attack.credential_access, attack.t1552.004
-DeviceFileEvents
-| where FolderPath endswith ".pfx" and (not((FolderPath contains "\\Templates\\Windows\\Windows_TemporaryKey.pfx" and FolderPath contains "\\CMake\\")))

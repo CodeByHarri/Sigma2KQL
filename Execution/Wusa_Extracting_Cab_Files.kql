@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/04
-// Level: medium
-// Description: Detects usage of the "wusa.exe" (Windows Update Standalone Installer) utility to extract cab using the "/extract" argument which is not longer supported. This could indicate an attacker using an old technique
-// Tags: attack.execution
-DeviceProcessEvents
-| where ProcessCommandLine contains "/extract:" and FolderPath endswith "\\wusa.exe"

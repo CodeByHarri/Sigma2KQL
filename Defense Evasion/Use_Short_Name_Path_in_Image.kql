@@ -1,7 +1,0 @@
-// Author: frack113, Nasreddine Bencherchali
-// Date: 2022/08/07
-// Level: medium
-// Description: Detect use of the Windows 8.3 short name. Which could be used as a method to avoid Image detection
-// Tags: attack.defense_evasion, attack.t1564.004
-DeviceProcessEvents
-| where (FolderPath contains "~1\\" or FolderPath contains "~2\\") and (not((((InitiatingProcessFolderPath in~ ("C:\\Windows\\System32\\Dism.exe", "C:\\Windows\\System32\\cleanmgr.exe")) or (InitiatingProcessFolderPath endswith "\\WebEx\\WebexHost.exe" or InitiatingProcessFolderPath endswith "\\thor\\thor64.exe") or ProcessVersionInfoProductName =~ "InstallShield (R)" or ProcessVersionInfoFileDescription =~ "InstallShield (R) Setup Engine" or ProcessVersionInfoCompanyName =~ "InstallShield Software Corporation") or ((FolderPath contains "\\AppData\\" and FolderPath contains "\\Temp\\") or (FolderPath endswith "~1\\unzip.exe" or FolderPath endswith "~1\\7zG.exe")))))

@@ -1,7 +1,0 @@
-// Author: Thomas Patzke
-// Date: 2018/03/07
-// Level: high
-// Description: Detects WMI command line event consumers
-// Tags: attack.t1546.003, attack.persistence
-DeviceImageLoadEvents
-| where InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe" and FolderPath endswith "\\wbemcons.dll"

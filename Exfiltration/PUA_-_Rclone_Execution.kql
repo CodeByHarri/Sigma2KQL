@@ -1,7 +1,0 @@
-// Author: Bhabesh Raj, Sittikorn S, Aaron Greetham (@beardofbinary) - NCC Group
-// Date: 2021/05/10
-// Level: high
-// Description: Detects execution of RClone utility for exfiltration as used by various ransomwares strains like REvil, Conti, FiveHands, etc
-// Tags: attack.exfiltration, attack.t1567.002
-DeviceProcessEvents
-| where (ProcessCommandLine contains "--config " and ProcessCommandLine contains "--no-check-certificate " and ProcessCommandLine contains " copy ") or ((ProcessCommandLine contains "pass" or ProcessCommandLine contains "user" or ProcessCommandLine contains "copy" or ProcessCommandLine contains "sync" or ProcessCommandLine contains "config" or ProcessCommandLine contains "lsd" or ProcessCommandLine contains "remote" or ProcessCommandLine contains "ls" or ProcessCommandLine contains "mega" or ProcessCommandLine contains "pcloud" or ProcessCommandLine contains "ftp" or ProcessCommandLine contains "ignore-existing" or ProcessCommandLine contains "auto-confirm" or ProcessCommandLine contains "transfers" or ProcessCommandLine contains "multi-thread-streams" or ProcessCommandLine contains "no-check-certificate ") and (FolderPath endswith "\\rclone.exe" or ProcessVersionInfoFileDescription =~ "Rsync for cloud storage"))

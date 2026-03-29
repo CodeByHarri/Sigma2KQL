@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/04/27
-// Level: high
-// Description: Detects the use of KrbRelay, a Kerberos relaying tool
-// Tags: attack.credential_access, attack.t1558.003
-DeviceProcessEvents
-| where (ProcessCommandLine contains " -spn " and ProcessCommandLine contains " -clsid " and ProcessCommandLine contains " -rbcd ") or (ProcessCommandLine contains "shadowcred" and ProcessCommandLine contains "clsid" and ProcessCommandLine contains "spn") or (ProcessCommandLine contains "spn " and ProcessCommandLine contains "session " and ProcessCommandLine contains "clsid ") or (FolderPath endswith "\\KrbRelay.exe" or ProcessVersionInfoOriginalFileName =~ "KrbRelay.exe")

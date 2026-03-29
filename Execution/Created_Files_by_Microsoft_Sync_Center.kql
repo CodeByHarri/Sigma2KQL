@@ -1,7 +1,0 @@
-// Author: elhoim
-// Date: 2022/04/28
-// Level: medium
-// Description: This rule detects suspicious files created by Microsoft Sync Center (mobsync)
-// Tags: attack.t1055, attack.t1218, attack.execution, attack.defense_evasion
-DeviceFileEvents
-| where InitiatingProcessFolderPath endswith "\\mobsync.exe" and (FolderPath endswith ".dll" or FolderPath endswith ".exe")

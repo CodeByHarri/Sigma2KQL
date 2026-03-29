@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/06/01
-// Level: medium
-// Description: Detects loading of "Amsi.dll" by a living of the land process. This could be an indication of a "PowerShell without PowerShell" attack
-// Tags: attack.defense_evasion
-DeviceImageLoadEvents
-| where FolderPath endswith "\\amsi.dll" and (InitiatingProcessFolderPath endswith "\\ExtExport.exe" or InitiatingProcessFolderPath endswith "\\odbcconf.exe" or InitiatingProcessFolderPath endswith "\\regsvr32.exe" or InitiatingProcessFolderPath endswith "\\rundll32.exe")

@@ -1,0 +1,13 @@
+// Title: Launch-VsDevShell.PS1 Proxy Execution
+// Author: Nasreddine Bencherchali (Nextron Systems)
+// Date: 2022-08-19
+// Level: medium
+// Description: Detects the use of the 'Launch-VsDevShell.ps1' Microsoft signed script to execute commands.
+// MITRE Tactic: Defense Evasion
+// Tags: attack.defense-evasion, attack.t1216.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_lolbin_launch_vsdevshell.yml
+// False Positives:
+//   - Legitimate usage of the script by a developer
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "VsWherePath " or ProcessCommandLine contains "VsInstallationPath ") and ProcessCommandLine contains "Launch-VsDevShell.ps1"

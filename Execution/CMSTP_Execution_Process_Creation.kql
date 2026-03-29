@@ -1,7 +1,0 @@
-// Author: Nik Seetharaman
-// Date: 2018/07/16
-// Level: high
-// Description: Detects various indicators of Microsoft Connection Manager Profile Installer execution
-// Tags: attack.defense_evasion, attack.execution, attack.t1218.003, attack.g0069, car.2019-04-001
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\cmstp.exe"

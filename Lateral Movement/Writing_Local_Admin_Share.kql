@@ -1,9 +1,0 @@
-// Author: frack113
-// Date: 2022/01/01
-// Level: medium
-// Description: Aversaries may use to interact with a remote network share using Server Message Block (SMB).
-This technique is used by post-exploitation frameworks.
-
-// Tags: attack.lateral_movement, attack.t1546.002
-DeviceFileEvents
-| where FolderPath contains "\\\\127.0.0" and FolderPath contains "\\ADMIN$\\"

@@ -1,9 +1,0 @@
-// Author: @SerkinValery
-// Date: 2022/09/16
-// Level: medium
-// Description: Detects a commandline containing references to the Microsoft Teams database or cookies files from a process other than Teams.
-The database might contain authentication tokens and other sensitive information about the logged in accounts.
-
-// Tags: attack.credential_access, attack.t1528
-DeviceProcessEvents
-| where (ProcessCommandLine contains "\\Microsoft\\Teams\\Cookies" or ProcessCommandLine contains "\\Microsoft\\Teams\\Local Storage\\leveldb") and (not(FolderPath endswith "\\Microsoft\\Teams\\current\\Teams.exe"))

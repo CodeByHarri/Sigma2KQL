@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)
-// Date: 2020/05/02
-// Level: medium
-// Description: A General detection for sdclt being spawned as an elevated process. This could be an indicator of sdclt being used for bypass UAC techniques.
-// Tags: attack.privilege_escalation, attack.defense_evasion, attack.t1548.002
-DeviceProcessEvents
-| where FolderPath endswith "sdclt.exe" and ProcessIntegrityLevel =~ "High"

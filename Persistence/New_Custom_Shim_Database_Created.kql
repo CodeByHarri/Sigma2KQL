@@ -1,9 +1,0 @@
-// Author: frack113, Nasreddine Bencherchali (Nextron Systems)
-// Date: 2021/12/29
-// Level: medium
-// Description: Adversaries may establish persistence and/or elevate privileges by executing malicious content triggered by application shims.
-The Microsoft Windows Application Compatibility Infrastructure/Framework (Application Shim) was created to allow for backward compatibility of software as the operating system codebase changes over time.
-
-// Tags: attack.persistence, attack.t1547.009
-DeviceFileEvents
-| where FolderPath contains ":\\Windows\\apppatch\\Custom\\" or FolderPath contains ":\\Windows\\apppatch\\CustomSDB\\"

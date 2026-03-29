@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Tim Shelton
-// Date: 2022/08/08
-// Level: high
-// Description: Detects execution of "reg.exe" commands with the "delete" flag on safe boot registry keys. Often used by attacker to prevent safeboot execution of security products
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains " delete " and ProcessCommandLine contains "\\SYSTEM\\CurrentControlSet\\Control\\SafeBoot") and (FolderPath endswith "reg.exe" or ProcessVersionInfoOriginalFileName =~ "reg.exe")

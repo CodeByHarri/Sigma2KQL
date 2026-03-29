@@ -1,7 +1,0 @@
-// Author: Jonhnathan Ribeiro, oscd.community
-// Date: 2020/10/16
-// Level: high
-// Description: Detects suspicious DACL modifications to deny access to a service that affects critical trustees. This can be used to hide services or make them unstoppable.
-// Tags: attack.persistence, attack.t1543.003
-DeviceProcessEvents
-| where (FolderPath endswith "\\sc.exe" or ProcessVersionInfoOriginalFileName =~ "sc.exe") and (ProcessCommandLine contains "sdset" and ProcessCommandLine contains "D;") and (ProcessCommandLine contains ";IU" or ProcessCommandLine contains ";SU" or ProcessCommandLine contains ";BA" or ProcessCommandLine contains ";SY" or ProcessCommandLine contains ";WD")

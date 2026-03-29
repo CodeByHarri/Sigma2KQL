@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/05
-// Level: high
-// Description: Detects the creation of suspicious files and folders inside the user's AppData folder but not inside any of the common and well known directories (Local, Romaing, LocalLow). This method could be used as a method to bypass detection who exclude the AppData folder in fear of FPs
-// Tags: attack.defense_evasion, attack.execution
-DeviceFileEvents
-| where (FolderPath contains "\\AppData\\" and (FolderPath endswith ".bat" or FolderPath endswith ".cmd" or FolderPath endswith ".cpl" or FolderPath endswith ".dll" or FolderPath endswith ".exe" or FolderPath endswith ".hta" or FolderPath endswith ".iso" or FolderPath endswith ".lnk" or FolderPath endswith ".msi" or FolderPath endswith ".ps1" or FolderPath endswith ".psm1" or FolderPath endswith ".scr" or FolderPath endswith ".vbe" or FolderPath endswith ".vbs") and FolderPath startswith "C:\\Users\\") and (not(((FolderPath contains "\\AppData\\Local\\" or FolderPath contains "\\AppData\\LocalLow\\" or FolderPath contains "\\AppData\\Roaming\\") and FolderPath startswith "C:\\Users\\")))

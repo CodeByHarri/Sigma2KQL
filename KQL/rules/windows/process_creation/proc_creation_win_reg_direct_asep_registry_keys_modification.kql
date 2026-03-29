@@ -1,0 +1,15 @@
+// Title: Direct Autorun Keys Modification
+// Author: Victor Sergeev, Daniil Yugoslavskiy, oscd.community, Swachchhanda Shrawan Poudel (Nextron Systems)
+// Date: 2019-10-25
+// Level: medium
+// Description: Detects direct modification of autostart extensibility point (ASEP) in registry using reg.exe.
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.persistence, attack.t1547.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_reg_direct_asep_registry_keys_modification.yml
+// False Positives:
+//   - Legitimate software automatically (mostly, during installation) sets up autorun keys for legitimate reasons.
+//   - Legitimate administrator sets up autorun keys for legitimate reasons.
+//   - Discord
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "add" and (ProcessCommandLine contains "\\software\\Microsoft\\Windows\\CurrentVersion\\Run" or ProcessCommandLine contains "\\software\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Run" or ProcessCommandLine contains "\\software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run" or ProcessCommandLine contains "\\software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Userinit" or ProcessCommandLine contains "\\software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Shell" or ProcessCommandLine contains "\\software\\Microsoft\\Windows NT\\CurrentVersion\\Windows" or ProcessCommandLine contains "\\system\\CurrentControlSet\\Control\\SafeBoot\\AlternateShell") and (FolderPath endswith "\\reg.exe" or ProcessVersionInfoOriginalFileName =~ "reg.exe")

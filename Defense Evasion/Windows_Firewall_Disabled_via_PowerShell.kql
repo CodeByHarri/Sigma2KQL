@@ -1,7 +1,0 @@
-// Author: Tim Rauch, Elastic (idea)
-// Date: 2022/09/14
-// Level: medium
-// Description: Detects attempts to disable the Windows Firewall using PowerShell
-// Tags: attack.defense_evasion, attack.t1562
-DeviceProcessEvents
-| where (ProcessCommandLine contains "Set-NetFirewallProfile " and ProcessCommandLine contains " -Enabled " and ProcessCommandLine contains " False") and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\powershell_ise.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.EXE", "pwsh.dll"))) and (ProcessCommandLine contains " -All " or ProcessCommandLine contains "Public" or ProcessCommandLine contains "Domain" or ProcessCommandLine contains "Private")

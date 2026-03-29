@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2020/01/24
-// Level: high
-// Description: Detects RDP session hijacking by using MSTSC shadowing
-// Tags: attack.lateral_movement, attack.t1563.002
-DeviceProcessEvents
-| where ProcessCommandLine contains "noconsentprompt" and ProcessCommandLine contains "shadow:"

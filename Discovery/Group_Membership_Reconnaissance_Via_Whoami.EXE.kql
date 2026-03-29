@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/02/28
-// Level: medium
-// Description: Detects the execution of whoami.exe with the /group command line flag to show group membership for the current user, account type, security identifiers (SID), and attributes.
-// Tags: attack.discovery, attack.t1033
-DeviceProcessEvents
-| where (ProcessCommandLine contains " /groups" or ProcessCommandLine contains " -groups") and (FolderPath endswith "\\whoami.exe" or ProcessVersionInfoOriginalFileName =~ "whoami.exe")

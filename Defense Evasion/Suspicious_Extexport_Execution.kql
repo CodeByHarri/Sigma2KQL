@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2021/11/26
-// Level: medium
-// Description: Extexport.exe loads dll and is execute from other folder the original path
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ProcessCommandLine contains "Extexport.exe" or FolderPath endswith "\\Extexport.exe" or ProcessVersionInfoOriginalFileName =~ "extexport.exe"

@@ -1,7 +1,0 @@
-// Author: Markus Neis, @Kostastsale
-// Date: 2018/08/17
-// Level: high
-// Description: Detects Request to "amsiInitFailed" that can be used to disable AMSI Scanning
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "System.Management.Automation.AmsiUtils" or ProcessCommandLine contains "amsiInitFailed") or (ProcessCommandLine contains "[Ref].Assembly.GetType" and ProcessCommandLine contains "SetValue($null,$true)" and ProcessCommandLine contains "NonPublic,Static")

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/03/12
-// Level: high
-// Description: Detects suspicious process patterns found in logs when CrackMapExec is used
-// Tags: attack.credential_access, attack.t1003.001
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "cmd.exe /c " or ProcessCommandLine contains "cmd.exe /r " or ProcessCommandLine contains "cmd.exe /k " or ProcessCommandLine contains "cmd /c " or ProcessCommandLine contains "cmd /r " or ProcessCommandLine contains "cmd /k ") and (ProcessCommandLine contains "tasklist /fi " and ProcessCommandLine contains "Imagename eq lsass.exe") and (AccountName contains "AUTHORI" or AccountName contains "AUTORI")) or (ProcessCommandLine contains "do rundll32.exe C:\\windows\\System32\\comsvcs.dll, MiniDump" and ProcessCommandLine contains "\\Windows\\Temp\\" and ProcessCommandLine contains " full" and ProcessCommandLine contains "%%B") or (ProcessCommandLine contains "tasklist /v /fo csv" and ProcessCommandLine contains "findstr /i \"lsass\"")

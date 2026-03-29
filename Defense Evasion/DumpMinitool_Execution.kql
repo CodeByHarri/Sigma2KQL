@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Florian Roth (Nextron Systems)
-// Date: 2022/04/06
-// Level: medium
-// Description: Detects the use of "DumpMinitool.exe" a tool that allows the dump of process memory via the use of the "MiniDumpWriteDump"
-// Tags: attack.defense_evasion, attack.t1036, attack.t1003.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains " Full" or ProcessCommandLine contains " Mini" or ProcessCommandLine contains " WithHeap") and ((FolderPath endswith "\\DumpMinitool.exe" or FolderPath endswith "\\DumpMinitool.x86.exe" or FolderPath endswith "\\DumpMinitool.arm64.exe") or (ProcessVersionInfoOriginalFileName in~ ("DumpMinitool.exe", "DumpMinitool.x86.exe", "DumpMinitool.arm64.exe")))

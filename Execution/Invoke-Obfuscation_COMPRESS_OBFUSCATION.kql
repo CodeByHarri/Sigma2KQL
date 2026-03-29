@@ -1,7 +1,0 @@
-// Author: Timur Zinniatullin, oscd.community
-// Date: 2020/10/18
-// Level: medium
-// Description: Detects Obfuscated Powershell via COMPRESS OBFUSCATION
-// Tags: attack.defense_evasion, attack.t1027, attack.execution, attack.t1059.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "system.io.compression.deflatestream" or ProcessCommandLine contains "system.io.streamreader" or ProcessCommandLine contains "readtoend(") and (ProcessCommandLine contains "new-object" and ProcessCommandLine contains "text.encoding]::ascii")

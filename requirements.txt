@@ -1,0 +1,15 @@
+certifi==2025.11.12
+charset-normalizer==3.4.4
+idna==3.11
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+packaging==24.2
+pyaml==25.7.0
+pyparsing==3.2.5
+pySigma==0.11.23
+pySigma-backend-kusto==0.4.4
+pySigma-backend-microsoft365defender==0.3.2
+PyYAML==6.0.3
+requests==2.32.5
+sigma==0.0.1
+urllib3==2.5.0

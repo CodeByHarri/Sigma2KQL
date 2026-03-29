@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/08/01
-// Level: medium
-// Description: Detect the use of "sc.exe" to change the startup type of a service to "disabled" or "demand"
-// Tags: attack.execution, attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "disabled" or ProcessCommandLine contains "demand") and (ProcessCommandLine contains " config " and ProcessCommandLine contains "start")) and (FolderPath endswith "\\sc.exe" or ProcessVersionInfoOriginalFileName =~ "sc.exe")

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), Wietze Beukema (project and research)
-// Date: 2022/08/17
-// Level: medium
-// Description: Detects potential DLL sideloading of "chrome_frame_helper.dll"
-// Tags: attack.defense_evasion, attack.persistence, attack.privilege_escalation, attack.t1574.001, attack.t1574.002
-DeviceImageLoadEvents
-| where FolderPath endswith "\\chrome_frame_helper.dll" and (not((FolderPath startswith "C:\\Program Files\\Google\\Chrome\\Application\\" or FolderPath startswith "C:\\Program Files (x86)\\Google\\Chrome\\Application\\"))) and (not(FolderPath contains "\\AppData\\local\\Google\\Chrome\\Application\\"))

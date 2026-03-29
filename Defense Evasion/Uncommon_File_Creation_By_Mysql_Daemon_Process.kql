@@ -1,9 +1,0 @@
-// Author: Joseph Kamau
-// Date: 2024/05/27
-// Level: high
-// Description: Detects the creation of files with scripting or executable extensions by Mysql daemon.
-Which could be an indicator of "User Defined Functions" abuse to download malware.
-
-// Tags: attack.defense_evasion
-DeviceFileEvents
-| where (InitiatingProcessFolderPath endswith "\\mysqld.exe" or InitiatingProcessFolderPath endswith "\\mysqld-nt.exe") and (FolderPath endswith ".bat" or FolderPath endswith ".dat" or FolderPath endswith ".dll" or FolderPath endswith ".exe" or FolderPath endswith ".ps1" or FolderPath endswith ".psm1" or FolderPath endswith ".vbe" or FolderPath endswith ".vbs")

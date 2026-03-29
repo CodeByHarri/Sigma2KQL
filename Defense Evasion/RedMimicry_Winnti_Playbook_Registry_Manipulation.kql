@@ -1,7 +1,0 @@
-// Author: Alexander Rausch
-// Date: 2020/06/24
-// Level: high
-// Description: Detects actions caused by the RedMimicry Winnti playbook
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where RegistryKey contains "HKLM\\SOFTWARE\\Microsoft\\HTMLHelp\\data"

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/08/07
-// Level: critical
-// Description: Detects usage of the powerShell New-MailboxExportRequest Cmdlet to exports a mailbox to a remote or local share, as used in ProxyShell exploitations
-// Tags: attack.exfiltration
-DeviceProcessEvents
-| where ProcessCommandLine contains "New-MailboxExportRequest" and ProcessCommandLine contains " -Mailbox " and ProcessCommandLine contains " -FilePath \\\\"

@@ -1,7 +1,0 @@
-// Author: Teymur Kheirkhabarov (idea), Ryan Plas (rule), oscd.community
-// Date: 2020/10/05
-// Level: high
-// Description: Search for usage of reg or Powershell by non-privileged users to modify service configuration in registry
-// Tags: attack.defense_evasion, attack.t1112
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "reg " and ProcessCommandLine contains "add") or (ProcessCommandLine contains "powershell" or ProcessCommandLine contains "set-itemproperty" or ProcessCommandLine contains " sp " or ProcessCommandLine contains "new-itemproperty")) and ((ProcessCommandLine contains "ImagePath" or ProcessCommandLine contains "FailureCommand" or ProcessCommandLine contains "ServiceDLL") and (ProcessCommandLine contains "ControlSet" and ProcessCommandLine contains "Services") and ProcessIntegrityLevel =~ "Medium")

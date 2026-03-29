@@ -1,7 +1,0 @@
-// Author: Janantha Marasinghe
-// Date: 2022/11/18
-// Level: medium
-// Description: Detects potential suspicious behaviour using secedit.exe. Such as exporting or modifying the security policy
-// Tags: attack.discovery, attack.persistence, attack.defense_evasion, attack.credential_access, attack.privilege_escalation, attack.t1562.002, attack.t1547.001, attack.t1505.005, attack.t1556.002, attack.t1562, attack.t1574.007, attack.t1564.002, attack.t1546.008, attack.t1546.007, attack.t1547.014, attack.t1547.010, attack.t1547.002, attack.t1557, attack.t1082
-DeviceProcessEvents
-| where (FolderPath endswith "\\secedit.exe" or ProcessVersionInfoOriginalFileName =~ "SeCEdit") and ((ProcessCommandLine contains "/configure" and ProcessCommandLine contains "/db") or (ProcessCommandLine contains "/export" and ProcessCommandLine contains "/cfg"))

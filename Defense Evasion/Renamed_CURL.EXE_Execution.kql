@@ -1,7 +1,0 @@
-// Author: X__Junior (Nextron Systems)
-// Date: 2023/09/11
-// Level: medium
-// Description: Detects the execution of a renamed "CURL.exe" binary based on the PE metadata fields
-// Tags: attack.execution, attack.t1059, attack.defense_evasion, attack.t1202
-DeviceProcessEvents
-| where (ProcessVersionInfoOriginalFileName =~ "curl.exe" or ProcessVersionInfoFileDescription =~ "The curl executable") and (not(FolderPath contains "\\curl"))

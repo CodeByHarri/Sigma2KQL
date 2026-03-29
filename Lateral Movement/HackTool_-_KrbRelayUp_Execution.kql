@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/04/26
-// Level: high
-// Description: Detects KrbRelayUp used to perform a universal no-fix local privilege escalation in Windows domain environments where LDAP signing is not enforced
-// Tags: attack.credential_access, attack.t1558.003, attack.lateral_movement, attack.t1550.003
-DeviceProcessEvents
-| where (ProcessCommandLine contains " relay " and ProcessCommandLine contains " -Domain " and ProcessCommandLine contains " -ComputerName ") or (ProcessCommandLine contains " krbscm " and ProcessCommandLine contains " -sc ") or (ProcessCommandLine contains " spawn " and ProcessCommandLine contains " -d " and ProcessCommandLine contains " -cn " and ProcessCommandLine contains " -cp ") or (FolderPath endswith "\\KrbRelayUp.exe" or ProcessVersionInfoOriginalFileName =~ "KrbRelayUp.exe")

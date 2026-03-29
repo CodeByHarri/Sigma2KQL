@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/07/12
-// Level: high
-// Description: Detects creation of local users via the net.exe command with the option "never expire"
-// Tags: attack.persistence, attack.t1136.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "user" and ProcessCommandLine contains "add" and ProcessCommandLine contains "expires:never") and ((FolderPath endswith "\\net.exe" or FolderPath endswith "\\net1.exe") or (ProcessVersionInfoOriginalFileName in~ ("net.exe", "net1.exe")))

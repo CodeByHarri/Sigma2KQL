@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/05/01
-// Level: medium
-// Description: Detects cases in which a user uses the built-in Windows utility gpresult to display the Resultant Set of Policy (RSoP) information
-// Tags: attack.discovery, attack.t1615
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/z" or ProcessCommandLine contains "/v") and FolderPath endswith "\\gpresult.exe"

@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/12
-// Level: high
-// Description: Detects the removal of Sysmon, which could be a potential attempt at defense evasion
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "-u" or ProcessCommandLine contains "/u") and ((FolderPath endswith "\\Sysmon64.exe" or FolderPath endswith "\\Sysmon.exe") or ProcessVersionInfoFileDescription =~ "System activity monitor")

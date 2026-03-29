@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/01/28
-// Level: high
-// Description: Detects suspicious use of XORDump process memory dumping utility
-// Tags: attack.defense_evasion, attack.t1036, attack.t1003.001
-DeviceProcessEvents
-| where FolderPath endswith "\\xordump.exe" or (ProcessCommandLine contains " -process lsass.exe " or ProcessCommandLine contains " -m comsvcs " or ProcessCommandLine contains " -m dbghelp " or ProcessCommandLine contains " -m dbgcore ")

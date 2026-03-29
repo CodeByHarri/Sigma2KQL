@@ -1,7 +1,0 @@
-// Author: Victor Sergeev, oscd.community
-// Date: 2020/10/09
-// Level: medium
-// Description: Detects execution of powershell scripts via Runscripthelper.exe
-// Tags: attack.execution, attack.t1059, attack.defense_evasion, attack.t1202
-DeviceProcessEvents
-| where ProcessCommandLine contains "surfacecheck" and FolderPath endswith "\\Runscripthelper.exe"

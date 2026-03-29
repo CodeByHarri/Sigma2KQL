@@ -1,7 +1,0 @@
-// Author: Beyu Denis, oscd.community (rule), @harr0ey (idea)
-// Date: 2019/10/12
-// Level: high
-// Description: The OpenWith.exe executes other binary
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ProcessCommandLine contains "/c" and FolderPath endswith "\\OpenWith.exe"

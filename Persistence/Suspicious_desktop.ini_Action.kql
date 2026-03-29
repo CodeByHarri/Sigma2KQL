@@ -1,7 +1,0 @@
-// Author: Maxime Thiebaut (@0xThiebaut), Tim Shelton (HAWK.IO)
-// Date: 2020/03/19
-// Level: medium
-// Description: Detects unusual processes accessing desktop.ini, which can be leveraged to alter how Explorer displays a folder's content (i.e. renaming files) without changing them on disk.
-// Tags: attack.persistence, attack.t1547.009
-DeviceFileEvents
-| where FolderPath endswith "\\desktop.ini" and (not(((InitiatingProcessFolderPath startswith "C:\\Windows\\" or InitiatingProcessFolderPath startswith "C:\\Program Files\\" or InitiatingProcessFolderPath startswith "C:\\Program Files (x86)\\") or (InitiatingProcessFolderPath endswith "\\AppData\\Local\\JetBrains\\Toolbox\\bin\\7z.exe" and FolderPath contains "\\JetBrains\\apps\\") or FolderPath startswith "C:\\$WINDOWS.~BT\\NewOS\\")))

@@ -1,7 +1,0 @@
-// Author: Oddvar Moe, Sander Wiebing, oscd.community
-// Date: 2020/10/12
-// Level: high
-// Description: Detects the import of a alternate datastream to the registry with regedit.exe.
-// Tags: attack.t1112, attack.defense_evasion
-DeviceProcessEvents
-| where (((ProcessCommandLine contains " /i " or ProcessCommandLine contains ".reg") and ProcessCommandLine matches regex ":[^ \\\\]") and (FolderPath endswith "\\regedit.exe" or ProcessVersionInfoOriginalFileName =~ "REGEDIT.EXE")) and (not((ProcessCommandLine contains " -e " or ProcessCommandLine contains " /e " or ProcessCommandLine contains " -a " or ProcessCommandLine contains " /a " or ProcessCommandLine contains " -c " or ProcessCommandLine contains " /c ")))

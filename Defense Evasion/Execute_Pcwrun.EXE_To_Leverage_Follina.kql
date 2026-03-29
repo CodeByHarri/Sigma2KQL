@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/06/13
-// Level: high
-// Description: Detects indirect command execution via Program Compatibility Assistant "pcwrun.exe" leveraging the follina (CVE-2022-30190) vulnerability
-// Tags: attack.defense_evasion, attack.t1218, attack.execution
-DeviceProcessEvents
-| where ProcessCommandLine contains "../" and FolderPath endswith "\\pcwrun.exe"

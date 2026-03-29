@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/05/12
-// Level: medium
-// Description: Detects Microsoft Excel loading an Add-In (.xll) file from an uncommon location
-// Tags: attack.execution, attack.t1204.002
-DeviceImageLoadEvents
-| where (FolderPath contains "\\Desktop\\" or FolderPath contains "\\Downloads\\" or FolderPath contains "\\Perflogs\\" or FolderPath contains "\\Temp\\" or FolderPath contains "\\Users\\Public\\" or FolderPath contains "\\Windows\\Tasks\\") and FolderPath endswith ".xll" and InitiatingProcessFolderPath endswith "\\excel.exe"

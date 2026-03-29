@@ -1,7 +1,0 @@
-// Author: Roberto Rodriguez @Cyb3rWard0g
-// Date: 2019/08/15
-// Level: medium
-// Description: Detects WmiPrvSE spawning a process
-// Tags: attack.execution, attack.t1047
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\WmiPrvSe.exe" and (not(((LogonId in~ ("0x3e7", "null")) or isnull(LogonId) or (AccountName contains "AUTHORI" or AccountName contains "AUTORI") or FolderPath endswith "\\WerFault.exe" or FolderPath endswith "\\WmiPrvSE.exe")))

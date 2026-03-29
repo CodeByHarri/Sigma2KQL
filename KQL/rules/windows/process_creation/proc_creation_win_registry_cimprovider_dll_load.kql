@@ -1,0 +1,11 @@
+// Title: DLL Execution Via Register-cimprovider.exe
+// Author: Ivan Dyachkov, Yulia Fomina, oscd.community
+// Date: 2020-10-07
+// Level: medium
+// Description: Detects using register-cimprovider.exe to execute arbitrary dll file.
+// MITRE Tactic: Privilege Escalation
+// Tags: attack.privilege-escalation, attack.persistence, attack.defense-evasion, attack.t1574
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_registry_cimprovider_dll_load.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "-path" and ProcessCommandLine contains "dll") and FolderPath endswith "\\register-cimprovider.exe"

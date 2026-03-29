@@ -1,7 +1,0 @@
-// Author: pH-T (Nextron Systems)
-// Date: 2023/04/17
-// Level: high
-// Description: Detects Crassus, a Windows privilege escalation discovery tool, based on PE metadata characteristics.
-// Tags: attack.discovery, attack.t1590.001
-DeviceProcessEvents
-| where FolderPath endswith "\\Crassus.exe" or ProcessVersionInfoOriginalFileName =~ "Crassus.exe" or ProcessVersionInfoFileDescription contains "Crassus"

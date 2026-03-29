@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/08/22
-// Level: high
-// Description: Detects the use of the lesser known remote execution tool named CsExec a PsExec alternative
-// Tags: attack.resource_development, attack.t1587.001, attack.execution, attack.t1569.002
-DeviceProcessEvents
-| where FolderPath endswith "\\csexec.exe" or ProcessVersionInfoFileDescription =~ "csexec"

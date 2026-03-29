@@ -1,7 +1,0 @@
-// Author: X__Junior (Nextron Systems)
-// Date: 2023/06/01
-// Level: high
-// Description: Detects potential DLL sideloading of "SmadHook.dll", a DLL used by SmadAV antivirus
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1574.001, attack.t1574.002
-DeviceImageLoadEvents
-| where (FolderPath endswith "\\SmadHook32c.dll" or FolderPath endswith "\\SmadHook64c.dll") and (not(((InitiatingProcessFolderPath in~ ("C:\\Program Files (x86)\\SMADAV\\SmadavProtect32.exe", "C:\\Program Files (x86)\\SMADAV\\SmadavProtect64.exe", "C:\\Program Files\\SMADAV\\SmadavProtect32.exe", "C:\\Program Files\\SMADAV\\SmadavProtect64.exe")) and (FolderPath startswith "C:\\Program Files (x86)\\SMADAV\\" or FolderPath startswith "C:\\Program Files\\SMADAV\\"))))

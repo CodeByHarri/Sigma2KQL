@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/05/16
-// Level: medium
-// Description: Detects the executiob of TTDInject.exe, which is used by Windows 10 v1809 and newer to debug time travel (underlying call of tttracer.exe)
-// Tags: attack.defense_evasion, attack.t1127
-DeviceProcessEvents
-| where FolderPath endswith "ttdinject.exe" or ProcessVersionInfoOriginalFileName =~ "TTDInject.EXE"

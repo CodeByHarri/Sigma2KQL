@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/02/06
-// Level: medium
-// Description: Detects events that appear when a user click on a link file with a powershell command in it
-// Tags: attack.execution, attack.t1059.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "powershell" and ProcessCommandLine contains ".lnk") and FolderPath =~ "C:\\Windows\\System32\\cmd.exe" and InitiatingProcessFolderPath =~ "C:\\Windows\\explorer.exe"

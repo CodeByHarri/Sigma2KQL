@@ -1,7 +1,0 @@
-// Author: Ensar Şamil, @sblmsrsn, @oscd_initiative
-// Date: 2020/10/07
-// Level: high
-// Description: Detects successful code compilation via Visual Basic Command Line Compiler that utilizes Windows Resource to Object Converter.
-// Tags: attack.defense_evasion, attack.t1027.004
-DeviceProcessEvents
-| where FolderPath endswith "\\cvtres.exe" and InitiatingProcessFolderPath endswith "\\vbc.exe"

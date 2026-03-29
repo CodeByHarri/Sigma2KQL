@@ -1,0 +1,11 @@
+// Title: Screen Capture Activity Via Psr.EXE
+// Author: Beyu Denis, oscd.community
+// Date: 2019-10-12
+// Level: medium
+// Description: Detects execution of Windows Problem Steps Recorder (psr.exe), a utility used to record the user screen and clicks.
+// MITRE Tactic: Collection
+// Tags: attack.collection, attack.t1113
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_psr_capture_screenshots.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "/start" or ProcessCommandLine contains "-start") and FolderPath endswith "\\Psr.exe"

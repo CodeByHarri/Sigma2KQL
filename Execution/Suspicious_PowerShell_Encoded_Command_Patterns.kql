@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/05/24
-// Level: high
-// Description: Detects PowerShell command line patterns in combincation with encoded commands that often appear in malware infection chains
-// Tags: attack.execution, attack.t1059.001
-DeviceProcessEvents
-| where ((ProcessCommandLine contains " JAB" or ProcessCommandLine contains " SUVYI" or ProcessCommandLine contains " SQBFAFgA" or ProcessCommandLine contains " aWV4I" or ProcessCommandLine contains " IAB" or ProcessCommandLine contains " PAA" or ProcessCommandLine contains " aQBlAHgA") and (ProcessCommandLine contains " -e " or ProcessCommandLine contains " -en " or ProcessCommandLine contains " -enc " or ProcessCommandLine contains " -enco") and ((FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") or (ProcessVersionInfoOriginalFileName in~ ("PowerShell.Exe", "pwsh.dll")))) and (not((InitiatingProcessFolderPath contains "C:\\Packages\\Plugins\\Microsoft.GuestConfiguration.ConfigurationforWindows\\" or InitiatingProcessFolderPath contains "\\gc_worker.exe")))

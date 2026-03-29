@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/09
-// Level: high
-// Description: Disables HTTP logging on a Windows IIS web server as seen by Threat Group 3390 (Bronze Union)
-// Tags: attack.defense_evasion, attack.t1562.002
-DeviceProcessEvents
-| where (ProcessCommandLine contains "set" and ProcessCommandLine contains "config" and ProcessCommandLine contains "section:httplogging" and ProcessCommandLine contains "dontLog:true") and (FolderPath endswith "\\appcmd.exe" or ProcessVersionInfoOriginalFileName =~ "appcmd.exe")

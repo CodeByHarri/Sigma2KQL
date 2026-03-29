@@ -1,7 +1,0 @@
-// Author: frack113, Christopher Peacock '@securepeacock', SCYTHE '@scythe_io'
-// Date: 2021/12/07
-// Level: low
-// Description: Adversaries may look for details about the network configuration and settings of systems they access or through information discovery of remote systems
-// Tags: attack.discovery, attack.t1016
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "config " or ProcessCommandLine contains "state " or ProcessCommandLine contains "rule " or ProcessCommandLine contains "name=all") and (ProcessCommandLine contains "netsh " and ProcessCommandLine contains "show " and ProcessCommandLine contains "firewall ")) and (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName =~ "netsh.exe")

@@ -1,0 +1,13 @@
+// Title: Split A File Into Pieces
+// Author: Igor Fits, Mikhail Larin, oscd.community
+// Date: 2020-10-15
+// Level: low
+// Description: Detection use of the command "split" to split files into parts and possible transfer.
+// MITRE Tactic: Exfiltration
+// Tags: attack.exfiltration, attack.t1030
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/macos/process_creation/proc_creation_macos_split_file_into_pieces.yml
+// False Positives:
+//   - Legitimate administrative activity
+
+DeviceProcessEvents
+| where FolderPath endswith "/split"

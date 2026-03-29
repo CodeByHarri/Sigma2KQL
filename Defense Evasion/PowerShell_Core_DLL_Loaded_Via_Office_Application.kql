@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/06/01
-// Level: medium
-// Description: Detects PowerShell core DLL being loaded by an Office Product
-// Tags: attack.defense_evasion
-DeviceImageLoadEvents
-| where (FolderPath contains "\\System.Management.Automation.Dll" or FolderPath contains "\\System.Management.Automation.ni.Dll") and (InitiatingProcessFolderPath endswith "\\excel.exe" or InitiatingProcessFolderPath endswith "\\mspub.exe" or InitiatingProcessFolderPath endswith "\\outlook.exe" or InitiatingProcessFolderPath endswith "\\onenote.exe" or InitiatingProcessFolderPath endswith "\\onenoteim.exe" or InitiatingProcessFolderPath endswith "\\powerpnt.exe" or InitiatingProcessFolderPath endswith "\\winword.exe")

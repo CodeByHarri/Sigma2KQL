@@ -1,7 +1,0 @@
-// Author: Micah Babinski
-// Date: 2023/08/21
-// Level: medium
-// Description: Detects possible execution via LNK file accessed on a WebDAV server.
-// Tags: attack.execution, attack.t1059.001, attack.t1204
-DeviceProcessEvents
-| where ProcessCommandLine contains "\\DavWWWRoot\\" and (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\wscript.exe") and InitiatingProcessFolderPath endswith "\\explorer.exe"

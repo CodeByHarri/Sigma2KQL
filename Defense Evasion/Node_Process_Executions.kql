@@ -1,7 +1,0 @@
-// Author: Max Altgelt (Nextron Systems)
-// Date: 2022/04/06
-// Level: medium
-// Description: Detects the execution of other scripts using the Node executable packaged with Adobe Creative Cloud
-// Tags: attack.defense_evasion, attack.t1127, attack.t1059.007
-DeviceProcessEvents
-| where FolderPath endswith "\\Adobe Creative Cloud Experience\\libs\\node.exe" and (not(ProcessCommandLine contains "Adobe Creative Cloud Experience\\js"))

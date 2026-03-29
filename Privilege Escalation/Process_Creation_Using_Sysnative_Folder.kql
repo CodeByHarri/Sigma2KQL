@@ -1,7 +1,0 @@
-// Author: Max Altgelt (Nextron Systems)
-// Date: 2022/08/23
-// Level: medium
-// Description: Detects process creation events that use the Sysnative folder (common for CobaltStrike spawns)
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1055
-DeviceProcessEvents
-| where ProcessCommandLine contains ":\\Windows\\Sysnative\\" or FolderPath contains ":\\Windows\\Sysnative\\"

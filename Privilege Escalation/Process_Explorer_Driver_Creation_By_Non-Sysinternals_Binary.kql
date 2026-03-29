@@ -1,9 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2023/05/05
-// Level: high
-// Description: Detects creation of the Process Explorer drivers by processes other than Process Explorer (procexp) itself.
-Hack tools or malware may use the Process Explorer driver to elevate privileges, drops it to disk for a few moments, runs a service using that driver and removes it afterwards.
-
-// Tags: attack.persistence, attack.privilege_escalation, attack.t1068
-DeviceFileEvents
-| where (FolderPath contains "\\PROCEXP" and FolderPath endswith ".sys") and (not((InitiatingProcessFolderPath endswith "\\procexp.exe" or InitiatingProcessFolderPath endswith "\\procexp64.exe")))

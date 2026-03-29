@@ -1,7 +1,0 @@
-// Author: Bhabesh Raj
-// Date: 2021/01/10
-// Level: medium
-// Description: Detects persistence via Visual Studio Tools for Office (VSTO) add-ins in Office applications.
-// Tags: attack.t1137.006, attack.persistence
-DeviceRegistryEvents
-| where (RegistryKey contains "\\Software\\Microsoft\\Office\\Outlook\\Addins" or RegistryKey contains "\\Software\\Microsoft\\Office\\Word\\Addins" or RegistryKey contains "\\Software\\Microsoft\\Office\\Excel\\Addins" or RegistryKey contains "\\Software\\Microsoft\\Office\\Powerpoint\\Addins" or RegistryKey contains "\\Software\\Microsoft\\VSTO\\Security\\Inclusion") and (not(((InitiatingProcessFolderPath =~ "C:\\Program Files\\AVG\\Antivirus\\RegSvr.exe" and RegistryKey contains "\\Microsoft\\Office\\Outlook\\Addins\\Antivirus.AsOutExt") or (InitiatingProcessFolderPath endswith "\\msiexec.exe" or InitiatingProcessFolderPath endswith "\\regsvr32.exe") or (InitiatingProcessFolderPath endswith "\\excel.exe" or InitiatingProcessFolderPath endswith "\\integrator.exe" or InitiatingProcessFolderPath endswith "\\OfficeClickToRun.exe" or InitiatingProcessFolderPath endswith "\\winword.exe" or InitiatingProcessFolderPath endswith "\\visio.exe") or InitiatingProcessFolderPath endswith "\\Teams.exe")))

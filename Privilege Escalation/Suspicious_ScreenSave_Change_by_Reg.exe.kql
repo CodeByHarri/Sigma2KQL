@@ -1,9 +1,0 @@
-// Author: frack113
-// Date: 2021/08/19
-// Level: medium
-// Description: Adversaries may establish persistence by executing malicious content triggered by user inactivity.
-Screensavers are programs that execute after a configurable time of user inactivity and consist of Portable Executable (PE) files with a .scr file extension
-
-// Tags: attack.privilege_escalation, attack.t1546.002
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "HKEY_CURRENT_USER\\Control Panel\\Desktop" or ProcessCommandLine contains "HKCU\\Control Panel\\Desktop") and FolderPath endswith "\\reg.exe") and ((ProcessCommandLine contains "/v ScreenSaveActive" and ProcessCommandLine contains "/t REG_SZ" and ProcessCommandLine contains "/d 1" and ProcessCommandLine contains "/f") or (ProcessCommandLine contains "/v ScreenSaveTimeout" and ProcessCommandLine contains "/t REG_SZ" and ProcessCommandLine contains "/d " and ProcessCommandLine contains "/f") or (ProcessCommandLine contains "/v ScreenSaverIsSecure" and ProcessCommandLine contains "/t REG_SZ" and ProcessCommandLine contains "/d 0" and ProcessCommandLine contains "/f") or (ProcessCommandLine contains "/v SCRNSAVE.EXE" and ProcessCommandLine contains "/t REG_SZ" and ProcessCommandLine contains "/d " and ProcessCommandLine contains ".scr" and ProcessCommandLine contains "/f"))

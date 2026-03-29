@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2020/02/04
-// Level: critical
-// Description: Detects the creation of the default dump file used by Outflank Dumpert tool. A process dumper, which dumps the lsass process memory
-// Tags: attack.credential_access, attack.t1003.001
-DeviceFileEvents
-| where FolderPath endswith "dumpert.dmp"

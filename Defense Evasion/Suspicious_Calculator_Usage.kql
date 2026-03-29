@@ -1,8 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/02/09
-// Level: high
-// Description: Detects suspicious use of 'calc.exe' with command line parameters or in a suspicious directory, which is likely caused by some PoC or detection evasion.
-
-// Tags: attack.defense_evasion, attack.t1036
-DeviceProcessEvents
-| where ProcessCommandLine contains "\\calc.exe " or (FolderPath endswith "\\calc.exe" and (not((FolderPath contains ":\\Windows\\System32\\" or FolderPath contains ":\\Windows\\SysWOW64\\" or FolderPath contains ":\\Windows\\WinSxS\\"))))

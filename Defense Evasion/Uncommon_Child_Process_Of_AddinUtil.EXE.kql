@@ -1,8 +1,0 @@
-// Author: Michael McKinley (@McKinleyMike), Tony Latteri (@TheLatteri)
-// Date: 2023/09/18
-// Level: medium
-// Description: Detects uncommon child processes of the Add-In deployment cache updating utility (AddInutil.exe) which could be a sign of potential abuse of the binary to proxy execution via a custom Addins.Store payload.
-
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where InitiatingProcessFolderPath endswith "\\addinutil.exe" and (not((FolderPath endswith ":\\Windows\\System32\\conhost.exe" or FolderPath endswith ":\\Windows\\System32\\werfault.exe" or FolderPath endswith ":\\Windows\\SysWOW64\\werfault.exe")))

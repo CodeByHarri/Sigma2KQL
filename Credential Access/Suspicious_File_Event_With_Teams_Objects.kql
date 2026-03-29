@@ -1,7 +1,0 @@
-// Author: @SerkinValery
-// Date: 2022/09/16
-// Level: high
-// Description: Detects an access to authentication tokens and accounts of Microsoft Teams desktop application.
-// Tags: attack.credential_access, attack.t1528
-DeviceFileEvents
-| where (FolderPath contains "\\Microsoft\\Teams\\Cookies" or FolderPath contains "\\Microsoft\\Teams\\Local Storage\\leveldb") and (not(InitiatingProcessFolderPath contains "\\Microsoft\\Teams\\current\\Teams.exe"))

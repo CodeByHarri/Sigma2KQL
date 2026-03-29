@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/01/04
-// Level: high
-// Description: Detects changes to the AMSI come server registry key in order disable AMSI scanning functionalities. When AMSI attempts to starts its COM component, it will query its registered CLSID and return a non-existent COM server. This causes a load failure and prevents any scanning methods from being accessed, ultimately rendering AMSI useless
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceRegistryEvents
-| where RegistryKey endswith "\\CLSID\\{fdb00e52-a214-4aa1-8fba-4357bb0072ec}\\InProcServer32\\(Default)" and (not(RegistryValueData =~ "%windir%\\system32\\amsi.dll"))

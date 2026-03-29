@@ -1,0 +1,11 @@
+// Title: Copy Passwd Or Shadow From TMP Path
+// Author: Joseliyo Sanchez, @Joseliyo_Jstnk
+// Date: 2023-01-31
+// Level: high
+// Description: Detects when the file "passwd" or "shadow" is copied from tmp path
+// MITRE Tactic: Credential Access
+// Tags: attack.credential-access, attack.t1552.001
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/linux/process_creation/proc_creation_lnx_cp_passwd_or_shadow_tmp.yml
+
+DeviceProcessEvents
+| where (ProcessCommandLine contains "passwd" or ProcessCommandLine contains "shadow") and FolderPath endswith "/cp" and ProcessCommandLine contains "/tmp/"

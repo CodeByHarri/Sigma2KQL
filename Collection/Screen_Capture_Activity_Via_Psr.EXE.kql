@@ -1,7 +1,0 @@
-// Author: Beyu Denis, oscd.community
-// Date: 2019/10/12
-// Level: medium
-// Description: Detects execution of Windows Problem Steps Recorder (psr.exe), a utility used to record the user screen and clicks.
-// Tags: attack.collection, attack.t1113
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/start" or ProcessCommandLine contains "-start") and FolderPath endswith "\\Psr.exe"

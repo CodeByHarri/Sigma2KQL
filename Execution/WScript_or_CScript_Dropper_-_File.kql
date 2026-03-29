@@ -1,7 +1,0 @@
-// Author: Tim Shelton
-// Date: 2022/01/10
-// Level: high
-// Description: Detects a file ending in jse, vbe, js, vba, vbs written by cscript.exe or wscript.exe
-// Tags: attack.execution, attack.t1059.005, attack.t1059.007
-DeviceFileEvents
-| where (InitiatingProcessFolderPath endswith "\\wscript.exe" or InitiatingProcessFolderPath endswith "\\cscript.exe") and (FolderPath endswith ".jse" or FolderPath endswith ".vbe" or FolderPath endswith ".js" or FolderPath endswith ".vba" or FolderPath endswith ".vbs") and (FolderPath startswith "C:\\Users\\" or FolderPath startswith "C:\\ProgramData")

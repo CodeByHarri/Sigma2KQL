@@ -1,9 +1,0 @@
-// Author: Sreeman
-// Date: 2020/09/29
-// Level: medium
-// Description: Detects manual execution of the "Microsoft Compatibility Appraiser" task via schtasks.
-In order to trigger persistence stored in the "\AppCompatFlags\TelemetryController" registry key.
-
-// Tags: attack.persistence, attack.t1053.005
-DeviceProcessEvents
-| where (ProcessCommandLine contains "run " and ProcessCommandLine contains "\\Application Experience\\Microsoft Compatibility Appraiser") and (FolderPath endswith "\\schtasks.exe" or ProcessVersionInfoOriginalFileName =~ "schtasks.exe")

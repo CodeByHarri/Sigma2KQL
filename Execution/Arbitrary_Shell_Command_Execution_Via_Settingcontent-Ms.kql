@@ -1,7 +1,0 @@
-// Author: Sreeman
-// Date: 2020/03/13
-// Level: medium
-// Description: The .SettingContent-ms file type was introduced in Windows 10 and allows a user to create "shortcuts" to various Windows 10 setting pages. These files are simply XML and contain paths to various Windows 10 settings binaries.
-// Tags: attack.t1204, attack.t1566.001, attack.execution, attack.initial_access
-DeviceProcessEvents
-| where ProcessCommandLine contains ".SettingContent-ms" and (not(ProcessCommandLine contains "immersivecontrolpanel"))

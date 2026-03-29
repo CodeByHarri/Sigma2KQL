@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems), John Lambert (idea), elhoim
-// Date: 2021/07/14
-// Level: high
-// Description: Detects execution of "reg.exe" to disable security services such as Windows Defender.
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceProcessEvents
-| where ((ProcessCommandLine contains "\\AppIDSvc" or ProcessCommandLine contains "\\MsMpSvc" or ProcessCommandLine contains "\\NisSrv" or ProcessCommandLine contains "\\SecurityHealthService" or ProcessCommandLine contains "\\Sense" or ProcessCommandLine contains "\\UsoSvc" or ProcessCommandLine contains "\\WdBoot" or ProcessCommandLine contains "\\WdFilter" or ProcessCommandLine contains "\\WdNisDrv" or ProcessCommandLine contains "\\WdNisSvc" or ProcessCommandLine contains "\\WinDefend" or ProcessCommandLine contains "\\wscsvc" or ProcessCommandLine contains "\\wuauserv") and (ProcessCommandLine contains "d 4" and ProcessCommandLine contains "v Start")) and (ProcessCommandLine contains "reg" and ProcessCommandLine contains "add")

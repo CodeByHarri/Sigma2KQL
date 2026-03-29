@@ -1,7 +1,0 @@
-// Author: oscd.community, Natalia Shornikova
-// Date: 2020/10/06
-// Level: high
-// Description: Detects that a powershell code is written to the registry as a service.
-// Tags: attack.execution, attack.t1569.002
-DeviceRegistryEvents
-| where (RegistryValueData contains "powershell" or RegistryValueData contains "pwsh") and RegistryKey contains "\\Services" and RegistryKey endswith "\\ImagePath"

@@ -1,7 +1,0 @@
-// Author: Victor Sergeev, Daniil Yugoslavskiy, oscd.community
-// Date: 2019/10/25
-// Level: medium
-// Description: Detects direct modification of autostart extensibility point (ASEP) in registry using reg.exe.
-// Tags: attack.persistence, attack.t1547.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains "add" and FolderPath endswith "\\reg.exe") and (ProcessCommandLine contains "\\software\\Microsoft\\Windows\\CurrentVersion\\Run" or ProcessCommandLine contains "\\software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Userinit" or ProcessCommandLine contains "\\software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Shell" or ProcessCommandLine contains "\\software\\Microsoft\\Windows NT\\CurrentVersion\\Windows" or ProcessCommandLine contains "\\software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" or ProcessCommandLine contains "\\system\\CurrentControlSet\\Control\\SafeBoot\\AlternateShell")

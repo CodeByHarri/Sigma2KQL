@@ -1,9 +1,0 @@
-// Author: frack113
-// Date: 2022/09/05
-// Level: high
-// Description: Detect creation of suspicious executable file names.
-Some strings look for suspicious file extensions, others look for filenames that exploit unquoted service paths.
-
-// Tags: attack.defense_evasion, attack.t1564
-DeviceFileEvents
-| where FolderPath endswith ":\\$Recycle.Bin.exe" or FolderPath endswith ":\\Documents and Settings.exe" or FolderPath endswith ":\\MSOCache.exe" or FolderPath endswith ":\\PerfLogs.exe" or FolderPath endswith ":\\Recovery.exe" or FolderPath endswith ".bat.exe" or FolderPath endswith ".sys.exe"

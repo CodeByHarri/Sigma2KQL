@@ -1,7 +1,0 @@
-// Author: Markus Neis, Sander Wiebing
-// Date: 2019/01/29
-// Level: medium
-// Description: Detects the addition of a new rule to the Windows firewall via netsh
-// Tags: attack.defense_evasion, attack.t1562.004, attack.s0246
-DeviceProcessEvents
-| where ((ProcessCommandLine contains " firewall " and ProcessCommandLine contains " add ") and (FolderPath endswith "\\netsh.exe" or ProcessVersionInfoOriginalFileName =~ "netsh.exe")) and (not(((ProcessCommandLine contains "advfirewall firewall add rule name=Dropbox dir=in action=allow \"program=" and ProcessCommandLine contains ":\\Program Files (x86)\\Dropbox\\Client\\Dropbox.exe\" enable=yes profile=Any") or (ProcessCommandLine contains "advfirewall firewall add rule name=Dropbox dir=in action=allow \"program=" and ProcessCommandLine contains ":\\Program Files\\Dropbox\\Client\\Dropbox.exe\" enable=yes profile=Any"))))

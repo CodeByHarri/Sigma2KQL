@@ -1,7 +1,0 @@
-// Author: Michael Haag
-// Date: 2019/01/16
-// Level: high
-// Description: Detects a suspicious process spawning from an "mshta.exe" process, which could be indicative of a malicious HTA script execution
-// Tags: attack.defense_evasion, attack.t1218.005, car.2013-02-003, car.2013-03-001, car.2014-04-003
-DeviceProcessEvents
-| where ((FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\sh.exe" or FolderPath endswith "\\bash.exe" or FolderPath endswith "\\reg.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\bitsadmin.exe") or (ProcessVersionInfoOriginalFileName in~ ("Cmd.Exe", "PowerShell.EXE", "pwsh.dll", "wscript.exe", "cscript.exe", "Bash.exe", "reg.exe", "REGSVR32.EXE", "bitsadmin.exe"))) and InitiatingProcessFolderPath endswith "\\mshta.exe"

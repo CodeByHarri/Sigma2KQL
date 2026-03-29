@@ -1,7 +1,0 @@
-// Author: Thomas Patzke
-// Date: 2017/06/12
-// Level: low
-// Description: Detects default PsExec service filename which indicates PsExec service installation and execution
-// Tags: attack.execution, attack.t1569.002, attack.s0029
-DeviceFileEvents
-| where FolderPath endswith "\\PSEXESVC.exe"

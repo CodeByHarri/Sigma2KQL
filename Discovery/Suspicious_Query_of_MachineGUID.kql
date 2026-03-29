@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/01
-// Level: low
-// Description: Use of reg to get MachineGuid information
-// Tags: attack.discovery, attack.t1082
-DeviceProcessEvents
-| where (ProcessCommandLine contains "SOFTWARE\\Microsoft\\Cryptography" and ProcessCommandLine contains "/v " and ProcessCommandLine contains "MachineGuid") and FolderPath endswith "\\reg.exe"

@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/01/05
-// Level: high
-// Description: Bypasses User Account Control using a fileless method
-// Tags: attack.privilege_escalation, attack.defense_evasion, attack.t1548.002
-DeviceRegistryEvents
-| where RegistryValueData =~ "(Empty)" and RegistryKey endswith "\\open\\command\\DelegateExecute"

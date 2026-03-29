@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/08/09
-// Level: medium
-// Description: Detects usage of Gpg4win to decrypt files
-// Tags: attack.execution
-DeviceProcessEvents
-| where (ProcessCommandLine contains " -d " and ProcessCommandLine contains "passphrase") and ((FolderPath endswith "\\gpg.exe" or FolderPath endswith "\\gpg2.exe") or ProcessVersionInfoFileDescription =~ "GnuPG’s OpenPGP tool")

@@ -1,9 +1,0 @@
-// Author: frack113
-// Date: 2022/04/02
-// Level: medium
-// Description: Detects modifications to the "Hidden" and "ShowSuperHidden" explorer registry values in order to disable showing of hidden files and system files.
-This technique is abused by several malware families to hide their files from normal users.
-
-// Tags: attack.defense_evasion, attack.t1564.001
-DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and (RegistryKey endswith "\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowSuperHidden" or RegistryKey endswith "\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Hidden")

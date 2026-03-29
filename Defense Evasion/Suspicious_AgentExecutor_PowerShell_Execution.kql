@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems), memory-shards
-// Date: 2022/12/24
-// Level: high
-// Description: Detects execution of the AgentExecutor.exe binary. Which can be abused as a LOLBIN to execute powershell scripts with the ExecutionPolicy "Bypass" or any binary named "powershell.exe" located in the path provided by 6th positional argument
-// Tags: attack.defense_evasion, attack.t1218
-DeviceProcessEvents
-| where ((ProcessCommandLine contains " -powershell" or ProcessCommandLine contains " -remediationScript") and (FolderPath endswith "\\AgentExecutor.exe" or ProcessVersionInfoOriginalFileName =~ "AgentExecutor.exe")) and (not((ProcessCommandLine contains "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\" or ProcessCommandLine contains "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\")))

@@ -1,7 +1,0 @@
-// Author: pH-T (Nextron Systems)
-// Date: 2022/09/01
-// Level: high
-// Description: Detects the execution of the "net use" command to mount a WebDAV server and then immediately execute some content in it. As seen being used in malicious LNK files
-// Tags: attack.execution, attack.t1059.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains " net use http" and ProcessCommandLine contains "& start /b " and ProcessCommandLine contains "\\DavWWWRoot\\") and (ProcessCommandLine contains ".exe " or ProcessCommandLine contains ".dll " or ProcessCommandLine contains ".bat " or ProcessCommandLine contains ".vbs " or ProcessCommandLine contains ".ps1 ") and (FolderPath contains "\\cmd.exe" or ProcessVersionInfoOriginalFileName =~ "Cmd.EXE")

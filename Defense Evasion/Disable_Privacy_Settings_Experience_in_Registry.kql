@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/10/02
-// Level: medium
-// Description: Detects registry modifications that disable Privacy Settings Experience
-// Tags: attack.defense_evasion, attack.t1562.001
-DeviceRegistryEvents
-| where RegistryValueData =~ "DWORD (0x00000000)" and RegistryKey endswith "\\SOFTWARE\\Policies\\Microsoft\\Windows\\OOBE\\DisablePrivacyExperience"

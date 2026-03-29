@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/10/18
-// Level: high
-// Description: Detects the execution of the PUA/Recon tool Seatbelt via PE information of command line parameters
-// Tags: attack.discovery, attack.t1526, attack.t1087, attack.t1083
-DeviceProcessEvents
-| where (FolderPath endswith "\\Seatbelt.exe" or ProcessVersionInfoOriginalFileName =~ "Seatbelt.exe" or ProcessVersionInfoFileDescription =~ "Seatbelt" or (ProcessCommandLine contains " DpapiMasterKeys" or ProcessCommandLine contains " InterestingProcesses" or ProcessCommandLine contains " InterestingFiles" or ProcessCommandLine contains " CertificateThumbprints" or ProcessCommandLine contains " ChromiumBookmarks" or ProcessCommandLine contains " ChromiumHistory" or ProcessCommandLine contains " ChromiumPresence" or ProcessCommandLine contains " CloudCredentials" or ProcessCommandLine contains " CredEnum" or ProcessCommandLine contains " CredGuard" or ProcessCommandLine contains " FirefoxHistory" or ProcessCommandLine contains " ProcessCreationEvents")) or ((ProcessCommandLine contains " -group=misc" or ProcessCommandLine contains " -group=remote" or ProcessCommandLine contains " -group=chromium" or ProcessCommandLine contains " -group=slack" or ProcessCommandLine contains " -group=system" or ProcessCommandLine contains " -group=user" or ProcessCommandLine contains " -group=all") and ProcessCommandLine contains " -outputfile=")

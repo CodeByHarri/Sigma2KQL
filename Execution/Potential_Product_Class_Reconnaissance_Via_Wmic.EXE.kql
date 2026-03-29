@@ -1,7 +1,0 @@
-// Author: Michael Haag, Florian Roth (Nextron Systems), juju4, oscd.community
-// Date: 2023/02/14
-// Level: medium
-// Description: Detects the execution of WMIC in order to get a list of firewall and antivirus products
-// Tags: attack.execution, attack.t1047, car.2016-03-002
-DeviceProcessEvents
-| where (ProcessCommandLine contains "AntiVirusProduct" or ProcessCommandLine contains "FirewallProduct") and (FolderPath endswith "\\wmic.exe" or ProcessVersionInfoOriginalFileName =~ "wmic.exe")

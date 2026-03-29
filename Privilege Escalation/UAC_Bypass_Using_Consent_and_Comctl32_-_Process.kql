@@ -1,7 +1,0 @@
-// Author: Christian Burkard (Nextron Systems)
-// Date: 2021/08/23
-// Level: high
-// Description: Detects the pattern of UAC Bypass using consent.exe and comctl32.dll (UACMe 22)
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1548.002
-DeviceProcessEvents
-| where FolderPath endswith "\\werfault.exe" and (ProcessIntegrityLevel in~ ("High", "System")) and InitiatingProcessFolderPath endswith "\\consent.exe"

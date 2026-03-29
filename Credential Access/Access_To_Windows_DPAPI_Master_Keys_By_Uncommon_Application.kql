@@ -1,9 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2022/10/17
-// Level: medium
-// Description: Detects file access requests to the the Windows Data Protection API Master keys by an uncommon application.
-This can be a sign of credential stealing. Example case would be usage of mimikatz "dpapi::masterkey" function
-
-// Tags: attack.credential_access, attack.t1555.004
-DeviceFileEvents
-| where (FileName contains "\\Microsoft\\Protect\\S-1-5-18\\" or FileName contains "\\Microsoft\\Protect\\S-1-5-21-") and (not((InitiatingProcessFolderPath contains ":\\Program Files\\" or InitiatingProcessFolderPath contains ":\\Program Files (x86)\\" or InitiatingProcessFolderPath contains ":\\Windows\\system32\\" or InitiatingProcessFolderPath contains ":\\Windows\\SysWOW64\\")))

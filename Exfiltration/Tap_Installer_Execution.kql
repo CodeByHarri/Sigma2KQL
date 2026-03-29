@@ -1,7 +1,0 @@
-// Author: Daniil Yugoslavskiy, Ian Davis, oscd.community
-// Date: 2019/10/24
-// Level: medium
-// Description: Well-known TAP software installation. Possible preparation for data exfiltration using tunneling techniques
-// Tags: attack.exfiltration, attack.t1048
-DeviceProcessEvents
-| where FolderPath endswith "\\tapinstall.exe" and (not(((FolderPath contains ":\\Program Files\\Avast Software\\SecureLine VPN\\" or FolderPath contains ":\\Program Files (x86)\\Avast Software\\SecureLine VPN\\") or FolderPath contains ":\\Program Files\\OpenVPN Connect\\drivers\\tap\\" or FolderPath contains ":\\Program Files (x86)\\Proton Technologies\\ProtonVPNTap\\installer\\")))

@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/08/16
-// Level: medium
-// Description: Detects setting of a new registry database value related to BgInfo configuration. Attackers can for example set this value to save the results of the commands executed by BgInfo in order to exfiltrate information.
-// Tags: attack.defense_evasion, attack.t1112
-DeviceRegistryEvents
-| where ActionType =~ "RegistryValueSet" and RegistryKey endswith "\\Software\\Winternals\\BGInfo\\Database"

@@ -1,9 +1,0 @@
-// Author: frack113, Florian Roth (Nextron Systems)
-// Date: 2022/01/15
-// Level: high
-// Description: Detects potential commandline obfuscation using unicode characters.
-Adversaries may attempt to make an executable or file difficult to discover or analyze by encrypting, encoding, or otherwise obfuscating its contents on the system or in transit.
-
-// Tags: attack.defense_evasion, attack.t1027
-DeviceProcessEvents
-| where (ProcessCommandLine contains "â" or ProcessCommandLine contains "€" or ProcessCommandLine contains "£" or ProcessCommandLine contains "¯" or ProcessCommandLine contains "®" or ProcessCommandLine contains "µ" or ProcessCommandLine contains "¶") or (ProcessCommandLine contains "ˣ" or ProcessCommandLine contains "˪" or ProcessCommandLine contains "ˢ") or (ProcessCommandLine contains "―" or ProcessCommandLine contains "—") or (ProcessCommandLine contains "∕" or ProcessCommandLine contains "⁄")

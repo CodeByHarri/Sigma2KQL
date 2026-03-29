@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2022/09/06
-// Level: high
-// Description: Detects the use of a renamed SysInternals Sdelete, which is something an administrator shouldn't do (the renaming)
-// Tags: attack.impact, attack.t1485
-DeviceProcessEvents
-| where ProcessVersionInfoOriginalFileName =~ "sdelete.exe" and (not((FolderPath endswith "\\sdelete.exe" or FolderPath endswith "\\sdelete64.exe")))

@@ -1,7 +1,0 @@
-// Author: frack113
-// Date: 2022/09/25
-// Level: high
-// Description: When configured with suitable command line arguments, w32tm can act as a delay mechanism
-// Tags: attack.discovery, attack.t1124
-DeviceProcessEvents
-| where (ProcessCommandLine contains "/stripchart" and ProcessCommandLine contains "/computer:" and ProcessCommandLine contains "/period:" and ProcessCommandLine contains "/dataonly" and ProcessCommandLine contains "/samples:") and (FolderPath endswith "\\w32tm.exe" or ProcessVersionInfoOriginalFileName =~ "w32time.dll")

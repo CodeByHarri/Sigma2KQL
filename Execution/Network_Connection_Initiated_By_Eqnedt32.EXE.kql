@@ -1,7 +1,0 @@
-// Author: Max Altgelt (Nextron Systems)
-// Date: 2022/04/14
-// Level: high
-// Description: Detects network connections from the Equation Editor process "eqnedt32.exe".
-// Tags: attack.execution, attack.t1203
-DeviceNetworkEvents
-| where InitiatingProcessFolderPath endswith "\\eqnedt32.exe"

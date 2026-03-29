@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/07/14
-// Level: high
-// Description: Detects a suspicious process pattern which could be a sign of an exploited Serv-U service
-// Tags: attack.credential_access, attack.t1555, cve.2021.35211
-DeviceProcessEvents
-| where (FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\wscript.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\sh.exe" or FolderPath endswith "\\bash.exe" or FolderPath endswith "\\schtasks.exe" or FolderPath endswith "\\regsvr32.exe" or FolderPath endswith "\\wmic.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\rundll32.exe" or FolderPath endswith "\\msiexec.exe" or FolderPath endswith "\\forfiles.exe" or FolderPath endswith "\\scriptrunner.exe") and InitiatingProcessFolderPath endswith "\\Serv-U.exe"

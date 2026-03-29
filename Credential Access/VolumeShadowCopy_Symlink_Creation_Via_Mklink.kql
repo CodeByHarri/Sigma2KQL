@@ -1,7 +1,0 @@
-// Author: Teymur Kheirkhabarov, oscd.community
-// Date: 2019/10/22
-// Level: high
-// Description: Shadow Copies storage symbolic link creation using operating systems utilities
-// Tags: attack.credential_access, attack.t1003.002, attack.t1003.003
-DeviceProcessEvents
-| where ProcessCommandLine contains "mklink" and ProcessCommandLine contains "HarddiskVolumeShadowCopy"

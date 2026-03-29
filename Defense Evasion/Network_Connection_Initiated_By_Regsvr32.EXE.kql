@@ -1,7 +1,0 @@
-// Author: Dmitriy Lifanov, oscd.community
-// Date: 2019/10/25
-// Level: medium
-// Description: Detects a network connection initiated by "Regsvr32.exe"
-// Tags: attack.execution, attack.t1559.001, attack.defense_evasion, attack.t1218.010
-DeviceNetworkEvents
-| where InitiatingProcessFolderPath endswith "\\regsvr32.exe"

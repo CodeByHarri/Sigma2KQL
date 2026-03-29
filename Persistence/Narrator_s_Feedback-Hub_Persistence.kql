@@ -1,7 +1,0 @@
-// Author: Dmitriy Lifanov, oscd.community
-// Date: 2019/10/25
-// Level: high
-// Description: Detects abusing Windows 10 Narrator's Feedback-Hub
-// Tags: attack.persistence, attack.t1547.001
-DeviceRegistryEvents
-| where (ActionType =~ "DeleteValue" and RegistryKey endswith "\\AppXypsaf9f1qserqevf0sws76dx4k9a5206\\Shell\\open\\command\\DelegateExecute") or RegistryKey endswith "\\AppXypsaf9f1qserqevf0sws76dx4k9a5206\\Shell\\open\\command\\(Default)"

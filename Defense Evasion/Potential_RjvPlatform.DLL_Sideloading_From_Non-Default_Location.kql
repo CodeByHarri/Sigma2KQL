@@ -1,7 +1,0 @@
-// Author: X__Junior (Nextron Systems)
-// Date: 2023/06/09
-// Level: high
-// Description: Detects potential DLL sideloading of "RjvPlatform.dll" by "SystemResetPlatform.exe" located in a non-default location.
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1574.001, attack.t1574.002
-DeviceImageLoadEvents
-| where (InitiatingProcessFolderPath =~ "\\SystemResetPlatform.exe" and FolderPath endswith "\\RjvPlatform.dll") and (not(InitiatingProcessFolderPath startswith "C:\\Windows\\System32\\SystemResetPlatform\\"))

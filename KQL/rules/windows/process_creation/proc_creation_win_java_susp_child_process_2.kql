@@ -1,0 +1,14 @@
+// Title: Shell Process Spawned by Java.EXE
+// Author: Andreas Hunkeler (@Karneades), Nasreddine Bencherchali
+// Date: 2021-12-17
+// Level: medium
+// Description: Detects shell spawned from Java host process, which could be a sign of exploitation (e.g. log4j exploitation)
+// MITRE Tactic: Initial Access
+// Tags: attack.initial-access, attack.persistence, attack.privilege-escalation
+// Reference: https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_java_susp_child_process_2.yml
+// False Positives:
+//   - Legitimate calls to system binaries
+//   - Company specific internal usage
+
+DeviceProcessEvents
+| where ((FolderPath endswith "\\bash.exe" or FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\pwsh.exe") and InitiatingProcessFolderPath endswith "\\java.exe") and (not((ProcessCommandLine contains "build" and InitiatingProcessFolderPath contains "build")))

@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2019/07/13
-// Level: medium
-// Description: Detects a potential command line flag anomaly related to "regsvr32" in which the "/i" flag is used without the "/n" which should be uncommon.
-// Tags: attack.defense_evasion, attack.t1218.010
-DeviceProcessEvents
-| where ((ProcessCommandLine contains " -i:" or ProcessCommandLine contains " /i:") and FolderPath endswith "\\regsvr32.exe") and (not(ProcessCommandLine contains " -n " or ProcessCommandLine contains " /n "))

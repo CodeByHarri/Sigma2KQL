@@ -1,7 +1,0 @@
-// Author: Christian Burkard (Nextron Systems)
-// Date: 2021/08/30
-// Level: high
-// Description: Detects the shell open key manipulation (exefile and ms-settings) used for persistence and the pattern of UAC Bypass using fodhelper.exe, computerdefaults.exe, slui.exe via registry keys (e.g. UACMe 33 or 62)
-// Tags: attack.defense_evasion, attack.privilege_escalation, attack.t1548.002, attack.t1546.001
-DeviceRegistryEvents
-| where (RegistryValueData contains "\\Software\\Classes\\{" and ActionType =~ "RegistryValueSet" and RegistryKey endswith "Classes\\ms-settings\\shell\\open\\command\\SymbolicLinkValue") or RegistryKey endswith "Classes\\ms-settings\\shell\\open\\command\\DelegateExecute" or ((ActionType =~ "RegistryValueSet" and (RegistryKey endswith "Classes\\ms-settings\\shell\\open\\command\\(Default)" or RegistryKey endswith "Classes\\exefile\\shell\\open\\command\\(Default)")) and (not(RegistryValueData =~ "(Empty)")))

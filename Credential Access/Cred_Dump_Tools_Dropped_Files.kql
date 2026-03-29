@@ -1,7 +1,0 @@
-// Author: Teymur Kheirkhabarov, oscd.community
-// Date: 2019/11/01
-// Level: high
-// Description: Files with well-known filenames (parts of credential dump software or files produced by them) creation
-// Tags: attack.credential_access, attack.t1003.001, attack.t1003.002, attack.t1003.003, attack.t1003.004, attack.t1003.005
-DeviceFileEvents
-| where (FolderPath contains "\\fgdump-log" or FolderPath contains "\\kirbi" or FolderPath contains "\\pwdump" or FolderPath contains "\\pwhashes" or FolderPath contains "\\wce_ccache" or FolderPath contains "\\wce_krbtkts") or (FolderPath endswith "\\cachedump.exe" or FolderPath endswith "\\cachedump64.exe" or FolderPath endswith "\\DumpExt.dll" or FolderPath endswith "\\DumpSvc.exe" or FolderPath endswith "\\Dumpy.exe" or FolderPath endswith "\\fgexec.exe" or FolderPath endswith "\\lsremora.dll" or FolderPath endswith "\\lsremora64.dll" or FolderPath endswith "\\NTDS.out" or FolderPath endswith "\\procdump64.exe" or FolderPath endswith "\\pstgdump.exe" or FolderPath endswith "\\pwdump.exe" or FolderPath endswith "\\SAM.out" or FolderPath endswith "\\SECURITY.out" or FolderPath endswith "\\servpw.exe" or FolderPath endswith "\\servpw64.exe" or FolderPath endswith "\\SYSTEM.out" or FolderPath endswith "\\test.pwd" or FolderPath endswith "\\wceaux.dll")

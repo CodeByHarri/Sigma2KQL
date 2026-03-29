@@ -1,9 +1,0 @@
-// Author: frack113
-// Date: 2022/01/07
-// Level: medium
-// Description: Detects the usage of "mstsc.exe" with the "/v" flag to initiate a connection to a remote server.
-Adversaries may use valid accounts to log into a computer using the Remote Desktop Protocol (RDP). The adversary may then perform actions as the logged-on user.
-
-// Tags: attack.lateral_movement, attack.t1021.001
-DeviceProcessEvents
-| where (ProcessCommandLine contains " /v:" and (FolderPath endswith "\\mstsc.exe" or ProcessVersionInfoOriginalFileName =~ "mstsc.exe")) and (not((ProcessCommandLine contains "C:\\ProgramData\\Microsoft\\WSL\\wslg.rdp" and InitiatingProcessFolderPath =~ "C:\\Windows\\System32\\lxss\\wslhost.exe")))

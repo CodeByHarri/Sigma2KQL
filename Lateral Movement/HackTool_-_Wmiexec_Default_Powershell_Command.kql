@@ -1,7 +1,0 @@
-// Author: Nasreddine Bencherchali (Nextron Systems)
-// Date: 2023/03/08
-// Level: high
-// Description: Detects the execution of PowerShell with a specific flag sequence that is used by the Wmiexec script
-// Tags: attack.defense_evasion, attack.lateral_movement
-DeviceProcessEvents
-| where ProcessCommandLine contains "-NoP -NoL -sta -NonI -W Hidden -Exec Bypass -Enc"

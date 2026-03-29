@@ -1,7 +1,0 @@
-// Author: Markus Neis
-// Date: 2018/06/07
-// Level: high
-// Description: Detects potential LethalHTA technique where the "mshta.exe" is spawned by an "svchost.exe" process
-// Tags: attack.defense_evasion, attack.t1218.005
-DeviceProcessEvents
-| where FolderPath endswith "\\mshta.exe" and InitiatingProcessFolderPath endswith "\\svchost.exe"

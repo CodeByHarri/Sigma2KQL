@@ -1,7 +1,0 @@
-// Author: Florian Roth (Nextron Systems)
-// Date: 2021/07/23
-// Level: high
-// Description: Detects files written by the different tools that exploit HiveNightmare
-// Tags: attack.credential_access, attack.t1552.001, cve.2021.36934
-DeviceFileEvents
-| where (FolderPath contains "\\hive_sam_" or FolderPath contains "\\SAM-2021-" or FolderPath contains "\\SAM-2022-" or FolderPath contains "\\SAM-2023-" or FolderPath contains "\\SAM-haxx" or FolderPath contains "\\Sam.save") or FolderPath =~ "C:\\windows\\temp\\sam"
